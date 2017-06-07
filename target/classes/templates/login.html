@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head>
+        <title>SalesWebApp Login</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+    </head>
+
+    <body>
+        <section>
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>Willkommen bei der SalesWebApp</h1>
+                    <p>Ihr FindLunch CRM-Tool</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-offset-4"> <!-- col-md-4 defines the color of the container filling // col-md-offset-4 defines a space on the left with the size of 4(units) left -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3>Please sign in</h3>
+                        </div>
+
+                        <div th:if="${param.error != null}" class="alert alert-danger" role="alert">
+                            <p>Invalid username and password.</p>
+                        </div>
+
+                        <div th:if="${param.logout != null}" class="alert alert-success" role="alert">
+                            <p>You have been logged out successfully</p>
+                        </div>
+
+                        <div class="panel-body">
+                            <form th:action="@{/login}" method="post" class="form-horizontal" role="form">
+
+                                <div class="input-group input-sm"> <!-- defines a small input field -->
+                                    <label class="input-group-addon" for="userId"><i class="fa fa-user"></i></label> <!-- defines a small box in front of the input textfield and insert a person font -->
+                                    <input type="text" class="form-control" id="userId" name="userId" autofocus="autofocus" placeholder="Enter Username" required="required" /> <!-- class="form-control" ensures that the input-field(input-sm) is always at 100% size -->
+                                </div>
+
+                                <div class="input-group input-sm">
+                                    <label class="input-group-addon" for="password"><i class="fa fa-lock"></i></label>
+                                    <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required="required" />
+                                </div>
+
+                                <div class="form-actions" style="padding-top: 10px">
+                                    <input type="submit" class="btn btn-block btn-primary btn-default" value="Log in" />
+                                </div>
+
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
