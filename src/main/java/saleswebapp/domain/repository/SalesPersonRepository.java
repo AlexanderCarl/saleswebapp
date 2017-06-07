@@ -12,4 +12,5 @@ import java.io.Serializable;
 @Repository
 public interface SalesPersonRepository extends JpaRepository<SalesPerson, Serializable> {
 
+    public SalesPerson getByEmail(String userEmail);
 }

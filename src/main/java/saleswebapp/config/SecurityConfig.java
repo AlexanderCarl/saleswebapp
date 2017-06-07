@@ -2,12 +2,13 @@ package saleswebapp.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-
-import javax.sql.DataSource;
+import saleswebapp.service.impl.AuthenticationServiceImpl;
 
 /**
  * Created by Alexander Carl on 06.06.2017.
@@ -18,12 +19,12 @@ import javax.sql.DataSource;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    DataSource dataSource;
+    AuthenticationServiceImpl authenticationService;
 
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
-
-        
+        ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
+        auth.userDetailsService(authenticationService).passwordEncoder(encoder);
 
         //auth.inMemoryAuthentication().withUser("admin").password("admin").roles("USER");
     }
@@ -47,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity.authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/home").access("hasRole('USER')");
+                .antMatchers("/home/**").access("hasRole('USER')");
 
         httpSecurity.csrf().disable();
     }

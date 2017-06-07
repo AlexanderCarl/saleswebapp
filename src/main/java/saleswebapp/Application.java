@@ -12,4 +12,11 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
+
+    //@Autowired
+    //private SalesPersonService salesPersonService;
+    //salesPersonService.testMethodSaveSalesPerson();
+
+    //ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder();
+    //String sha = shaPasswordEncoder.encodePassword("root", null);
 }
