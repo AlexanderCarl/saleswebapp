@@ -33,7 +33,7 @@ public class AuthenticationServiceImpl implements UserDetailsService {
             UserDetails userDetails = (UserDetails) new User(userEmail, "unknownEMail", Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
             //Place a logging-message here e.g.: An unknown user with the email useremail tryed to login.
             return userDetails;
-            //As a sha256-Code is always longer than the 11 chars of the "unknownEMail" String, the else statement will never lead to a successfull log in.
+            //The sha256-Code is always longer than the 11 chars of the "unknownEMail" String, therefore the else statement will never lead to a successfull log in.
         }
     }
 

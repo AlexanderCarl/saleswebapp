@@ -25,16 +25,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {
         ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
         auth.userDetailsService(authenticationService).passwordEncoder(encoder);
-
-        //auth.inMemoryAuthentication().withUser("admin").password("admin").roles("USER");
     }
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
-
-        //String name = SecurityContextHolder.getContext().getAuthentication().getName();
-        //System.out.println(name);
-
         httpSecurity.formLogin().loginPage("/login")
                 .usernameParameter("userId")
                 .passwordParameter("password");
