@@ -1,18 +1,24 @@
-<!DOCTYPE html>
+TYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head>
+    <head th:include="fragments/head :: includes">
         <title>SalesWebApp Home</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <link rel="stylesheet" type="text/css" href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
     </head>
 
     <body>
+        <div th:replace="fragments/navbar :: navbar"></div>
+
         <div class="jumbotron">
             <h1> SalesWebApp </h1>
             <p> -- main menu under construction -- </p>
         </div>
+
+        <div th:replace="fragments/footer :: footer"></div>
     </body>
 
 </html>
+
+
+
+
 
