@@ -4,9 +4,6 @@
     </head>
 
     <body>
-
-
-
         <nav class="navbar navbar-default navbar-fixed-top" th:fragment="navbar">
             <div class="container-fluid">
                 <div class="navbar-header">
@@ -33,15 +30,27 @@
                                 <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a href="#">english | deutsch</a></li>
-                                <li><a href="#"> <th th:text="#{navbar.label.dropdown.userProfilSettings}" /> </a></li>
+                                <li>
+                                    <section class="one-line-navbar">
+                                        <a class="href-black" style="padding-left: 13%" href="?language=de">Deutsch</a> | <a class="href-black" href="?language=en">English</a>
+                                    </section>
+                                </li>
+                                <li>
+                                    <section class="one-line-navbar">
+                                        <a class="href-black" style="padding-left: 13%" href="#"> <th th:text="#{navbar.label.dropdown.userProfilSettings}" /></a>
+                                    </section>
+                                </li>
                                 <li>
                                     <form th:action="@{/logout}" method="post">
                                         <input type="submit" value="logout" th:class="linkButton"></input>
                                     </form>
-
                                 </li>
                             </ul>
+
+                            <!--
+                            The language and user profile elements are put into one-line and href-black for styling purpose, to make them look and behave equally.
+                            -->
+
                         </li>
                     </ul>
                 </div>

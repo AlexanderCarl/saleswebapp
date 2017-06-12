@@ -28,7 +28,20 @@
      */
 }
 
-.jumbotron{
+.jumbotron {
     background-color: white !important;
     text-align: center;
+}
+
+.pull-right-navbarLogin {
+    padding-right: 50px;
+    padding-top: 15px;
+}
+
+.one-line-navbar {
+    display: inline;
+}
+
+.href-black {
+    color: black;
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top" th:fragment="navbarLogin">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/home"><b>S</b>ales<b>W</b>eb<b>A</b>pp</a>
+                </div>
+
+                <div class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <section>
+                            <div class="pull-right-navbarLogin">
+                                <a class="href-black" href="?language=de">Deutsch</a> |
+                                <a class="href-black" href="?language=en">English</a>
+                            </div>
+                        </section>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </body>
+
+</html>
