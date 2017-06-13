@@ -8,21 +8,19 @@
     <body>
         <div th:replace="fragments/navbarLogin :: navbarLogin"></div>
 
-        <section>
-            <div class="jumbotron">
-                <div class="container">
-                    <h1> <th th:text="#{login.label.wellcomeTextLarge}" /></h1>
-                    <p> <th th:text="#{login.label.wellcomeTextSmall}" /> </p>
-                </div>
+        <header>
+            <div class="jumbotron" style="padding-bottom:10px; padding-top:10px">
+                <h1> <th th:text="#{login.label.wellcomeTextLarge}" /> </h1>
+                <p> <th th:text="#{login.label.wellcomeTextSmall}" /> </p>
             </div>
-        </section>
+        </header>
 
         <div class="container">
             <div class="row">
-                <div class="col-md-4 col-md-offset-4"> <!-- col-md-4 defines the color of the container filling // col-md-offset-4 defines a space on the left with the size of 4(units) left -->
+                <div class="col-md-4 col-md-offset-4"> <!-- col-md-offset-4 defines a space on the left with the size of 4(units) -->
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3> <th th:text="#{login.label.inputRequest}" /> </h3>
+                            <h3 class="panel-title"> <th th:text="#{login.label.inputRequest}" /> </h3>
                         </div>
 
                         <div th:if="${param.error != null}" class="alert alert-danger" role="alert">
@@ -36,7 +34,7 @@
                         <div class="panel-body">
                             <form th:action="@{/login}" method="post" class="form-horizontal" role="form">
 
-                                <div class="input-group input-sm"> <!-- defines a small input field -->
+                                <div class="input-group input-sm">
                                     <label class="input-group-addon" for="userId"><i class="fa fa-user"></i></label> <!-- defines a small box in front of the input textfield and insert a person font -->
                                     <input type="text" class="form-control" id="userId" name="userId" autofocus="autofocus" th:placeholder="#{login.label.placeholder.username}" required="required" /> <!-- class="form-control" ensures that the input-field(input-sm) is always at 100% size -->
                                 </div>
@@ -46,12 +44,16 @@
                                     <input type="password" class="form-control" id="password" name="password" th:placeholder="#{login.label.placeholder.password}" required="required" />
                                 </div>
 
-                                <div class="form-actions" style="padding-top: 10px">
-                                    <input type="submit" class="btn btn-block btn-primary btn-default" th:value="#{login.label.loginButton}"  />
+                                <div class="form-actions-interspace" >
+                                    <input type="submit" class="btn btn-block btn-primary btn-default" th:value="#{login.label.button.login}" />
                                 </div>
 
                             </form>
+
+                            <a class="panel-link-login" href="/saleswebapp/loginPasswordMail"> <th th:text="#{login.label.passwordRecovery}" /> </a>
+
                         </div>
+
 
                     </div>
                 </div>

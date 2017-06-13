@@ -17,4 +17,14 @@ public class LoginController {
         return "login";
     }
 
+    @RequestMapping(value = "/loginPasswordMail")
+    public String passwordMail() {
+        return "loginPasswordMail";
+    }
+
+    @RequestMapping(value = "/loginPasswordRecovery")
+    public String passwordRecovery() {
+        return "loginPasswordRecovery";
+    }
+
 }
