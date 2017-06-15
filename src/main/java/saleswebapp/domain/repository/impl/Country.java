@@ -1,4 +1,4 @@
-package saleswebapp.domain;
+package saleswebapp.domain.repository.impl;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -10,6 +10,8 @@ import java.util.List;
 
 @Entity
 public class Country implements Serializable {
+
+    private static final long serialVersionUID = 5614541832432123821L;
 
     @Id
     @Column(name = "country_code")

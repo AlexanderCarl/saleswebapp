@@ -1,4 +1,4 @@
-package saleswebapp.domain;
+package saleswebapp.domain.repository.impl;
 
 import javax.persistence.*;
 import java.io.Serializable;

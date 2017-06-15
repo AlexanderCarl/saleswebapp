@@ -1,4 +1,10 @@
 
+#loginForm .has-error .control-label,
+#loginForm .has-error .help-block,
+#loginForm .has-error .form-control-feedback {
+    color: #f39c12;
+}
+
 .navbar-brand {
     font-size: 180% !important;
     color: black;
@@ -19,6 +25,8 @@
 .jumbotron {
     background-color: white !important;
     text-align: center;
+    padding-bottom:10px;
+    padding-top:10px;
 }
 
 .pull-right-navbarLogin {

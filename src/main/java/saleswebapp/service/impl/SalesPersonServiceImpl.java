@@ -1,9 +1,10 @@
 package saleswebapp.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import saleswebapp.domain.Country;
-import saleswebapp.domain.SalesPerson;
+import saleswebapp.domain.repository.impl.SalesPerson;
 import saleswebapp.domain.repository.CountryRepository;
 import saleswebapp.domain.repository.SalesPersonRepository;
 import saleswebapp.service.SalesPersonService;
@@ -14,11 +15,18 @@ import saleswebapp.service.SalesPersonService;
 @Service
 public class SalesPersonServiceImpl implements SalesPersonService {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private SalesPersonRepository salesPersonRepository;
 
     @Autowired
     private CountryRepository countryRepository;
+
+    @Override
+    public SalesPerson getSalesPerson(String email) {
+        return salesPersonRepository.getByEmail(email);
+    }
 
     @Override
     public void testMethodSaveSalesPerson() {
