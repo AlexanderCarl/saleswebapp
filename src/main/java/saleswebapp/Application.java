@@ -14,5 +14,6 @@ public class Application {
     }
 
     //ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder();
-    //String sha = shaPasswordEncoder.encodePassword("root", null);
+    //String sha = shaPasswordEncoder.encodePassword("yam", null);
+
 }

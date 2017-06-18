@@ -7,6 +7,6 @@ import javax.mail.MessagingException;
  */
 public interface EmailService {
 
-    void generatePasswordResetCodeMail(String userEmail) throws InterruptedException, MessagingException;
+    void generatePasswordRequest(String userEmail);
 
 }

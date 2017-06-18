@@ -4,31 +4,24 @@ import java.sql.Timestamp;
 
 /**
  * Created by Alexander Carl on 15.06.2017.
- * This class is used in the PasswordResetCodeService HashMap.
+ * This class is used in the PasswordRequestService HashMap.
  */
 public class PasswordMapContainer {
 
-    private String resetCode;
+    private String userEmail;
     private Timestamp timestamp;
 
-    public PasswordMapContainer(String resetCode, Timestamp timestamp) {
-        this.resetCode = resetCode;
+    public PasswordMapContainer(String userEmail, Timestamp timestamp) {
+        this.userEmail = userEmail;
         this.timestamp = timestamp;
     }
 
-    public String getResetCode() {
-        return resetCode;
-    }
-
-    public void setResetCode(String resetCode) {
-        this.resetCode = resetCode;
+    public String getUserEmail() {
+        return userEmail;
     }
 
     public Timestamp getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
 }

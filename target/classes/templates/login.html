@@ -31,6 +31,10 @@
                             <p> <th th:text="#{login.success.logout}" /> </p>
                         </div>
 
+                        <div th:if="${param.passwordChangeSuccess != null}" class="alert alert-success" role="alert">
+                            <p> <th th:text="#{login.success.pwChangeSuccess}" /> </p>
+                        </div>
+
                         <div class="panel-body">
                             <form th:action="@{/login}" method="post" class="form-horizontal" role="form">
 
@@ -50,7 +54,7 @@
 
                             </form>
 
-                            <a style="padding-left: 25%" href="/saleswebapp/loginPasswordMail"> <th th:text="#{login.label.passwordRecovery}" /> </a>
+                            <a style="padding-left: 25%" th:href="@{passwordRequest}"> <th th:text="#{login.label.passwordRecovery}" /> </a>
                         </div>
 
                     </div>

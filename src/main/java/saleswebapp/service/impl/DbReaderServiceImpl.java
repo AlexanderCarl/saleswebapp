@@ -7,13 +7,13 @@ import org.springframework.stereotype.Service;
 import saleswebapp.domain.repository.impl.SalesPerson;
 import saleswebapp.domain.repository.CountryRepository;
 import saleswebapp.domain.repository.SalesPersonRepository;
-import saleswebapp.service.SalesPersonService;
+import saleswebapp.service.DbReaderService;
 
 /**
  * Created by Alexander Carl on 04.06.2017.
  */
 @Service
-public class SalesPersonServiceImpl implements SalesPersonService {
+public class DbReaderServiceImpl implements DbReaderService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 

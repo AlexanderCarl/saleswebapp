@@ -10,8 +10,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import saleswebapp.domain.repository.impl.SalesPerson;
-import saleswebapp.domain.repository.SalesPersonRepository;
-import saleswebapp.service.SalesPersonService;
+import saleswebapp.service.DbReaderService;
 
 import java.util.Arrays;
 
@@ -24,11 +23,11 @@ public class AuthenticationServiceImpl implements UserDetailsService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    SalesPersonService salesPersonService;
+    DbReaderService DbReaderService;
 
     @Override
-    public UserDetails loadUserByUsername(String userEmail) throws UsernameNotFoundException {
-        SalesPerson salesPerson = salesPersonService.getSalesPerson(userEmail);
+    public UserDetails loadUserByUsername(String userEmail) {
+        SalesPerson salesPerson = DbReaderService.getSalesPerson(userEmail);
 
         if (salesPerson != null) {
             UserDetails userDetails = (UserDetails) new User(salesPerson.getEmail(), salesPerson.getPassword(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));

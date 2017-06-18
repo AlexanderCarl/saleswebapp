@@ -4,7 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import saleswebapp.domain.repository.impl.SalesPerson;
-import saleswebapp.service.SalesPersonService;
+import saleswebapp.service.DbReaderService;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
@@ -17,7 +17,7 @@ public class EmailUnknownValidator implements ConstraintValidator<EmailUnknown, 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    private SalesPersonService salesPersonService;
+    private DbReaderService DbReaderService;
 
     public void initialize(EmailUnknown constraintAnnotation) {
         //  intentionally left blank; this is the place to initialize the constraint annotation for any sensible default values.
@@ -27,7 +27,7 @@ public class EmailUnknownValidator implements ConstraintValidator<EmailUnknown, 
         SalesPerson salesPerson;
 
         try {
-            salesPerson = salesPersonService.getSalesPerson(value);
+            salesPerson = DbReaderService.getSalesPerson(value);
         } catch (Exception ignore) {
             logger.debug("PasswordRequestForm failure - NullPointerAcception - getSalesPersonByEmail(value) was executed with value = null.");
             salesPerson = null;

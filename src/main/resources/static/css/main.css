@@ -1,25 +1,7 @@
 
-#loginForm .has-error .control-label,
-#loginForm .has-error .help-block,
-#loginForm .has-error .form-control-feedback {
-    color: #f39c12;
-}
-
 .navbar-brand {
     font-size: 180% !important;
     color: black;
-}
-
-.linkButton {
-    background: none;
-    border: none;
-    color: black;
-    cursor: pointer;
-    padding-left: 13%; /** padding-left: 1.4em; */
-
-    /**
-    Missing-Detail: The link-button is not changing its background like a link.
-     */
 }
 
 .jumbotron {
@@ -56,3 +38,13 @@
 .table th, .table td {
     border-top: none !important;
 }
+
+/**
+.linkButton {
+    background: none;
+    border: none;
+    color: black;
+    cursor: pointer;
+    padding-left: 13%; /** padding-left: 1.4em;
+
+ */

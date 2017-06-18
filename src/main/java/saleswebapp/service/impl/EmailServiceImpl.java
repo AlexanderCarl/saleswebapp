@@ -6,16 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 import saleswebapp.domain.repository.impl.SalesPerson;
 import saleswebapp.service.EmailService;
-import saleswebapp.service.PasswordResetCodeService;
-import saleswebapp.service.SalesPersonService;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
-import java.util.Locale;
+import saleswebapp.service.PasswordRequestService;
+import saleswebapp.service.DbReaderService;
 
 /**
  * Created by Alexander Carl on 15.06.2017.
@@ -29,16 +24,16 @@ public class EmailServiceImpl implements EmailService {
     JavaMailSender javaMailSender;
 
     @Autowired
-    SalesPersonService salesPersonService;
+    DbReaderService DbReaderService;
 
     @Autowired
-    PasswordResetCodeService passwordResetCodeService;
+    PasswordRequestService passwordRequestService;
 
     @Override
-    public void generatePasswordResetCodeMail(String userEmail) throws MessagingException {
+    public void generatePasswordRequest(String userEmail) {
         logger.debug("PasswordRequestForm success - User " + userEmail + " requested a PasswordResetMail.");
-        String resetCode = passwordResetCodeService.createPasswordResetCode(userEmail);
-        SalesPerson salesPerson = salesPersonService.getSalesPerson(userEmail);
+        String resetCode = passwordRequestService.createPasswordResetCode(userEmail);
+        SalesPerson salesPerson = DbReaderService.getSalesPerson(userEmail);
         String local = LocaleContextHolder.getLocale().toString();
 
         String subjectEN = "Reset your SalesWebApp password";

@@ -12,7 +12,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/home"><b>S</b>ales<b>W</b>eb<b>A</b>pp</a>
+                    <a class="navbar-brand" href="/saleswebapp/login"><b>S</b>ales<b>W</b>eb<b>A</b>pp</a>
                 </div>
 
                 <div class="navbar-collapse collapse">
@@ -41,15 +41,9 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <form th:action="@{/logout}" method="post">
-                                        <input type="submit" value="Logout" class="btn-link" style="padding-left: 12%; color: black"> </input> <!-- th:class="linkButton">   -->
-                                    </form>
+                                    <a th:href="@{login(logout)}">Logout</a>
                                 </li>
                             </ul>
-
-                            <!--
-                            The language and user profile elements are put into one-line and href-black for styling purpose, to make them look and behave equally.
-                            -->
 
                         </li>
                     </ul>
