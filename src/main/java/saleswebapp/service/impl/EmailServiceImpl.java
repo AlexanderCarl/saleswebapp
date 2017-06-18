@@ -21,13 +21,13 @@ public class EmailServiceImpl implements EmailService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    JavaMailSender javaMailSender;
+    private JavaMailSender javaMailSender;
 
     @Autowired
-    DbReaderService DbReaderService;
+    private DbReaderService DbReaderService;
 
     @Autowired
-    PasswordRequestService passwordRequestService;
+    private PasswordRequestService passwordRequestService;
 
     @Override
     public void generatePasswordRequest(String userEmail) {

@@ -3,7 +3,6 @@ package saleswebapp.config;
 import org.springframework.boot.autoconfigure.web.WebMvcAutoConfiguration.WebMvcAutoConfigurationAdapter;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.Validator;
@@ -19,8 +18,12 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
+import saleswebapp.validator.passwordReset.PasswordEqualValidator;
+import saleswebapp.validator.passwordReset.PasswordResetValidator;
 
+import java.util.HashSet;
 import java.util.Locale;
+import java.util.Set;
 
 /**
  * Created by Alexander Carl on 04.06.2017.
@@ -81,6 +84,15 @@ public class WebApplicationContextConfig extends WebMvcAutoConfigurationAdapter 
     @Override
     public Validator getValidator() {
         return validator();
+    }
+
+    @Bean
+    public PasswordResetValidator productValidator() {
+        Set<Validator> springValidators = new HashSet<Validator>();
+        springValidators.add(new PasswordEqualValidator());
+        PasswordResetValidator productValidator = new PasswordResetValidator();
+        productValidator.setSpringValidators(springValidators);
+        return productValidator;
     }
 
 }

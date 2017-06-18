@@ -1,4 +1,4 @@
-package saleswebapp.validator;
+package saleswebapp.validator.passwordRequest;
 
 /**
  * Created by Alexander Carl on 14.06.2017.
@@ -20,7 +20,7 @@ import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 @Documented
 public @interface EmailUnknown {
 
-    String message() default "{validation.emailUnknown}";
+    String message() default "{passwordReset.validation.passwordResetCodeValidation}";
 
     Class<?>[] groups() default {};
 

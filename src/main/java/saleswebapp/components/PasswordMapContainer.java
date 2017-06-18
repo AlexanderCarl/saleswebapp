@@ -1,5 +1,7 @@
 package saleswebapp.components;
 
+import org.joda.time.DateTime;
+
 import java.sql.Timestamp;
 
 /**
@@ -9,19 +11,19 @@ import java.sql.Timestamp;
 public class PasswordMapContainer {
 
     private String userEmail;
-    private Timestamp timestamp;
+    private DateTime dateTime;
 
-    public PasswordMapContainer(String userEmail, Timestamp timestamp) {
+    public PasswordMapContainer(String userEmail, DateTime dateTime) {
         this.userEmail = userEmail;
-        this.timestamp = timestamp;
+        this.dateTime = dateTime;
     }
 
     public String getUserEmail() {
         return userEmail;
     }
 
-    public Timestamp getTimestamp() {
-        return timestamp;
+    public DateTime getDateTime() {
+        return dateTime;
     }
 
 }

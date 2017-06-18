@@ -9,6 +9,4 @@ public interface PasswordResetService {
 
     void setNewPassword(String newPassword, String securityCode);
 
-    Boolean validateSecurityCode(String securityCode);
-
 }

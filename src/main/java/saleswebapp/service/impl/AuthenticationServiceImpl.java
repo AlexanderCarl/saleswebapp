@@ -23,7 +23,7 @@ public class AuthenticationServiceImpl implements UserDetailsService {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Autowired
-    DbReaderService DbReaderService;
+    private DbReaderService DbReaderService;
 
     @Override
     public UserDetails loadUserByUsername(String userEmail) {

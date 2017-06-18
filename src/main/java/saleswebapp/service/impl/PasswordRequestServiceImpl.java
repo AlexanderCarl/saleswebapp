@@ -1,5 +1,6 @@
 package saleswebapp.service.impl;
 
+import org.joda.time.DateTime;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
 import saleswebapp.components.PasswordMapContainer;
@@ -19,9 +20,9 @@ public class PasswordRequestServiceImpl implements PasswordRequestService {
 
     @Override
     public String createPasswordResetCode(String userEmail) {
-        Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        String resetCode = shaPasswordEncoder.encodePassword(timestamp.toString() + userEmail, null);
-        PasswordMapContainer container = new PasswordMapContainer(userEmail, timestamp);
+        DateTime dateTime = DateTime.now();
+        String resetCode = shaPasswordEncoder.encodePassword(dateTime.toString() + userEmail, null);
+        PasswordMapContainer container = new PasswordMapContainer(userEmail, dateTime);
         resetCodes.put(resetCode, container);
 
         return resetCode;

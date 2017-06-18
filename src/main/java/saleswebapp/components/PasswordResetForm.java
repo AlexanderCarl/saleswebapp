@@ -1,5 +1,8 @@
 package saleswebapp.components;
 
+import saleswebapp.validator.passwordReset.PasswordResetCode;
+
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 
 /**
@@ -10,8 +13,12 @@ public class PasswordResetForm implements Serializable {
 
     private static final long serialVersionUID = -3704533112076648467L;
 
+    @PasswordResetCode
     private String securityCode;
+
+    @Pattern(regexp = "^.{4,25}$", message = "{validation.pattern.pwGuideline}")
     private String newPassword;
+
     private String newPasswordRepeat;
 
     public static long getSerialVersionUID() {

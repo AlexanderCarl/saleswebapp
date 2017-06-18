@@ -2,48 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0cf9450-ea71-430d-bd31-7dc6981d6dbf" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/PasswordReset.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/templates/loginPasswordMail.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/templates/loginPasswordReset.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/PasswordResetCodeContainer.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/PasswordResetCodeRequest.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/PasswordResetCodeService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/SalesPersonService.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/PasswordResetCodeServiceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/SalesPersonServiceImpl.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/templates/loginPasswordMail.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/templates/loginPasswordReset.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/validator/EmailUnknown.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/validator/EmailUnknownValidator.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/PasswordMapContainer.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/components/PasswordMapContainer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/PasswordRequestForm.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/components/PasswordRequestForm.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/PasswordResetForm.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/components/PasswordResetForm.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/config/WebApplicationContextConfig.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/config/WebApplicationContextConfig.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/controller/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/EmailService.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/EmailService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/PasswordResetService.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/PasswordResetService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/AuthenticationServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/AuthenticationServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/EmailServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/EmailServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/validator/EmailUnknownValidator.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/validator/EmailUnknownValidator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/PasswordRequestServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/PasswordRequestServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/PasswordResetServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/PasswordResetServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/Application.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/Application.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SalesWebApp.iml" afterPath="$PROJECT_DIR$/SalesWebApp.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordMapContainer.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordMapContainer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/config/SecurityConfig.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/config/SecurityConfig.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordRequestForm.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordRequestForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordResetForm.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordResetForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/config/WebApplicationContextConfig.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/config/WebApplicationContextConfig.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/SalesPersonRepository.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/SalesPersonRepository.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/EmailService.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/EmailService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordResetService.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordResetService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/AuthenticationServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/AuthenticationServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/EmailServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/EmailServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/EmailUnknownValidator.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/EmailUnknownValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordResetServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordResetServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages_de.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages_de.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbarLogin.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbarLogin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/messages_de.properties" afterPath="$PROJECT_DIR$/target/classes/messages_de.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/messages_en.properties" afterPath="$PROJECT_DIR$/target/classes/messages_en.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/static/css/main.css" afterPath="$PROJECT_DIR$/target/classes/static/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/fragments/navbar.html" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/navbar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/fragments/navbarLogin.html" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/navbarLogin.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/login.html" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordResetCodeService.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordRequestService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/SalesPersonService.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordResetCodeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/SalesPersonServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/PasswordReset.html" afterPath="$PROJECT_DIR$/target/classes/templates/PasswordReset.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/EmailUnknown.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordRequest/EmailUnknown.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/EmailUnknownValidator.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordRequest/EmailUnknownValidator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/templates/PasswordRequest.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/passwordRequest.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/templates/PasswordReset.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/passwordReset.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -69,11 +61,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/LoginController.java">
+      <file leaf-file-name="PasswordResetController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/PasswordResetController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+            <state relative-caret-position="369">
+              <caret line="27" column="58" lean-forward="false" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -81,103 +73,114 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EmailServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/EmailServiceImpl.java">
+      <file leaf-file-name="EmailUnknown.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordRequest/EmailUnknown.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="34" column="65" lean-forward="true" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PasswordRequestServiceImpl.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="17" column="75" lean-forward="false" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#539#569#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PasswordResetServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordResetServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="841">
-              <caret line="58" column="69" lean-forward="true" selection-start-line="58" selection-start-column="69" selection-end-line="58" selection-end-column="69" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AuthenticationServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/AuthenticationServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="28" column="60" lean-forward="false" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
+            <state relative-caret-position="204">
+              <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SecurityConfig.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/config/SecurityConfig.java">
+      <file leaf-file-name="EmailUnknownValidator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordRequest/EmailUnknownValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="28" column="65" lean-forward="true" selection-start-line="28" selection-start-column="65" selection-end-line="28" selection-end-column="65" />
+            <state relative-caret-position="119">
+              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DbWriterServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java">
+      <file leaf-file-name="PasswordResetValidator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordReset/PasswordResetValidator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+            <state relative-caret-position="212">
+              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#613#614#0" expanded="true" />
+                <element signature="e#672#673#0" expanded="true" />
+                <element signature="e#815#816#0" expanded="true" />
+                <element signature="e#871#872#0" expanded="true" />
+                <element signature="e#918#919#0" expanded="true" />
+                <element signature="e#988#989#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SalesPerson.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/SalesPerson.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1624">
-              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-              <folding />
-            </state>
+      <file leaf-file-name="messages_de.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/messages_de.properties">
+          <provider editor-type-id="ResourceBundle">
+            <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/Application.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="15" column="69" lean-forward="false" selection-start-line="15" selection-start-column="69" selection-end-line="15" selection-end-column="69" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SalesPersonRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/SalesPersonRepository.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="187">
-              <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
+              <caret line="11" column="61" lean-forward="false" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PasswordEqualValidator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordReset/PasswordEqualValidator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#408#409#0" expanded="true" />
+                <element signature="e#478#479#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="messages_en.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/messages_en.properties">
+          <provider editor-type-id="ResourceBundle">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="70" lean-forward="false" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PasswordResetCode.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordReset/PasswordResetCode.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PasswordResetCodeValidator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordReset/PasswordResetCodeValidator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PasswordResetForm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordResetForm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -214,22 +217,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/templates/loginPasswordRecovery.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/loginPasswordMail.html" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/emailExisting.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/emailUnknown.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/emailUnknownValidator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/DTOonly/PasswordResetCodeRequest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/EmailUnknown.java" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordResetCodeManagerImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/SalesPersonService.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordResetCodeManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/EmailUnknownValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/SalesPersonServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordCodeDeleteThread.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/config/WebApplicationContextConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordResetCodeDeleteThread.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/MapContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordResetCodeRequest.java" />
@@ -241,30 +232,42 @@
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/EmailService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/navbarLogin.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/loginPasswordRequest.html" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordResetForm.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/loginPasswordReset.html" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/EmailServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/DBReaderService.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/css/main.css" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/PasswordRequest.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/PasswordReset.html" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordMapContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordRequestService.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordResetService.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages_de.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/SalesPersonRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/AuthenticationServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/Application.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/config/SecurityConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/EmailUnknown.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/PasswordReset.html" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/EmailServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/AuthenticationServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordResetServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordResetService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/passwordReset.html" />
+        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordMapContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/PasswordResetCodeValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/PasswordResetCode.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/PasswordEqualValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/PasswordRequestController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/LoginController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/PasswordResetValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/config/WebApplicationContextConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/PasswordResetController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordRequest/EmailUnknownValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordReset/PasswordResetValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordResetForm.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_de.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
       </list>
     </option>
   </component>
@@ -507,6 +510,74 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="saleswebapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SalesWebApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SalesWebApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saleswebapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="passwordReset" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SalesWebApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SalesWebApp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="saleswebapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="validator" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="passwordRequest" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1200,12 +1271,12 @@
       <workItem from="1497536144263" duration="4464000" />
       <workItem from="1497548982732" duration="273000" />
       <workItem from="1497727884759" duration="3922000" />
-      <workItem from="1497767706689" duration="7758000" />
+      <workItem from="1497767706689" duration="17545000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="196416000" />
+    <option name="totallyTimeSpent" value="206203000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1217,7 +1288,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1238,11 +1309,12 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24563318" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24563318" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22083333" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22261904" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1250,7 +1322,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1301,19 +1372,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/footer.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/sticky-footer.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/custom footer.css" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.properties" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/log4j2.properties" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/logback-spring.xml" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.0.33/tomcat-embed-core-8.0.33.jar!/javax/servlet/http/HttpSession.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="19" column="16" lean-forward="true" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/config/SecurityWebApplicationInitializer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1351,40 +1409,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/EmailUnknown.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="22" column="54" lean-forward="false" selection-start-line="22" selection-start-column="54" selection-end-line="22" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="148">
-          <caret line="35" column="34" lean-forward="false" selection-start-line="35" selection-start-column="34" selection-end-line="35" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="42" column="42" lean-forward="false" selection-start-line="42" selection-start-column="42" selection-end-line="42" selection-end-column="42" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/HomeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/EmailUnknownValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
-          <caret line="29" column="60" lean-forward="false" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
         </state>
       </provider>
     </entry>
@@ -1396,74 +1425,11 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordResetCodeDeleteThread.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/config/WebApplicationContextConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="41" column="25" lean-forward="false" selection-start-line="41" selection-start-column="25" selection-end-line="41" selection-end-column="25" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordRequestForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="67" lean-forward="true" selection-start-line="13" selection-start-column="67" selection-end-line="13" selection-end-column="67" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordResetForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="16" column="46" lean-forward="false" selection-start-line="16" selection-start-column="46" selection-end-line="16" selection-end-column="46" />
-          <folding>
-            <element signature="e#495#496#0" expanded="false" />
-            <element signature="e#534#535#0" expanded="false" />
-            <element signature="e#569#570#0" expanded="false" />
-            <element signature="e#625#626#0" expanded="false" />
-            <element signature="e#673#674#0" expanded="false" />
-            <element signature="e#711#712#0" expanded="false" />
-            <element signature="e#745#746#0" expanded="false" />
-            <element signature="e#799#800#0" expanded="false" />
-            <element signature="e#845#846#0" expanded="false" />
-            <element signature="e#889#890#0" expanded="false" />
-            <element signature="e#929#930#0" expanded="false" />
-            <element signature="e#995#996#0" expanded="false" />
-            <element signature="e#1053#1054#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/main.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="697">
           <caret line="41" column="3" lean-forward="false" selection-start-line="41" selection-start-column="3" selection-end-line="41" selection-end-column="3" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/PasswordRequest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="53" lean-forward="false" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
-          <folding>
-            <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <element signature="n#style#0;n#a#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1497731079827" expanded="true" signature="595:621" ph="Passwort wiederherstellen" />
-            <marker date="1497731079827" expanded="true" signature="596:621" ph="Passwort wiederherstellen" />
-            <marker date="1497731079827" expanded="true" signature="1386:1421" ph="Geben Sie Ihre SalesWebApp-ID(Mail) ein um einen Sicherheitscode zum zurücksetzen Ihres Passworts per Mail zu erhalten." />
-            <marker date="1497731079827" expanded="true" signature="1387:1421" ph="Geben Sie die ID(Mail) Ihres SalesWebApp-Accounts ein um einen Sicherheitscode zum zurücksetzen Ihres Passworts per Mail zu erhalten." />
-            <marker date="1497731079827" expanded="true" signature="1488:1522" ph="Bitte geben Sie Ihre Mailadresse ein:" />
-            <marker date="1497731079827" expanded="true" signature="1489:1522" ph="Bitte geben Sie Ihre Mailadresse ein:" />
-            <marker date="1497731079827" expanded="true" signature="1832:1871" ph="Max.Mustermann@web.com" />
-            <marker date="1497731079827" expanded="true" signature="1833:1871" ph="Max.Mustermann@web.com" />
-            <marker date="1497731079827" expanded="true" signature="2135:2155" ph="Senden" />
-            <marker date="1497731079827" expanded="true" signature="2288:2310" ph="Abbrechen" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1475,139 +1441,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
-          <folding>
-            <marker date="1497731202338" expanded="true" signature="900:929" ph="Anbieter erfassen" />
-            <marker date="1497731202338" expanded="true" signature="1001:1028" ph="Anbieter pflegen" />
-            <marker date="1497731202338" expanded="true" signature="1100:1126" ph="Essensangebote Überblick" />
-            <marker date="1497731202338" expanded="true" signature="1198:1219" ph="Aktivität erfassen" />
-            <marker date="1497731202338" expanded="true" signature="1291:1312" ph="Protokoll" />
-            <marker date="1497731202338" expanded="true" signature="1384:1409" ph="Vertriebsbereichsanalyse" />
-            <marker date="1497731202338" expanded="true" signature="1481:1506" ph="Tourenplanung &amp; Karte" />
-            <marker date="1497731202338" expanded="true" signature="2524:2564" ph="Benutzerprofil" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/PasswordReset.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="593">
-          <caret line="77" column="0" lean-forward="false" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding>
-            <marker date="1497768698943" expanded="true" signature="573:597" ph="Passwort wiederherstellen" />
-            <marker date="1497768698943" expanded="true" signature="574:597" ph="Passwort wiederherstellen" />
-            <marker date="1497768698943" expanded="true" signature="953:981" ph="Sie haben eine Mail von SalesWebApp mit einem Sicherheitscode erhalten." />
-            <marker date="1497768698943" expanded="true" signature="954:981" ph="Sie haben eine Mail von SalesWebApp mit einem Sicherheitscode erhalten." />
-            <marker date="1497768698943" expanded="true" signature="1558:1598" ph="Wenden Sie sich an den Administrator falls Sie keine Mail mit dem Sicherheitscode erhalten haben." />
-            <marker date="1497768698943" expanded="true" signature="1559:1598" ph="Wenden Sie sich an den Administrator falls Sie keine Mail mit dem Sicherheitscode erhalten haben." />
-            <marker date="1497768698943" expanded="true" signature="1661:1693" ph="Sicherheitscode" />
-            <marker date="1497768698943" expanded="true" signature="1662:1693" ph="Sicherheitscode" />
-            <marker date="1497768698943" expanded="true" signature="2005:2049" ph="xxx-xxx-xxx" />
-            <marker date="1497768698943" expanded="true" signature="2006:2049" ph="xxx-xxx-xxx" />
-            <marker date="1497768698943" expanded="true" signature="2382:2418" ph="PW-Richtlinie" />
-            <marker date="1497768698943" expanded="true" signature="2383:2418" ph="PW-Richtlinie" />
-            <marker date="1497768698943" expanded="true" signature="2481:2512" ph="Neues Passwort" />
-            <marker date="1497768698943" expanded="true" signature="2482:2512" ph="Neues Passwort" />
-            <marker date="1497768698943" expanded="true" signature="2826:2869" ph="Neues Passwort" />
-            <marker date="1497768698943" expanded="true" signature="2827:2869" ph="Neues Passwort" />
-            <marker date="1497768698943" expanded="true" signature="3277:3314" ph="Passwort wiederholen" />
-            <marker date="1497768698943" expanded="true" signature="3278:3314" ph="Passwort wiederholen" />
-            <marker date="1497768698943" expanded="true" signature="3634:3677" ph="Neues Passwort" />
-            <marker date="1497768698943" expanded="true" signature="3635:3677" ph="Neues Passwort" />
-            <marker date="1497768698943" expanded="true" signature="3949:3966" ph="Senden" />
-            <marker date="1497768698943" expanded="true" signature="3949:3969" ph="Speichern" />
-            <marker date="1497768698943" expanded="true" signature="4098:4120" ph="Abbrechen" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/EmailService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordMapContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="34" lean-forward="false" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordRequestService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="51" lean-forward="false" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/CountryRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="14" column="1" lean-forward="false" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/Country.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="31" column="45" lean-forward="false" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordResetService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="54" lean-forward="true" selection-start-line="11" selection-start-column="54" selection-end-line="11" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_de.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="76" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_en.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="31" column="76" lean-forward="false" selection-start-line="31" selection-start-column="76" selection-end-line="31" selection-end-column="76" />
           <folding />
         </state>
       </provider>
@@ -1632,37 +1469,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="66" lean-forward="false" selection-start-line="7" selection-start-column="66" selection-end-line="7" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/SalesPerson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1624">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/SalesPersonRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1676,14 +1487,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/AuthenticationServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="28" column="60" lean-forward="false" selection-start-line="28" selection-start-column="60" selection-end-line="28" selection-end-column="60" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/config/SecurityConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="113">
@@ -1692,44 +1495,365 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordResetServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/EmailServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="841">
-          <caret line="58" column="69" lean-forward="true" selection-start-line="58" selection-start-column="69" selection-end-line="58" selection-end-column="69" />
+        <state relative-caret-position="335">
+          <caret line="29" column="12" lean-forward="false" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="31" column="45" lean-forward="false" selection-start-line="31" selection-start-column="45" selection-end-line="31" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/AuthenticationServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="25" column="12" lean-forward="false" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/SalesPerson.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/HomeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="28" lean-forward="false" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordRequestService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="17" column="51" lean-forward="false" selection-start-line="17" selection-start-column="51" selection-end-line="17" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/EmailService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="50" lean-forward="false" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="66" lean-forward="false" selection-start-line="7" selection-start-column="66" selection-end-line="7" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordResetService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="65" lean-forward="false" selection-start-line="9" selection-start-column="65" selection-end-line="9" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="56" column="4" lean-forward="false" selection-start-line="56" selection-start-column="4" selection-end-line="56" selection-end-column="4" />
+          <folding>
+            <marker date="1497731202338" expanded="true" signature="900:929" ph="Anbieter erfassen" />
+            <marker date="1497731202338" expanded="true" signature="1001:1028" ph="Anbieter pflegen" />
+            <marker date="1497731202338" expanded="true" signature="1100:1126" ph="Essensangebote Überblick" />
+            <marker date="1497731202338" expanded="true" signature="1198:1219" ph="Aktivität erfassen" />
+            <marker date="1497731202338" expanded="true" signature="1291:1312" ph="Protokoll" />
+            <marker date="1497731202338" expanded="true" signature="1384:1409" ph="Vertriebsbereichsanalyse" />
+            <marker date="1497731202338" expanded="true" signature="1481:1506" ph="Tourenplanung &amp; Karte" />
+            <marker date="1497731202338" expanded="true" signature="2524:2564" ph="Benutzerprofil" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/passwordReset.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="236">
+          <caret line="56" column="58" lean-forward="false" selection-start-line="56" selection-start-column="58" selection-end-line="56" selection-end-column="58" />
+          <folding>
+            <element signature="n#style#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#1;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1497780844260" expanded="true" signature="573:597" ph="Passwort wiederherstellen" />
+            <marker date="1497780844260" expanded="true" signature="574:597" ph="Passwort wiederherstellen" />
+            <marker date="1497780844260" expanded="true" signature="953:981" ph="Sie haben eine Mail von SalesWebApp mit einem Sicherheitscode erhalten." />
+            <marker date="1497780844260" expanded="true" signature="954:981" ph="Sie haben eine Mail von SalesWebApp mit einem Sicherheitscode erhalten." />
+            <marker date="1497780844260" expanded="true" signature="1558:1598" ph="Wenden Sie sich an den Administrator falls Sie keine Mail mit dem Sicherheitscode erhalten haben." />
+            <marker date="1497780844260" expanded="true" signature="1559:1598" ph="Wenden Sie sich an den Administrator falls Sie keine Mail mit dem Sicherheitscode erhalten haben." />
+            <marker date="1497780844260" expanded="true" signature="1661:1693" ph="Sicherheitscode" />
+            <marker date="1497780844260" expanded="true" signature="1662:1693" ph="Sicherheitscode" />
+            <marker date="1497780844260" expanded="true" signature="2005:2049" ph="xxx-xxx-xxx" />
+            <marker date="1497780844260" expanded="true" signature="2006:2049" ph="xxx-xxx-xxx" />
+            <marker date="1497780844260" expanded="true" signature="2382:2418" ph="PW-Richtlinie" />
+            <marker date="1497780844260" expanded="true" signature="2383:2418" ph="PW-Richtlinie" />
+            <marker date="1497780844260" expanded="true" signature="2481:2512" ph="Neues Passwort" />
+            <marker date="1497780844260" expanded="true" signature="2482:2512" ph="Neues Passwort" />
+            <marker date="1497780844260" expanded="true" signature="2826:2869" ph="Neues Passwort" />
+            <marker date="1497780844260" expanded="true" signature="2827:2869" ph="Neues Passwort" />
+            <marker date="1497780844260" expanded="true" signature="3277:3314" ph="Passwort wiederholen" />
+            <marker date="1497780844260" expanded="true" signature="3278:3314" ph="Passwort wiederholen" />
+            <marker date="1497780844260" expanded="true" signature="3634:3677" ph="Neues Passwort" />
+            <marker date="1497780844260" expanded="true" signature="3635:3677" ph="Neues Passwort" />
+            <marker date="1497780844260" expanded="true" signature="3949:3966" ph="Senden" />
+            <marker date="1497780844260" expanded="true" signature="3949:3969" ph="Speichern" />
+            <marker date="1497780844260" expanded="true" signature="4110:4142" ph="Neuen Sicherheitscode anfordern" />
+            <marker date="1497780844260" expanded="true" signature="4266:4288" ph="Abbrechen" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/passwordRequest.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="41" column="53" lean-forward="false" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
+          <folding>
+            <marker date="1497731079827" expanded="true" signature="595:621" ph="Passwort wiederherstellen" />
+            <marker date="1497731079827" expanded="true" signature="596:621" ph="Passwort wiederherstellen" />
+            <marker date="1497731079827" expanded="true" signature="1386:1421" ph="Geben Sie Ihre SalesWebApp-ID(Mail) ein um einen Sicherheitscode zum zurücksetzen Ihres Passworts per Mail zu erhalten." />
+            <marker date="1497731079827" expanded="true" signature="1387:1421" ph="Geben Sie die ID(Mail) Ihres SalesWebApp-Accounts ein um einen Sicherheitscode zum zurücksetzen Ihres Passworts per Mail zu erhalten." />
+            <marker date="1497731079827" expanded="true" signature="1488:1522" ph="Bitte geben Sie Ihre Mailadresse ein:" />
+            <marker date="1497731079827" expanded="true" signature="1489:1522" ph="Bitte geben Sie Ihre Mailadresse ein:" />
+            <marker date="1497731079827" expanded="true" signature="1832:1871" ph="Max.Mustermann@web.com" />
+            <marker date="1497731079827" expanded="true" signature="1833:1871" ph="Max.Mustermann@web.com" />
+            <marker date="1497731079827" expanded="true" signature="2135:2155" ph="Senden" />
+            <marker date="1497731079827" expanded="true" signature="2288:2310" ph="Abbrechen" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="505">
+          <caret line="89" column="26" lean-forward="false" selection-start-line="89" selection-start-column="26" selection-end-line="89" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.0.33/tomcat-embed-core-8.0.33.jar!/org/apache/tomcat/util/threads/TaskThread.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordMapContainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="25" column="23" lean-forward="false" selection-start-line="25" selection-start-column="23" selection-end-line="25" selection-end-column="23" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordResetServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordRequestForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="15" column="46" lean-forward="true" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="75" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#570#600#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+        <state relative-caret-position="148">
+          <caret line="16" column="5" lean-forward="false" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/EmailServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/PasswordRequestController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="34" column="65" lean-forward="true" selection-start-line="34" selection-start-column="65" selection-end-line="34" selection-end-column="65" />
+        <state relative-caret-position="164">
+          <caret line="17" column="11" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/config/WebApplicationContextConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="17" column="75" lean-forward="false" selection-start-line="17" selection-start-column="75" selection-end-line="17" selection-end-column="75" />
+        <state relative-caret-position="501">
+          <caret line="90" column="20" lean-forward="false" selection-start-line="90" selection-start-column="20" selection-end-line="90" selection-end-column="20" />
+          <folding>
+            <element signature="e#3431#3442#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/PasswordResetController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="369">
+          <caret line="27" column="58" lean-forward="false" selection-start-line="27" selection-start-column="58" selection-end-line="27" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#539#569#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordReset/PasswordResetValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#613#614#0" expanded="true" />
+            <element signature="e#672#673#0" expanded="true" />
+            <element signature="e#815#816#0" expanded="true" />
+            <element signature="e#871#872#0" expanded="true" />
+            <element signature="e#918#919#0" expanded="true" />
+            <element signature="e#988#989#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordReset/PasswordEqualValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#408#409#0" expanded="true" />
+            <element signature="e#478#479#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordReset/PasswordResetCode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="21" column="18" lean-forward="false" selection-start-line="21" selection-start-column="18" selection-end-line="21" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordReset/PasswordResetCodeValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordResetForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="18" column="27" lean-forward="false" selection-start-line="18" selection-start-column="27" selection-end-line="18" selection-end-column="27" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_de.properties">
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="61" lean-forward="false" selection-start-line="11" selection-start-column="61" selection-end-line="11" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_en.properties">
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="70" lean-forward="false" selection-start-line="10" selection-start-column="70" selection-end-line="10" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordRequest/EmailUnknownValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordRequest/EmailUnknown.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="20" column="18" lean-forward="false" selection-start-line="20" selection-start-column="18" selection-end-line="20" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>

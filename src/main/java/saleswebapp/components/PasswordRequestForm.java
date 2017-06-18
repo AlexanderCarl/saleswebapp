@@ -1,6 +1,6 @@
 package saleswebapp.components;
 
-import saleswebapp.validator.EmailUnknown;
+import saleswebapp.validator.passwordRequest.EmailUnknown;
 
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
