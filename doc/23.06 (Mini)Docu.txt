@@ -1,0 +1,17 @@
+Installation:
+1) Als Maven Projekt importieren und die Dependencies laden
+2) SQL-Datei DB-Create verwenden um die (MySQL)-Datenbank zu erzeugen
+3) SQL-Datei DB-StartData verwenden um die für die Funktionsfähigkeit notwendigen Daten zu laden.
+
+4) Klasse "Application" ausführen
+Startseite: http://127.0.0.1:8080/saleswebapp/login
+Testaccount: carl@hm.edu
+TestPW: root
+
+Hinweise:
+1) Spring Security lässt aktuell den ungeschützen Zugriff auf jede Seite zu. Es funktioniert aber nicht jede Seite ohne Login. (Entwicklungseinsstellung)
+2) Bisher implementiert:
+01 Benutzerprofil anpassen
+05 Login
+06 Logout
+07 Passwort wiederherstellen
