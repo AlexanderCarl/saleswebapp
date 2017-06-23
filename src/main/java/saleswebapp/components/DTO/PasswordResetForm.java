@@ -1,4 +1,4 @@
-package saleswebapp.components;
+package saleswebapp.components.DTO;
 
 import saleswebapp.validator.passwordReset.PasswordResetCode;
 
@@ -16,7 +16,7 @@ public class PasswordResetForm implements Serializable {
     @PasswordResetCode
     private String securityCode;
 
-    @Pattern(regexp = "^.{4,25}$", message = "{validation.pattern.pwGuideline}")
+    @Pattern(regexp = "^.{4,25}$", message = "{universal.validation.pattern.pwGuideline}")
     private String newPassword;
 
     private String newPasswordRepeat;

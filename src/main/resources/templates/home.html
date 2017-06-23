@@ -13,6 +13,14 @@
             <p> -- main menu under construction -- </p>
         </header>
 
+        <div th:if="${param.profileChangeSuccess != null}" class="alert alert-success" role="alert">
+            <p> <th th:text="#{home.success.profileChangeSuccess}" /> </p>
+        </div>
+
+        <div th:if="${param.profileWasChangedMeanwhile != null}" class="alert alert-danger" role="alert">
+            <p> <th th:text="#{home.error.profileWasChangedMeanwhile}" /> </p>
+        </div>
+
         <div th:replace="fragments/footer :: footer"></div>
     </body>
 

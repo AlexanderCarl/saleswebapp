@@ -34,17 +34,18 @@
     padding-bottom: 4%;
 }
 
-/* Remove table dividers */
-.table th, .table td {
-    border-top: none !important;
+.label-top-padding {
+    padding-top: 0.5%;
 }
 
 /**
+
 .linkButton {
     background: none;
     border: none;
     color: black;
     cursor: pointer;
-    padding-left: 13%; /** padding-left: 1.4em;
+    padding-left: 13%;
+}
+/** padding-left: 1.4em; */
 
- */

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
+    <head th:include="fragments/head :: includes">
     </head>
 
     <body>
         <div th:fragment="footer">
-            <footer class="footer navbar-fixed-bottom" style="padding-left: 1%;">
-                <p>&copy; Hochschule München CCWI - FindLunch 2017</p>
-            </footer>
+            <div id="footer">
+                <p style="padding-left: 1%">&copy; Hochschule München CCWI - FindLunch 2017</p>
+            </div>
         </div>
     </body>
 

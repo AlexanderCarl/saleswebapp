@@ -39,28 +39,3 @@ public class PasswordResetServiceImpl implements PasswordResetService{
     }
 }
 
-/**
-  @Override //Returns the Account-ID (Email) for which the securityCode is valid or null if the code isn`t valid.
-public boolean validateSecurityCode(String formCode) {
-
-HashMap<String, PasswordMapContainer> resetCodes = passwordRequestService.getResetCodes();
-Integer timeIndexOfNow = Integer.parseInt(new Timestamp((System.currentTimeMillis())).toString());
-Integer timeIndexOfEntry;
-
-for (Map.Entry<String, PasswordMapContainer> entry : resetCodes.entrySet()) {
-String savedCode = entry.getKey();
-
-if(savedCode.equals(formCode)) {
-timeIndexOfEntry = Integer.parseInt(entry.getValue().getTimestamp().toString());
-
-//The security code is invalid after 2 min. (2min. = 120 000)
-if(timeIndexOfEntry > timeIndexOfNow - 120000) {
-return true;
-}
-}
-}
-
-return false;
-}
-
- */

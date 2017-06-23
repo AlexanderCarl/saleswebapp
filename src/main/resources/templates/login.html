@@ -23,6 +23,10 @@
                             <h3 class="panel-title"> <th th:text="#{login.label.inputRequest}" /> </h3>
                         </div>
 
+                        <div th:if="${param.profileEmailWasChanged != null}" class="alert alert-success" role="alert">
+                            <p> <th th:text="#{login.success.securityContextChange}" /> </p>
+                        </div>
+
                         <div th:if="${param.error != null}" class="alert alert-danger" role="alert">
                             <p> <th th:text="#{login.error.invalid}" /> </p>
                         </div>

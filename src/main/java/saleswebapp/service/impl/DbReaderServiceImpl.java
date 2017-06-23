@@ -4,10 +4,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import saleswebapp.domain.repository.impl.Country;
 import saleswebapp.domain.repository.impl.SalesPerson;
 import saleswebapp.domain.repository.CountryRepository;
 import saleswebapp.domain.repository.SalesPersonRepository;
 import saleswebapp.service.DbReaderService;
+
+import java.util.List;
 
 /**
  * Created by Alexander Carl on 04.06.2017.
@@ -24,8 +27,18 @@ public class DbReaderServiceImpl implements DbReaderService {
     private CountryRepository countryRepository;
 
     @Override
-    public SalesPerson getSalesPerson(String email) {
+    public SalesPerson getSalesPersonByEmail(String email) {
         return salesPersonRepository.getByEmail(email);
+    }
+
+
+    public SalesPerson getSalesPersonById(int id) {
+        return salesPersonRepository.getById(id);
+    }
+
+    @Override
+    public List<Country> getAllCountries() {
+        return countryRepository.findAll();
     }
 
     @Override

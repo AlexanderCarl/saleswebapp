@@ -33,7 +33,7 @@ public class EmailServiceImpl implements EmailService {
     public void generatePasswordRequest(String userEmail) {
         logger.debug("PasswordRequestForm success - User " + userEmail + " requested a PasswordResetMail.");
         String resetCode = passwordRequestService.createPasswordResetCode(userEmail);
-        SalesPerson salesPerson = DbReaderService.getSalesPerson(userEmail);
+        SalesPerson salesPerson = DbReaderService.getSalesPersonByEmail(userEmail);
         String local = LocaleContextHolder.getLocale().toString();
 
         String subjectEN = "Reset your SalesWebApp password";

@@ -20,7 +20,7 @@ import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 @Documented
 public @interface EmailUnknown {
 
-    String message() default "{passwordReset.validation.passwordResetCodeValidation}";
+    String message() default "{universal.validation.emailUnknown}";
 
     Class<?>[] groups() default {};
 

@@ -1,4 +1,4 @@
-package saleswebapp.components;
+package saleswebapp.components.DTO;
 
 import saleswebapp.validator.passwordRequest.EmailUnknown;
 
@@ -13,7 +13,7 @@ public class PasswordRequestForm implements Serializable {
 
     private static final long serialVersionUID = 5615550315753342L;
 
-    @Pattern(regexp = ".+@.+\\..+", message = "{validation.pattern.email}")
+    @Pattern(regexp = ".+@.+\\..+", message = "{universal.validation.pattern.email}")
     @EmailUnknown
     private String email;
 

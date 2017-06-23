@@ -23,7 +23,7 @@ public class PasswordResetCodeValidator implements ConstraintValidator<PasswordR
     private PasswordRequestService passwordRequestService;
 
     public void initialize(PasswordResetCode constraintAnnotation) {
-        //  intentionally left blank; this is the place to initialize the constraint annotation for any sensible default values.
+        // intentionally left blank: this is the place to initialize the constraint annotation for any sensible default values.
     }
 
     public boolean isValid(String value, ConstraintValidatorContext context) {

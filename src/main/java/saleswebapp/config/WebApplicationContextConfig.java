@@ -18,8 +18,10 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
-import saleswebapp.validator.passwordReset.PasswordEqualValidator;
+import saleswebapp.validator.passwordReset.PasswordResetPasswordEqualValidator;
 import saleswebapp.validator.passwordReset.PasswordResetValidator;
+import saleswebapp.validator.profile.ProfilePasswordEqualValidator;
+import saleswebapp.validator.profile.ProfileValidator;
 
 import java.util.HashSet;
 import java.util.Locale;
@@ -89,10 +91,19 @@ public class WebApplicationContextConfig extends WebMvcAutoConfigurationAdapter 
     @Bean
     public PasswordResetValidator productValidator() {
         Set<Validator> springValidators = new HashSet<Validator>();
-        springValidators.add(new PasswordEqualValidator());
+        springValidators.add(new PasswordResetPasswordEqualValidator());
         PasswordResetValidator productValidator = new PasswordResetValidator();
         productValidator.setSpringValidators(springValidators);
         return productValidator;
+    }
+
+    @Bean
+    public ProfileValidator profileValidator() {
+        Set<Validator> springValidators = new HashSet<Validator>();
+        springValidators.add(new ProfilePasswordEqualValidator());
+        ProfileValidator profileValidator = new ProfileValidator();
+        profileValidator.setSpringValidators(springValidators);
+        return profileValidator;
     }
 
 }

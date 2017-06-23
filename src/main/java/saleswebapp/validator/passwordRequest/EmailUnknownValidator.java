@@ -27,7 +27,7 @@ public class EmailUnknownValidator implements ConstraintValidator<EmailUnknown, 
         SalesPerson salesPerson;
 
         try {
-            salesPerson = DbReaderService.getSalesPerson(value);
+            salesPerson = DbReaderService.getSalesPersonByEmail(value);
         } catch (Exception ignore) {
             logger.debug("PasswordRequestForm failure - NullPointerAcception - getSalesPersonByEmail(value) was executed with value = null.");
             salesPerson = null;

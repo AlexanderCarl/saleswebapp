@@ -3,13 +3,13 @@ package saleswebapp.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
 import saleswebapp.service.impl.AuthenticationServiceImpl;
 
@@ -32,25 +32,48 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
+
         httpSecurity.formLogin().loginPage("/login")
                 .usernameParameter("userId")
                 .passwordParameter("password");
 
         httpSecurity.formLogin().defaultSuccessUrl("/home")
                 .failureUrl("/login?error");
-
-        httpSecurity.logout().logoutSuccessUrl("/login?logout");
-
-        httpSecurity.exceptionHandling().accessDeniedPage("/login?accessDenied");
+        //Logout is handled manually by the controllers HomeController and ProfileController
 
         httpSecurity.authorizeRequests()
-                .antMatchers("/login").permitAll()
-                .antMatchers("/home/**").access("hasRole('USER')");
+                .antMatchers("/**").permitAll(); //For Testing and Developing only
+                //.antMatchers("/login").permitAll()
+                //.antMatchers("/home/**").access("hasRole('USER')");
 
         httpSecurity.csrf().disable();
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED); //equals default
         httpSecurity.sessionManagement().maximumSessions(1); //Allows only one login per user. If a user logs in again the first login will be invalid.
         httpSecurity.sessionManagement().invalidSessionUrl("/login"); //The user is send to this page after he closed the browser and opens the SalesWebApp again. Counts also for expired sessions.
+
+        /* Old Config
+
+        httpSecurity.formLogin().loginPage("/login")
+                .usernameParameter("userId")
+                .passwordParameter("password");
+
+        httpSecurity.formLogin().defaultSuccessUrl("/home");
+        httpSecurity.formLogin().failureUrl("/login?error");
+        //Logout is handled manually by controllers
+
+        httpSecurity.authorizeRequests()
+                //.antMatchers("/**").permitAll(); //For Testing and Developing only
+
+                .antMatchers("/login").permitAll()
+                .antMatchers("/home/**").access("hasRole('USER')");
+
+
+        httpSecurity.csrf().disable();
+        httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED); //equals default
+        httpSecurity.sessionManagement().maximumSessions(1); //Allows only one login per user. If a user logs in again the first login will be invalid.
+        httpSecurity.sessionManagement().invalidSessionUrl("/login"); //The user is send to this page after he closed the browser and opens the SalesWebApp again. Counts also for expired sessions.
+
+        */
     }
 
     @Bean

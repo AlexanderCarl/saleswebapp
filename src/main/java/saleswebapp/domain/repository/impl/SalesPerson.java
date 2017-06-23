@@ -1,5 +1,7 @@
 package saleswebapp.domain.repository.impl;
 
+import saleswebapp.components.DTO.ProfileForm;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -8,9 +10,7 @@ import java.io.Serializable;
  */
 @Entity
 @Table(name = "swa_sales_person")
-public class SalesPerson implements Serializable {
-
-    private static final long serialVersionUID = -839487260401125316L;
+public class SalesPerson{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -62,8 +62,58 @@ public class SalesPerson implements Serializable {
             if (Integer.valueOf(other.id) != null)
                 return false;
         }
-        if (!Integer.valueOf(id).equals(Integer.valueOf(other.id)))
+
+        if (id != other.getId()) {
             return false;
+        }
+
+        if (!password.equals(other.getPassword())) {
+            return false;
+        }
+
+        if (!firstName.equals(other.getFirstName())) {
+            return false;
+        }
+
+        if (!secondName.equals(other.getSecondName())) {
+            return false;
+        }
+
+        if (!street.equals(other.getStreet())) {
+            return false;
+        }
+
+        if (!streetNumber.equals(other.getStreetNumber())) {
+            return false;
+        }
+
+        if (!zip.equals(other.getZip())) {
+            return false;
+        }
+
+        if (!city.equals(other.getCity())) {
+            return false;
+        }
+
+        if (!phone.equals(other.getPhone())) {
+            return false;
+        }
+
+        if (!country.getCountryCode().equals(other.getCountry().getCountryCode())) {
+            return false;
+        }
+
+        if (!email.equals(other.getEmail())) {
+            return false;
+        }
+
+        if (!iban.equals(other.getIban())) {
+            return false;
+        }
+
+        if (!bic.equals(other.getBic())) {
+            return false;
+        }
 
         return true;
     }
@@ -75,10 +125,6 @@ public class SalesPerson implements Serializable {
         result = prime * result + ((Integer.valueOf(id) == null) ? 0 : (Integer.valueOf(id).hashCode()));
 
         return result;
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public int getId() {

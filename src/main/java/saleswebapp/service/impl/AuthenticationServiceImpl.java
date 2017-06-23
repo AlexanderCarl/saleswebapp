@@ -27,15 +27,15 @@ public class AuthenticationServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userEmail) {
-        SalesPerson salesPerson = DbReaderService.getSalesPerson(userEmail);
+        SalesPerson salesPerson = DbReaderService.getSalesPersonByEmail(userEmail);
 
         if (salesPerson != null) {
             UserDetails userDetails = (UserDetails) new User(salesPerson.getEmail(), salesPerson.getPassword(), Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
-            logger.debug("Login success - User: " + userEmail + " identified and logged in.");
+            logger.debug("Login - User: " + userEmail + " identified and logged in.");
             return  userDetails;
         } else {
             UserDetails userDetails = (UserDetails) new User(userEmail, "unknownEMail", Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
-            logger.debug("Login failure - User: " + userEmail + " unknown.");
+            logger.debug("Login failure - User: " + userEmail + " id or password unknown.");
             return userDetails;
             //The sha256-Code is always longer than the 11 chars of the "unknownEMail" String, therefore the else statement will never lead to a successfull log in.
         }

@@ -12,4 +12,5 @@ import java.io.Serializable;
 @Repository
 public interface CountryRepository extends JpaRepository<Country, Serializable> {
 
+    Country getCountryByCountryCode(String countryCode);
 }

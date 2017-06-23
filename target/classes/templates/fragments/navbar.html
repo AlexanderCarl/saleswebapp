@@ -12,7 +12,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/saleswebapp/login"><b>S</b>ales<b>W</b>eb<b>A</b>pp</a>
+                    <a class="navbar-brand" href="/saleswebapp/home"><b>S</b>ales<b>W</b>eb<b>A</b>pp</a>
                 </div>
 
                 <div class="navbar-collapse collapse">
@@ -37,11 +37,13 @@
                                 </li>
                                 <li>
                                     <div class="one-line-navbar">
-                                        <a class="btn-link" style="padding-left: 13%; color: black" href="#"> <th th:text="#{navbar.label.dropdown.userProfilSettings}" /> </a>
+                                        <a class="btn-link" style="padding-left: 13%; color: black" th:href="@{profile} "><th th:text="#{navbar.label.dropdown.userProfilSettings}" /></a>
                                     </div>
                                 </li>
                                 <li>
-                                    <a th:href="@{login(logout)}">Logout</a>
+                                    <div class="one-line-navbar">
+                                        <a class="btn-link" style="padding-left: 13%; color: black" th:href="@{home/logout}">Logout</a>
+                                    </div>
                                 </li>
                             </ul>
 
