@@ -26,23 +26,6 @@ public class ProfilePasswordEqualValidator implements Validator {
             errors.rejectValue("newPassword", "universal.validation.passwordNotEqual");
         }
 
-        if(profileForm.getValidPassword().equals("")) {
-            errors.rejectValue("validPassword", "universal.validation.noValidPassword");
-        }
-
-        /*
-        if(!profileForm.getValidPassword().equals(null)) {
-            String encodedOldPassword = shaPasswordEncoder.encodePassword(profileForm.getValidPassword(), null); //Password at the transaction start.
-
-            if(salesPersonsTransactionStart.get(profileForm.getId()).getPassword().equals(encodedOldPassword)) {
-
-                if(profileForm.getNewPassword().equals(profileForm.getRepeatNewPassword())) {
-                    String encodedNewPassword = shaPasswordEncoder.encodePassword(profileForm.getNewPassword(), null);
-                    dbWriterService.setNewPassword(profileForm.getId(), encodedNewPassword);
-                }
-            }
-        }
-        */
     }
 
 }

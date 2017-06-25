@@ -21,6 +21,7 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 import saleswebapp.validator.passwordReset.PasswordResetPasswordEqualValidator;
 import saleswebapp.validator.passwordReset.PasswordResetValidator;
 import saleswebapp.validator.profile.ProfilePasswordEqualValidator;
+import saleswebapp.validator.profile.ProfilePasswordSetValidator;
 import saleswebapp.validator.profile.ProfileValidator;
 
 import java.util.HashSet;
@@ -101,6 +102,7 @@ public class WebApplicationContextConfig extends WebMvcAutoConfigurationAdapter 
     public ProfileValidator profileValidator() {
         Set<Validator> springValidators = new HashSet<Validator>();
         springValidators.add(new ProfilePasswordEqualValidator());
+        springValidators.add(new ProfilePasswordSetValidator());
         ProfileValidator profileValidator = new ProfileValidator();
         profileValidator.setSpringValidators(springValidators);
         return profileValidator;

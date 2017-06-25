@@ -61,18 +61,11 @@ public class ProfileController {
     @RequestMapping(value = "/profile", method = RequestMethod.POST)
     public String processProfile(Model model, @Valid ProfileForm profileForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
-            //The attributes must be added to the profile.html. This can also be done using the @ModelAttribute Annotation
+            //The attributes must be added again to the profile. This can also be done using the @ModelAttribute Annotation
             model.addAttribute("profileForm", profileForm);
             model.addAttribute("countries", dbReaderService.getAllCountries());
 
             return "profile";
-        }
-
-        //Security check if the salesPerson id has been used in the form, which is not supposed to happen.
-        String[] suppressedFields = bindingResult.getSuppressedFields();
-        if (suppressedFields.length > 0) {
-            logger.debug("ProfileForm error - User: " + profileForm.getEmail() + " - Security violation: ProfileForm field id has been accessed.");
-            throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
         }
 
         //Security check if the concerning the DB-Object salesPerson has been altered during transaction.
@@ -118,24 +111,6 @@ public class ProfileController {
 
     @InitBinder
     public void initialiseBinder(WebDataBinder binder) {
-        binder.setAllowedFields(
-                "id",
-                "firstName",
-                "secondName",
-                "street",
-                "streetNumber",
-                "zip",
-                "city",
-                "phone",
-                "country",
-                "email",
-                "iban",
-                "bic",
-                "validPassword",
-                "newPassword",
-                "repeatNewPassword"
-        );
-
         binder.setValidator(profileValidator);
     }
 

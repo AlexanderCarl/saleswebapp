@@ -26,18 +26,16 @@ public class ProfilPasswordValidator implements ConstraintValidator<ProfilPasswo
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
 
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        String loggedInUser = "carl@hm.edu"; //Developing only
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        String encodedPassword = encoder.encodePassword(value, null);
 
         //If the user doesn`t enter a password, the old one remains. Saving of the new password is handled by the controller.
-        if (value.equals("")) {
+        if (value.equals(""))
             return true;
-        } else {
-            //Checks if the user entered a valid password
-            String encodedPassword = encoder.encodePassword(value, null);
-            if(encodedPassword.equals(dbReaderService.getSalesPersonByEmail(loggedInUser).getPassword())) {
-                return true;
-            }
+
+        //Checks if the user entered the correct password
+        if(encodedPassword.equals(dbReaderService.getSalesPersonByEmail(loggedInUser).getPassword())) {
+            return true;
         }
 
         return false;

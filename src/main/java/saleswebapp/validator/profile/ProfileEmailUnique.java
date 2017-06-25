@@ -1,10 +1,5 @@
 package saleswebapp.validator.profile;
 
-/**
- * Created by Alexander Carl on 23.06.2017.
- */
-import saleswebapp.validator.passwordReset.PasswordResetCodeValidator;
-
 import javax.validation.Constraint;
 import javax.validation.Payload;
 import java.lang.annotation.Documented;
@@ -16,13 +11,16 @@ import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
+/**
+ * Created by Alexander Carl on 25.06.2017.
+ */
 @Target( { METHOD, FIELD, ANNOTATION_TYPE })
 @Retention(RUNTIME)
-@Constraint(validatedBy = ProfilPasswordValidator.class)
+@Constraint(validatedBy = ProfileEmailUniqueValidator.class)
 @Documented
-public @interface ProfilPassword {
+public @interface ProfileEmailUnique {
 
-    String message() default "{universal.validation.noValidPassword}";
+    String message() default "{profile.validation.emailUnique}";
 
     Class<?>[] groups() default {};
 

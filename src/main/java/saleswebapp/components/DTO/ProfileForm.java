@@ -3,6 +3,7 @@ package saleswebapp.components.DTO;
 import saleswebapp.domain.repository.impl.Country;
 import saleswebapp.domain.repository.impl.SalesPerson;
 import saleswebapp.validator.profile.ProfilPassword;
+import saleswebapp.validator.profile.ProfileEmailUnique;
 
 import javax.validation.constraints.Pattern;
 import java.io.Serializable;
@@ -40,6 +41,7 @@ public class ProfileForm implements Serializable {
     private String phone;
 
     @Pattern(regexp = ".+@.+\\..+", message = "{universal.validation.pattern.email}")
+    @ProfileEmailUnique
     private String email;
 
     @Pattern(regexp = "^[A-Z]{2}([0-9a-zA-Z]{15,31})$" , message = "{profile.validation.iban}")
