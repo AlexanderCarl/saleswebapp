@@ -50,30 +50,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED); //equals default
         httpSecurity.sessionManagement().maximumSessions(1); //Allows only one login per user. If a user logs in again the first login will be invalid.
         httpSecurity.sessionManagement().invalidSessionUrl("/login"); //The user is send to this page after he closed the browser and opens the SalesWebApp again. Counts also for expired sessions.
-
-        /* Old Config
-
-        httpSecurity.formLogin().loginPage("/login")
-                .usernameParameter("userId")
-                .passwordParameter("password");
-
-        httpSecurity.formLogin().defaultSuccessUrl("/home");
-        httpSecurity.formLogin().failureUrl("/login?error");
-        //Logout is handled manually by controllers
-
-        httpSecurity.authorizeRequests()
-                //.antMatchers("/**").permitAll(); //For Testing and Developing only
-
-                .antMatchers("/login").permitAll()
-                .antMatchers("/home/**").access("hasRole('USER')");
-
-
-        httpSecurity.csrf().disable();
-        httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED); //equals default
-        httpSecurity.sessionManagement().maximumSessions(1); //Allows only one login per user. If a user logs in again the first login will be invalid.
-        httpSecurity.sessionManagement().invalidSessionUrl("/login"); //The user is send to this page after he closed the browser and opens the SalesWebApp again. Counts also for expired sessions.
-
-        */
     }
 
     @Bean

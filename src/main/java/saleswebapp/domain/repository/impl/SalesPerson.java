@@ -1,9 +1,7 @@
 package saleswebapp.domain.repository.impl;
 
-import saleswebapp.components.DTO.ProfileForm;
-
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Alexander Carl on 04.06.2017.
@@ -47,6 +45,9 @@ public class SalesPerson{
 
     @Column(name = "salary_percentage")
     private Double salaryPercentage;
+
+    @OneToMany(mappedBy = "salesPerson", fetch = FetchType.LAZY)
+    private List<Restaurant> restaurants;
 
     @Override
     public boolean equals(Object obj) {
@@ -237,5 +238,13 @@ public class SalesPerson{
 
     public void setSalaryPercentage(Double salaryPercentage) {
         this.salaryPercentage = salaryPercentage;
+    }
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+    public void setRestaurants(List<Restaurant> restaurants) {
+        this.restaurants = restaurants;
     }
 }

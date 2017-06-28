@@ -8,222 +8,195 @@
     <body>
     <div th:replace="fragments/navbar :: navbar"></div>
 
-    <div class="row">
-        <div class="col-md-9 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title"> <th th:text="#{profile.label.panelHeading}" /> </h3>
-                </div>
+    <div class="container">
 
-                <div class="panel-body">
-                    <form th:action="@{/profile}" th:object="${profileForm}" method="post">
-
-                        <div class="form-group row">
-                            <ul th:if="${#fields.hasErrors('*')}">
-                                <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="text-danger" />
-                            </ul>
-                            <div></div>
-
-                            <!-- First column: Benutzerdaten -->
-                            <label class="col-sm-3 col-form-label" style="padding-top: 1.5%">
-                                <label class="glyphicon glyphicon-question-sign" th:title="#{profile.label.tooltip.headingUserData}"></label>
-                                <u> <th th:text="#{profile.label.headingUserData}" /> </u>
-                            </label>
-
-                            <!-- Second column: Passwortwechsel -->
-                            <label class="col-sm-3 col-form-label col-sm-offset-3" style="padding-top: 1.5%">
-                                <label class="glyphicon glyphicon-question-sign" th:title="#{profile.label.tooltip.headingPassword}"></label>
-                                <u> <th th:text="#{profile.label.headingPassword}" /> </u>
-                            </label>
-
-                            <div></div>
-                        </div>
-
-                        <div class="form-group row">
-
-                            <!-- First column: Vorname ... -->
-                            <label class="col-sm-2 col-form-label label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.firstName}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{firstName}')}? has-error">
-                                <input type="text" th:field="*{firstName}" required="required" class="form-control"/>
-                            </div>
-
-                            <!-- Second column: Passwort ... -->
-                            <label class="col-md-2 col-form-label col-sm-offset-1 label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.validPassword}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{validPassword}')}? has-error">
-                                <input type="password" th:field="*{validPassword}" class="form-control"/>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-
-                            <!-- First column: Nachname ... -->
-                            <label class="col-sm-2 col-form-label label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.secondName}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{secondName}')}? has-error">
-                                <input type="text" th:field="*{secondName}" required="required" class="form-control" />
-                            </div>
-
-                            <!-- Second column: neues Passwort ... -->
-                            <label class="col-md-2 col-form-label col-sm-offset-1 label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.newPassword}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{newPassword}')}? has-error">
-                                <input type="password" th:field="*{newPassword}" class="form-control"/>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-
-                            <!-- First column: Straße -->
-                            <label class="col-sm-2 col-form-label label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.street}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{street}')}? has-error">
-                                <input type="text" th:field="*{street}" required="required" class="form-control" />
-                            </div>
-
-                            <!-- Second column: Passwort wiederholen -->
-                            <label class="col-md-2 col-form-label col-sm-offset-1 label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.repeatNewPassword}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{newPassword}')}? has-error">
-                                <input type="password" th:field="*{repeatNewPassword}" class="form-control"/>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-
-                            <!-- First column: Hausnummer -->
-                            <label class="col-sm-2 col-form-label label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.streetNumber}" />
-                            </label>
-                            <div class="col-sm-2" th:classappend="${#fields.hasErrors('*{streetNumber}')}? has-error">
-                                <input type="text" th:field="*{streetNumber}" required="required" class="form-control" />
-                            </div>
-                            <!-- Second column: id (hidden) -->
-                            <div>
-                                <input type="text" style="visibility: hidden" th:field="*{id}" />
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-
-                            <label class="col-sm-2 col-form-label label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.zip}" />
-                            </label>
-                            <div class="col-sm-2" th:classappend="${#fields.hasErrors('*{zip}')}? has-error">
-                                <input type="text" th:field="*{zip}" required="required" class="form-control" />
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-
-                            <label class="col-sm-2 col-form-label label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.city}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{city}')}? has-error">
-                                <input type="text" th:field="*{city}" required="required" class="form-control" />
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-
-                            <label class="col-sm-2 col-form-label label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.country}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{country}')}? has-error">
-                                <select class="form-control" th:field="*{country}">
-                                    <option th:each="country : ${countries}"
-                                            th:value="${country.countryCode}"
-                                            th:text="${country.name}">
-                                    </option>
-                                </select>
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-
-                            <label class="col-sm-2 col-form-label label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.phone}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{phone}')}? has-error">
-                                <input type="text" th:field="*{phone}" required="required" class="form-control" />
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-
-                            <label class="col-sm-2 col-form-label label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.email}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{email}')}? has-error">
-                                <input type="text" th:field="*{email}" required="required" class="form-control" />
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-
-                            <label class="col-sm-2 col-form-label label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.iban}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{iban}')}? has-error">
-                                <input type="text" th:field="*{iban}" required="required" class="form-control" />
-                            </div>
-
-                        </div>
-
-                        <div class="form-group row">
-
-                            <label class="col-sm-2 col-form-label label-top-padding">
-                                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                                <th th:text="#{profile.label.bic}" />
-                            </label>
-                            <div class="col-sm-3" th:classappend="${#fields.hasErrors('*{bic}')}? has-error">
-                                <input type="text" th:field="*{bic}" required="required" class="form-control" />
-                            </div>
-
-                        </div>
-
-                        <div class="btn-toolbar" style="padding-top: 3%">
-                            <button class="btn btn-primary" style="width: 20%" type="submit"> <th th:text="#{universal.label.save}" /> </button>
-                            <a th:href="@{home}" class="btn btn-primary" style="width: 20%"> <th th:text="#{universal.label.cancel}" /> </a>
-                        </div>
-
-                    </form>
-                </div>
-
-            </div>
+        <div class="page-header">
+            <h3><th th:text="#{profile.label.panelHeading}" /></h3>
         </div>
+
+        <div class="row">
+        <form th:action="@{/profile}" th:object="${profileForm}" method="post">
+
+            <ul class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="text-danger" style="padding-left: 3%"/>
+            </ul>
+
+            <div class="col-lg-6 col-lg-md-12 col-sm-12 col-xs-12">
+                <p>
+                    <label class="glyphicon glyphicon-question-sign" th:title="#{profile.label.tooltip.headingUserData}"></label>
+                    <u> <th th:text="#{profile.label.headingUserData}" /> </u>
+                </p>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.firstName}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{firstName}')}? has-error">
+                            <input type="text" th:field="*{firstName}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.secondName}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{secondName}')}? has-error">
+                            <input type="text" th:field="*{secondName}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.street}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{street}')}? has-error">
+                            <input type="text" th:field="*{street}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.streetNumber}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{streetNumber}')}? has-error">
+                            <input type="text" th:field="*{streetNumber}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.zip}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{zip}')}? has-error">
+                            <input type="text" th:field="*{zip}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.city}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{city}')}? has-error">
+                            <input type="text" th:field="*{city}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"> </label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.country}" /> </label>
+
+                        <select class="form-control" th:field="*{country}">
+                            <option th:each="country : ${countries}"
+                                    th:value="${country.countryCode}"
+                                    th:text="${country.name}">
+                            </option>
+                        </select>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.phone}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{phone}')}? has-error">
+                            <input type="text" th:field="*{phone}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.email}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{email}')}? has-error">
+                            <input type="text" th:field="*{email}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.iban}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{iban}')}? has-error">
+                            <input type="text" th:field="*{iban}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline" style="padding-bottom: 3%">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.bic}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{bic}')}? has-error">
+                            <input type="text" th:field="*{bic}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-lg-md-12 col-sm-12 col-xs-12">
+                <p>
+                    <label class="glyphicon glyphicon-question-sign" th:title="#{profile.label.tooltip.headingPassword}"></label>
+                    <u> <th th:text="#{profile.label.headingPassword}" /> </u>
+                </p>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.validPassword}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{validPassword}')}? has-error">
+                            <input type="password" th:field="*{validPassword}" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.newPassword}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{newPassword}')}? has-error">
+                            <input type="password" th:field="*{newPassword}" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.repeatNewPassword}" /> </label>
+                        <span th:classappend="${#fields.hasErrors('*{repeatNewPassword}')}? has-error">
+                            <input type="password" th:field="*{repeatNewPassword}" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-lg-md-12 col-sm-12 col-xs-12">
+                <div class="btn-toolbar" style="padding-bottom: 5%; padding-top: 1.5%">
+                    <button class="btn btn-primary" style="width: 20%" type="submit"> <th th:text="#{universal.label.save}" /> </button>
+                    <a th:href="@{home}" class="btn btn-primary" style="width: 20%"> <th th:text="#{universal.label.cancel}" /> </a>
+                </div>
+            </div>
+
+            <div>
+                <input type="text" style="visibility: hidden" th:field="*{id}" />
+            </div>
+
+        </form>
+        </div>
+
     </div>
 
     <div th:replace="fragments/footer :: footer"></div>
     </body>
 
 </html>
+

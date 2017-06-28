@@ -5,7 +5,7 @@
 }
 
 .jumbotron {
-    background-color: white !important;
+    background-color: white;
     text-align: center;
     padding-bottom:10px;
     padding-top:10px;
@@ -34,8 +34,8 @@
     padding-bottom: 4%;
 }
 
-.label-top-padding {
-    padding-top: 0.5%;
+.span-top-padding {
+    padding-top: 1%;
 }
 
 /**

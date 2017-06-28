@@ -51,7 +51,7 @@ public class WebApplicationContextConfig extends WebMvcAutoConfigurationAdapter 
 
     private ITemplateResolver templateResolver() {
         SpringResourceTemplateResolver resolver = new SpringResourceTemplateResolver();
-        resolver.setPrefix("/templates/");
+        resolver.setPrefix("/templates/**");
         resolver.setTemplateMode("HTML5");
         return resolver;
     }

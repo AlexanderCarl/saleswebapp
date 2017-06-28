@@ -7,7 +7,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import saleswebapp.domain.repository.impl.Restaurant;
 import saleswebapp.service.DbReaderService;
+
+import java.util.List;
 
 /**
  * Created by Alexander Carl on 06.06.2017.
@@ -20,8 +23,11 @@ public class HomeController {
     @Autowired
     private DbReaderService dbReaderService;
 
+    private String loggedInUser = "carl@hm.edu"; //DEV ONLY
+
     @RequestMapping(value = "/home")
     public String home() {
+        List<Restaurant> restaurants = dbReaderService.getAllRestaurantsOfSalesPerson(dbReaderService.getSalesPersonByEmail(loggedInUser).getId());
         return "home";
     }
 
@@ -33,4 +39,5 @@ public class HomeController {
 
         return "redirect:/login?logout";
     }
+
 }

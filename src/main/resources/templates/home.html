@@ -5,21 +5,107 @@
         <title>SalesWebApp Home</title>
     </head>
 
+    <script>
+        $(document).ready(function() {
+            $('#example').DataTable();
+        } );
+    </script>
+
     <body>
         <div th:replace="fragments/navbar :: navbar"></div>
 
-        <header class="jumbotron">
-            <h1> SalesWebApp </h1>
-            <p> -- main menu under construction -- </p>
-        </header>
+        <!-- Shows the status of the last transaction -->
+        <div style="padding-left: 1%; width: 75%; ">
+            <div th:if="${param.profileChangeSuccess != null}" class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
+                <th th:text="#{home.success.profileChangeSuccess}" />
+            </div>
 
-        <div th:if="${param.profileChangeSuccess != null}" class="alert alert-success" role="alert">
-            <p> <th th:text="#{home.success.profileChangeSuccess}" /> </p>
+            <div th:if="${param.profileWasChangedMeanwhile != null}" class="alert alert-success">
+                <a href="#" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
+                <th th:text="#{home.error.profileWasChangedMeanwhile}" />
+            </div>
         </div>
 
-        <div th:if="${param.profileWasChangedMeanwhile != null}" class="alert alert-danger" role="alert">
-            <p> <th th:text="#{home.error.profileWasChangedMeanwhile}" /> </p>
+        <div class="container-fluid" style="width: 99%">
+            <h1 class="page_title">Restaurants</h1>
+
+            <div id="example_wrapper" class="dataTables_wrapper from-inline dt-bootstrap">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="dataTables_length" id="example_length">
+                            <label>
+                                Show entries
+                                <select name="example_length" aria-controls="example" class="form-control input-sm">
+                                    <option value="10">10</option>
+                                    <option value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="100">100</option>
+                                </select>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+                </thead>
+
+                <tfoot>
+                <tr>
+                    <th>Name</th>
+                    <th>Position</th>
+                    <th>Office</th>
+                    <th>Age</th>
+                    <th>Start date</th>
+                    <th>Salary</th>
+                </tr>
+                </tfoot>
+
+                <tbody>
+                <tr>
+                    <td>Tiger Nixon</td>
+                    <td>System Architect</td>
+                    <td>Edinburgh</td>
+                    <td>61</td>
+                    <td>2011/04/25</td>
+                    <td>$320,800</td>
+                </tr>
+                <tr>
+                    <td>Garrett Winters</td>
+                    <td>Accountant</td>
+                    <td>Tokyo</td>
+                    <td>63</td>
+                    <td>2011/07/25</td>
+                    <td>$170,750</td>
+                </tr>
+                <tr>
+                    <td>Ashton Cox</td>
+                    <td>Junior Technical Author</td>
+                    <td>San Francisco</td>
+                    <td>66</td>
+                    <td>2009/01/12</td>
+                    <td>$86,000</td>
+                </tr>
+                </tbody>
+            </table>
+
         </div>
+
+
+
+
 
         <div th:replace="fragments/footer :: footer"></div>
     </body>

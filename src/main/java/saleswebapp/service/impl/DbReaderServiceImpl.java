@@ -4,7 +4,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import saleswebapp.domain.repository.RestaurantRepository;
 import saleswebapp.domain.repository.impl.Country;
+import saleswebapp.domain.repository.impl.Restaurant;
 import saleswebapp.domain.repository.impl.SalesPerson;
 import saleswebapp.domain.repository.CountryRepository;
 import saleswebapp.domain.repository.SalesPersonRepository;
@@ -26,6 +28,9 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Autowired
     private CountryRepository countryRepository;
 
+    @Autowired
+    private RestaurantRepository restaurantRepository;
+
     @Override
     public SalesPerson getSalesPersonByEmail(String email) {
         return salesPersonRepository.getByEmail(email);
@@ -39,6 +44,11 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Override
     public List<Country> getAllCountries() {
         return countryRepository.findAll();
+    }
+
+    @Override
+    public List<Restaurant> getAllRestaurantsOfSalesPerson(int salesPersonId) {
+        return restaurantRepository.getAllBySalesPersonIdOrSalesPersonIdNull(salesPersonId);
     }
 
     @Override
@@ -60,4 +70,6 @@ public class DbReaderServiceImpl implements DbReaderService {
 
         salesPersonRepository.save(salesPerson);
     }
+
+
 }
