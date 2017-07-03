@@ -21,6 +21,8 @@ public interface DbReaderService {
     List<Country> getAllCountries();
 
     //Returns all Restaurants which the SalesPeron is responsible for, plus all Restaurants which have no SalesPerson assigned to them.
-    List<Restaurant> getAllRestaurantsOfSalesPerson(int salesPersonId);
+    List<Restaurant> getAllRestaurantsOfSalesPerson(String email);
+
+    Restaurant getRestaurantById(int id);
 
 }

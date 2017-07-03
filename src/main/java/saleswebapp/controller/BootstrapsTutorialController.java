@@ -23,4 +23,9 @@ public class BootstrapsTutorialController {
     public String bootstrapsTutorialThree() {
         return "BootstrapsTutorial/BootstrapsTutorial3";
     }
+
+    @RequestMapping(value = "/BootstrapsTutorial4")
+    public String bootstrapsTutorialFour() {
+        return "BootstrapsTutorial/BootstrapsTutorial4";
+    }
 }

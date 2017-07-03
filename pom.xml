@@ -11,6 +11,11 @@
     <name>SalesWebApp</name>
     <description>SalesWebApp Component of the FindLunch Application</description>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -91,11 +96,6 @@
         </dependency>
 
     </dependencies>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <java.version>1.8</java.version>
-    </properties>
 
     <build>
         <plugins>

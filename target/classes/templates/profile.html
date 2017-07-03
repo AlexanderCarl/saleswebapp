@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
     <head th:include="fragments/head :: includes">
-        <title>SalesWebApp userProfil</title>
+        <title>SalesWebApp User-Profil</title>
     </head>
 
     <body>
@@ -17,8 +17,8 @@
         <div class="row">
         <form th:action="@{/profile}" th:object="${profileForm}" method="post">
 
-            <ul class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
-                <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="text-danger" style="padding-left: 3%"/>
+            <ul th:if="${#fields.hasErrors('*')}">
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="text-danger" />
             </ul>
 
             <div class="col-lg-6 col-lg-md-12 col-sm-12 col-xs-12">

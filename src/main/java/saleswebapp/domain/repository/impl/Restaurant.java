@@ -63,4 +63,155 @@ public class Restaurant {
     @JoinColumn(name = "swa_sales_person_id")
     private SalesPerson salesPerson;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getStreetNumber() {
+        return streetNumber;
+    }
+
+    public void setStreetNumber(String streetNumber) {
+        this.streetNumber = streetNumber;
+    }
+
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public Float getLocationLatitude() {
+        return locationLatitude;
+    }
+
+    public void setLocationLatitude(Float locationLatitude) {
+        this.locationLatitude = locationLatitude;
+    }
+
+    public Float getLocationLongitude() {
+        return locationLongitude;
+    }
+
+    public void setLocationLongitude(Float locationLongitude) {
+        this.locationLongitude = locationLongitude;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    public RestaurantType getRestaurantType() {
+        return restaurantType;
+    }
+
+    public void setRestaurantType(RestaurantType restaurantType) {
+        this.restaurantType = restaurantType;
+    }
+
+    public String getRestaurantUUID() {
+        return restaurantUUID;
+    }
+
+    public void setRestaurantUUID(String restaurantUUID) {
+        this.restaurantUUID = restaurantUUID;
+    }
+
+    public byte[] getQrUuid() {
+        return qrUuid;
+    }
+
+    public void setQrUuid(byte[] qrUuid) {
+        this.qrUuid = qrUuid;
+    }
+
+    public boolean isOfferModifyPermission() {
+        return offerModifyPermission;
+    }
+
+    public void setOfferModifyPermission(boolean offerModifyPermission) {
+        this.offerModifyPermission = offerModifyPermission;
+    }
+
+    public boolean isBlocked() {
+        return blocked;
+    }
+
+    public void setBlocked(boolean blocked) {
+        this.blocked = blocked;
+    }
+
+    public SalesPerson getSalesPerson() {
+        return salesPerson;
+    }
+
+    public void setSalesPerson(SalesPerson salesPerson) {
+        this.salesPerson = salesPerson;
+    }
 }

@@ -1,57 +1,37 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-    </head>
 
     <body>
+    <div class="container-fluid">
         <nav class="navbar navbar-default" th:fragment="navbar"> <!-- navbar-default navbar-fixed-top -->
-            <div class="container-fluid">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+                    <button type="button" class="navbar-toggle col-lg-2 col-lg-md-2 col-sm-12 col-xs-12" data-toggle="collapse" data-target=".nav-collapse">
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="/saleswebapp/home"><b>S</b>ales<b>W</b>eb<b>A</b>pp</a>
+                    <a class="navbar-brand" href="/saleswebapp/home" style="font-size: 175%">
+                        <b>S</b>ales<b>W</b>eb<b>A</b>pp
+                    </a>
                 </div>
 
-                <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"> <th th:text="#{navbar.label.recordRestaurant}" /> </a></li>
-                        <li><a href="#"> <th th:text="#{navbar.label.tendRestaurant}" /> </a></li>
-                        <li><a href="#"> <th th:text="#{navbar.label.offerOverview}" /> </a></li>
-                        <li><a href="#"> <th th:text="#{navbar.label.activity}" /></a> </li>
-                        <li><a href="#"> <th th:text="#{navbar.label.protocol}" /></a> </li>
-                        <li><a href="#"> <th th:text="#{navbar.label.salesAnalyse}" /> </a></li>
-                        <li><a href="#"> <th th:text="#{navbar.label.tourPlanning}" /> </a></li>
-
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                <span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="one-line-navbar">
-                                        <a class="btn-link" style="padding-left: 13%; color: black" href="?language=de">Deutsch</a> | <a class="btn-link" style="color: black" href="?language=en">English</a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="one-line-navbar">
-                                        <a class="btn-link" style="padding-left: 13%; color: black" th:href="@{profile}"><th th:text="#{navbar.label.dropdown.userProfilSettings}" /></a>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="one-line-navbar">
-                                        <a class="btn-link" style="padding-left: 13%; color: black" th:href="@{home/logout}">Logout</a>
-                                    </div>
-                                </li>
-                            </ul>
-
-                        </li>
+                <div class="navbar-collapse collapse" style="padding-top: 1.3%">
+                    <ul class="list-inline navbar-left">
+                        <li><a class="btn-link" href="#"> <th th:text="#{navbar.label.restaurant}" /> </a></li>
+                        <li><a class="btn-link" href="#"> <th th:text="#{navbar.label.offerOverview}" /> </a></li>
+                        <li><a class="btn-link" href="#"> <th th:text="#{navbar.label.activity}" /></a> </li>
+                        <li><a class="btn-link" href="#"> <th th:text="#{navbar.label.protocol}" /></a> </li>
+                        <li><a class="btn-link" href="#"> <th th:text="#{navbar.label.salesAnalyse}" /> </a></li>
+                        <li><a class="btn-link" href="#"> <th th:text="#{navbar.label.tourPlanning}" /> </a></li>
+                        <li><a class="btn-link" th:href="@{profile}"><th th:text="#{navbar.label.dropdown.userProfilSettings}" /></a></li>
+                    </ul>
+                    <ul class="list-inline navbar-right"  style="padding-right: 1%">
+                        <li><a class="btn-link" href="?language=de">Deutsch</a> | <a  class="btn-link" href="?language=en">English</a></li>
+                        <li><a class="btn-link" th:href="@{home/logout}">Logout</a></li>
                     </ul>
                 </div>
-            </div>
         </nav>
+    </div>
     </body>
 
 </html>

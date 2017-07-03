@@ -38,6 +38,10 @@
     padding-top: 1%;
 }
 
+ .dataTables-scrollHead{
+     overflow: visible !important;
+ }
+
 /**
 
 .linkButton {

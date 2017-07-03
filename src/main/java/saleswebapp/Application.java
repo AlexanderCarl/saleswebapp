@@ -13,7 +13,4 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    //ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder();
-    //String sha = shaPasswordEncoder.encodePassword("yam", null);
-
 }

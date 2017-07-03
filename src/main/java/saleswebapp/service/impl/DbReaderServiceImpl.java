@@ -47,8 +47,14 @@ public class DbReaderServiceImpl implements DbReaderService {
     }
 
     @Override
-    public List<Restaurant> getAllRestaurantsOfSalesPerson(int salesPersonId) {
+    public List<Restaurant> getAllRestaurantsOfSalesPerson(String email) {
+        int salesPersonId = salesPersonRepository.getByEmail(email).getId();
         return restaurantRepository.getAllBySalesPersonIdOrSalesPersonIdNull(salesPersonId);
+    }
+
+    @Override
+    public Restaurant getRestaurantById(int id) {
+        return restaurantRepository.getRestaurantById(id);
     }
 
     @Override

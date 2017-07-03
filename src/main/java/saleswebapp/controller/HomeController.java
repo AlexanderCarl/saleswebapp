@@ -20,14 +20,8 @@ public class HomeController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    @Autowired
-    private DbReaderService dbReaderService;
-
-    private String loggedInUser = "carl@hm.edu"; //DEV ONLY
-
     @RequestMapping(value = "/home")
     public String home() {
-        List<Restaurant> restaurants = dbReaderService.getAllRestaurantsOfSalesPerson(dbReaderService.getSalesPersonByEmail(loggedInUser).getId());
         return "home";
     }
 
