@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import saleswebapp.domain.repository.impl.Restaurant;
 import saleswebapp.service.DbReaderService;
+import saleswebapp.service.HomeService;
 
 import java.util.List;
 
@@ -20,8 +21,15 @@ public class HomeController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @Autowired
+    private HomeService homeService;
+
     @RequestMapping(value = "/home")
-    public String home() {
+    public String home(Model model) {
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        model.addAttribute("restaurants", homeService.createHomeRestaurantFormListForSalesPerson(loggedInUser));
+        model.addAttribute("toDos", homeService.getAllToDosForSalesPerson(loggedInUser));
+
         return "home";
     }
 

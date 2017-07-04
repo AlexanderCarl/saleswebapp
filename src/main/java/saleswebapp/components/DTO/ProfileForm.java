@@ -57,7 +57,9 @@ public class ProfileForm implements Serializable {
 
     private String repeatNewPassword;
 
-    public ProfileForm() {}
+    public ProfileForm() {
+        super();
+    }
 
     public ProfileForm(SalesPerson salesPerson) {
        this.id = salesPerson.getId();

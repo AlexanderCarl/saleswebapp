@@ -5,11 +5,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import saleswebapp.domain.repository.RestaurantRepository;
+import saleswebapp.domain.repository.ToDoListRepository;
 import saleswebapp.domain.repository.impl.Country;
 import saleswebapp.domain.repository.impl.Restaurant;
 import saleswebapp.domain.repository.impl.SalesPerson;
 import saleswebapp.domain.repository.CountryRepository;
 import saleswebapp.domain.repository.SalesPersonRepository;
+import saleswebapp.domain.repository.impl.ToDoList;
 import saleswebapp.service.DbReaderService;
 
 import java.util.List;
@@ -31,12 +33,15 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Autowired
     private RestaurantRepository restaurantRepository;
 
+    @Autowired
+    private ToDoListRepository toDoListRepository;
+
     @Override
     public SalesPerson getSalesPersonByEmail(String email) {
         return salesPersonRepository.getByEmail(email);
     }
 
-
+    @Override
     public SalesPerson getSalesPersonById(int id) {
         return salesPersonRepository.getById(id);
     }
@@ -58,24 +63,8 @@ public class DbReaderServiceImpl implements DbReaderService {
     }
 
     @Override
-    public void testMethodSaveSalesPerson() {
-        SalesPerson salesPerson = new SalesPerson();
-        salesPerson.setPassword("PW1234");
-        salesPerson.setFirstName("FirstName1234");
-        salesPerson.setSecondName("SecondName1234");
-        salesPerson.setStreet("Street1234");
-        salesPerson.setStreetNumber("S-Nr 1234");
-        salesPerson.setZip("Z1234");
-        salesPerson.setCity("City1234");
-        salesPerson.setPhone("Phone1234");
-        salesPerson.setCountry(countryRepository.getOne("DE"));
-        salesPerson.setEmail("EMAIL1234");
-        salesPerson.setIban("IBAN1234");
-        salesPerson.setBic("BIC124");
-        salesPerson.setSalaryPercentage(0.3);
-
-        salesPersonRepository.save(salesPerson);
+    public List<ToDoList> getAllToDosOfSalesPerson(String email) {
+        return toDoListRepository.getAllBySalesPersonEmail(email);
     }
-
 
 }
