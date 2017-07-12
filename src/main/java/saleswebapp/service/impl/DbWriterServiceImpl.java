@@ -4,10 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
 import saleswebapp.components.DTO.ProfileForm;
-import saleswebapp.domain.repository.CountryRepository;
-import saleswebapp.domain.repository.SalesPersonRepository;
-import saleswebapp.domain.repository.impl.Country;
-import saleswebapp.domain.repository.impl.SalesPerson;
+import saleswebapp.repository.CountryRepository;
+import saleswebapp.repository.SalesPersonRepository;
+import saleswebapp.repository.impl.Country;
+import saleswebapp.repository.impl.SalesPerson;
 import saleswebapp.service.DbWriterService;
 
 import javax.transaction.Transactional;
@@ -52,7 +52,12 @@ public class DbWriterServiceImpl  implements DbWriterService {
         salesPerson.setZip(profileForm.getZip());
         salesPerson.setCity(profileForm.getCity());
         salesPerson.setPhone(profileForm.getPhone());
-        salesPerson.setCountry(profileForm.getCountry());
+
+        Country country = salesPerson.getCountry();
+        country.setCountryCode(profileForm.getCountryForm().getCountryCode());
+        country.setName(profileForm.getCountryForm().getName());
+        salesPerson.setCountry(country);
+
         salesPerson.setEmail(profileForm.getEmail());
         salesPerson.setIban(profileForm.getIban());
         salesPerson.setBic(profileForm.getBic());

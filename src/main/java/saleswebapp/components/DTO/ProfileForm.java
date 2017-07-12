@@ -1,7 +1,7 @@
 package saleswebapp.components.DTO;
 
-import saleswebapp.domain.repository.impl.Country;
-import saleswebapp.domain.repository.impl.SalesPerson;
+import saleswebapp.repository.impl.Country;
+import saleswebapp.repository.impl.SalesPerson;
 import saleswebapp.validator.profile.ProfilPassword;
 import saleswebapp.validator.profile.ProfileEmailUnique;
 
@@ -35,7 +35,7 @@ public class ProfileForm implements Serializable {
     @Pattern(regexp = "^[a-zA-Z]{3,60}$", message = "{profile.validation.city}")
     private String city;
 
-    private Country country;
+    private CountryForm countryForm;
 
     @Pattern(regexp = "^[0][0-9/. \\-]{6,60}$", message = "{profile.validation.phone}")
     private String phone;
@@ -70,7 +70,7 @@ public class ProfileForm implements Serializable {
        this.zip = salesPerson.getZip();
        this.city = salesPerson.getCity();
        this.phone = salesPerson.getPhone();
-       this.country = salesPerson.getCountry();
+       this.countryForm = new CountryForm(salesPerson.getCountry());
        this.email = salesPerson.getEmail();
        this.iban = salesPerson.getIban();
        this.bic = salesPerson.getBic();
@@ -144,12 +144,12 @@ public class ProfileForm implements Serializable {
         this.phone = phone;
     }
 
-    public Country getCountry() {
-        return country;
+    public CountryForm getCountryForm() {
+        return countryForm;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setCountryForm(CountryForm countryForm) {
+        this.countryForm = countryForm;
     }
 
     public String getEmail() {

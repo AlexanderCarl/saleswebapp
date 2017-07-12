@@ -11,7 +11,7 @@
     <div class="container">
 
         <div class="page-header">
-            <h3><th th:text="#{profile.label.panelHeading}" /></h3>
+            <h3><th th:text="#{profile.label.heading}" /></h3>
         </div>
 
         <div class="row">
@@ -92,7 +92,7 @@
                         <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"> </label>
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.country}" /> </label>
 
-                        <select class="form-control" th:field="*{country}">
+                        <select class="form-control" th:field="*{countryForm}" style="width: 160px">
                             <option th:each="country : ${countries}"
                                     th:value="${country.countryCode}"
                                     th:text="${country.name}">

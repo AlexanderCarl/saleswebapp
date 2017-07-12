@@ -1,6 +1,6 @@
 package saleswebapp.components.DTO;
 
-import saleswebapp.domain.repository.impl.Restaurant;
+import saleswebapp.repository.impl.Restaurant;
 
 import java.io.Serializable;
 
@@ -12,6 +12,7 @@ public class HomeRestaurantForm implements Serializable {
 
     private static final long serialVersionUID = 1391547254178163094L;
 
+    private int id;
     private String name;
     private String email;
     private String phone;
@@ -25,6 +26,7 @@ public class HomeRestaurantForm implements Serializable {
     }
 
     public HomeRestaurantForm(Restaurant restaurant) {
+        this.id = restaurant.getId();
         this.name = restaurant.getName();
         this.email = restaurant.getEmail();
         this.phone = restaurant.getPhone();
@@ -92,5 +94,13 @@ public class HomeRestaurantForm implements Serializable {
 
     public void setZip(String zip) {
         this.zip = zip;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

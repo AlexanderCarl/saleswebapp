@@ -2,9 +2,6 @@ package saleswebapp.service;
 
 import saleswebapp.components.DTO.HomeRestaurantForm;
 import saleswebapp.components.DTO.HomeToDoForm;
-import saleswebapp.domain.repository.impl.Restaurant;
-import saleswebapp.domain.repository.impl.SalesPerson;
-import saleswebapp.domain.repository.impl.ToDoList;
 
 import java.util.List;
 

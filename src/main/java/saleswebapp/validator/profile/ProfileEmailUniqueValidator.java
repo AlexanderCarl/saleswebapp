@@ -2,7 +2,7 @@ package saleswebapp.validator.profile;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
-import saleswebapp.domain.repository.impl.SalesPerson;
+import saleswebapp.repository.impl.SalesPerson;
 import saleswebapp.service.DbReaderService;
 
 import javax.validation.ConstraintValidator;

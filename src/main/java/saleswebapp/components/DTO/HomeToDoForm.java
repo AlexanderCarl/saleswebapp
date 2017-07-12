@@ -1,9 +1,8 @@
 package saleswebapp.components.DTO;
 
-import saleswebapp.domain.repository.impl.ToDoList;
+import saleswebapp.repository.impl.ToDoList;
 
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * Created by Alexander Carl on 04.07.2017.
@@ -14,6 +13,7 @@ public class HomeToDoForm implements Serializable {
     private static final long serialVersionUID = -456375631841131140L;
 
     private int id;
+    private int restaurantId;
     private String requestTyp;
     private String restaurantName;
     private String timestamp;
@@ -24,6 +24,7 @@ public class HomeToDoForm implements Serializable {
 
     public HomeToDoForm(ToDoList toDoList) {
         this.id = toDoList.getId();
+        this.restaurantId = toDoList.getRestaurant().getId();
         this.requestTyp = toDoList.getToDoRequestTyp().getName();
         this.restaurantName = toDoList.getRestaurant().getName();
 
@@ -65,5 +66,13 @@ public class HomeToDoForm implements Serializable {
 
     public void setTimestamp(String timestamp) {
         this.timestamp = timestamp;
+    }
+
+    public int getRestaurantId() {
+        return restaurantId;
+    }
+
+    public void setRestaurantId(int restaurantId) {
+        this.restaurantId = restaurantId;
     }
 }

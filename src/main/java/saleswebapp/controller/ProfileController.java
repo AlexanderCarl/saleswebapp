@@ -13,14 +13,16 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import saleswebapp.components.DTO.ProfileForm;
-import saleswebapp.domain.repository.impl.SalesPerson;
+import saleswebapp.repository.impl.Country;
+import saleswebapp.repository.impl.SalesPerson;
+import saleswebapp.service.CountryService;
 import saleswebapp.service.DbReaderService;
 import saleswebapp.service.DbWriterService;
-import saleswebapp.validator.profile.ProfilePasswordEqualValidator;
 import saleswebapp.validator.profile.ProfileValidator;
 
 import javax.validation.Valid;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Alexander Carl on 19.06.2017.
@@ -38,6 +40,9 @@ public class ProfileController {
     private DbWriterService dbWriterService;
 
     @Autowired
+    private CountryService countryService;
+
+    @Autowired
     private ProfileValidator profileValidator;
 
     private ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder(256);
@@ -49,10 +54,9 @@ public class ProfileController {
         String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         SalesPerson salesPerson = dbReaderService.getSalesPersonByEmail(loggedInUser);
         salesPersonsTransactionStart.put(salesPerson.getId(), salesPerson);
-        ProfileForm profileForm = new ProfileForm(salesPerson);
 
-        model.addAttribute("profileForm", profileForm);
-        model.addAttribute("countries", dbReaderService.getAllCountries());
+        model.addAttribute("profileForm", new ProfileForm(salesPerson));
+        model.addAttribute("countries", countryService.getAllCountries());
 
         return "profile";
     }
@@ -62,7 +66,7 @@ public class ProfileController {
         if (bindingResult.hasErrors()) {
             //The attributes must be added again to the profile. This can also be done using the @ModelAttribute Annotation
             model.addAttribute("profileForm", profileForm);
-            model.addAttribute("countries", dbReaderService.getAllCountries());
+            model.addAttribute("countries", countryService.getAllCountries());
 
             return "profile";
         }

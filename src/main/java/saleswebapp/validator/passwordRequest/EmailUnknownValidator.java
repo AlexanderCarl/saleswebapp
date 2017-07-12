@@ -3,7 +3,7 @@ package saleswebapp.validator.passwordRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import saleswebapp.domain.repository.impl.SalesPerson;
+import saleswebapp.repository.impl.SalesPerson;
 import saleswebapp.service.DbReaderService;
 
 import javax.validation.ConstraintValidator;

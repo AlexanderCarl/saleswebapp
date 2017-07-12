@@ -4,9 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import saleswebapp.components.DTO.HomeRestaurantForm;
 import saleswebapp.components.DTO.HomeToDoForm;
-import saleswebapp.domain.repository.impl.Restaurant;
-import saleswebapp.domain.repository.impl.SalesPerson;
-import saleswebapp.domain.repository.impl.ToDoList;
+import saleswebapp.repository.impl.Restaurant;
+import saleswebapp.repository.impl.ToDoList;
 import saleswebapp.service.DbReaderService;
 import saleswebapp.service.HomeService;
 

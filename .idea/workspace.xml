@@ -2,21 +2,69 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0cf9450-ea71-430d-bd31-7dc6981d6dbf" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/RestaurantTypeRepository.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/domain/repository/CountryRepository.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/domain/repository/RestaurantRepository.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/domain/repository/RestaurantTypeRepository.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/domain/repository/SalesPersonRepository.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/domain/repository/ToDoListRepository.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/domain/repository/impl/Country.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/domain/repository/impl/Restaurant.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/domain/repository/impl/RestaurantType.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/domain/repository/impl/SalesPerson.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/domain/repository/impl/ToDoList.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/domain/repository/impl/ToDoListRequestTyp.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/HomeRestaurantForm.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/HomeRestaurantForm.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/HomeToDoForm.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/HomeToDoForm.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/ProfileForm.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/ProfileForm.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/controller/HomeController.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/controller/HomeController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/controller/ProfileController.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/controller/ProfileController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/DbReaderService.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/DbReaderService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/AuthenticationServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/AuthenticationServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/DbReaderServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/DbReaderServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/DbWriterServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/DbWriterServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/EmailServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/EmailServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/HomeServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/HomeServiceImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/validator/passwordRequest/EmailUnknownValidator.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/validator/passwordRequest/EmailUnknownValidator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/validator/profile/ProfilPasswordValidator.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/validator/profile/ProfilPasswordValidator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/validator/profile/ProfileEmailUniqueValidator.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/validator/profile/ProfileEmailUniqueValidator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeRestaurantForm.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeRestaurantForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeToDoForm.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeToDoForm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/ProfileForm.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/ProfileForm.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/HomeController.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/HomeController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/ProfileController.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/ProfileController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/HomeService.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/HomeService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/AuthenticationServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/AuthenticationServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/EmailServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/EmailServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/HomeServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/HomeServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordRequest/EmailUnknownValidator.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/passwordRequest/EmailUnknownValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/profile/ProfileEmailUniqueValidator.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/profile/ProfileEmailUniqueValidator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages_de.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages_de.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/static/css/main.css" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/home.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/home.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/login.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/login.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/passwordRequest.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/passwordRequest.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/passwordReset.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/passwordReset.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/profile.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/profile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/messages_de.properties" afterPath="$PROJECT_DIR$/target/classes/messages_de.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/messages_en.properties" afterPath="$PROJECT_DIR$/target/classes/messages_en.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/fragments/navbar.html" afterPath="$PROJECT_DIR$/target/classes/templates/fragments/navbar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/home.html" afterPath="$PROJECT_DIR$/target/classes/templates/home.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/login.html" afterPath="$PROJECT_DIR$/target/classes/templates/login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/profile.html" afterPath="$PROJECT_DIR$/target/classes/templates/profile.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/CountryRepository.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/CountryRepository.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/RestaurantRepository.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/RestaurantRepository.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/SalesPersonRepository.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/SalesPersonRepository.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/ToDoListRepository.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/ToDoListRepository.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/Country.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Country.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/Restaurant.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Restaurant.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/RestaurantType.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/RestaurantType.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/SalesPerson.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/SalesPerson.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/ToDoList.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/ToDoList.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/ToDoListRequestTyp.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/ToDoListRequestTyp.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -42,124 +90,131 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="HomeController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/HomeController.java">
+      <file leaf-file-name="RestaurantController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/RestaurantController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="28" column="95" lean-forward="false" selection-start-line="28" selection-start-column="95" selection-end-line="28" selection-end-column="95" />
+            <state relative-caret-position="607">
+              <caret line="67" column="93" lean-forward="false" selection-start-line="67" selection-start-column="93" selection-end-line="67" selection-end-column="93" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/LoginController.java">
+      <file leaf-file-name="RestaurantListForm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantListForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="374">
+              <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+              <folding>
+                <element signature="e#727#728#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PasswordRequestController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/PasswordRequestController.java">
+      <file leaf-file-name="RestaurantForm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="765">
+              <caret line="65" column="79" lean-forward="false" selection-start-line="65" selection-start-column="79" selection-end-line="65" selection-end-column="79" />
+              <folding>
+                <element signature="e#2689#2697#0" expanded="true" />
+                <element signature="e#7845#7846#0" expanded="true" />
+                <element signature="e#7894#7895#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PasswordResetController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/PasswordResetController.java">
+      <file leaf-file-name="RestaurantServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="-255">
+              <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding>
+                <element signature="e#3992#4000#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProfileController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/ProfileController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToDoListRequestTyp.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/ToDoListRequestTyp.java">
+      <file leaf-file-name="RestaurantService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/RestaurantService.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="323">
-              <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToDoList.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/ToDoList.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="32" column="16" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-              <folding>
-                <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#h1#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1499169723803" expanded="true" signature="362:391" ph="Willkommen bei der SalesWebApp" />
-                <marker date="1499169723803" expanded="true" signature="435:464" ph="Ihr FindLunch CRM-Tool" />
-                <marker date="1499169723803" expanded="true" signature="884:908" ph="Benutzerkennung eingeben" />
-                <marker date="1499169723803" expanded="true" signature="1118:1153" ph="Sie haben Ihre Benutzerprofil-Email geändert. Bitte melden Sie sich erneut an." />
-                <marker date="1499169723803" expanded="true" signature="1344:1363" ph="Ungültige Eingaben für Email und Passwort" />
-                <marker date="1499169723803" expanded="true" signature="1556:1576" ph="Sie haben sich erfolgreich ausgeloggt." />
-                <marker date="1499169723803" expanded="true" signature="1784:1813" ph="Sie haben Ihr Passwort erfolgreich geändert." />
-                <marker date="1499169723803" expanded="true" signature="2425:2457" ph="Eingabe E-Mail" />
-                <marker date="1499169723803" expanded="true" signature="2929:2961" ph="Eingabe Passwort" />
-                <marker date="1499169723803" expanded="true" signature="3201:3225" ph="Einloggen" />
-                <marker date="1499169723803" expanded="true" signature="3410:3438" ph="Passwort wiederherstellen" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ToDoListRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/ToDoListRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+              <caret line="23" column="14" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HomeServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/HomeServiceImpl.java">
+      <file leaf-file-name="messages_de.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/messages_de.properties">
+          <provider editor-type-id="ResourceBundle">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="45" column="29" lean-forward="false" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+            <state relative-caret-position="587">
+              <caret line="138" column="85" lean-forward="false" selection-start-line="138" selection-start-column="85" selection-end-line="138" selection-end-column="85" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="restaurant.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/restaurant.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="485">
+              <caret line="246" column="99" lean-forward="false" selection-start-line="246" selection-start-column="99" selection-end-line="246" selection-end-column="99" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#999#1019#0" expanded="true" />
-                <element signature="e#1438#1452#0" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#3;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#4;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#5;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#p#0;n#div#5;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#select#0;n#p#0;n#div#6;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#3;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#4;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#div#0;n#div#2;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1499854230457" expanded="true" signature="570:609" ph="Wählen Sie eine Restaurant aus um dieses zu laden." />
+                <marker date="1499854230457" expanded="true" signature="660:677" ph="Restaurant" />
+                <marker date="1499854230457" expanded="true" signature="660:691" ph="Restaurant laden" />
+                <marker date="1499854230457" expanded="true" signature="1524:1565" ph="Legt ein neues Restaurant an, welches nach ausfüllen der benötigten Felder gespeichert werden kann." />
+                <marker date="1499854230457" expanded="true" signature="1616:1649" ph="Legt ein neues Restaurant an, welches nach ausfüllen der benötigten Felder gespeichert werden kann." />
+                <marker date="1499854230457" expanded="true" signature="1775:1815" ph="neues Restaurant" />
+                <marker date="1499854230457" expanded="true" signature="1947:1985" ph="Restaurant" />
+                <marker date="1499854230457" expanded="true" signature="2629:2650" ph="Name" />
+                <marker date="1499854230457" expanded="true" signature="3225:3248" ph="Straße" />
+                <marker date="1499854230457" expanded="true" signature="3827:3856" ph="Hausnummer" />
+                <marker date="1499854230457" expanded="true" signature="4455:4475" ph="PLZ" />
+                <marker date="1499854230457" expanded="true" signature="5048:5069" ph="Stadt" />
+                <marker date="1499854230457" expanded="true" signature="5645:5669" ph="Land" />
+                <marker date="1499854230457" expanded="true" signature="6387:6418" ph="Restauranttyp" />
+                <marker date="1499854230457" expanded="true" signature="7234:7256" ph="Email" />
+                <marker date="1499854230457" expanded="true" signature="7833:7855" ph="Telefon" />
+                <marker date="1499854230457" expanded="true" signature="8432:8452" ph="URL" />
+                <marker date="1499854230457" expanded="true" signature="9005:9022" ph="Längengrad" />
+                <marker date="1499854230457" expanded="true" signature="9005:9031" ph="Längengrad" />
+                <marker date="1499854230457" expanded="true" signature="9612:9637" ph="Breitengrad" />
+                <marker date="1499854230457" expanded="true" signature="10216:10243" ph="Restaurant-Nr" />
+                <marker date="1499854230457" expanded="true" signature="10864:10893" ph="Küchentypen" />
+                <marker date="1499854230457" expanded="true" signature="11647:11675" ph="Kategorien" />
+                <marker date="1499854230457" expanded="true" signature="12005:12040" ph="Bitte geben Sie die Öffnungszeiten im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
+                <marker date="1499854230457" expanded="true" signature="12120:12149" ph="Öffnungszeiten" />
+                <marker date="1499854230457" expanded="true" signature="12348:12371" ph="Montag" />
+                <marker date="1499854230457" expanded="true" signature="12896:12931" ph="Bitte geben Sie die Öffnungszeiten im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
+                <marker date="1499854230457" expanded="true" signature="13011:13038" ph="Angebotszeiten" />
               </folding>
             </state>
           </provider>
@@ -171,8 +226,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="CSS File" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
       </list>
@@ -204,57 +259,57 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/profile/ProfileEmailUniqueValidator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/profile/ProfilPasswordValidator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/profile/ProfilPassword.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/profile/ProfilePasswordEqualValidator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/profile/ProfilePasswordSetValidator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/config/SecurityConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/RestaurantType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/SalesPerson.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/RestaurantRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/RestaurantTypeRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/Try&amp;ErrorSection/BootstrapsTutorial1.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/BootstrapsTutorial/BootstrapsTutorial2.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/BootstrapsTutorial/BootstrapsTutorial1.html" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/BootstrapsTutorialController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/BootstrapsTutorial/BootstrapsTutorial3.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/BootstrapsTutorial/BootstrapsTutorial4.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/js/datatable.js" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/config/WebApplicationContextConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/DayOfWeek.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/User.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/UserType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/OpeningTime.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/CourseType.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/Restaurant.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/HomeRestController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/static.js/datatable.js" />
-        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/profile.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/head.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/navbarLogin.html" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/TimeSchedule.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/Country.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Country.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/CountryForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/ToDoList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/ProfileService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/CountryService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/CountryServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Restaurant.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/ProfileForm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeRestaurantsForm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeRestaurantForm.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/ToDoListRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/ProfileController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantTypeForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/CourseTypeForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/KitchenTypeForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/RestaurantTimeContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantTimeForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/TimeScheduleRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/TimeSchedule.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/OpeningTimeRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/RestaurantDailyTimeContainer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/KitchenType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/CourseType.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeRestaurantForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeToDoForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantList.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantListEntryForm.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantListForm.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/HomeController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/RestaurantTypeRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/profile.html" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/RestaurantRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/RestaurantKitchenTypeRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/ToDoListRequestTyp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/HomeService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/HomeServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/ProfileController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/ToDoList.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeToDoForm.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/static/css/main.css" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/Foo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/RestaurantService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/RestaurantController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/messages_de.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/passwordRequest.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/passwordReset.html" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/HomeController.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/login.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/restaurant.html" />
       </list>
     </option>
   </component>
@@ -317,7 +372,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -415,36 +470,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SalesWebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SalesWebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="fragments" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -620,40 +645,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="repository" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="impl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SalesWebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SalesWebApp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="saleswebapp" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -724,8 +715,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -741,14 +732,14 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\templates" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\static.js" />
       <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\static\css" />
       <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\static\css\css" />
       <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\templates\BootstrapsTutorial" />
+      <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\templates" />
     </key>
   </component>
@@ -1218,11 +1209,20 @@
       <workItem from="1499087586415" duration="3213000" />
       <workItem from="1499091454285" duration="22508000" />
       <workItem from="1499149573710" duration="18734000" />
+      <workItem from="1499245402671" duration="2734000" />
+      <workItem from="1499326216169" duration="596000" />
+      <workItem from="1499347080237" duration="14689000" />
+      <workItem from="1499412173581" duration="18670000" />
+      <workItem from="1499512644937" duration="5828000" />
+      <workItem from="1499678640088" duration="12114000" />
+      <workItem from="1499770666851" duration="2612000" />
+      <workItem from="1499776743820" duration="15964000" />
+      <workItem from="1499840145174" duration="11723000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="393901000" />
+    <option name="totallyTimeSpent" value="478831000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1235,6 +1235,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1247,17 +1248,17 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22816594" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2128821" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.17139737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17030568" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24404761" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19940476" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -1277,12 +1278,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="63" />
+      <option name="time" value="93" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="SpringBootApplicationConfigurationType">
-        <watch expression="value" />
-        <watch expression="((DbReaderServiceImpl)dbReaderService).restaurantRepository" custom="saleswebapp.service.impl.DbReaderServiceImpl" />
+        <watch expression="foo" />
       </configuration>
     </watches-manager>
   </component>
@@ -1291,219 +1291,354 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/Application.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/TimeSchedule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="604">
+          <caret line="80" column="48" lean-forward="false" selection-start-line="80" selection-start-column="48" selection-end-line="80" selection-end-column="48" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeRestaurantForm.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/HomeRestController.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/OpeningTimeRepository.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/RestaurantDailyTimeContainer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="786">
-          <caret line="50" column="28" lean-forward="false" selection-start-line="50" selection-start-column="28" selection-end-line="50" selection-end-column="28" />
-          <folding />
+        <state relative-caret-position="374">
+          <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static.js/datatable.js" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="95" column="21" lean-forward="false" selection-start-line="95" selection-start-column="21" selection-end-line="95" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/Country.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantCourseTypeForm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-          <folding />
+          <caret line="25" column="46" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/RestaurantType.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/KitchenType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="21" column="27" lean-forward="false" selection-start-line="21" selection-start-column="27" selection-end-line="21" selection-end-column="27" />
-          <folding />
+        <state relative-caret-position="272">
+          <caret line="17" column="38" lean-forward="false" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/Restaurant.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/CourseType.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="7" lean-forward="true" selection-start-line="10" selection-start-column="7" selection-end-line="10" selection-end-column="7" />
-          <folding>
-            <element signature="e#1480#1481#0" expanded="false" />
-            <element signature="e#1505#1506#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="289">
+          <caret line="17" column="37" lean-forward="false" selection-start-line="17" selection-start-column="37" selection-end-line="17" selection-end-column="37" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/PasswordResetForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="18" column="57" lean-forward="false" selection-start-line="18" selection-start-column="57" selection-end-line="18" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/PasswordRequestForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/EmailService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/EmailServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="46" column="73" lean-forward="false" selection-start-line="46" selection-start-column="73" selection-end-line="46" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeRestaurantForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1088">
+          <caret line="98" column="24" lean-forward="false" selection-start-line="98" selection-start-column="24" selection-end-line="98" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeToDoForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="70" column="34" lean-forward="false" selection-start-line="70" selection-start-column="34" selection-end-line="70" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/HomeService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="10" column="17" lean-forward="false" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/PasswordResetService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/BootstrapsTutorialController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/PasswordResetController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/PasswordRequestController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/ProfileForm.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/passwordRequest.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="60" column="16" lean-forward="false" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="16" />
+        <state relative-caret-position="340">
+          <caret line="26" column="32" lean-forward="false" selection-start-line="26" selection-start-column="32" selection-end-line="29" selection-end-column="40" />
           <folding>
-            <element signature="e#1904#1905#0" expanded="false" />
-            <element signature="e#1927#1928#0" expanded="false" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1499169090490" expanded="true" signature="615:641" ph="Passwort wiederherstellen" />
+            <marker date="1499169090490" expanded="true" signature="1391:1426" ph="Geben Sie Ihre SalesWebApp-ID(Mail) ein um einen Sicherheitscode zum zurücksetzen Ihres Passworts per Mail zu erhalten." />
+            <marker date="1499169090490" expanded="true" signature="1489:1523" ph="Bitte geben Sie Ihre Mailadresse ein:" />
+            <marker date="1499169090490" expanded="true" signature="1842:1881" ph="Max.Mustermann@web.com" />
+            <marker date="1499169090490" expanded="true" signature="2138:2158" ph="Senden" />
+            <marker date="1499169090490" expanded="true" signature="2296:2318" ph="Abbrechen" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/navbarLogin.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
-          <folding />
+        <state relative-caret-position="136">
+          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/BootstrapsTutorial/BootstrapsTutorial3.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/ToDoListRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-272">
-          <caret line="11" column="44" lean-forward="false" selection-start-line="11" selection-start-column="44" selection-end-line="11" selection-end-column="44" />
-          <folding />
+        <state relative-caret-position="136">
+          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/BootstrapsTutorial/BootstrapsTutorial4.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/HomeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="34" column="29" lean-forward="true" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="29" />
-          <folding />
+        <state relative-caret-position="357">
+          <caret line="28" column="74" lean-forward="true" selection-start-line="28" selection-start-column="74" selection-end-line="28" selection-end-column="74" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/BootstrapsTutorial/BootstrapsTutorial2.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/HomeServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="23" selection-end-column="18" />
+        <state relative-caret-position="238">
+          <caret line="24" column="39" lean-forward="false" selection-start-line="24" selection-start-column="39" selection-end-line="24" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_en.properties">
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1768">
+          <caret line="104" column="21" lean-forward="false" selection-start-line="104" selection-start-column="21" selection-end-line="104" selection-end-column="21" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="31" column="22" lean-forward="false" selection-start-line="31" selection-start-column="22" selection-end-line="31" selection-end-column="22" />
+        <state relative-caret-position="323">
+          <caret line="19" column="48" lean-forward="false" selection-start-line="19" selection-start-column="48" selection-end-line="19" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/ProfileController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="578">
+          <caret line="63" column="33" lean-forward="false" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/CountryServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/SalesPersonRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="12" column="39" lean-forward="false" selection-start-line="12" selection-start-column="39" selection-end-line="12" selection-end-column="87" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/RestaurantTypeRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="15" column="36" lean-forward="false" selection-start-line="15" selection-start-column="36" selection-end-line="15" selection-end-column="36" />
           <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#nav#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1499157089791" expanded="true" signature="1050:1073" ph="Anbieter" />
-            <marker date="1499157089791" expanded="true" signature="1162:1188" ph="Essensangebote" />
-            <marker date="1499157089791" expanded="true" signature="1277:1298" ph="Aktivität erfassen" />
-            <marker date="1499157089791" expanded="true" signature="1387:1408" ph="Protokoll" />
-            <marker date="1499157089791" expanded="true" signature="1497:1522" ph="Vertriebsanalyse" />
-            <marker date="1499157089791" expanded="true" signature="1611:1636" ph="Tourenplanung" />
-            <marker date="1499157089791" expanded="true" signature="1736:1776" ph="Benutzerprofil" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/CountryRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/RestaurantType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Restaurant.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1224">
+          <caret line="74" column="44" lean-forward="true" selection-start-line="74" selection-start-column="44" selection-end-line="74" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/RestaurantRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="49" lean-forward="false" selection-start-line="20" selection-start-column="49" selection-end-line="20" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="84" column="43" lean-forward="true" selection-start-line="84" selection-start-column="43" selection-end-line="84" selection-end-column="43" />
+          <folding>
+            <element signature="n#style#0;n#select#0;n#p#0;n#div#6;n#div#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <marker date="1499779586687" expanded="true" signature="333:354" ph="Benutzerprofil anpassen" />
+            <marker date="1499779586687" expanded="true" signature="826:863" ph="Bitte geben Sie die Kontaktdaten an, unter welchen Sie geschäftlich erreichbar sein wollen." />
+            <marker date="1499779586687" expanded="true" signature="914:943" ph="Benutzerdaten" />
+            <marker date="1499779586687" expanded="true" signature="1253:1276" ph="Vorname" />
+            <marker date="1499779586687" expanded="true" signature="1860:1884" ph="Nachname" />
+            <marker date="1499779586687" expanded="true" signature="2470:2485" ph="Nachname" />
+            <marker date="1499779586687" expanded="true" signature="2470:2490" ph="Straße" />
+            <marker date="1499779586687" expanded="true" signature="3068:3094" ph="Hausnummer" />
+            <marker date="1499779586687" expanded="true" signature="3684:3701" ph="Postleitzahl" />
+            <marker date="1499779586687" expanded="true" signature="4273:4291" ph="Stadt" />
+            <marker date="1499779586687" expanded="true" signature="4866:4887" ph="Land" />
+            <marker date="1499779586687" expanded="true" signature="5604:5623" ph="Telefon" />
+            <marker date="1499779586687" expanded="true" signature="6199:6218" ph="Mail" />
+            <marker date="1499779586687" expanded="true" signature="6794:6812" ph="IBAN" />
+            <marker date="1499779586687" expanded="true" signature="7413:7430" ph="BIC" />
+            <marker date="1499779586687" expanded="true" signature="7913:7950" ph="Bitte tragen Sie alle Passwortdaten ein, falls Sie das Passwort ändern möchten." />
+            <marker date="1499779586687" expanded="true" signature="8001:8030" ph="Passwortwechsel" />
+            <marker date="1499779586687" expanded="true" signature="8340:8367" ph="Passwort" />
+            <marker date="1499779586687" expanded="true" signature="8943:8968" ph="neues Passwort" />
+            <marker date="1499779586687" expanded="true" signature="9540:9571" ph="neues Passwort" />
+            <marker date="1499779586687" expanded="true" signature="10155:10175" ph="Speichern" />
+            <marker date="1499779586687" expanded="true" signature="10291:10313" ph="Abbrechen" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/CountryRepository.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="12" column="35" lean-forward="false" selection-start-line="12" selection-start-column="35" selection-end-line="12" selection-end-column="80" />
+          <caret line="12" column="43" lean-forward="true" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="56" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/SalesPersonRepository.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/RestaurantKitchenTypeRepository.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="6" column="28" lean-forward="true" selection-start-line="6" selection-start-column="28" selection-end-line="6" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="13" column="52" lean-forward="true" selection-start-line="13" selection-start-column="52" selection-end-line="13" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="60" column="5" lean-forward="true" selection-start-line="60" selection-start-column="5" selection-end-line="60" selection-end-column="5" />
-          <folding />
+        <state relative-caret-position="255">
+          <caret line="15" column="33" lean-forward="false" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
+        <state relative-caret-position="425">
+          <caret line="27" column="43" lean-forward="false" selection-start-line="27" selection-start-column="43" selection-end-line="27" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="81" column="58" lean-forward="false" selection-start-line="81" selection-start-column="58" selection-end-line="81" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#1064#1065#0" expanded="false" />
+            <element signature="e#1126#1127#0" expanded="false" />
+            <element signature="e#1193#1194#0" expanded="false" />
+            <element signature="e#1249#1250#0" expanded="false" />
+            <element signature="e#1309#1310#0" expanded="false" />
+            <element signature="e#1359#1360#0" expanded="false" />
+            <element signature="e#1671#1672#0" expanded="false" />
+            <element signature="e#1736#1737#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/main.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeRestaurantForm.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="80" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="80" />
+        <state relative-caret-position="1275">
+          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1054#1055#0" expanded="true" />
-            <element signature="e#1093#1094#0" expanded="true" />
+            <marker date="1499691805572" expanded="true" signature="2681:2714" ph="Ihr Benutzerprofil wurde erfolgreich gespeichert." />
+            <marker date="1499691805572" expanded="true" signature="3002:3039" ph="Ihr Benutzerprofil wurde während Ihrer Änderungen angepasst. Bitte versuchen Sie es erneut." />
+            <marker date="1499691805572" expanded="true" signature="3326:3362" ph="Sie haben keine Zugriffsberechtigung auf dieses Restaurant." />
+            <marker date="1499691805572" expanded="true" signature="3476:3504" ph="ToDo Liste" />
+            <marker date="1499691805572" expanded="true" signature="3731:3762" ph="Restaurant" />
+            <marker date="1499691805572" expanded="true" signature="3812:3835" ph="Vorgangsnummer" />
+            <marker date="1499691805572" expanded="true" signature="3885:3916" ph="Anliegen" />
+            <marker date="1499691805572" expanded="true" signature="3966:3996" ph="Zeitpunkt" />
+            <marker date="1499691805572" expanded="true" signature="4046:4071" ph="gelesen" />
+            <marker date="1499691805572" expanded="true" signature="4533:4567" ph="Änderungen freigeben" />
+            <marker date="1499691805572" expanded="true" signature="4661:4694" ph="Änderungen freigeben" />
+            <marker date="1499691805572" expanded="true" signature="4661:4695" ph="Besuchsaufforderung" />
+            <marker date="1499691805572" expanded="true" signature="4783:4816" ph="Änderungen freigeben" />
+            <marker date="1499691805572" expanded="true" signature="4783:4817" ph="Umsatzwarnung" />
+            <marker date="1499691805572" expanded="true" signature="5133:5167" ph="Restaurants" />
+            <marker date="1499691805572" expanded="true" signature="5400:5431" ph="Name" />
+            <marker date="1499691805572" expanded="true" signature="5481:5513" ph="Email" />
+            <marker date="1499691805572" expanded="true" signature="5563:5595" ph="Telefon" />
+            <marker date="1499691805572" expanded="true" signature="5645:5678" ph="Straße" />
+            <marker date="1499691805572" expanded="true" signature="5728:5759" ph="Stadt" />
+            <marker date="1499691805572" expanded="true" signature="5809:5839" ph="PLZ" />
+            <marker date="1499691805572" expanded="true" signature="5966:5997" ph="Name" />
+            <marker date="1499691805572" expanded="true" signature="6047:6079" ph="Email" />
+            <marker date="1499691805572" expanded="true" signature="6129:6161" ph="Telefon" />
+            <marker date="1499691805572" expanded="true" signature="6211:6244" ph="Straße" />
+            <marker date="1499691805572" expanded="true" signature="6294:6325" ph="Stadt" />
+            <marker date="1499691805572" expanded="true" signature="6375:6405" ph="PLZ" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/HomeService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/Foo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="0" lean-forward="true" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/SalesPerson.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="48" column="38" lean-forward="true" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+        <state relative-caret-position="255">
+          <caret line="15" column="60" lean-forward="false" selection-start-line="15" selection-start-column="60" selection-end-line="15" selection-end-column="60" />
           <folding />
         </state>
       </provider>
@@ -1516,315 +1651,161 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/ProfileForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeToDoForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="24" column="44" lean-forward="true" selection-start-line="24" selection-start-column="44" selection-end-line="24" selection-end-column="44" />
+        <state relative-caret-position="1819">
+          <caret line="151" column="39" lean-forward="true" selection-start-line="151" selection-start-column="39" selection-end-line="151" selection-end-column="39" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#538#539#0" expanded="true" />
-            <element signature="e#561#562#0" expanded="true" />
-            <element signature="e#950#951#0" expanded="true" />
-            <element signature="e#989#990#0" expanded="true" />
-            <element signature="e#1015#1016#0" expanded="true" />
-            <element signature="e#1040#1041#0" expanded="true" />
-            <element signature="e#1073#1074#0" expanded="true" />
-            <element signature="e#1101#1102#0" expanded="true" />
-            <element signature="e#1138#1139#0" expanded="true" />
-            <element signature="e#1171#1172#0" expanded="true" />
-            <element signature="e#1223#1224#0" expanded="true" />
-            <element signature="e#1267#1268#0" expanded="true" />
-            <element signature="e#1308#1309#0" expanded="true" />
-            <element signature="e#1345#1346#0" expanded="true" />
-            <element signature="e#1405#1406#0" expanded="true" />
-            <element signature="e#1457#1458#0" expanded="true" />
-            <element signature="e#1493#1494#0" expanded="true" />
-            <element signature="e#1525#1526#0" expanded="true" />
-            <element signature="e#1575#1576#0" expanded="true" />
-            <element signature="e#1617#1618#0" expanded="true" />
+            <element signature="e#3918#3919#0" expanded="false" />
+            <element signature="e#3964#3965#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/head.html">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.0.33/tomcat-embed-core-8.0.33.jar!/org/apache/tomcat/util/threads/TaskThread.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="76" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="76" />
+        <state relative-caret-position="493">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/fragments/footer.html">
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-webmvc/4.2.6.RELEASE/spring-webmvc-4.2.6.RELEASE.jar!/org/springframework/web/servlet/mvc/method/annotation/RequestMappingHandlerAdapter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="7" lean-forward="true" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#div#0;n#footer#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="106">
+          <caret line="457" column="0" lean-forward="false" selection-start-line="457" selection-start-column="0" selection-end-line="457" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/profile.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/RestaurantService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
-          <caret line="19" column="12" lean-forward="false" selection-start-line="19" selection-start-column="12" selection-end-line="21" selection-end-column="17" />
-          <folding>
-            <marker date="1499110664468" expanded="true" signature="333:359" ph="Benutzerprofil anpassen" />
-            <marker date="1499110664468" expanded="true" signature="831:868" ph="Bitte geben Sie die Kontaktdaten an, unter welchen Sie geschäftlich erreichbar sein wollen." />
-            <marker date="1499110664468" expanded="true" signature="919:948" ph="Benutzerdaten" />
-            <marker date="1499110664468" expanded="true" signature="1258:1281" ph="Vorname" />
-            <marker date="1499110664468" expanded="true" signature="1865:1889" ph="Nachname" />
-            <marker date="1499110664468" expanded="true" signature="2475:2490" ph="Nachname" />
-            <marker date="1499110664468" expanded="true" signature="2475:2495" ph="Straße" />
-            <marker date="1499110664468" expanded="true" signature="3073:3099" ph="Hausnummer" />
-            <marker date="1499110664468" expanded="true" signature="3689:3706" ph="Postleitzahl" />
-            <marker date="1499110664468" expanded="true" signature="4278:4296" ph="Stadt" />
-            <marker date="1499110664468" expanded="true" signature="4871:4892" ph="Land" />
-            <marker date="1499110664468" expanded="true" signature="5584:5603" ph="Telefon" />
-            <marker date="1499110664468" expanded="true" signature="6179:6198" ph="Mail" />
-            <marker date="1499110664468" expanded="true" signature="6774:6792" ph="IBAN" />
-            <marker date="1499110664468" expanded="true" signature="7393:7410" ph="BIC" />
-            <marker date="1499110664468" expanded="true" signature="7893:7930" ph="Bitte tragen Sie alle Passwortdaten ein, falls Sie das Passwort ändern möchten." />
-            <marker date="1499110664468" expanded="true" signature="7981:8010" ph="Passwortwechsel" />
-            <marker date="1499110664468" expanded="true" signature="8320:8347" ph="Passwort" />
-            <marker date="1499110664468" expanded="true" signature="8923:8948" ph="neues Passwort" />
-            <marker date="1499110664468" expanded="true" signature="9520:9551" ph="neues Passwort" />
-            <marker date="1499110664468" expanded="true" signature="10135:10155" ph="Speichern" />
-            <marker date="1499110664468" expanded="true" signature="10271:10293" ph="Abbrechen" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_en.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="617">
-          <caret line="102" column="50" lean-forward="false" selection-start-line="102" selection-start-column="50" selection-end-line="102" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/static/css/main.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="23" lean-forward="false" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <caret line="23" column="14" lean-forward="false" selection-start-line="23" selection-start-column="14" selection-end-line="23" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_de.properties">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantKitchenTypeForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="52" lean-forward="false" selection-start-line="11" selection-start-column="52" selection-end-line="11" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="627">
-          <caret line="79" column="108" lean-forward="false" selection-start-line="79" selection-start-column="108" selection-end-line="79" selection-end-column="108" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1499166967321" expanded="true" signature="2681:2714" ph="Ihr Benutzerprofil wurde erfolgreich gespeichert." />
-            <marker date="1499166967321" expanded="true" signature="3003:3040" ph="Ihr Benutzerprofil wurde während Ihrer Änderungen angepasst. Bitte versuchen Sie es erneut." />
-            <marker date="1499166967321" expanded="true" signature="3154:3182" ph="ToDo Liste" />
-            <marker date="1499166967321" expanded="true" signature="3409:3440" ph="Restaurant" />
-            <marker date="1499166967321" expanded="true" signature="3490:3513" ph="Vorgangsnummer" />
-            <marker date="1499166967321" expanded="true" signature="3563:3594" ph="Anliegen" />
-            <marker date="1499166967321" expanded="true" signature="3644:3674" ph="Zeitpunkt" />
-            <marker date="1499166967321" expanded="true" signature="3724:3749" ph="gelesen" />
-            <marker date="1499166967321" expanded="true" signature="4170:4204" ph="Änderungen freigeben" />
-            <marker date="1499166967321" expanded="true" signature="4298:4331" ph="Änderungen freigeben" />
-            <marker date="1499166967321" expanded="true" signature="4298:4332" ph="Besuchsaufforderung" />
-            <marker date="1499166967321" expanded="true" signature="4420:4453" ph="Änderungen freigeben" />
-            <marker date="1499166967321" expanded="true" signature="4420:4454" ph="Umsatzwarnung" />
-            <marker date="1499166967321" expanded="true" signature="4770:4804" ph="Restaurants" />
-            <marker date="1499166967321" expanded="true" signature="5037:5068" ph="Name" />
-            <marker date="1499166967321" expanded="true" signature="5118:5150" ph="Email" />
-            <marker date="1499166967321" expanded="true" signature="5200:5232" ph="Telefon" />
-            <marker date="1499166967321" expanded="true" signature="5282:5315" ph="Straße" />
-            <marker date="1499166967321" expanded="true" signature="5365:5396" ph="Stadt" />
-            <marker date="1499166967321" expanded="true" signature="5446:5476" ph="PLZ" />
-            <marker date="1499166967321" expanded="true" signature="5603:5634" ph="Name" />
-            <marker date="1499166967321" expanded="true" signature="5684:5716" ph="Email" />
-            <marker date="1499166967321" expanded="true" signature="5766:5798" ph="Telefon" />
-            <marker date="1499166967321" expanded="true" signature="5848:5881" ph="Straße" />
-            <marker date="1499166967321" expanded="true" signature="5931:5962" ph="Stadt" />
-            <marker date="1499166967321" expanded="true" signature="6012:6042" ph="PLZ" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/passwordRequest.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="24" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="110" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#button#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#1;n#form#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1499169090490" expanded="true" signature="615:641" ph="Passwort wiederherstellen" />
-            <marker date="1499169090490" expanded="true" signature="1391:1426" ph="Geben Sie Ihre SalesWebApp-ID(Mail) ein um einen Sicherheitscode zum zurücksetzen Ihres Passworts per Mail zu erhalten." />
-            <marker date="1499169090490" expanded="true" signature="1489:1523" ph="Bitte geben Sie Ihre Mailadresse ein:" />
-            <marker date="1499169090490" expanded="true" signature="1842:1881" ph="Max.Mustermann@web.com" />
-            <marker date="1499169090490" expanded="true" signature="2138:2158" ph="Senden" />
-            <marker date="1499169090490" expanded="true" signature="2296:2318" ph="Abbrechen" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/passwordReset.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="64" column="72" lean-forward="false" selection-start-line="64" selection-start-column="72" selection-end-line="64" selection-end-column="72" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#1;n#div#4;n#form#0;n#div#1;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1499169499452" expanded="true" signature="559:583" ph="Passwort wiederherstellen" />
-            <marker date="1499169499452" expanded="true" signature="894:922" ph="Sie haben eine Mail von SalesWebApp mit einem Sicherheitscode erhalten." />
-            <marker date="1499169499452" expanded="true" signature="1466:1506" ph="Wenden Sie sich an den Administrator falls Sie keine Mail mit dem Sicherheitscode erhalten haben." />
-            <marker date="1499169499452" expanded="true" signature="1565:1597" ph="Sicherheitscode" />
-            <marker date="1499169499452" expanded="true" signature="2192:2228" ph="PW-Richtlinie" />
-            <marker date="1499169499452" expanded="true" signature="2287:2318" ph="neues Passwort" />
-            <marker date="1499169499452" expanded="true" signature="2982:3019" ph="Passwort wiederholen" />
-            <marker date="1499169499452" expanded="true" signature="3541:3561" ph="Speichern" />
-            <marker date="1499169499452" expanded="true" signature="3698:3730" ph="Neuer Sicherheitscode" />
-            <marker date="1499169499452" expanded="true" signature="3850:3872" ph="Abbrechen" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/BootstrapsTutorialController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
+        <state relative-caret-position="119">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/HomeController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="28" column="95" lean-forward="false" selection-start-line="28" selection-start-column="95" selection-end-line="28" selection-end-column="95" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/PasswordRequestController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/PasswordResetController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/ProfileController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="29" column="13" lean-forward="false" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/ToDoListRequestTyp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="19" column="37" lean-forward="false" selection-start-line="19" selection-start-column="37" selection-end-line="19" selection-end-column="37" />
+        <state relative-caret-position="-255">
+          <caret line="6" column="0" lean-forward="false" selection-start-line="6" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="e#3992#4000#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/impl/ToDoList.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantTypeForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="32" column="16" lean-forward="false" selection-start-line="32" selection-start-column="16" selection-end-line="32" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/domain/repository/ToDoListRepository.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" column="58" lean-forward="true" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+        <state relative-caret-position="374">
+          <caret line="28" column="0" lean-forward="true" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/HomeServiceImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantListForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="45" column="29" lean-forward="false" selection-start-line="45" selection-start-column="29" selection-end-line="45" selection-end-column="29" />
+        <state relative-caret-position="374">
+          <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#999#1019#0" expanded="true" />
-            <element signature="e#1438#1452#0" expanded="true" />
+            <element signature="e#727#728#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/login.html">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantForm.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="765">
+          <caret line="65" column="79" lean-forward="false" selection-start-line="65" selection-start-column="79" selection-end-line="65" selection-end-column="79" />
           <folding>
-            <element signature="n#style#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#h1#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1499169723803" expanded="true" signature="362:391" ph="Willkommen bei der SalesWebApp" />
-            <marker date="1499169723803" expanded="true" signature="435:464" ph="Ihr FindLunch CRM-Tool" />
-            <marker date="1499169723803" expanded="true" signature="884:908" ph="Benutzerkennung eingeben" />
-            <marker date="1499169723803" expanded="true" signature="1118:1153" ph="Sie haben Ihre Benutzerprofil-Email geändert. Bitte melden Sie sich erneut an." />
-            <marker date="1499169723803" expanded="true" signature="1344:1363" ph="Ungültige Eingaben für Email und Passwort" />
-            <marker date="1499169723803" expanded="true" signature="1556:1576" ph="Sie haben sich erfolgreich ausgeloggt." />
-            <marker date="1499169723803" expanded="true" signature="1784:1813" ph="Sie haben Ihr Passwort erfolgreich geändert." />
-            <marker date="1499169723803" expanded="true" signature="2425:2457" ph="Eingabe E-Mail" />
-            <marker date="1499169723803" expanded="true" signature="2929:2961" ph="Eingabe Passwort" />
-            <marker date="1499169723803" expanded="true" signature="3201:3225" ph="Einloggen" />
-            <marker date="1499169723803" expanded="true" signature="3410:3438" ph="Passwort wiederherstellen" />
+            <element signature="e#2689#2697#0" expanded="true" />
+            <element signature="e#7845#7846#0" expanded="true" />
+            <element signature="e#7894#7895#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/RestaurantController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="607">
+          <caret line="67" column="93" lean-forward="false" selection-start-line="67" selection-start-column="93" selection-end-line="67" selection-end-column="93" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_de.properties">
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="587">
+          <caret line="138" column="85" lean-forward="false" selection-start-line="138" selection-start-column="85" selection-end-line="138" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/restaurant.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="246" column="99" lean-forward="false" selection-start-line="246" selection-start-column="99" selection-end-line="246" selection-end-column="99" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#3;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#4;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#5;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#p#0;n#div#5;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#select#0;n#p#0;n#div#6;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#3;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#4;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#5;n#div#1;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#1;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#1;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#div#0;n#div#2;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1499854230457" expanded="true" signature="570:609" ph="Wählen Sie eine Restaurant aus um dieses zu laden." />
+            <marker date="1499854230457" expanded="true" signature="660:677" ph="Restaurant" />
+            <marker date="1499854230457" expanded="true" signature="660:691" ph="Restaurant laden" />
+            <marker date="1499854230457" expanded="true" signature="1524:1565" ph="Legt ein neues Restaurant an, welches nach ausfüllen der benötigten Felder gespeichert werden kann." />
+            <marker date="1499854230457" expanded="true" signature="1616:1649" ph="Legt ein neues Restaurant an, welches nach ausfüllen der benötigten Felder gespeichert werden kann." />
+            <marker date="1499854230457" expanded="true" signature="1775:1815" ph="neues Restaurant" />
+            <marker date="1499854230457" expanded="true" signature="1947:1985" ph="Restaurant" />
+            <marker date="1499854230457" expanded="true" signature="2629:2650" ph="Name" />
+            <marker date="1499854230457" expanded="true" signature="3225:3248" ph="Straße" />
+            <marker date="1499854230457" expanded="true" signature="3827:3856" ph="Hausnummer" />
+            <marker date="1499854230457" expanded="true" signature="4455:4475" ph="PLZ" />
+            <marker date="1499854230457" expanded="true" signature="5048:5069" ph="Stadt" />
+            <marker date="1499854230457" expanded="true" signature="5645:5669" ph="Land" />
+            <marker date="1499854230457" expanded="true" signature="6387:6418" ph="Restauranttyp" />
+            <marker date="1499854230457" expanded="true" signature="7234:7256" ph="Email" />
+            <marker date="1499854230457" expanded="true" signature="7833:7855" ph="Telefon" />
+            <marker date="1499854230457" expanded="true" signature="8432:8452" ph="URL" />
+            <marker date="1499854230457" expanded="true" signature="9005:9022" ph="Längengrad" />
+            <marker date="1499854230457" expanded="true" signature="9005:9031" ph="Längengrad" />
+            <marker date="1499854230457" expanded="true" signature="9612:9637" ph="Breitengrad" />
+            <marker date="1499854230457" expanded="true" signature="10216:10243" ph="Restaurant-Nr" />
+            <marker date="1499854230457" expanded="true" signature="10864:10893" ph="Küchentypen" />
+            <marker date="1499854230457" expanded="true" signature="11647:11675" ph="Kategorien" />
+            <marker date="1499854230457" expanded="true" signature="12005:12040" ph="Bitte geben Sie die Öffnungszeiten im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
+            <marker date="1499854230457" expanded="true" signature="12120:12149" ph="Öffnungszeiten" />
+            <marker date="1499854230457" expanded="true" signature="12348:12371" ph="Montag" />
+            <marker date="1499854230457" expanded="true" signature="12896:12931" ph="Bitte geben Sie die Öffnungszeiten im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
+            <marker date="1499854230457" expanded="true" signature="13011:13038" ph="Angebotszeiten" />
           </folding>
         </state>
       </provider>

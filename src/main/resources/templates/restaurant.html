@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+    <head th:include="fragments/head :: includes">
+        <title>SalesWebApp User-Profil</title>
+    </head>
+
+    <body>
+    <div th:replace="fragments/navbar :: navbar"></div>
+
+    <div class="container">
+
+        <div class="row" style="padding-top: 2.5%">
+            <div>
+                <p class="form-inline">
+                    <label class="col-lg-2 col-lg-md-2 col-sm-3 col-form-label" style="padding-top: 0.6%">
+                        <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.loadRestaurant}"></label>
+                        <th th:text="#{restaurant.label.loadRestaurant}" />
+                    </label>
+
+                    <select class="form-control" onchange="window.location.href= 'restaurant?id=' + this.value">
+                        <option th:each="restaurant : ${restaurantList}"
+                                th:value="${restaurant.id}"
+                                th:text="${restaurant.name}"
+                                selected="selected">
+                        </option>
+                        <option disabled="disabled" selected="selected"></option>
+                    </select>
+                </p>
+            </div>
+
+            <div>
+                <p class="form-inline">
+                    <label class="col-lg-2 col-lg-md-2 col-sm-3 col-form-label" style="padding-top: 0.6%">
+                        <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.createRestaurant}"></label>
+                        <th th:text="#{restaurant.label.createRestaurant}" />
+                    </label>
+
+                    <a th:href="@{newRestaurant}" class="btn btn-primary"> <th th:text="#{restaurant.label.button.createRestaurant}" /> </a>
+                </p>
+            </div>
+        </div>
+
+        <div class="page-header">
+            <h3><th th:text="#{restaurant.label.headingRestaurantData}" /></h3>
+        </div>
+
+        <form th:action="@{/restaurant}" th:object="${restaurantForm}" method="post">
+        <div class="row">
+
+            <ul th:if="${#fields.hasErrors('*')}">
+                <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="text-danger" />
+            </ul>
+
+            <div class="col-lg-6 col-lg-md-12 col-sm-12">
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.name}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{name}')}? has-error">
+                            <input type="text" th:field="*{name}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.street}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{street}')}? has-error">
+                            <input type="text" th:field="*{street}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.streetNumber}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{streetNumber}')}? has-error">
+                                <input type="text" th:field="*{streetNumber}" required="required" class="form-control" />
+                            </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.zip}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{zip}')}? has-error">
+                            <input type="text" th:field="*{zip}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.city}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{city}')}? has-error">
+                            <input type="text" th:field="*{city}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"> </label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.country}" /> </label>
+
+                        <select class="form-control" th:field="*{countryForm}" style="width: 160px">
+                            <option th:each="country : ${countries}"
+                                    th:value="${country.countryCode}"
+                                    th:text="${country.name}">
+                            </option>
+                        </select>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"> </label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.RestaurantType}" /> </label>
+
+                        <select class="form-control" th:field="*{restaurantTypeForm}" style="width: 160px">
+                            <option th:each="restaurantTyp : ${restaurantTypes}"
+                                    th:value="${restaurantTyp.id}"
+                                    th:text="${restaurantTyp.name}">
+                            </option>
+                        </select>
+                    </p>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-lg-md-12 col-sm-12">
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.email}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{email}')}? has-error">
+                            <input type="text" th:field="*{email}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.phone}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{phone}')}? has-error">
+                            <input type="text" th:field="*{phone}" required="required" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.url}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{url}')}? has-error">
+                            <input type="text" th:field="*{url}" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.longitude}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{locationLongitude}')}? has-error">
+                            <input type="text" th:field="*{locationLongitude}" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.latitude}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{locationLatitude}')}? has-error">
+                            <input type="text" th:field="*{locationLatitude}" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+
+                <div>
+                    <p class="form-inline">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.customerId}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{customerId}')}? has-error">
+                            <input type="text" th:field="*{customerId}" class="form-control" disabled="disabled" />
+                        </span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- KitchenTypes -->
+        <div class="row">
+            <div class="col-lg-6 col-lg-md-6 col-sm-12">
+                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                <label class="span-top-padding"><th th:text="#{restaurant.label.kitchenTypes}" /> </label>
+
+                <div class="col-lg-offset-4 col-lg-md-offset-3 col-sm-offset-3" style="padding-left: 55px">
+                    <div th:each="kitchenType : ${restaurantKitchenTypes}">
+                        <input type="checkbox" th:field="*{restaurantKitchenTypesForm}" th:value="${kitchenType}" />
+                        <label th:text="${kitchenType}" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Category not implemented yet -->
+        <div class="row">
+            <div class="col-lg-6 col-lg-md-6 col-sm-12">
+                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                <label class="span-top-padding"><th th:text="#{restaurant.label.courseTypes}" /> </label>
+            </div>
+        </div>
+
+        <!-- Opening & offer times -->
+        <div class="row">
+
+            <!-- opening times -->
+            <div class="col-lg-6 col-lg-md-12 col-sm-12">
+                <p class="form-inline">
+                    <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.timeFormat}"></label>
+                    <label class="span-top-padding"> <th th:text="#{restaurant.label.openingTimes}" /> </label>
+                </p>
+
+                <div class="col-lg-offset-1">
+                    <p class="form-inline">
+                        <label class="span-top-padding"> <th th:text="#{restaurant.label.monday}" /> </label>
+
+                        <span th:classappend="${#fields.hasErrors('*{customerId}')}? has-error">
+                            <input type="datetime" th:field="*{customerId}" class="form-control" />
+                        </span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- offer times -->
+            <div class="col-lg-6 col-lg-md-12 col-sm-12">
+                <p class="form-inline">
+                    <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.timeFormat}"></label>
+                    <label class="span-top-padding"> <th th:text="#{restaurant.label.offerTimes}" /> </label>
+                </p>
+            </div>
+
+        </div>
+
+
+
+        </form>
+
+
+    </div>
+
+    </body>
+
+</html>

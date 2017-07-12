@@ -7,7 +7,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-import saleswebapp.domain.repository.impl.SalesPerson;
+import saleswebapp.repository.impl.SalesPerson;
 import saleswebapp.service.EmailService;
 import saleswebapp.service.PasswordRequestService;
 import saleswebapp.service.DbReaderService;

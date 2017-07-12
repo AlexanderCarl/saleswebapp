@@ -48,9 +48,14 @@
                     <th th:text="#{home.success.profileChangeSuccess}" />
                 </div>
 
-                <div th:if="${param.profileWasChangedMeanwhile != null}" class="alert alert-success">
+                <div th:if="${param.profileWasChangedMeanwhile != null}" class="alert alert-danger">
                     <a href="/saleswebapp/home" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
                     <th th:text="#{home.error.profileWasChangedMeanwhile}" />
+                </div>
+
+                <div th:if="${param.noValidAccessToRestaurant != null}" class="alert alert-danger">
+                    <a href="/saleswebapp/home" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
+                    <th th:text="#{home.error.noValidAccessToRestaurant}" />
                 </div>
             </div>
 
@@ -71,7 +76,7 @@
 
             <tbody>
             <tr th:each="toDo : ${toDos}">
-                <td> <a class="btn-link" href="#" th:text="${toDo.restaurantName}" /> </td>
+                <td> <a class="btn-link" th:href="@{/restaurant(id=${toDo.restaurantId})}" th:text="${toDo.restaurantName}" /> </td>
                 <td> <span th:text="${toDo.id}" /> </td>
                 <td>
                     <div th:switch="${toDo.requestTyp}">
@@ -115,7 +120,7 @@
 
             <tbody>
             <tr th:each="restaurant : ${restaurants}">
-                <td> <a class="btn-link" href="#" th:text="${restaurant.name}" /> </td>
+                <td> <a class="btn-link" th:href="@{/restaurant(id=${restaurant.id})}" th:text="${restaurant.name}" /> </td>
                 <td> <span th:text="${restaurant.email}" /> </td>
                 <td> <span th:text="${restaurant.phone}" /> </td>
                 <td> <span th:text="${restaurant.street}" /> <span th:text="${restaurant.streetNumber}" /> </td>

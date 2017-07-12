@@ -4,14 +4,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import saleswebapp.domain.repository.RestaurantRepository;
-import saleswebapp.domain.repository.ToDoListRepository;
-import saleswebapp.domain.repository.impl.Country;
-import saleswebapp.domain.repository.impl.Restaurant;
-import saleswebapp.domain.repository.impl.SalesPerson;
-import saleswebapp.domain.repository.CountryRepository;
-import saleswebapp.domain.repository.SalesPersonRepository;
-import saleswebapp.domain.repository.impl.ToDoList;
+import saleswebapp.repository.*;
+import saleswebapp.repository.impl.*;
 import saleswebapp.service.DbReaderService;
 
 import java.util.List;
@@ -36,6 +30,12 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Autowired
     private ToDoListRepository toDoListRepository;
 
+    @Autowired
+    private RestaurantTypeRepository restaurantTypeRepository;
+
+    @Autowired
+    private RestaurantKitchenTypeRepository restaurantKitchenTypeRepository;
+
     @Override
     public SalesPerson getSalesPersonByEmail(String email) {
         return salesPersonRepository.getByEmail(email);
@@ -54,7 +54,7 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Override
     public List<Restaurant> getAllRestaurantsOfSalesPerson(String email) {
         int salesPersonId = salesPersonRepository.getByEmail(email).getId();
-        return restaurantRepository.getAllBySalesPersonIdOrSalesPersonIdNull(salesPersonId);
+        return restaurantRepository.getAllBySalesPersonId(salesPersonId);
     }
 
     @Override
@@ -66,5 +66,21 @@ public class DbReaderServiceImpl implements DbReaderService {
     public List<ToDoList> getAllToDosOfSalesPerson(String email) {
         return toDoListRepository.getAllBySalesPersonEmail(email);
     }
+
+    @Override
+    public List<RestaurantType> getAllRestaurantTypes() {
+        return restaurantTypeRepository.getAllBy();
+    }
+
+    @Override
+    public Restaurant getRestaurantByCustomerId(int id) {
+        return restaurantRepository.getRestaurantByCustomerId(id);
+    }
+
+    @Override
+    public List<KitchenType> getAllKitchenTypes() {
+        return restaurantKitchenTypeRepository.getAllBy();
+    }
+
 
 }
