@@ -52,6 +52,8 @@ public class ProfileController {
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String profile(Model model) {
         String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        loggedInUser = "carl@hm.edu"; //Dev-Only
+
         SalesPerson salesPerson = dbReaderService.getSalesPersonByEmail(loggedInUser);
         salesPersonsTransactionStart.put(salesPerson.getId(), salesPerson);
 

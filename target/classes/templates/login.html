@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head th:include="fragments/head :: includes">
+    <head th:include="fragments/head :: head">
         <title>SalesWebApp Login</title>
     </head>
 
@@ -51,7 +51,7 @@
                                     <input type="password" class="form-control" id="password" name="password" th:placeholder="#{login.label.placeholder.password}" required="required" />
                                 </div>
 
-                                <div class="form-actions-interspace" >
+                                <div style="padding-top: 3%; padding-bottom: 4%" >
                                     <input type="submit" class="btn btn-block btn-primary" th:value="#{login.label.button.login}" />
                                 </div>
 

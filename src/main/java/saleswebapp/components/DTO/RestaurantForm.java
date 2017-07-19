@@ -1,17 +1,22 @@
 package saleswebapp.components.DTO;
 
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageConfig;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import saleswebapp.components.RestaurantDailyTimeContainer;
+import saleswebapp.components.RestaurantTimeContainer;
 import saleswebapp.repository.impl.*;
-import saleswebapp.service.RestaurantService;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.*;
+import java.util.*;
 
 /**
  * Created by Alexander Carl on 07.07.2017.
@@ -28,7 +33,7 @@ public class RestaurantForm implements Serializable {
     private String streetNumber;
     private String zip;
     private String city;
-    private CountryForm countryForm;
+    private Country country;
     private Float locationLatitude;
     private Float locationLongitude;
     private String email;
@@ -37,18 +42,33 @@ public class RestaurantForm implements Serializable {
     private RestaurantTypeForm restaurantTypeForm; //Anbietertyp
     private List<String> restaurantKitchenTypesForm; //Küchentypen
     private List<RestaurantCourseTypeForm> restaurantCourseTypesForm; //Kategorien
-    private HashMap<Integer, RestaurantDailyTimeContainer> restaurantTime; //The Hashmap key is the day number
+    private List<RestaurantTimeContainer> openingTimes;
+    private List<RestaurantTimeContainer> offerTimes;
     private boolean offerModifyPermission;
     private boolean blocked;
-    private String salesPersonFirstname;
-    private String salesPersonSecondname;
     private String restaurantUUID;
     private byte[] qrUuid;
-    
+    private String qrUuidBase64Encoded;
+
+    //Generates a form for a new Restaurant
     public RestaurantForm() {
         super();
+        this.openingTimes = populateRestaurantTimeDayNumber();
+        this.offerTimes = populateRestaurantTimeDayNumber();
+        this.restaurantUUID = UUID.randomUUID().toString();
+
+        try {
+            this.qrUuid = createQRCode(restaurantUUID);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
+        this.qrUuidBase64Encoded = Base64.getEncoder().encodeToString(qrUuid);
     }
-    
+
+    //Generates a form for a given Restaurant
     public RestaurantForm(Restaurant restaurant) throws Exception {
         this.id = restaurant.getId();
         this.customerId = restaurant.getCustomerId();
@@ -57,7 +77,13 @@ public class RestaurantForm implements Serializable {
         this.streetNumber = restaurant.getStreetNumber();
         this.zip = restaurant.getZip();
         this.city = restaurant.getCity();
-        this.countryForm = new CountryForm(restaurant.getCountry());
+
+        //The CountryForm isn`t used here deliberately as it caused strange issues which are hard to fix.
+        Country country = restaurant.getCountry();
+        country.setRestaurants(null); //set null as the model would contain all restaurants otherwise
+        country.setSalesPersons(null); //set null as the model would contain all salesPersons otherwise
+        this.country = country;
+
         this.locationLatitude = restaurant.getLocationLatitude();
         this.locationLongitude = restaurant.getLocationLongitude();
         this.email = restaurant.getEmail();
@@ -81,18 +107,33 @@ public class RestaurantForm implements Serializable {
         }
         this.restaurantCourseTypesForm = restaurantCourseTypeForms;
 
-        DailyTimeContainerFiller(restaurant);
-
         this.offerModifyPermission = restaurant.isOfferModifyPermission();
         this.blocked = restaurant.isBlocked();
-        this.salesPersonFirstname = restaurant.getSalesPerson().getFirstName();
-        this.salesPersonSecondname = restaurant.getSalesPerson().getSecondName();
         this.restaurantUUID = restaurant.getRestaurantUUID();
         this.qrUuid = restaurant.getQrUuid();
+        this.qrUuidBase64Encoded = Base64.getEncoder().encodeToString(qrUuid);
 
+        restaurantTimeFiller(restaurant);
+
+        //CustomComparator to sort the dayNumbers of the time schedule. This ensures that the days will also be displayed in order (Mo - Su).
+        openingTimes.sort(Comparator.comparingInt(RestaurantTimeContainer::getDayNumber));
+        offerTimes.sort(Comparator.comparingInt(RestaurantTimeContainer::getDayNumber));
     }
 
-    private void DailyTimeContainerFiller(Restaurant restaurant) throws Exception {
+    //The Html-Page does need the day numbers to be rendered correctly.
+    private List<RestaurantTimeContainer> populateRestaurantTimeDayNumber() {
+        List<RestaurantTimeContainer> times = new ArrayList<RestaurantTimeContainer>();
+
+        for (int i = 1; i < 8; i++) {
+            RestaurantTimeContainer restaurantTimeContainer = new RestaurantTimeContainer();
+            restaurantTimeContainer.setDayNumber(i);
+            times.add(restaurantTimeContainer);
+        }
+
+        return times;
+    }
+
+    private void restaurantTimeFiller(Restaurant restaurant) throws Exception {
 
         if(restaurant.getTimeScheduleList().size() > 7) {
             throw new Exception("Error - The Table Time_Schedule contains more than 7 entries per week for restaurant-ID: " + restaurant.getId());
@@ -104,10 +145,11 @@ public class RestaurantForm implements Serializable {
         Date offerStartTime;
         Date offerEndTime;
 
-        List<TimeSchedule> timeSchedules = restaurant.getTimeScheduleList();
-        restaurantTime = new HashMap<Integer, RestaurantDailyTimeContainer>();
+        openingTimes = new ArrayList<RestaurantTimeContainer>();
+        offerTimes = new ArrayList<RestaurantTimeContainer>();
+        List<TimeSchedule> timeScheduleList = restaurant.getTimeScheduleList();
 
-        for (TimeSchedule timeSchedule : timeSchedules) {
+        for (TimeSchedule timeSchedule : timeScheduleList) {
             dayNumber = 0; //Valid day numbers range from 1 to 7.
             openingTime = null;
             closingTime = null;
@@ -117,16 +159,32 @@ public class RestaurantForm implements Serializable {
             dayNumber = timeSchedule.getDayOfWeek().getDayNumber();
             offerStartTime = timeSchedule.getOfferStartTime();
             offerEndTime = timeSchedule.getOfferEndTime();
+            offerTimes.add(new RestaurantTimeContainer(offerStartTime, offerEndTime, dayNumber));
 
             //The DB allows for more than one time schedule entry per day. But the FindLunchApplication only allows one pair of opening times per day.
-            //There it is handled similar here. If there is more than one pair of opening times per day it is ignored.
+            //The SWApp handles this similar. If there is more than one pair of opening times per day it is ignored.
             if(timeSchedule.getOpeningTimes().size() > 0) {
                 openingTime = timeSchedule.getOpeningTimes().get(0).getOpeningTime();
                 closingTime = timeSchedule.getOpeningTimes().get(0).getClosingTime();
             }
-
-            restaurantTime.put(dayNumber, new RestaurantDailyTimeContainer(openingTime, closingTime, offerStartTime, offerEndTime));
+            openingTimes.add(new RestaurantTimeContainer(openingTime, closingTime, dayNumber));
         }
+    }
+
+    //Creates tje QRCode as the in the findlunchApp but without saving it temporarely as a file on the hard drive.
+    private byte[] createQRCode(String qrUuid) throws IOException, WriterException {
+
+        //Creates a bitMatrix for the given String qrUuid
+        Map<EncodeHintType, Object> hintMap = new HashMap<EncodeHintType, Object>();
+        hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+        BitMatrix bitMatrix = new MultiFormatWriter().encode(qrUuid, BarcodeFormat.QR_CODE, 250, 250, hintMap);
+
+        //Writes the BitMatrix to a (byte[])image
+        BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
+
+        return byteArrayOutputStream.toByteArray();
     }
 
     public static long getSerialVersionUID() {
@@ -189,12 +247,12 @@ public class RestaurantForm implements Serializable {
         this.city = city;
     }
 
-    public CountryForm getCountryForm() {
-        return countryForm;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryForm(CountryForm countryForm) {
-        this.countryForm = countryForm;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public Float getLocationLatitude() {
@@ -261,12 +319,20 @@ public class RestaurantForm implements Serializable {
         this.restaurantCourseTypesForm = restaurantCourseTypesForm;
     }
 
-    public HashMap<Integer, RestaurantDailyTimeContainer> getRestaurantTime() {
-        return restaurantTime;
+    public List<RestaurantTimeContainer> getOpeningTimes() {
+        return openingTimes;
     }
 
-    public void setRestaurantTime(HashMap<Integer, RestaurantDailyTimeContainer> restaurantTime) {
-        this.restaurantTime = restaurantTime;
+    public void setOpeningTimes(List<RestaurantTimeContainer> openingTimes) {
+        this.openingTimes = openingTimes;
+    }
+
+    public List<RestaurantTimeContainer> getOfferTimes() {
+        return offerTimes;
+    }
+
+    public void setOfferTimes(List<RestaurantTimeContainer> offerTimes) {
+        this.offerTimes = offerTimes;
     }
 
     public boolean isOfferModifyPermission() {
@@ -285,22 +351,6 @@ public class RestaurantForm implements Serializable {
         this.blocked = blocked;
     }
 
-    public String getSalesPersonFirstname() {
-        return salesPersonFirstname;
-    }
-
-    public void setSalesPersonFirstname(String salesPersonFirstname) {
-        this.salesPersonFirstname = salesPersonFirstname;
-    }
-
-    public String getSalesPersonSecondname() {
-        return salesPersonSecondname;
-    }
-
-    public void setSalesPersonSecondname(String salesPersonSecondname) {
-        this.salesPersonSecondname = salesPersonSecondname;
-    }
-
     public String getRestaurantUUID() {
         return restaurantUUID;
     }
@@ -315,5 +365,13 @@ public class RestaurantForm implements Serializable {
 
     public void setQrUuid(byte[] qrUuid) {
         this.qrUuid = qrUuid;
+    }
+
+    public String getQrUuidBase64Encoded() {
+        return qrUuidBase64Encoded;
+    }
+
+    public void setQrUuidBase64Encoded(String qrUuidBase64Encoded) {
+        this.qrUuidBase64Encoded = qrUuidBase64Encoded;
     }
 }

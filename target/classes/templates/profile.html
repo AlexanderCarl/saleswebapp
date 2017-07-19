@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head th:include="fragments/head :: includes">
+    <head th:include="fragments/head :: head">
         <title>SalesWebApp User-Profil</title>
     </head>
 
@@ -24,7 +24,7 @@
             <div class="col-lg-6 col-lg-md-12 col-sm-12 col-xs-12">
                 <p>
                     <label class="glyphicon glyphicon-question-sign" th:title="#{profile.label.tooltip.headingUserData}"></label>
-                    <u> <th th:text="#{profile.label.headingUserData}" /> </u>
+                    <u> <label th:text="#{profile.label.headingUserData}" /> </u>
                 </p>
 
                 <div>
@@ -92,7 +92,7 @@
                         <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"> </label>
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{profile.label.country}" /> </label>
 
-                        <select class="form-control" th:field="*{countryForm}" style="width: 160px">
+                        <select class="form-control" th:field="*{country}" style="width: 160px">
                             <option th:each="country : ${countries}"
                                     th:value="${country.countryCode}"
                                     th:text="${country.name}">
@@ -145,7 +145,7 @@
             <div class="col-lg-6 col-lg-md-12 col-sm-12 col-xs-12">
                 <p>
                     <label class="glyphicon glyphicon-question-sign" th:title="#{profile.label.tooltip.headingPassword}"></label>
-                    <u> <th th:text="#{profile.label.headingPassword}" /> </u>
+                    <u> <label th:text="#{profile.label.headingPassword}" /> </u>
                 </p>
 
                 <div>
@@ -181,8 +181,8 @@
 
             <div class="col-lg-12 col-lg-md-12 col-sm-12 col-xs-12">
                 <div class="btn-toolbar" style="padding-bottom: 5%; padding-top: 1.5%">
-                    <button class="btn btn-primary" style="width: 20%" type="submit"> <th th:text="#{universal.label.save}" /> </button>
-                    <a th:href="@{home}" class="btn btn-primary" style="width: 20%"> <th th:text="#{universal.label.cancel}" /> </a>
+                    <button class="btn btn-primary" style="width: 15%" type="submit"> <th th:text="#{universal.label.save}" /> </button>
+                    <a th:href="@{home}" class="btn btn-primary" style="width: 15%"> <th th:text="#{universal.label.cancel}" /> </a>
                 </div>
             </div>
 

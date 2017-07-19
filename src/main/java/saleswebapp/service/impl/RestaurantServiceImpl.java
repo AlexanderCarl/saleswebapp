@@ -3,13 +3,16 @@ package saleswebapp.service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import saleswebapp.components.DTO.RestaurantListForm;
 import saleswebapp.components.DTO.RestaurantTypeForm;
+import saleswebapp.components.RestaurantAddCategory;
 import saleswebapp.repository.impl.KitchenType;
 import saleswebapp.repository.impl.Restaurant;
 import saleswebapp.repository.impl.RestaurantType;
 import saleswebapp.service.DbReaderService;
+import saleswebapp.service.DbWriterService;
 import saleswebapp.service.RestaurantService;
 
 import java.util.ArrayList;
@@ -29,6 +32,9 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Autowired
     private DbReaderService dbReaderService;
+
+    @Autowired
+    private DbWriterService dbWriterService;
 
     @Override
     public List<RestaurantListForm> getAllRestaurantNamesForSalesPerson(String email) {
@@ -119,4 +125,29 @@ public class RestaurantServiceImpl implements RestaurantService {
         return  allKitchenTypes;
     }
 
+    @Override
+    public void addCategoryToRestaurant(RestaurantAddCategory restaurantAddCategory) {
+        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        loggedInUser = "carl@hm.edu"; //Dev-Only
+
+        //Security check to ensure that a salesPerson can only add categories to restaurants he is assigned to.
+        Restaurant restaurant = dbReaderService.getRestaurantById(restaurantAddCategory.getRestaurantId());
+
+        if(!restaurant.getSalesPerson().getEmail().equals(loggedInUser)) {
+            logger.debug("Security Violation in the class RestaurantServiceImpl - user: " + loggedInUser + " tryed to add categories to a restaurant he is not assigned to.");
+        } else {
+            //Check if the String contains multiple course types. e.g. Vorspeise, Rotwein, Hauswein
+            String fullString = restaurantAddCategory.getName();
+            fullString = fullString.replaceAll("\\s+",""); //deletes whitespaces
+            String[] singleCourseTypesString = fullString.split("\\,"); //cuts the String after every ","
+
+            for (String subString : singleCourseTypesString) {
+                RestaurantAddCategory singleRestaurantAddCategory = new RestaurantAddCategory();
+                singleRestaurantAddCategory.setRestaurantId(restaurantAddCategory.getRestaurantId());
+                singleRestaurantAddCategory.setName(subString);
+
+                dbWriterService.addCategoryToRestaurant(singleRestaurantAddCategory);
+            }
+        }
+    }
 }

@@ -4,36 +4,17 @@
     color: black;
 }
 
-.jumbotron {
-    background-color: white;
-    text-align: center;
-}
-
-.pull-right-navbarLogin {
-    padding-right: 50px;
-    padding-top: 15px;
-}
-
-.one-line-navbar {
-    display: inline;
-}
-
-.href-black {
-    color: black;
-}
-
-.panel-link-login {
-    display: inline;
-    padding-left: 23%;
-}
-
-.form-actions-interspace {
-    padding-top: 3%;
-    padding-bottom: 4%;
-}
-
 .span-top-padding {
     padding-top: 1%;
+}
+
+.timeField-side-padding {
+    padding-right: 1.5%; !important;
+    padding-left: 1.5%; !important;
+}
+
+.timeField-width {
+    width: 630px; !important;
 }
 
 /* Sticky footer styles
@@ -44,14 +25,13 @@ html {
 }
 body {
     /* Margin bottom by footer height */
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 footer {
     position: absolute;
-    bottom: 0;
+    bottom: 0px;
     width: 100%;
     /* Set the fixed height of the footer here */
     height: 30px;
     background-color: #f5f5f5;
 }
-

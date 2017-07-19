@@ -35,7 +35,7 @@ public class ProfileForm implements Serializable {
     @Pattern(regexp = "^[a-zA-Z]{3,60}$", message = "{profile.validation.city}")
     private String city;
 
-    private CountryForm countryForm;
+    private Country country;
 
     @Pattern(regexp = "^[0][0-9/. \\-]{6,60}$", message = "{profile.validation.phone}")
     private String phone;
@@ -70,7 +70,13 @@ public class ProfileForm implements Serializable {
        this.zip = salesPerson.getZip();
        this.city = salesPerson.getCity();
        this.phone = salesPerson.getPhone();
-       this.countryForm = new CountryForm(salesPerson.getCountry());
+
+       //The CountryForm isn`t used here deliberately as it caused strange issues which are hard to fix.
+       Country country = salesPerson.getCountry();
+       country.setRestaurants(null); //set null as the model would contain all restaurants otherwise
+       country.setSalesPersons(null); //set null as the model would contain all salesPersons otherwise
+       this.country = country;
+
        this.email = salesPerson.getEmail();
        this.iban = salesPerson.getIban();
        this.bic = salesPerson.getBic();
@@ -144,12 +150,12 @@ public class ProfileForm implements Serializable {
         this.phone = phone;
     }
 
-    public CountryForm getCountryForm() {
-        return countryForm;
+    public Country getCountry() {
+        return country;
     }
 
-    public void setCountryForm(CountryForm countryForm) {
-        this.countryForm = countryForm;
+    public void setCountry(Country country) {
+        this.country = country;
     }
 
     public String getEmail() {

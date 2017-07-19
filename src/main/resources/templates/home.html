@@ -67,7 +67,10 @@
             <thead>
             <tr>
                 <th> <span th:text="#{home.label.toDoTable.restaurant}" /> </th>
-                <th> <span th:text="#{home.label.toDoTable.id}" /> </th>
+                <th>
+                    <span th:text="#{home.label.toDoTable.id}" />
+                    <span class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip}" />
+                </th>
                 <th> <span th:text="#{home.label.toDoTable.RequestTyp}" /> </th>
                 <th> <span th:text="#{home.label.toDoTable.timestamp}" /> </th>
                 <th> <span th:text="#{home.label.toDoTable.read}" /> </th>
@@ -77,7 +80,15 @@
             <tbody>
             <tr th:each="toDo : ${toDos}">
                 <td> <a class="btn-link" th:href="@{/restaurant(id=${toDo.restaurantId})}" th:text="${toDo.restaurantName}" /> </td>
-                <td> <span th:text="${toDo.id}" /> </td>
+                <td>
+                    <!-- Displays the processId(id) as a link if the requestTyp is a changeRequest -->
+                    <div th:switch="${toDo.requestTyp}">
+                        <span th:case="'Änderung freigeben'"> <a class="btn-link" th:href="@{/changeRequest(id=${toDo.id})}" th:text="${toDo.id}" /> </span>
+                        <span th:case="'Besuchsaufforderung'"> <span th:text="${toDo.id}" /> </span>
+                        <span th:case="'Umsatzwarnung'"> <span th:text="${toDo.id}" /> </span>
+                    </div>
+                </td>
+
                 <td>
                     <div th:switch="${toDo.requestTyp}">
                         <span th:case="'Änderung freigeben'"> <span th:text="#{home.label.toToTable.RequestTypId1}" /> </span>
@@ -85,8 +96,16 @@
                         <span th:case="'Umsatzwarnung'"> <span th:text="#{home.label.toToTable.RequestTypId3}" /> </span>
                     </div>
                 </td>
+
                 <td> <span th:text="${toDo.timestamp}" /> </td>
-                <td align="center"> <input type="checkbox"/> </td>
+
+                <td>
+                    <div th:switch="${toDo.requestTyp}">
+                        <span th:case="'Änderung freigeben'">  </span>
+                        <span th:case="'Besuchsaufforderung'"> #deleteIcon </span>
+                        <span th:case="'Umsatzwarnung'"> #deleteIcon </span>
+                    </div>
+                </td>
             </tr>
             </tbody>
         </table>
@@ -127,7 +146,6 @@
                 <td> <span th:text="${restaurant.city}" /> </td>
                 <td> <span th:text="${restaurant.zip}" /> </td>
             </tr>
-
             </tbody>
         </table>
 

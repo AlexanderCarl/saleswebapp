@@ -2,6 +2,7 @@ package saleswebapp.service;
 
 import saleswebapp.components.DTO.RestaurantListForm;
 import saleswebapp.components.DTO.RestaurantTypeForm;
+import saleswebapp.components.RestaurantAddCategory;
 import saleswebapp.repository.impl.Restaurant;
 
 import java.util.List;
@@ -22,4 +23,6 @@ public interface RestaurantService {
     int getUniqueCustomerId();
 
     List<String> getAllKitchenTypes();
+
+    void addCategoryToRestaurant(RestaurantAddCategory restaurantAddCategory);
 }

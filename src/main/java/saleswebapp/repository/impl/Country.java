@@ -38,4 +38,19 @@ public class Country {
         this.name = name;
     }
 
+    public List<SalesPerson> getSalesPersons() {
+        return salesPersons;
+    }
+
+    public void setSalesPersons(List<SalesPerson> salesPersons) {
+        this.salesPersons = salesPersons;
+    }
+
+    public List<Restaurant> getRestaurants() {
+        return restaurants;
+    }
+
+    public void setRestaurants(List<Restaurant> restaurants) {
+        this.restaurants = restaurants;
+    }
 }

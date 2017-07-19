@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import saleswebapp.components.DTO.RestaurantForm;
 import saleswebapp.components.DTO.RestaurantListForm;
+import saleswebapp.components.RestaurantAddCategory;
 import saleswebapp.service.CountryService;
 import saleswebapp.service.RestaurantService;
 
@@ -48,6 +49,7 @@ public class RestaurantController {
         model.addAttribute("countries", countryService.getAllCountries());
         model.addAttribute("restaurantTypes", restaurantService.getAllRestaurantTypes());
         model.addAttribute("restaurantKitchenTypes", restaurantService.getAllKitchenTypes());
+        model.addAttribute("restaurantAddCategory", new RestaurantAddCategory(0));
 
         return "restaurant";
     }
@@ -66,9 +68,23 @@ public class RestaurantController {
         model.addAttribute("countries", countryService.getAllCountries());
         model.addAttribute("restaurantTypes", restaurantService.getAllRestaurantTypes());
         model.addAttribute("restaurantKitchenTypes", restaurantService.getAllKitchenTypes());
+        model.addAttribute("restaurantAddCategory", new RestaurantAddCategory(restaurantId));
 
         return "restaurant";
     }
+
+    @RequestMapping(value = "/restaurant/addCategory", method = RequestMethod.POST)
+    public String processNewCategory(RestaurantAddCategory restaurantAddCategory) {
+        int restaurantId = restaurantAddCategory.getRestaurantId();
+
+        if (restaurantId == 0) {
+            return "redirect:/newRestaurant";
+        } else {
+            restaurantService.addCategoryToRestaurant(restaurantAddCategory);
+            return "redirect:/restaurant?id=" + restaurantId;
+        }
+    }
+
 
     @RequestMapping(value = "/restaurant", method = RequestMethod.POST)
     public String processRestaurant(Model model, RestaurantForm restaurantForm) {

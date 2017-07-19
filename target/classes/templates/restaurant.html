@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 
-    <head th:include="fragments/head :: includes">
+    <head th:include="fragments/head :: head">
         <title>SalesWebApp User-Profil</title>
     </head>
 
@@ -9,8 +9,7 @@
     <div th:replace="fragments/navbar :: navbar"></div>
 
     <div class="container">
-
-        <div class="row" style="padding-top: 2.5%">
+        <div class="row" style="padding-top: 25px">
             <div>
                 <p class="form-inline">
                     <label class="col-lg-2 col-lg-md-2 col-sm-3 col-form-label" style="padding-top: 0.6%">
@@ -36,7 +35,18 @@
                         <th th:text="#{restaurant.label.createRestaurant}" />
                     </label>
 
-                    <a th:href="@{newRestaurant}" class="btn btn-primary"> <th th:text="#{restaurant.label.button.createRestaurant}" /> </a>
+                    <a th:href="@{newRestaurant}" class="btn btn-primary" style="width: 15%"> <th th:text="#{restaurant.label.button.createRestaurant}" /> </a>
+                </p>
+            </div>
+
+            <div>
+                <p class="form-inline">
+                    <label class="col-lg-2 col-lg-md-2 col-sm-3 col-form-label" style="padding-top: 0.6%">
+                        <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.redirectOffer}"></label>
+                        <th th:text="#{restaurant.label.redirectOffer}" />
+                    </label>
+
+                    <a th:href="@{/offerOverview(id=${restaurantForm.id})}" class="btn btn-primary" style="width: 15%"> <th th:text="#{restaurant.label.button.redirectOffer}" /> </a>
                 </p>
             </div>
         </div>
@@ -45,7 +55,7 @@
             <h3><th th:text="#{restaurant.label.headingRestaurantData}" /></h3>
         </div>
 
-        <form th:action="@{/restaurant}" th:object="${restaurantForm}" method="post">
+        <form th:object="${restaurantForm}">
         <div class="row">
 
             <ul th:if="${#fields.hasErrors('*')}">
@@ -113,7 +123,7 @@
                         <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"> </label>
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.country}" /> </label>
 
-                        <select class="form-control" th:field="*{countryForm}" style="width: 160px">
+                        <select class="form-control" th:field="*{country}" style="width: 160px">
                             <option th:each="country : ${countries}"
                                     th:value="${country.countryCode}"
                                     th:text="${country.name}">
@@ -207,10 +217,12 @@
         </div>
 
         <!-- KitchenTypes -->
-        <div class="row">
+        <div class="row" style="padding-top: 25px">
             <div class="col-lg-6 col-lg-md-6 col-sm-12">
-                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                <label class="span-top-padding"><th th:text="#{restaurant.label.kitchenTypes}" /> </label>
+                <p class="form-inline">
+                    <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                    <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.kitchenTypes}" /> </label>
+                </p>
 
                 <div class="col-lg-offset-4 col-lg-md-offset-3 col-sm-offset-3" style="padding-left: 55px">
                     <div th:each="kitchenType : ${restaurantKitchenTypes}">
@@ -221,16 +233,52 @@
             </div>
         </div>
 
-        <!-- Category not implemented yet -->
-        <div class="row">
-            <div class="col-lg-6 col-lg-md-6 col-sm-12">
-                <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                <label class="span-top-padding"><th th:text="#{restaurant.label.courseTypes}" /> </label>
+        </form> <!-- closes the form with the object restaurantForm. The form will be reopened later -->
+
+        <!-- Category/CourseTypes -->
+        <div class="row" style="padding-top: 25px">
+            <div class="col-lg-12 col-lg-md-12 col-sm-12">
+            <form th:action="@{/restaurant/addCategory}" th:object="${restaurantAddCategory}" method="post">
+                <p class="form-inline">
+                    <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.courseTypes}"></label>
+                    <label class="span-top-padding"> <th th:text="#{restaurant.label.courseTypes}" /> </label>
+                </p>
+
+                <div class="col-lg-offset-2 col-lg-md-offset-2 col-lg-sm-offset-2 form-inline" style="padding-left: 1.1%">
+                    <input type="text" th:field="${restaurantAddCategory.name}" class="form-control" style="width: 300px" />
+                    <button class="btn btn-primary" style="width: 15%" type="submit"> <th th:text="#{restaurant.label.button.addCourseTypes}" /> </button>
+                </div>
+
+                <div>
+                    <input type="text" style="visibility: hidden" th:field="*{restaurantId}" />
+                </div>
+            </form>
+
+            <form th:action="@{/restaurant/deleteCategory}" th:object="${restaurantAddCategory}" method="post">
+                <div class="col-lg-offset-2 col-lg-md-offset-2 col-lg-sm-offset-2" style="padding-left: 1%; padding-top: 1%">
+                    <table id="restaurantTable" class="table table-striped table-bordered dataTables-scrollHead" cellspacing="0" style="width: 300px">
+                        <thead>
+                        <tr>
+                            <th> <span th:text="#{restaurant.label.courseTypes}" /> </th>
+                            <th> <button class="btn btn-primary" type="submit" th:text="#{restaurant.label.button.deleteCourseTypes}" /> </th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr th:each="category : ${restaurantForm.restaurantCourseTypesForm}">
+                            <td> <span th:text="${category.name}" /> </td>
+                            <td> <input type="checkbox" /> </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </form>
             </div>
         </div>
 
+        <form th:action="@{/restaurant}" th:object="${restaurantForm}" method="post"> <!-- Reopens the restaurantForm -->
         <!-- Opening & offer times -->
-        <div class="row">
+        <div class="row" style="padding-top: 25px">
 
             <!-- opening times -->
             <div class="col-lg-6 col-lg-md-12 col-sm-12">
@@ -239,14 +287,30 @@
                     <label class="span-top-padding"> <th th:text="#{restaurant.label.openingTimes}" /> </label>
                 </p>
 
-                <div class="col-lg-offset-1">
-                    <p class="form-inline">
-                        <label class="span-top-padding"> <th th:text="#{restaurant.label.monday}" /> </label>
+                <div style="padding-left: 4%">
+                    <div th:each="openingTime : ${restaurantForm.openingTimes}">
+                        <p class="form-inline">
+                            <label class="span-top-padding col-lg-3 col-lg-md-3 col-sm-3">
+                                <th th:switch="${openingTime.dayNumber}">
+                                    <span th:case="'1'"><span th:text="#{restaurant.label.monday}" /></span>
+                                    <span th:case="'2'"><span th:text="#{restaurant.label.tuesday}" /></span>
+                                    <span th:case="'3'"><span th:text="#{restaurant.label.wednesday}" /></span>
+                                    <span th:case="'4'"><span th:text="#{restaurant.label.thursday}" /></span>
+                                    <span th:case="'5'"><span th:text="#{restaurant.label.friday}" /></span>
+                                    <span th:case="'6'"><span th:text="#{restaurant.label.saturday}" /></span>
+                                    <span th:case="'7'"><span th:text="#{restaurant.label.sunday}" /></span>
+                                </th>
+                            </label>
 
-                        <span th:classappend="${#fields.hasErrors('*{customerId}')}? has-error">
-                            <input type="datetime" th:field="*{customerId}" class="form-control" /> bis 
-                        </span>
-                    </p>
+                            <span class="timeField-side-padding">
+                                <input class="form-control" type="text" th:value="${openingTime.startTime}" maxlength="5" style="width: 62px" />
+                            </span>
+                            <span th:text="#{restaurant.label.timeTo}"></span>
+                            <span class="timeField-side-padding">
+                                <input class="form-control" type="text" th:value="${openingTime.endTime}" maxlength="5" style="width: 62px" />
+                            </span>
+                        </p>
+                    </div>
                 </div>
             </div>
 
@@ -256,17 +320,96 @@
                     <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.timeFormat}"></label>
                     <label class="span-top-padding"> <th th:text="#{restaurant.label.offerTimes}" /> </label>
                 </p>
-            </div>
 
+                <div style="padding-left: 4%">
+                    <div th:each="offerTime : ${restaurantForm.offerTimes}">
+                        <p class="form-inline">
+                            <label class="span-top-padding col-lg-3 col-lg-md-3 col-sm-3">
+                                <th th:switch="${offerTime.dayNumber}">
+                                    <span th:case="'1'"><span th:text="#{restaurant.label.monday}" /></span>
+                                    <span th:case="'2'"><span th:text="#{restaurant.label.tuesday}" /></span>
+                                    <span th:case="'3'"><span th:text="#{restaurant.label.wednesday}" /></span>
+                                    <span th:case="'4'"><span th:text="#{restaurant.label.thursday}" /></span>
+                                    <span th:case="'5'"><span th:text="#{restaurant.label.friday}" /></span>
+                                    <span th:case="'6'"><span th:text="#{restaurant.label.saturday}" /></span>
+                                    <span th:case="'7'"><span th:text="#{restaurant.label.sunday}" /></span>
+                                </th>
+                            </label>
+
+                            <span class="timeField-side-padding">
+                                <input class="form-control" type="text" th:value="${offerTime.startTime}" maxlength="5" style="width: 62px" />
+                            </span>
+                            <span th:text="#{restaurant.label.timeTo}"></span>
+                            <span class="timeField-side-padding">
+                                <input class="form-control" type="text" th:value="${offerTime.endTime}" maxlength="5" style="width: 62px" />
+                            </span>
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <div class="row" style="padding-top: 25px">
+            <div>
+                <p class="form-inline">
+                    <label class="col-lg-3 col-lg-md-3 col-sm-3 col-form-label">
+                        <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.offerModifyPermission}"></label>
+                        <span th:text="#{restaurant.label.offerModiyPermission}" />
+                    </label>
 
+                    <input type="checkbox" th:field="*{offerModifyPermission}" />
+                </p>
+            </div>
+
+            <div>
+                <p class="form-inline">
+                    <label class="col-lg-3 col-lg-md-3 col-sm-3 col-form-label">
+                        <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.blocked}"></label>
+                        <span th:text="#{restaurant.label.blocked}" />
+                    </label>
+
+                    <input type="checkbox" th:field="*{blocked}" />
+                </p>
+            </div>
+
+            <div>
+                <p class="form-inline">
+                    <label class="col-lg-2 col-lg-md-2 col-sm-3 col-form-label" style="padding-top: 9px">
+                        <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.uuidtEXT}"></label>
+                        <span th:text="#{restaurant.label.uuidText}" />
+                    </label>
+
+                    <input type="text" th:field="*{restaurantUUID}" class="form-control" style="width: 300px" disabled="disabled"/>
+                </p>
+            </div>
+
+            <div>
+                <p class="form-inline">
+                    <label class="col-lg-2 col-lg-md-2 col-sm-3 col-form-label" style="padding-top: 9px">
+                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <span th:text="#{restaurant.label.uuidPicture}" />
+                    </label>
+
+                    <img th:src="@{'data:image/jpeg;base64,'+ ${restaurantForm.qrUuidBase64Encoded}}" alt="Fail" class="img-thumbnail" width="250" height="250" />
+                </p>
+            </div>
+        </div>
+
+        <div class="col-lg-12 col-lg-md-12 col-sm-12 col-xs-12">
+            <div class="btn-toolbar" style="padding-bottom: 5%; padding-top: 1.5%">
+                <button class="btn btn-primary" style="width: 15%" type="submit"> <th th:text="#{universal.label.save}" /> </button>
+                <a th:href="@{home}" class="btn btn-primary" style="width: 15%"> <th th:text="#{universal.label.cancel}" /> </a>
+            </div>
+        </div>
+
+        <div>
+            <input type="text" style="visibility: hidden" th:field="*{id}" />
+        </div>
 
         </form>
-
-
     </div>
 
+    <div th:replace="fragments/footer :: footer"></div>
     </body>
 
 </html>

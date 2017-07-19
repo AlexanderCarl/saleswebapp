@@ -4,9 +4,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
 import saleswebapp.components.DTO.ProfileForm;
+import saleswebapp.components.RestaurantAddCategory;
 import saleswebapp.repository.CountryRepository;
+import saleswebapp.repository.RestaurantRepository;
 import saleswebapp.repository.SalesPersonRepository;
 import saleswebapp.repository.impl.Country;
+import saleswebapp.repository.impl.CourseType;
+import saleswebapp.repository.impl.Restaurant;
 import saleswebapp.repository.impl.SalesPerson;
 import saleswebapp.service.DbWriterService;
 
@@ -23,6 +27,9 @@ public class DbWriterServiceImpl  implements DbWriterService {
 
     @Autowired
     private CountryRepository countryRepository;
+
+    @Autowired
+    private RestaurantRepository restaurantRepository;
 
     private ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
 
@@ -53,9 +60,9 @@ public class DbWriterServiceImpl  implements DbWriterService {
         salesPerson.setCity(profileForm.getCity());
         salesPerson.setPhone(profileForm.getPhone());
 
-        Country country = salesPerson.getCountry();
-        country.setCountryCode(profileForm.getCountryForm().getCountryCode());
-        country.setName(profileForm.getCountryForm().getName());
+        Country country = new Country();
+        country.setCountryCode(profileForm.getCountry().getCountryCode());
+        country.setName(profileForm.getCountry().getName());
         salesPerson.setCountry(country);
 
         salesPerson.setEmail(profileForm.getEmail());
@@ -63,6 +70,17 @@ public class DbWriterServiceImpl  implements DbWriterService {
         salesPerson.setBic(profileForm.getBic());
 
         salesPersonRepository.saveAndFlush(salesPerson);
+    }
+
+    @Override
+    public void addCategoryToRestaurant(RestaurantAddCategory restaurantAddCategory) {
+        Restaurant restaurant = restaurantRepository.getRestaurantById(restaurantAddCategory.getRestaurantId());
+        CourseType courseType = new CourseType();
+        courseType.setName(restaurantAddCategory.getName());
+        courseType.setRestaurant(restaurant);
+        restaurant.getCourseTypeList().add(courseType);
+
+        restaurantRepository.save(restaurant);
     }
 
 
