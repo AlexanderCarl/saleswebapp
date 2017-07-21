@@ -47,6 +47,15 @@ public class ProfileController {
 
     private ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder(256);
 
+    //The sales persons id is the key.
+    /*This Map is used to store the profile(data) of a sales person which is then send to the user with the model.
+    * When the user presses save the profile(data) is loaded from the DB again and compared to the
+    * profile(data) at the start (stored in the HashMap). If the restaurant(data) has been altered
+    * on the server while the user worked on it, the save request is rejected. This logic
+    * is used to ensure data consistency.
+    * The word transaction is used twice here:
+    * 1) Transaction: Start by the GET.Request for the restaurant model - End by the comparison check if the DB-Object has been altered.
+    * 2) Transaction: Only used to save the restaurant(data) with @Transactional */
     private static HashMap<Integer, SalesPerson> salesPersonsTransactionStart = new HashMap<Integer, SalesPerson>();
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)

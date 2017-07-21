@@ -3,7 +3,6 @@ package saleswebapp.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -11,14 +10,13 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import saleswebapp.components.DTO.RestaurantDeleteCategory;
 import saleswebapp.components.DTO.RestaurantForm;
 import saleswebapp.components.DTO.RestaurantListForm;
-import saleswebapp.components.RestaurantAddCategory;
+import saleswebapp.components.DTO.RestaurantAddCategory;
+import saleswebapp.repository.impl.Restaurant;
 import saleswebapp.service.CountryService;
 import saleswebapp.service.RestaurantService;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Alexander Carl on 06.07.2017.
@@ -50,6 +48,7 @@ public class RestaurantController {
         model.addAttribute("restaurantTypes", restaurantService.getAllRestaurantTypes());
         model.addAttribute("restaurantKitchenTypes", restaurantService.getAllKitchenTypes());
         model.addAttribute("restaurantAddCategory", new RestaurantAddCategory(0));
+        model.addAttribute("restaurantDeleteCategory", new RestaurantDeleteCategory(0));
 
         return "restaurant";
     }
@@ -63,12 +62,17 @@ public class RestaurantController {
         }
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        model.addAttribute("restaurantForm", new RestaurantForm(restaurantService.getRestaurantById(restaurantId)));
+        Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
+
+        model.addAttribute("restaurantForm", new RestaurantForm(restaurant));
         model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
         model.addAttribute("countries", countryService.getAllCountries());
         model.addAttribute("restaurantTypes", restaurantService.getAllRestaurantTypes());
         model.addAttribute("restaurantKitchenTypes", restaurantService.getAllKitchenTypes());
         model.addAttribute("restaurantAddCategory", new RestaurantAddCategory(restaurantId));
+        model.addAttribute("restaurantDeleteCategory", new RestaurantDeleteCategory(restaurantId));
+
+        restaurantService.addRestaurantToRestaurantTransactionStore(restaurant);
 
         return "restaurant";
     }
@@ -77,6 +81,7 @@ public class RestaurantController {
     public String processNewCategory(RestaurantAddCategory restaurantAddCategory) {
         int restaurantId = restaurantAddCategory.getRestaurantId();
 
+        //Safety check if the parameter is altered manually to 0.
         if (restaurantId == 0) {
             return "redirect:/newRestaurant";
         } else {
@@ -85,10 +90,33 @@ public class RestaurantController {
         }
     }
 
+    @RequestMapping(value = "/restaurant/deleteCategory", method = RequestMethod.POST)
+    public String processDeleteCategory(RestaurantDeleteCategory restaurantDeleteCategory) {
+        int restaurantId = restaurantDeleteCategory.getRestaurantId();
 
-    @RequestMapping(value = "/restaurant", method = RequestMethod.POST)
-    public String processRestaurant(Model model, RestaurantForm restaurantForm) {
-        return null;
+        //Safety check if the parameter is altered manually to 0.
+        if (restaurantId == 0) {
+            return "redirect:/newRestaurant";
+        } else {
+            restaurantService.deleteCategoryFromRestaurant(restaurantDeleteCategory);
+            return "redirect:/restaurant?id=" + restaurantId;
+        }
     }
 
+    @RequestMapping(value = "/saveRestaurant", method = RequestMethod.POST)
+    public String processRestaurant(RestaurantForm restaurantForm, BindingResult bindingResult) {
+        int restaurantId = restaurantForm.getId();
+
+        //Checks if it is a new Restaurant or a change to an existing one
+        if (restaurantId == 0) {
+            restaurantService.addNewRestaurant(restaurantForm);
+            return "redirect:/home?newRestaurantAddedSuccessfully";
+        } else {
+            if (restaurantService.restaurantHasBeenAlteredMeanwhile(restaurantForm)) {
+                return "redirect:/home?restaurantWasChangedMeanwhile";
+            } else {
+                return "redirect:/home?restaurantChangeSuccess";
+            }
+        }
+    }
 }

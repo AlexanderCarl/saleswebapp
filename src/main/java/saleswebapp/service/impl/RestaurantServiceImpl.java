@@ -1,21 +1,19 @@
 package saleswebapp.service.impl;
 
+import com.sun.org.apache.regexp.internal.RE;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import saleswebapp.components.DTO.RestaurantListForm;
-import saleswebapp.components.DTO.RestaurantTypeForm;
-import saleswebapp.components.RestaurantAddCategory;
-import saleswebapp.repository.impl.KitchenType;
-import saleswebapp.repository.impl.Restaurant;
-import saleswebapp.repository.impl.RestaurantType;
+import saleswebapp.components.DTO.*;
+import saleswebapp.repository.impl.*;
 import saleswebapp.service.DbReaderService;
 import saleswebapp.service.DbWriterService;
 import saleswebapp.service.RestaurantService;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 
@@ -35,6 +33,17 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Autowired
     private DbWriterService dbWriterService;
+
+    //The restaurants id is the key.
+    /*This Map is used to store the restaurant(data) which is then send to the user with the model.
+    * When the user presses save the restaurant(data) is loaded again from the DB und compared to the
+    * restaurant(data) at the start (stored in the HashMap). If the restaurant(data) has been altered
+    * on the server while the user worked on it, the save request is rejected. This logic
+    * is used to ensure data consistency.
+    * The word transaction is used twice here:
+    * 1) Transaction: Start by the GET.Request for the restaurant model - End by the comparison check if the DB-Object has been altered.
+    * 2) Transaction: Only used to save the restaurant(data) with @Transactional */
+    private static HashMap<Integer, Restaurant> restaurantTransactionStore = new HashMap<Integer, Restaurant>();
 
     @Override
     public List<RestaurantListForm> getAllRestaurantNamesForSalesPerson(String email) {
@@ -126,22 +135,23 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
+    @Transactional
     public void addCategoryToRestaurant(RestaurantAddCategory restaurantAddCategory) {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         loggedInUser = "carl@hm.edu"; //Dev-Only
 
         //Security check to ensure that a salesPerson can only add categories to restaurants he is assigned to.
         Restaurant restaurant = dbReaderService.getRestaurantById(restaurantAddCategory.getRestaurantId());
-
         if(!restaurant.getSalesPerson().getEmail().equals(loggedInUser)) {
             logger.debug("Security Violation in the class RestaurantServiceImpl - user: " + loggedInUser + " tryed to add categories to a restaurant he is not assigned to.");
+
         } else {
             //Check if the String contains multiple course types. e.g. Vorspeise, Rotwein, Hauswein
             String fullString = restaurantAddCategory.getName();
             fullString = fullString.replaceAll("\\s+",""); //deletes whitespaces
-            String[] singleCourseTypesString = fullString.split("\\,"); //cuts the String after every ","
+            String[] singleCourseTypesStrings = fullString.split("\\,"); //cuts the String after every ","
 
-            for (String subString : singleCourseTypesString) {
+            for (String subString : singleCourseTypesStrings) {
                 RestaurantAddCategory singleRestaurantAddCategory = new RestaurantAddCategory();
                 singleRestaurantAddCategory.setRestaurantId(restaurantAddCategory.getRestaurantId());
                 singleRestaurantAddCategory.setName(subString);
@@ -149,5 +159,62 @@ public class RestaurantServiceImpl implements RestaurantService {
                 dbWriterService.addCategoryToRestaurant(singleRestaurantAddCategory);
             }
         }
+    }
+
+    @Override
+    @Transactional
+    public void deleteCategoryFromRestaurant(RestaurantDeleteCategory restaurantDeleteCategory) {
+        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        loggedInUser = "carl@hm.edu"; //Dev-Only
+
+        //Security check to ensure that a salesPerson can only add categories to restaurants he is assigned to.
+        Restaurant restaurant = dbReaderService.getRestaurantById(restaurantDeleteCategory.getRestaurantId());
+        if(!restaurant.getSalesPerson().getEmail().equals(loggedInUser)) {
+            logger.debug("Security Violation in the class RestaurantServiceImpl - user: " + loggedInUser + " tryed to delete categories from a restaurant he is not assigned to.");
+
+        } else {
+            //Check if the String contains multiple course types. e.g. Vorspeise, Rotwein, Hauswein
+            String fullString = restaurantDeleteCategory.getName();
+            fullString = fullString.replaceAll("\\s+",""); //deletes whitespaces
+            String[] singleCourseTypesString = fullString.split("\\,"); //cuts the String after every ","
+            List<CourseType> courseTypeList = dbReaderService.getRestaurantById(restaurantDeleteCategory.getRestaurantId()).getCourseTypeList();
+            List<CourseType> courseTypesWithItemsToDelete = new ArrayList<CourseType>();
+
+            for (String subString : singleCourseTypesString) {
+                for (CourseType courseType : courseTypeList) {
+                    if(subString.equals(courseType.getName())) {
+                        dbWriterService.deleteCategoryFromRestaurant(courseType);
+                    }
+                }
+            }
+        }
+    }
+
+    @Override
+    public void addRestaurantToRestaurantTransactionStore(Restaurant restaurant) {
+        restaurantTransactionStore.put(restaurant.getId(), restaurant);
+    }
+
+    @Override
+    //Security check if the concerning the DB-Object restaurant has been altered during transaction
+    // and saves it if not.
+    public boolean restaurantHasBeenAlteredMeanwhile(RestaurantForm restaurantForm) {
+        Restaurant restaurantTransactionEnd = dbReaderService.getRestaurantById(restaurantForm.getId());
+        Restaurant restaurantTransactionStart = restaurantTransactionStore.get(restaurantForm.getId());
+
+        /*
+        if (!restaurantTransactionEnd.equals(restaurantTransactionStart)) {
+            return true;
+        }
+        */
+
+        dbWriterService.saveRestaurantChange(restaurantForm);
+        restaurantTransactionStore.remove(restaurantForm.getId());
+        return false;
+    }
+
+    @Override
+    public void addNewRestaurant(RestaurantForm restaurantForm) {
+        dbWriterService.setNewRestaurant(restaurantForm);
     }
 }

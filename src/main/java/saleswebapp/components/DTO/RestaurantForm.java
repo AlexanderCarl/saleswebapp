@@ -4,12 +4,9 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
 import com.google.zxing.MultiFormatWriter;
 import com.google.zxing.WriterException;
-import com.google.zxing.client.j2se.MatrixToImageConfig;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import saleswebapp.components.RestaurantTimeContainer;
 import saleswebapp.repository.impl.*;
 
@@ -41,7 +38,7 @@ public class RestaurantForm implements Serializable {
     private String url;
     private RestaurantTypeForm restaurantTypeForm; //Anbietertyp
     private List<String> restaurantKitchenTypesForm; //Küchentypen
-    private List<RestaurantCourseTypeForm> restaurantCourseTypesForm; //Kategorien
+    private List<String> restaurantCourseTypesForm; //Kategorien
     private List<RestaurantTimeContainer> openingTimes;
     private List<RestaurantTimeContainer> offerTimes;
     private boolean offerModifyPermission;
@@ -91,7 +88,7 @@ public class RestaurantForm implements Serializable {
         this.url = restaurant.getUrl();
         this.restaurantTypeForm = new RestaurantTypeForm(restaurant.getRestaurantType());
 
-        //Fills the List<RestaurantKitchenTypeForm>
+        //Fills the List<RestaurantKitchenType>
         List<KitchenType> kitchenTypes = restaurant.getKitchenTypes();
         List<String> restaurantKitchenTypeForms = new ArrayList<String>();
         for (KitchenType kitchenType : kitchenTypes) {
@@ -99,11 +96,11 @@ public class RestaurantForm implements Serializable {
         }
         this.restaurantKitchenTypesForm = restaurantKitchenTypeForms;
 
-        //Fills the List<RestaurantCourseTypeForm>
+        //Fills the List<RestaurantCourseType>
         List<CourseType> courseTypes = restaurant.getCourseTypeList();
-        List<RestaurantCourseTypeForm> restaurantCourseTypeForms = new ArrayList<RestaurantCourseTypeForm>();
+        List<String> restaurantCourseTypeForms = new ArrayList<String>();
         for (CourseType courseType : courseTypes) {
-            restaurantCourseTypeForms.add(new RestaurantCourseTypeForm(courseType));
+            restaurantCourseTypeForms.add(courseType.getName());
         }
         this.restaurantCourseTypesForm = restaurantCourseTypeForms;
 
@@ -311,11 +308,11 @@ public class RestaurantForm implements Serializable {
         this.restaurantKitchenTypesForm = restaurantKitchenTypesForm;
     }
 
-    public List<RestaurantCourseTypeForm> getRestaurantCourseTypesForm() {
+    public List<String> getRestaurantCourseTypesForm() {
         return restaurantCourseTypesForm;
     }
 
-    public void setRestaurantCourseTypesForm(List<RestaurantCourseTypeForm> restaurantCourseTypesForm) {
+    public void setRestaurantCourseTypesForm(List<String> restaurantCourseTypesForm) {
         this.restaurantCourseTypesForm = restaurantCourseTypesForm;
     }
 

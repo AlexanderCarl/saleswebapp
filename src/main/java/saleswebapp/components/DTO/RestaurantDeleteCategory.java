@@ -1,19 +1,18 @@
 package saleswebapp.components.DTO;
 
 /**
- * Created by Alexander Carl on 18.07.2017.
+ * Created by Alexander Carl on 20.07.2017.
  */
-public class RestaurantAddCategory {
+public class RestaurantDeleteCategory {
 
-    private String name; //Name of the category
+    private String name;
     private int restaurantId;
 
-    public RestaurantAddCategory() {
+    public RestaurantDeleteCategory() {
         super();
     }
 
-    public RestaurantAddCategory(int restaurantId) {
-        this.name = null;
+    public RestaurantDeleteCategory(int restaurantId) {
         this.restaurantId = restaurantId;
     }
 
