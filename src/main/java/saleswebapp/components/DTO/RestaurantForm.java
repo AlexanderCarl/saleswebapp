@@ -36,7 +36,9 @@ public class RestaurantForm implements Serializable {
     private String email;
     private String phone;
     private String url;
-    private RestaurantTypeForm restaurantTypeForm; //Anbietertyp
+    //private RestaurantType restaurantType; //Anbietertyp
+    private ATestForm aTestForm;
+
     private List<String> restaurantKitchenTypesForm; //Küchentypen
     private List<String> restaurantCourseTypesForm; //Kategorien
     private List<RestaurantTimeContainer> openingTimes;
@@ -86,7 +88,11 @@ public class RestaurantForm implements Serializable {
         this.email = restaurant.getEmail();
         this.phone = restaurant.getPhone();
         this.url = restaurant.getUrl();
-        this.restaurantTypeForm = new RestaurantTypeForm(restaurant.getRestaurantType());
+
+        ATestForm aTestForm = new ATestForm();
+        aTestForm.setId("4");
+        aTestForm.setName("Sonstiges");
+        this.aTestForm = aTestForm;
 
         //Fills the List<RestaurantKitchenType>
         List<KitchenType> kitchenTypes = restaurant.getKitchenTypes();
@@ -292,12 +298,12 @@ public class RestaurantForm implements Serializable {
         this.url = url;
     }
 
-    public RestaurantTypeForm getRestaurantTypeForm() {
-        return restaurantTypeForm;
+    public ATestForm getaTestForm() {
+        return aTestForm;
     }
 
-    public void setRestaurantTypeForm(RestaurantTypeForm restaurantTypeForm) {
-        this.restaurantTypeForm = restaurantTypeForm;
+    public void setaTestForm(ATestForm aTestForm) {
+        this.aTestForm = aTestForm;
     }
 
     public List<String> getRestaurantKitchenTypesForm() {

@@ -191,10 +191,10 @@
                         <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"> </label>
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.RestaurantType}" /> </label>
 
-                        <select class="form-control" th:field="*{restaurantTypeForm}" style="width: 160px">
-                            <option th:each="restaurantTypeForm : ${restaurantTypes}"
-                                    th:value="${restaurantTypeForm.id}"
-                                    th:text="${restaurantTypeForm.name}">
+                        <select class="form-control" th:field="*{aTestForm}" style="width: 160px">
+                            <option th:each="restaurantType : ${restaurantTypes}"
+                                    th:value="${restaurantType.name}"
+                                    th:text="${restaurantType.name}">
                             </option>
                         </select>
                     </p>

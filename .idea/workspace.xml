@@ -2,33 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0cf9450-ea71-430d-bd31-7dc6981d6dbf" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantCourseTypeForm.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantTypeForm.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/RestaurantCourseTypeForm.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/RestaurantAddCategory.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/controller/Foo.class" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/RestaurantForm.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/RestaurantForm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/controller/ProfileController.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/controller/ProfileController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/controller/RestaurantController.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/controller/RestaurantController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/DbWriterService.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/DbWriterService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/RestaurantService.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/RestaurantService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/RestaurantTypeForm.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/RestaurantTypeForm.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/DbWriterServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/DbWriterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/RestaurantServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/RestaurantServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantForm.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantForm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/ProfileController.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/ProfileController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/RestaurantController.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/RestaurantController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/RestaurantService.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/RestaurantService.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages_de.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages_de.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/BootstrapsTutorial/BootstrapsTutorial2.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/BootstrapsTutorial/BootstrapsTutorial2.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/restaurant.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/restaurant.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/messages_de.properties" afterPath="$PROJECT_DIR$/target/classes/messages_de.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/BootstrapsTutorial/BootstrapsTutorial2.html" afterPath="$PROJECT_DIR$/target/classes/templates/BootstrapsTutorial/BootstrapsTutorial2.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/restaurant.html" afterPath="$PROJECT_DIR$/target/classes/templates/restaurant.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/components/RestaurantAddCategory.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantAddCategory.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -57,21 +38,23 @@
       <file leaf-file-name="RestaurantController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/RestaurantController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+            <state relative-caret-position="1020">
+              <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RestaurantForm.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="RestaurantForm.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="101">
-              <caret line="38" column="31" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="49" />
+            <state relative-caret-position="420">
+              <caret line="344" column="73" lean-forward="false" selection-start-line="344" selection-start-column="73" selection-end-line="344" selection-end-column="73" />
               <folding>
-                <element signature="e#10197#10198#0" expanded="true" />
-                <element signature="e#10238#10239#0" expanded="true" />
+                <element signature="e#10271#10272#0" expanded="true" />
+                <element signature="e#10303#10304#0" expanded="true" />
+                <element signature="e#10356#10357#0" expanded="true" />
+                <element signature="e#10398#10399#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -80,28 +63,9 @@
       <file leaf-file-name="RestaurantServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="626">
-              <caret line="86" column="30" lean-forward="false" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
-              <folding>
-                <element signature="e#1814#1835#0" expanded="true" />
-                <element signature="e#9311#9312#0" expanded="true" />
-                <element signature="e#9375#9376#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RestaurantTypeForm.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantTypeForm.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
-              <folding>
-                <element signature="e#674#675#0" expanded="true" />
-                <element signature="e#699#700#0" expanded="true" />
-                <element signature="e#732#733#0" expanded="true" />
-                <element signature="e#760#761#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="3298">
+              <caret line="211" column="0" lean-forward="false" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -109,83 +73,115 @@
       <file leaf-file-name="restaurant.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/restaurant.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="184" column="33" lean-forward="true" selection-start-line="184" selection-start-column="33" selection-end-line="184" selection-end-column="33" />
+            <state relative-caret-position="3315">
+              <caret line="195" column="67" lean-forward="false" selection-start-line="195" selection-start-column="67" selection-end-line="195" selection-end-column="67" />
               <folding>
+                <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#p#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#p#0;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#form#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#form#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#form#1;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#form#1;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#form#1;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#3;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#4;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#5;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#p#0;n#div#5;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#6;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#select#0;n#p#0;n#div#6;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1500634964823" expanded="true" signature="565:604" ph="Wählen Sie eine Restaurant aus um dieses zu laden." />
-                <marker date="1500634964823" expanded="true" signature="655:686" ph="Restaurant laden" />
-                <marker date="1500634964823" expanded="true" signature="1519:1560" ph="Legt ein neues Restaurant an, welches nach ausfüllen der benötigten Felder gespeichert werden kann." />
-                <marker date="1500634964823" expanded="true" signature="1611:1644" ph="Restaurant anlegen" />
-                <marker date="1500634964823" expanded="true" signature="1789:1829" ph="neues Restaurant" />
-                <marker date="1500634964823" expanded="true" signature="2131:2169" ph="Weiterleitung zu Essensübersicht des ausgewählten Restaurants." />
-                <marker date="1500634964823" expanded="true" signature="2220:2250" ph="Angebote pflegen" />
-                <marker date="1500634964823" expanded="true" signature="2421:2458" ph="Angebote" />
-                <marker date="1500634964823" expanded="true" signature="2590:2634" ph="Restaurant Kategorien" />
-                <marker date="1500634964823" expanded="true" signature="2865:2901" ph="Erlaubt das löschen und hinzufügen von Kategorien." />
-                <marker date="1500634964823" expanded="true" signature="2977:3005" ph="Speisekategorie(n)" />
-                <marker date="1500634964823" expanded="true" signature="3582:3624" ph="Das löschen von Kategorien ist nur bei bereits angelegten Restaurants möglich. Um eine Kategorie zu löschen geben Sie deren Namen ein und drücken löschen. Fehlerhafte Schreibweisen werden ignoriert. &#10; - Eine Kategorie: &quot;Frühstück&quot; &#10; - Mehrere Kategorien: &quot;Frühstück, Rotweine, Weissweine&quot;" />
-                <marker date="1500634964823" expanded="true" signature="3947:3988" ph="löschen" />
-                <marker date="1500634964823" expanded="true" signature="4373:4412" ph="Das hinzufügen von Kategorien ist nur bei bereits angelegten Restaurants möglich. &#10; - Eine Kategorie: &quot;Frühstück&quot; &#10; - Mehrere Kategorien: &quot;Frühstück, Rotweine, Weissweine&quot;." />
-                <marker date="1500634964823" expanded="true" signature="4732:4770" ph="hinzufügen" />
-                <marker date="1500634964823" expanded="true" signature="5224:5261" ph="Wählen sie mit Hilfe der Checkbox die Küchentypen aus, welche zum Restaurant passen. Markierte Typen werden für Ihr Restaurant gespeichert." />
-                <marker date="1500634964823" expanded="true" signature="5338:5367" ph="Küchentypen" />
-                <marker date="1500634964823" expanded="true" signature="5941:5979" ph="Restaurant Daten" />
-                <marker date="1500634964823" expanded="true" signature="6569:6590" ph="Name" />
-                <marker date="1500634964823" expanded="true" signature="7165:7188" ph="Straße" />
-                <marker date="1500634964823" expanded="true" signature="7767:7796" ph="Hausnummer" />
-                <marker date="1500634964823" expanded="true" signature="8387:8407" ph="PLZ" />
-                <marker date="1500634964823" expanded="true" signature="8980:9001" ph="Stadt" />
-                <marker date="1500634964823" expanded="true" signature="9577:9601" ph="Land" />
-                <marker date="1500634964823" expanded="true" signature="10315:10346" ph="Restaurant-Typ" />
-                <marker date="1500634964823" expanded="true" signature="11177:11199" ph="Email" />
-                <marker date="1500634964823" expanded="true" signature="11776:11798" ph="Telefon" />
-                <marker date="1500634964823" expanded="true" signature="12375:12395" ph="URL" />
-                <marker date="1500634964823" expanded="true" signature="12948:12974" ph="Längengrad" />
-                <marker date="1500634964823" expanded="true" signature="13555:13580" ph="Breitengrad" />
-                <marker date="1500634964823" expanded="true" signature="14159:14186" ph="Restaurant-Nr" />
-                <marker date="1500634964823" expanded="true" signature="14801:14836" ph="Bitte geben Sie die Zeitangaben im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
-                <marker date="1500634964823" expanded="true" signature="14916:14945" ph="Öffnungszeiten" />
-                <marker date="1500634964823" expanded="true" signature="15396:15419" ph="Montag" />
-                <marker date="1500634964823" expanded="true" signature="15505:15529" ph="Dienstag" />
-                <marker date="1500634964823" expanded="true" signature="15615:15641" ph="Mittwoch" />
-                <marker date="1500634964823" expanded="true" signature="15727:15752" ph="Donnerstag" />
-                <marker date="1500634964823" expanded="true" signature="15838:15861" ph="Freitag" />
-                <marker date="1500634964823" expanded="true" signature="15947:15972" ph="Samstag" />
-                <marker date="1500634964823" expanded="true" signature="16058:16081" ph="Sonntag" />
-                <marker date="1500634964823" expanded="true" signature="16462:16485" ph="bis" />
-                <marker date="1500634964823" expanded="true" signature="17052:17087" ph="Bitte geben Sie die Zeitangaben im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
-                <marker date="1500634964823" expanded="true" signature="17167:17194" ph="Angebotszeiten" />
-                <marker date="1500634964823" expanded="true" signature="17639:17662" ph="Montag" />
-                <marker date="1500634964823" expanded="true" signature="17748:17772" ph="Dienstag" />
-                <marker date="1500634964823" expanded="true" signature="17858:17884" ph="Mittwoch" />
-                <marker date="1500634964823" expanded="true" signature="17970:17995" ph="Donnerstag" />
-                <marker date="1500634964823" expanded="true" signature="18081:18104" ph="Freitag" />
-                <marker date="1500634964823" expanded="true" signature="18190:18215" ph="Samstag" />
-                <marker date="1500634964823" expanded="true" signature="18301:18324" ph="Sonntag" />
-                <marker date="1500634964823" expanded="true" signature="18703:18726" ph="bis" />
-                <marker date="1500634964823" expanded="true" signature="19370:19416" ph="Durch die Markierung dieser Checkbox erhält das Restaurant die Erlaubnis seine Essensangebote selbstständig, d.h. ohne Zutun eines Vertriebsmitarbeiters, abzuändern." />
-                <marker date="1500634964823" expanded="true" signature="19469:19506" ph="Änderungserlaubnis" />
-                <marker date="1500634964823" expanded="true" signature="19889:19921" ph="Durch die Markierung dieser Checkbox wird das Restaurant gesperrt." />
-                <marker date="1500634964823" expanded="true" signature="19974:19998" ph="Restaurant sperren" />
-                <marker date="1500634964823" expanded="true" signature="20392:20425" ph="Diese Zeichenkette entspricht dem Wert des QR-Codes. Der QR-Code wird einmalig bei der Erstellung eines neuen Restaurants angelegt und kann nicht geändert werden." />
-                <marker date="1500634964823" expanded="true" signature="20478:20503" ph="Restaurant Uuid" />
-                <marker date="1500634964823" expanded="true" signature="21026:21054" ph="QR-Code" />
-                <marker date="1500634964823" expanded="true" signature="21555:21575" ph="Speichern" />
-                <marker date="1500634964823" expanded="true" signature="21687:21709" ph="Abbrechen" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Country.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Country.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="40" column="48" lean-forward="false" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
-              <folding>
-                <element signature="e#871#872#0" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#3;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#4;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#5;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#1;n#p#0;n#div#5;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#span#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#span#2;n#p#0;n#div#0;n#div#0;n#div#0;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#span#0;n#p#0;n#div#0;n#div#0;n#div#1;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#span#2;n#p#0;n#div#0;n#div#0;n#div#1;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#p#0;n#div#2;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#p#0;n#div#3;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#label#0;n#label#0;n#p#0;n#div#3;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#6;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#6;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#6;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#7;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1500639396751" expanded="true" signature="565:604" ph="Wählen Sie eine Restaurant aus um dieses zu laden." />
+                <marker date="1500639396751" expanded="true" signature="655:686" ph="Restaurant laden" />
+                <marker date="1500639396751" expanded="true" signature="1519:1560" ph="Legt ein neues Restaurant an, welches nach ausfüllen der benötigten Felder gespeichert werden kann." />
+                <marker date="1500639396751" expanded="true" signature="1611:1644" ph="Restaurant anlegen" />
+                <marker date="1500639396751" expanded="true" signature="1789:1829" ph="neues Restaurant" />
+                <marker date="1500639396751" expanded="true" signature="2131:2169" ph="Weiterleitung zu Essensübersicht des ausgewählten Restaurants." />
+                <marker date="1500639396751" expanded="true" signature="2220:2250" ph="Angebote pflegen" />
+                <marker date="1500639396751" expanded="true" signature="2421:2458" ph="Angebote" />
+                <marker date="1500639396751" expanded="true" signature="2590:2634" ph="Restaurant Kategorien" />
+                <marker date="1500639396751" expanded="true" signature="2865:2901" ph="Erlaubt das löschen und hinzufügen von Kategorien." />
+                <marker date="1500639396751" expanded="true" signature="2977:3005" ph="Speisekategorie(n)" />
+                <marker date="1500639396751" expanded="true" signature="3582:3624" ph="Das löschen von Kategorien ist nur bei bereits angelegten Restaurants möglich. Um eine Kategorie zu löschen geben Sie deren Namen ein und drücken löschen. Fehlerhafte Schreibweisen werden ignoriert. &#10; - Eine Kategorie: &quot;Frühstück&quot; &#10; - Mehrere Kategorien: &quot;Frühstück, Rotweine, Weissweine&quot;" />
+                <marker date="1500639396751" expanded="true" signature="3947:3988" ph="löschen" />
+                <marker date="1500639396751" expanded="true" signature="4373:4412" ph="Das hinzufügen von Kategorien ist nur bei bereits angelegten Restaurants möglich. &#10; - Eine Kategorie: &quot;Frühstück&quot; &#10; - Mehrere Kategorien: &quot;Frühstück, Rotweine, Weissweine&quot;." />
+                <marker date="1500639396751" expanded="true" signature="4732:4770" ph="hinzufügen" />
+                <marker date="1500639396751" expanded="true" signature="5224:5261" ph="Wählen sie mit Hilfe der Checkbox die Küchentypen aus, welche zum Restaurant passen. Markierte Typen werden für Ihr Restaurant gespeichert." />
+                <marker date="1500639396751" expanded="true" signature="5338:5367" ph="Küchentypen" />
+                <marker date="1500639396751" expanded="true" signature="5941:5979" ph="Restaurant Daten" />
+                <marker date="1500639396751" expanded="true" signature="6569:6590" ph="Name" />
+                <marker date="1500639396751" expanded="true" signature="7165:7188" ph="Straße" />
+                <marker date="1500639396751" expanded="true" signature="7767:7796" ph="Hausnummer" />
+                <marker date="1500639396751" expanded="true" signature="8387:8407" ph="PLZ" />
+                <marker date="1500639396751" expanded="true" signature="8980:9001" ph="Stadt" />
+                <marker date="1500639396751" expanded="true" signature="9577:9601" ph="Land" />
+                <marker date="1500639396751" expanded="true" signature="10315:10346" ph="Restaurant-Typ" />
+                <marker date="1500639396751" expanded="true" signature="11158:11180" ph="Email" />
+                <marker date="1500639396751" expanded="true" signature="11757:11779" ph="Telefon" />
+                <marker date="1500639396751" expanded="true" signature="12356:12376" ph="URL" />
+                <marker date="1500639396751" expanded="true" signature="12929:12955" ph="Längengrad" />
+                <marker date="1500639396751" expanded="true" signature="13536:13561" ph="Breitengrad" />
+                <marker date="1500639396751" expanded="true" signature="14140:14167" ph="Restaurant-Nr" />
+                <marker date="1500639396751" expanded="true" signature="14782:14817" ph="Bitte geben Sie die Zeitangaben im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
+                <marker date="1500639396751" expanded="true" signature="14897:14926" ph="Öffnungszeiten" />
+                <marker date="1500639396751" expanded="true" signature="15377:15400" ph="Montag" />
+                <marker date="1500639396751" expanded="true" signature="15486:15510" ph="Dienstag" />
+                <marker date="1500639396751" expanded="true" signature="15596:15622" ph="Mittwoch" />
+                <marker date="1500639396751" expanded="true" signature="15708:15733" ph="Donnerstag" />
+                <marker date="1500639396751" expanded="true" signature="15819:15842" ph="Freitag" />
+                <marker date="1500639396751" expanded="true" signature="15928:15953" ph="Samstag" />
+                <marker date="1500639396751" expanded="true" signature="16039:16062" ph="Sonntag" />
+                <marker date="1500639396751" expanded="true" signature="16443:16466" ph="bis" />
+                <marker date="1500639396751" expanded="true" signature="17033:17068" ph="Bitte geben Sie die Zeitangaben im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
+                <marker date="1500639396751" expanded="true" signature="17148:17175" ph="Angebotszeiten" />
+                <marker date="1500639396751" expanded="true" signature="17620:17643" ph="Montag" />
+                <marker date="1500639396751" expanded="true" signature="17729:17753" ph="Dienstag" />
+                <marker date="1500639396751" expanded="true" signature="17839:17865" ph="Mittwoch" />
+                <marker date="1500639396751" expanded="true" signature="17951:17976" ph="Donnerstag" />
+                <marker date="1500639396751" expanded="true" signature="18062:18085" ph="Freitag" />
+                <marker date="1500639396751" expanded="true" signature="18171:18196" ph="Samstag" />
+                <marker date="1500639396751" expanded="true" signature="18282:18305" ph="Sonntag" />
+                <marker date="1500639396751" expanded="true" signature="18684:18707" ph="bis" />
+                <marker date="1500639396751" expanded="true" signature="19351:19397" ph="Durch die Markierung dieser Checkbox erhält das Restaurant die Erlaubnis seine Essensangebote selbstständig, d.h. ohne Zutun eines Vertriebsmitarbeiters, abzuändern." />
+                <marker date="1500639396751" expanded="true" signature="19450:19487" ph="Änderungserlaubnis" />
+                <marker date="1500639396751" expanded="true" signature="19870:19902" ph="Durch die Markierung dieser Checkbox wird das Restaurant gesperrt." />
+                <marker date="1500639396751" expanded="true" signature="19955:19979" ph="Restaurant sperren" />
+                <marker date="1500639396751" expanded="true" signature="20373:20406" ph="Diese Zeichenkette entspricht dem Wert des QR-Codes. Der QR-Code wird einmalig bei der Erstellung eines neuen Restaurants angelegt und kann nicht geändert werden." />
+                <marker date="1500639396751" expanded="true" signature="20459:20484" ph="Restaurant Uuid" />
+                <marker date="1500639396751" expanded="true" signature="21007:21035" ph="QR-Code" />
+                <marker date="1500639396751" expanded="true" signature="21536:21556" ph="Speichern" />
+                <marker date="1500639396751" expanded="true" signature="21668:21690" ph="Abbrechen" />
               </folding>
             </state>
           </provider>
@@ -194,20 +190,38 @@
       <file leaf-file-name="CountryForm.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/CountryForm.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+            <state relative-caret-position="153">
+              <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RestaurantListForm.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantListForm.java">
+      <file leaf-file-name="Country.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Country.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
+            <state relative-caret-position="646">
+              <caret line="55" column="1" lean-forward="false" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ATestForm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/ATestForm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="14" column="46" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
               <folding>
-                <element signature="e#727#728#0" expanded="true" />
+                <element signature="e#375#376#0" expanded="true" />
+                <element signature="e#404#405#0" expanded="true" />
+                <element signature="e#429#430#0" expanded="true" />
+                <element signature="e#465#466#0" expanded="true" />
+                <element signature="e#493#494#0" expanded="true" />
+                <element signature="e#524#525#0" expanded="true" />
+                <element signature="e#551#552#0" expanded="true" />
+                <element signature="e#591#592#0" expanded="true" />
+                <element signature="e#623#624#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -216,13 +230,29 @@
       <file leaf-file-name="DbWriterServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="339">
-              <caret line="147" column="10" lean-forward="false" selection-start-line="147" selection-start-column="10" selection-end-line="147" selection-end-column="10" />
-              <folding>
-                <element signature="e#6130#6143#0" expanded="true" />
-                <element signature="e#6935#6949#0" expanded="true" />
-                <element signature="e#7912#7925#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="386">
+              <caret line="142" column="22" lean-forward="true" selection-start-line="142" selection-start-column="22" selection-end-line="142" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeToDoForm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeToDoForm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="HomeRestaurantForm.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeRestaurantForm.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -235,8 +265,8 @@
         <option value="CSS File" />
         <option value="JavaScript File" />
         <option value="HTML File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -281,7 +311,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/OpeningTimeRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/RestaurantDailyTimeContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/KitchenType.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/CourseType.java" />
@@ -328,10 +357,11 @@
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/DayOfWeekRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/RestaurantService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantTypeForm.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/ATestForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantForm.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/restaurant.html" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantTypeForm.java" />
       </list>
     </option>
   </component>
@@ -394,8 +424,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -832,7 +861,8 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -848,15 +878,15 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\java\saleswebapp\components\DTO" />
-      <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\templates" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\static.js" />
       <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\static\css" />
       <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\static\css\css" />
       <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\templates\BootstrapsTutorial" />
+      <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\templates" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\java\saleswebapp\components\DTO" />
       <recent name="E:\Dropbox\WorkspaceIDEA\SalesWebApp\src\main\resources\templates" />
     </key>
   </component>
@@ -1349,11 +1379,13 @@
       <workItem from="1500547516653" duration="16990000" />
       <workItem from="1500582404768" duration="314000" />
       <workItem from="1500616864475" duration="15406000" />
+      <workItem from="1500637803739" duration="6227000" />
+      <workItem from="1500717165708" duration="67000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="594986000" />
+    <option name="totallyTimeSpent" value="601586000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1365,40 +1397,40 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21943231" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23154762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19104804" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21943231" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23154762" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2893013" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32969433" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1411,43 +1443,25 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java</url>
-          <line>201</line>
-          <properties />
-          <option name="timeStamp" value="142" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java</url>
-          <line>202</line>
-          <properties />
-          <option name="timeStamp" value="143" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java</url>
-          <line>210</line>
-          <properties />
-          <option name="timeStamp" value="144" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java</url>
-          <line>211</line>
-          <properties />
-          <option name="timeStamp" value="145" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/RestaurantController.java</url>
-          <line>107</line>
-          <properties />
-          <option name="timeStamp" value="151" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/RestaurantController.java</url>
           <line>76</line>
           <properties />
           <option name="timeStamp" value="153" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java</url>
+          <line>217</line>
+          <properties />
+          <option name="timeStamp" value="157" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java</url>
+          <line>175</line>
+          <properties />
+          <option name="timeStamp" value="167" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="154" />
+      <option name="time" value="168" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1456,38 +1470,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="102" column="21" lean-forward="false" selection-start-line="102" selection-start-column="21" selection-end-line="102" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="81" column="58" lean-forward="false" selection-start-line="81" selection-start-column="58" selection-end-line="81" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordRequestServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/PasswordResetServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/CountryServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1548,13 +1534,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/messages_en.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
           <caret line="98" column="160" lean-forward="false" selection-start-line="98" selection-start-column="160" selection-end-line="98" selection-end-column="160" />
         </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/TutorialController.java">
@@ -1658,13 +1644,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/messages_de.properties">
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="137" column="102" lean-forward="false" selection-start-line="137" selection-start-column="102" selection-end-line="137" selection-end-column="102" />
         </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/ProfileForm.java">
@@ -1679,7 +1665,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="24" column="59" lean-forward="false" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1687,7 +1672,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1695,7 +1679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1703,7 +1686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="12" column="17" lean-forward="true" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="85" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1711,9 +1693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="21" column="28" lean-forward="false" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1721,7 +1700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="629">
           <caret line="71" column="23" lean-forward="true" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1737,15 +1715,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="124">
           <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/RestaurantType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1753,27 +1722,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="23" column="38" lean-forward="true" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="626">
-          <caret line="86" column="30" lean-forward="false" selection-start-line="86" selection-start-column="30" selection-end-line="86" selection-end-column="30" />
-          <folding>
-            <element signature="e#1814#1835#0" expanded="true" />
-            <element signature="e#9311#9312#0" expanded="true" />
-            <element signature="e#9375#9376#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/CountryForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1782,132 +1730,232 @@
         <state relative-caret-position="374">
           <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
           <folding>
-            <element signature="e#727#728#0" expanded="true" />
+            <element signature="e#727#728#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantForm.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/CountryServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="101">
-          <caret line="38" column="31" lean-forward="false" selection-start-line="38" selection-start-column="31" selection-end-line="38" selection-end-column="49" />
+        <state relative-caret-position="374">
+          <caret line="30" column="31" lean-forward="true" selection-start-line="30" selection-start-column="31" selection-end-line="30" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantTypeForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="33" column="29" lean-forward="false" selection-start-line="33" selection-start-column="29" selection-end-line="33" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/RestaurantType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="13" column="16" lean-forward="false" selection-start-line="13" selection-start-column="16" selection-end-line="13" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Country.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="55" column="1" lean-forward="false" selection-start-line="55" selection-start-column="1" selection-end-line="55" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/CountryForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/ATestForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="46" lean-forward="false" selection-start-line="14" selection-start-column="46" selection-end-line="14" selection-end-column="46" />
           <folding>
-            <element signature="e#10197#10198#0" expanded="true" />
-            <element signature="e#10238#10239#0" expanded="true" />
+            <element signature="e#375#376#0" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#465#466#0" expanded="true" />
+            <element signature="e#493#494#0" expanded="true" />
+            <element signature="e#524#525#0" expanded="true" />
+            <element signature="e#551#552#0" expanded="true" />
+            <element signature="e#591#592#0" expanded="true" />
+            <element signature="e#623#624#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/restaurant.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="184" column="33" lean-forward="true" selection-start-line="184" selection-start-column="33" selection-end-line="184" selection-end-column="33" />
+        <state relative-caret-position="3315">
+          <caret line="195" column="67" lean-forward="false" selection-start-line="195" selection-start-column="67" selection-end-line="195" selection-end-column="67" />
           <folding>
+            <element signature="n#style#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#p#0;n#div#1;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#p#0;n#div#2;n#div#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#form#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#form#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#form#0;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#form#1;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#form#1;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#form#1;n#div#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#3;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#4;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#5;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#p#0;n#div#5;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#6;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#select#0;n#p#0;n#div#6;n#div#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1500634964823" expanded="true" signature="565:604" ph="Wählen Sie eine Restaurant aus um dieses zu laden." />
-            <marker date="1500634964823" expanded="true" signature="655:686" ph="Restaurant laden" />
-            <marker date="1500634964823" expanded="true" signature="1519:1560" ph="Legt ein neues Restaurant an, welches nach ausfüllen der benötigten Felder gespeichert werden kann." />
-            <marker date="1500634964823" expanded="true" signature="1611:1644" ph="Restaurant anlegen" />
-            <marker date="1500634964823" expanded="true" signature="1789:1829" ph="neues Restaurant" />
-            <marker date="1500634964823" expanded="true" signature="2131:2169" ph="Weiterleitung zu Essensübersicht des ausgewählten Restaurants." />
-            <marker date="1500634964823" expanded="true" signature="2220:2250" ph="Angebote pflegen" />
-            <marker date="1500634964823" expanded="true" signature="2421:2458" ph="Angebote" />
-            <marker date="1500634964823" expanded="true" signature="2590:2634" ph="Restaurant Kategorien" />
-            <marker date="1500634964823" expanded="true" signature="2865:2901" ph="Erlaubt das löschen und hinzufügen von Kategorien." />
-            <marker date="1500634964823" expanded="true" signature="2977:3005" ph="Speisekategorie(n)" />
-            <marker date="1500634964823" expanded="true" signature="3582:3624" ph="Das löschen von Kategorien ist nur bei bereits angelegten Restaurants möglich. Um eine Kategorie zu löschen geben Sie deren Namen ein und drücken löschen. Fehlerhafte Schreibweisen werden ignoriert. &#10; - Eine Kategorie: &quot;Frühstück&quot; &#10; - Mehrere Kategorien: &quot;Frühstück, Rotweine, Weissweine&quot;" />
-            <marker date="1500634964823" expanded="true" signature="3947:3988" ph="löschen" />
-            <marker date="1500634964823" expanded="true" signature="4373:4412" ph="Das hinzufügen von Kategorien ist nur bei bereits angelegten Restaurants möglich. &#10; - Eine Kategorie: &quot;Frühstück&quot; &#10; - Mehrere Kategorien: &quot;Frühstück, Rotweine, Weissweine&quot;." />
-            <marker date="1500634964823" expanded="true" signature="4732:4770" ph="hinzufügen" />
-            <marker date="1500634964823" expanded="true" signature="5224:5261" ph="Wählen sie mit Hilfe der Checkbox die Küchentypen aus, welche zum Restaurant passen. Markierte Typen werden für Ihr Restaurant gespeichert." />
-            <marker date="1500634964823" expanded="true" signature="5338:5367" ph="Küchentypen" />
-            <marker date="1500634964823" expanded="true" signature="5941:5979" ph="Restaurant Daten" />
-            <marker date="1500634964823" expanded="true" signature="6569:6590" ph="Name" />
-            <marker date="1500634964823" expanded="true" signature="7165:7188" ph="Straße" />
-            <marker date="1500634964823" expanded="true" signature="7767:7796" ph="Hausnummer" />
-            <marker date="1500634964823" expanded="true" signature="8387:8407" ph="PLZ" />
-            <marker date="1500634964823" expanded="true" signature="8980:9001" ph="Stadt" />
-            <marker date="1500634964823" expanded="true" signature="9577:9601" ph="Land" />
-            <marker date="1500634964823" expanded="true" signature="10315:10346" ph="Restaurant-Typ" />
-            <marker date="1500634964823" expanded="true" signature="11177:11199" ph="Email" />
-            <marker date="1500634964823" expanded="true" signature="11776:11798" ph="Telefon" />
-            <marker date="1500634964823" expanded="true" signature="12375:12395" ph="URL" />
-            <marker date="1500634964823" expanded="true" signature="12948:12974" ph="Längengrad" />
-            <marker date="1500634964823" expanded="true" signature="13555:13580" ph="Breitengrad" />
-            <marker date="1500634964823" expanded="true" signature="14159:14186" ph="Restaurant-Nr" />
-            <marker date="1500634964823" expanded="true" signature="14801:14836" ph="Bitte geben Sie die Zeitangaben im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
-            <marker date="1500634964823" expanded="true" signature="14916:14945" ph="Öffnungszeiten" />
-            <marker date="1500634964823" expanded="true" signature="15396:15419" ph="Montag" />
-            <marker date="1500634964823" expanded="true" signature="15505:15529" ph="Dienstag" />
-            <marker date="1500634964823" expanded="true" signature="15615:15641" ph="Mittwoch" />
-            <marker date="1500634964823" expanded="true" signature="15727:15752" ph="Donnerstag" />
-            <marker date="1500634964823" expanded="true" signature="15838:15861" ph="Freitag" />
-            <marker date="1500634964823" expanded="true" signature="15947:15972" ph="Samstag" />
-            <marker date="1500634964823" expanded="true" signature="16058:16081" ph="Sonntag" />
-            <marker date="1500634964823" expanded="true" signature="16462:16485" ph="bis" />
-            <marker date="1500634964823" expanded="true" signature="17052:17087" ph="Bitte geben Sie die Zeitangaben im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
-            <marker date="1500634964823" expanded="true" signature="17167:17194" ph="Angebotszeiten" />
-            <marker date="1500634964823" expanded="true" signature="17639:17662" ph="Montag" />
-            <marker date="1500634964823" expanded="true" signature="17748:17772" ph="Dienstag" />
-            <marker date="1500634964823" expanded="true" signature="17858:17884" ph="Mittwoch" />
-            <marker date="1500634964823" expanded="true" signature="17970:17995" ph="Donnerstag" />
-            <marker date="1500634964823" expanded="true" signature="18081:18104" ph="Freitag" />
-            <marker date="1500634964823" expanded="true" signature="18190:18215" ph="Samstag" />
-            <marker date="1500634964823" expanded="true" signature="18301:18324" ph="Sonntag" />
-            <marker date="1500634964823" expanded="true" signature="18703:18726" ph="bis" />
-            <marker date="1500634964823" expanded="true" signature="19370:19416" ph="Durch die Markierung dieser Checkbox erhält das Restaurant die Erlaubnis seine Essensangebote selbstständig, d.h. ohne Zutun eines Vertriebsmitarbeiters, abzuändern." />
-            <marker date="1500634964823" expanded="true" signature="19469:19506" ph="Änderungserlaubnis" />
-            <marker date="1500634964823" expanded="true" signature="19889:19921" ph="Durch die Markierung dieser Checkbox wird das Restaurant gesperrt." />
-            <marker date="1500634964823" expanded="true" signature="19974:19998" ph="Restaurant sperren" />
-            <marker date="1500634964823" expanded="true" signature="20392:20425" ph="Diese Zeichenkette entspricht dem Wert des QR-Codes. Der QR-Code wird einmalig bei der Erstellung eines neuen Restaurants angelegt und kann nicht geändert werden." />
-            <marker date="1500634964823" expanded="true" signature="20478:20503" ph="Restaurant Uuid" />
-            <marker date="1500634964823" expanded="true" signature="21026:21054" ph="QR-Code" />
-            <marker date="1500634964823" expanded="true" signature="21555:21575" ph="Speichern" />
-            <marker date="1500634964823" expanded="true" signature="21687:21709" ph="Abbrechen" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#1;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#3;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#4;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#5;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#p#0;n#div#5;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#span#0;n#p#0;n#div#0;n#div#0;n#div#0;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#span#2;n#p#0;n#div#0;n#div#0;n#div#0;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#span#0;n#p#0;n#div#0;n#div#0;n#div#1;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#span#2;n#p#0;n#div#0;n#div#0;n#div#1;n#div#4;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#2;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#p#0;n#div#2;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#3;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#label#0;n#label#0;n#p#0;n#div#3;n#div#5;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#6;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#6;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#6;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#7;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1500639396751" expanded="true" signature="565:604" ph="Wählen Sie eine Restaurant aus um dieses zu laden." />
+            <marker date="1500639396751" expanded="true" signature="655:686" ph="Restaurant laden" />
+            <marker date="1500639396751" expanded="true" signature="1519:1560" ph="Legt ein neues Restaurant an, welches nach ausfüllen der benötigten Felder gespeichert werden kann." />
+            <marker date="1500639396751" expanded="true" signature="1611:1644" ph="Restaurant anlegen" />
+            <marker date="1500639396751" expanded="true" signature="1789:1829" ph="neues Restaurant" />
+            <marker date="1500639396751" expanded="true" signature="2131:2169" ph="Weiterleitung zu Essensübersicht des ausgewählten Restaurants." />
+            <marker date="1500639396751" expanded="true" signature="2220:2250" ph="Angebote pflegen" />
+            <marker date="1500639396751" expanded="true" signature="2421:2458" ph="Angebote" />
+            <marker date="1500639396751" expanded="true" signature="2590:2634" ph="Restaurant Kategorien" />
+            <marker date="1500639396751" expanded="true" signature="2865:2901" ph="Erlaubt das löschen und hinzufügen von Kategorien." />
+            <marker date="1500639396751" expanded="true" signature="2977:3005" ph="Speisekategorie(n)" />
+            <marker date="1500639396751" expanded="true" signature="3582:3624" ph="Das löschen von Kategorien ist nur bei bereits angelegten Restaurants möglich. Um eine Kategorie zu löschen geben Sie deren Namen ein und drücken löschen. Fehlerhafte Schreibweisen werden ignoriert. &#10; - Eine Kategorie: &quot;Frühstück&quot; &#10; - Mehrere Kategorien: &quot;Frühstück, Rotweine, Weissweine&quot;" />
+            <marker date="1500639396751" expanded="true" signature="3947:3988" ph="löschen" />
+            <marker date="1500639396751" expanded="true" signature="4373:4412" ph="Das hinzufügen von Kategorien ist nur bei bereits angelegten Restaurants möglich. &#10; - Eine Kategorie: &quot;Frühstück&quot; &#10; - Mehrere Kategorien: &quot;Frühstück, Rotweine, Weissweine&quot;." />
+            <marker date="1500639396751" expanded="true" signature="4732:4770" ph="hinzufügen" />
+            <marker date="1500639396751" expanded="true" signature="5224:5261" ph="Wählen sie mit Hilfe der Checkbox die Küchentypen aus, welche zum Restaurant passen. Markierte Typen werden für Ihr Restaurant gespeichert." />
+            <marker date="1500639396751" expanded="true" signature="5338:5367" ph="Küchentypen" />
+            <marker date="1500639396751" expanded="true" signature="5941:5979" ph="Restaurant Daten" />
+            <marker date="1500639396751" expanded="true" signature="6569:6590" ph="Name" />
+            <marker date="1500639396751" expanded="true" signature="7165:7188" ph="Straße" />
+            <marker date="1500639396751" expanded="true" signature="7767:7796" ph="Hausnummer" />
+            <marker date="1500639396751" expanded="true" signature="8387:8407" ph="PLZ" />
+            <marker date="1500639396751" expanded="true" signature="8980:9001" ph="Stadt" />
+            <marker date="1500639396751" expanded="true" signature="9577:9601" ph="Land" />
+            <marker date="1500639396751" expanded="true" signature="10315:10346" ph="Restaurant-Typ" />
+            <marker date="1500639396751" expanded="true" signature="11158:11180" ph="Email" />
+            <marker date="1500639396751" expanded="true" signature="11757:11779" ph="Telefon" />
+            <marker date="1500639396751" expanded="true" signature="12356:12376" ph="URL" />
+            <marker date="1500639396751" expanded="true" signature="12929:12955" ph="Längengrad" />
+            <marker date="1500639396751" expanded="true" signature="13536:13561" ph="Breitengrad" />
+            <marker date="1500639396751" expanded="true" signature="14140:14167" ph="Restaurant-Nr" />
+            <marker date="1500639396751" expanded="true" signature="14782:14817" ph="Bitte geben Sie die Zeitangaben im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
+            <marker date="1500639396751" expanded="true" signature="14897:14926" ph="Öffnungszeiten" />
+            <marker date="1500639396751" expanded="true" signature="15377:15400" ph="Montag" />
+            <marker date="1500639396751" expanded="true" signature="15486:15510" ph="Dienstag" />
+            <marker date="1500639396751" expanded="true" signature="15596:15622" ph="Mittwoch" />
+            <marker date="1500639396751" expanded="true" signature="15708:15733" ph="Donnerstag" />
+            <marker date="1500639396751" expanded="true" signature="15819:15842" ph="Freitag" />
+            <marker date="1500639396751" expanded="true" signature="15928:15953" ph="Samstag" />
+            <marker date="1500639396751" expanded="true" signature="16039:16062" ph="Sonntag" />
+            <marker date="1500639396751" expanded="true" signature="16443:16466" ph="bis" />
+            <marker date="1500639396751" expanded="true" signature="17033:17068" ph="Bitte geben Sie die Zeitangaben im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
+            <marker date="1500639396751" expanded="true" signature="17148:17175" ph="Angebotszeiten" />
+            <marker date="1500639396751" expanded="true" signature="17620:17643" ph="Montag" />
+            <marker date="1500639396751" expanded="true" signature="17729:17753" ph="Dienstag" />
+            <marker date="1500639396751" expanded="true" signature="17839:17865" ph="Mittwoch" />
+            <marker date="1500639396751" expanded="true" signature="17951:17976" ph="Donnerstag" />
+            <marker date="1500639396751" expanded="true" signature="18062:18085" ph="Freitag" />
+            <marker date="1500639396751" expanded="true" signature="18171:18196" ph="Samstag" />
+            <marker date="1500639396751" expanded="true" signature="18282:18305" ph="Sonntag" />
+            <marker date="1500639396751" expanded="true" signature="18684:18707" ph="bis" />
+            <marker date="1500639396751" expanded="true" signature="19351:19397" ph="Durch die Markierung dieser Checkbox erhält das Restaurant die Erlaubnis seine Essensangebote selbstständig, d.h. ohne Zutun eines Vertriebsmitarbeiters, abzuändern." />
+            <marker date="1500639396751" expanded="true" signature="19450:19487" ph="Änderungserlaubnis" />
+            <marker date="1500639396751" expanded="true" signature="19870:19902" ph="Durch die Markierung dieser Checkbox wird das Restaurant gesperrt." />
+            <marker date="1500639396751" expanded="true" signature="19955:19979" ph="Restaurant sperren" />
+            <marker date="1500639396751" expanded="true" signature="20373:20406" ph="Diese Zeichenkette entspricht dem Wert des QR-Codes. Der QR-Code wird einmalig bei der Erstellung eines neuen Restaurants angelegt und kann nicht geändert werden." />
+            <marker date="1500639396751" expanded="true" signature="20459:20484" ph="Restaurant Uuid" />
+            <marker date="1500639396751" expanded="true" signature="21007:21035" ph="QR-Code" />
+            <marker date="1500639396751" expanded="true" signature="21536:21556" ph="Speichern" />
+            <marker date="1500639396751" expanded="true" signature="21668:21690" ph="Abbrechen" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Country.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="40" column="48" lean-forward="false" selection-start-line="40" selection-start-column="48" selection-end-line="40" selection-end-column="48" />
-          <folding>
-            <element signature="e#871#872#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="339">
-          <caret line="147" column="10" lean-forward="false" selection-start-line="147" selection-start-column="10" selection-end-line="147" selection-end-column="10" />
-          <folding>
-            <element signature="e#6130#6143#0" expanded="true" />
-            <element signature="e#6935#6949#0" expanded="true" />
-            <element signature="e#7912#7925#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="3298">
+          <caret line="211" column="0" lean-forward="false" selection-start-line="211" selection-start-column="0" selection-end-line="211" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/RestaurantController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="107" column="0" lean-forward="false" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
+        <state relative-caret-position="1020">
+          <caret line="76" column="0" lean-forward="false" selection-start-line="76" selection-start-column="0" selection-end-line="76" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantTypeForm.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="35" column="5" lean-forward="true" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="386">
+          <caret line="142" column="22" lean-forward="true" selection-start-line="142" selection-start-column="22" selection-end-line="142" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeToDoForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/HomeRestaurantForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantForm.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="344" column="73" lean-forward="false" selection-start-line="344" selection-start-column="73" selection-end-line="344" selection-end-column="73" />
           <folding>
-            <element signature="e#674#675#0" expanded="true" />
-            <element signature="e#699#700#0" expanded="true" />
-            <element signature="e#732#733#0" expanded="true" />
-            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#10271#10272#0" expanded="true" />
+            <element signature="e#10303#10304#0" expanded="true" />
+            <element signature="e#10356#10357#0" expanded="true" />
+            <element signature="e#10398#10399#0" expanded="true" />
           </folding>
         </state>
       </provider>

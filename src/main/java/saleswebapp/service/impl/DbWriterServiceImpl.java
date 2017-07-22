@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.thymeleaf.util.ListUtils;
 import saleswebapp.components.DTO.ProfileForm;
 import saleswebapp.components.DTO.RestaurantAddCategory;
 import saleswebapp.components.DTO.RestaurantDeleteCategory;
@@ -132,7 +133,7 @@ public class DbWriterServiceImpl  implements DbWriterService {
         restaurant.setZip(restaurantForm.getZip());
         restaurant.setCity(restaurantForm.getCity());
 
-        Country country = new Country();
+        Country country = restaurantRepository.getRestaurantById(restaurantForm.getId()).getCountry();
         country.setCountryCode(restaurantForm.getCountry().getCountryCode());
         country.setName(restaurantForm.getCountry().getName());
         restaurant.setCountry(country);
@@ -143,27 +144,31 @@ public class DbWriterServiceImpl  implements DbWriterService {
         restaurant.setPhone(restaurantForm.getPhone());
         restaurant.setUrl(restaurantForm.getUrl());
 
-        //Restaurant types
-        RestaurantType restaurantType = new RestaurantType();
-        //restaurantType.setId(restaurantForm.getRestaurantTypeForm().getId());
-        restaurantType.setName(restaurantForm.getRestaurantTypeForm().getName());
+        //Restaurant types temporary
+        RestaurantType restaurantType = restaurantRepository.getRestaurantById(restaurantForm.getId()).getRestaurantType();
         restaurant.setRestaurantType(restaurantType);
+
+        /*
+        RestaurantType restaurantType = new RestaurantType();
+        restaurantType.setId(restaurantForm.getRestaurantType().getId());
+        restaurantType.setName(restaurantForm.getRestaurantType().getName());
+        restaurant.setRestaurantType(restaurantType);
+        */
 
         //Kitchen types
         List<KitchenType> listOfAllKitchenTypes = restaurantKitchenTypeRepository.getAllBy(); //Used to get the ids for the kitchenTypes
         List<String> listOfRestaurantKitchenTypes = restaurantForm.getRestaurantKitchenTypesForm();
-        List<KitchenType> listOfKitchenTypesToBeSaved = new ArrayList<KitchenType>();
-        for(String string : listOfRestaurantKitchenTypes) {
-            for(KitchenType kitchenType : listOfAllKitchenTypes) {
-                if(string.equals(kitchenType.getName())) {
-                    KitchenType kitchenTypeToBeAdded = new KitchenType();
-                    kitchenTypeToBeAdded.setId(kitchenType.getId());
-                    kitchenTypeToBeAdded.setName(kitchenType.getName());
-                    listOfKitchenTypesToBeSaved.add(kitchenTypeToBeAdded);
-                }
+        List<KitchenType> listOfKitchenTypesToSubtract = new ArrayList<KitchenType>();
+
+        for(KitchenType kitchenType : listOfAllKitchenTypes) {
+            String kitchenTypeName = kitchenType.getName();
+            if(!listOfRestaurantKitchenTypes.contains(kitchenTypeName)) {
+                listOfKitchenTypesToSubtract.add(kitchenType);
             }
         }
-        restaurant.setKitchenTypes(listOfKitchenTypesToBeSaved);
+
+        listOfAllKitchenTypes.removeAll(listOfKitchenTypesToSubtract);
+        restaurant.setKitchenTypes(listOfAllKitchenTypes);
 
         //Course Types are handled separately by the functions add/delete-CategoryToRestaurant
 
