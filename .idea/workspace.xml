@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0cf9450-ea71-430d-bd31-7dc6981d6dbf" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/RestaurantForm.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/RestaurantForm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/RestaurantTypeForm.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/components/DTO/RestaurantTypeForm.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/DbWriterServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/DbWriterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantForm.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/components/DTO/RestaurantForm.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/restaurant.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/restaurant.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/restaurant.html" afterPath="$PROJECT_DIR$/target/classes/templates/restaurant.html" />
-    </list>
+    <list default="true" id="c0cf9450-ea71-430d-bd31-7dc6981d6dbf" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,12 +41,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="420">
               <caret line="344" column="73" lean-forward="false" selection-start-line="344" selection-start-column="73" selection-end-line="344" selection-end-column="73" />
-              <folding>
-                <element signature="e#10271#10272#0" expanded="true" />
-                <element signature="e#10303#10304#0" expanded="true" />
-                <element signature="e#10356#10357#0" expanded="true" />
-                <element signature="e#10398#10399#0" expanded="true" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1380,12 +1366,12 @@
       <workItem from="1500582404768" duration="314000" />
       <workItem from="1500616864475" duration="15406000" />
       <workItem from="1500637803739" duration="6227000" />
-      <workItem from="1500717165708" duration="67000" />
+      <workItem from="1500717165708" duration="190000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="601586000" />
+    <option name="totallyTimeSpent" value="601709000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1397,7 +1383,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1665,6 +1651,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="24" column="59" lean-forward="false" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1722,6 +1709,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
           <caret line="23" column="38" lean-forward="true" selection-start-line="23" selection-start-column="38" selection-end-line="23" selection-end-column="38" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1951,12 +1939,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="344" column="73" lean-forward="false" selection-start-line="344" selection-start-column="73" selection-end-line="344" selection-end-column="73" />
-          <folding>
-            <element signature="e#10271#10272#0" expanded="true" />
-            <element signature="e#10303#10304#0" expanded="true" />
-            <element signature="e#10356#10357#0" expanded="true" />
-            <element signature="e#10398#10399#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
