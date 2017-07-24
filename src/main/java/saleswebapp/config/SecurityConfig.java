@@ -22,7 +22,7 @@ import saleswebapp.service.impl.AuthenticationServiceImpl;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    AuthenticationServiceImpl authenticationService;
+    private AuthenticationServiceImpl authenticationService;
 
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {

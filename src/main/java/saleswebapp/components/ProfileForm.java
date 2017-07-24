@@ -1,4 +1,4 @@
-package saleswebapp.components.DTO;
+package saleswebapp.components;
 
 import saleswebapp.repository.impl.Country;
 import saleswebapp.repository.impl.SalesPerson;
@@ -70,13 +70,7 @@ public class ProfileForm implements Serializable {
        this.zip = salesPerson.getZip();
        this.city = salesPerson.getCity();
        this.phone = salesPerson.getPhone();
-
-       //The CountryForm isn`t used here deliberately as it caused strange issues which are hard to fix.
-       Country country = salesPerson.getCountry();
-       country.setRestaurants(null); //set null as the model would contain all restaurants otherwise
-       country.setSalesPersons(null); //set null as the model would contain all salesPersons otherwise
-       this.country = country;
-
+       this.country = salesPerson.getCountry();
        this.email = salesPerson.getEmail();
        this.iban = salesPerson.getIban();
        this.bic = salesPerson.getBic();

@@ -1,33 +1,24 @@
 package saleswebapp.service.impl;
 
-import com.sun.org.apache.regexp.internal.RE;
-import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import org.thymeleaf.util.ListUtils;
-import saleswebapp.components.DTO.ProfileForm;
-import saleswebapp.components.DTO.RestaurantAddCategory;
-import saleswebapp.components.DTO.RestaurantDeleteCategory;
-import saleswebapp.components.DTO.RestaurantForm;
-import saleswebapp.components.RestaurantTimeContainer;
+import saleswebapp.components.ProfileForm;
+import saleswebapp.components.RestaurantAddCategory;
 import saleswebapp.repository.*;
-import saleswebapp.repository.impl.*;
+import saleswebapp.repository.impl.Country;
+import saleswebapp.repository.impl.CourseType;
+import saleswebapp.repository.impl.Restaurant;
+import saleswebapp.repository.impl.SalesPerson;
 import saleswebapp.service.DbWriterService;
 
-import javax.management.Query;
 import javax.transaction.Transactional;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Alexander Carl on 18.06.2017.
  */
 @Service
-public class DbWriterServiceImpl  implements DbWriterService {
+public class DbWriterServiceImpl implements DbWriterService {
 
     @Autowired
     private SalesPersonRepository salesPersonRepository;
@@ -50,6 +41,7 @@ public class DbWriterServiceImpl  implements DbWriterService {
     private ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
 
     @Override
+    @Transactional
     public void setNewPassword(String userEmail, String encodedPassword) {
         SalesPerson salesPerson = salesPersonRepository.getByEmail(userEmail);
         salesPerson.setPassword(encodedPassword);
@@ -57,6 +49,7 @@ public class DbWriterServiceImpl  implements DbWriterService {
     }
 
     @Override
+    @Transactional
     public void setNewPassword(Integer userId, String encodedPassword) {
         SalesPerson salesPerson = salesPersonRepository.getById(userId);
         salesPerson.setPassword(encodedPassword);
@@ -88,6 +81,7 @@ public class DbWriterServiceImpl  implements DbWriterService {
     }
 
     @Override
+    @Transactional
     public void addCategoryToRestaurant(RestaurantAddCategory restaurantAddCategory) {
         Restaurant restaurant = restaurantRepository.getRestaurantById(restaurantAddCategory.getRestaurantId());
         CourseType courseType = new CourseType();
@@ -106,17 +100,11 @@ public class DbWriterServiceImpl  implements DbWriterService {
 
     @Override
     @Transactional
-    public void saveRestaurantChange(RestaurantForm restaurantForm) {
-        Restaurant restaurant = createOrGetRestaurant(restaurantForm);
+    public void saveRestaurant(Restaurant restaurant) {
         restaurantRepository.saveAndFlush(restaurant);
     }
 
-    @Override
-    public void setNewRestaurant(RestaurantForm restaurantForm) {
-        Restaurant restaurant = createOrGetRestaurant(restaurantForm);
-        restaurantRepository.saveAndFlush(restaurant);
-    }
-
+    /*
     private Restaurant createOrGetRestaurant(RestaurantForm restaurantForm) {
         Restaurant restaurant;
 
@@ -148,17 +136,18 @@ public class DbWriterServiceImpl  implements DbWriterService {
         RestaurantType restaurantType = restaurantRepository.getRestaurantById(restaurantForm.getId()).getRestaurantType();
         restaurant.setRestaurantType(restaurantType);
 
-        /*
+
         RestaurantType restaurantType = new RestaurantType();
         restaurantType.setId(restaurantForm.getRestaurantType().getId());
         restaurantType.setName(restaurantForm.getRestaurantType().getName());
         restaurant.setRestaurantType(restaurantType);
-        */
 
-        //Kitchen types
-        List<KitchenType> listOfAllKitchenTypes = restaurantKitchenTypeRepository.getAllBy(); //Used to get the ids for the kitchenTypes
+
+        Kitchen types
+        List<KitchenType> listOfAllKitchenTypes = restaurantKitchenTypeRepository.getAllBy(); Used to get the ids for the kitchenTypes
         List<String> listOfRestaurantKitchenTypes = restaurantForm.getRestaurantKitchenTypesForm();
         List<KitchenType> listOfKitchenTypesToSubtract = new ArrayList<KitchenType>();
+
 
         for(KitchenType kitchenType : listOfAllKitchenTypes) {
             String kitchenTypeName = kitchenType.getName();
@@ -217,4 +206,5 @@ public class DbWriterServiceImpl  implements DbWriterService {
 
         return restaurant;
     }
+    */
 }

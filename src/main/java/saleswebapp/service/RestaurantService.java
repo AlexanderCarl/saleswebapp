@@ -1,6 +1,10 @@
 package saleswebapp.service;
 
-import saleswebapp.components.DTO.*;
+import saleswebapp.components.RestaurantAddCategory;
+import saleswebapp.components.RestaurantDeleteCategory;
+import saleswebapp.components.RestaurantListForm;
+import saleswebapp.components.RestaurantTimeContainer;
+import saleswebapp.repository.impl.KitchenType;
 import saleswebapp.repository.impl.Restaurant;
 import saleswebapp.repository.impl.RestaurantType;
 
@@ -17,11 +21,7 @@ public interface RestaurantService {
 
     boolean restaurantAssignedToSalesPerson(int id);
 
-    List<RestaurantTypeForm> getAllRestaurantTypes();
-
     int getUniqueCustomerId();
-
-    List<String> getAllKitchenTypes();
 
     void addCategoryToRestaurant(RestaurantAddCategory restaurantAddCategory);
 
@@ -29,7 +29,15 @@ public interface RestaurantService {
 
     void addRestaurantToRestaurantTransactionStore(Restaurant restaurant);
 
-    boolean restaurantHasBeenAlteredMeanwhile(RestaurantForm restaurantForm);
+    boolean restaurantHasBeenAlteredMeanwhile(Restaurant restaurant);
 
-    void addNewRestaurant(RestaurantForm restaurantForm);
+    void saveRestaurant(Restaurant restaurant);
+
+    byte[] createQRCode(String restaurantUUID);
+
+    List<RestaurantType> getAllRestaurantTypes();
+
+    List<KitchenType> getAllKitchenTypes();
+
+    List<RestaurantTimeContainer> populateRestaurantTimeDayNumber();
 }

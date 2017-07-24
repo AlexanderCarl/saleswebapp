@@ -3,7 +3,7 @@ package saleswebapp.validator.profile;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import saleswebapp.components.DTO.ProfileForm;
+import saleswebapp.components.ProfileForm;
 
 /**
  * Created by Alexander Carl on 25.06.2017.

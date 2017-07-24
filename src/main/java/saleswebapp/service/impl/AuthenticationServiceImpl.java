@@ -39,5 +39,4 @@ public class AuthenticationServiceImpl implements UserDetailsService {
             //The sha256-Code is always longer than the 11 chars of the "unknownEMail" String, therefore the else statement will never lead to a successfull log in.
         }
     }
-
 }

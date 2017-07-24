@@ -1,13 +1,9 @@
 package saleswebapp.service;
 
-import saleswebapp.components.DTO.ProfileForm;
-import saleswebapp.components.DTO.RestaurantAddCategory;
-import saleswebapp.components.DTO.RestaurantDeleteCategory;
-import saleswebapp.components.DTO.RestaurantForm;
+import saleswebapp.components.ProfileForm;
+import saleswebapp.components.RestaurantAddCategory;
 import saleswebapp.repository.impl.CourseType;
 import saleswebapp.repository.impl.Restaurant;
-
-import java.util.List;
 
 /**
  * Created by Alexander Carl on 18.06.2017.
@@ -24,8 +20,6 @@ public interface DbWriterService {
 
     void deleteCategoryFromRestaurant(CourseType courseType);
 
-    void saveRestaurantChange(RestaurantForm restaurantForm);
-
-    void setNewRestaurant(RestaurantForm restaurantForm);
+    void saveRestaurant(Restaurant restaurant);
 
 }

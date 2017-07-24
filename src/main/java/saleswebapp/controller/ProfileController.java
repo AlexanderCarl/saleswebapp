@@ -12,8 +12,7 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import saleswebapp.components.DTO.ProfileForm;
-import saleswebapp.repository.impl.Country;
+import saleswebapp.components.ProfileForm;
 import saleswebapp.repository.impl.SalesPerson;
 import saleswebapp.service.CountryService;
 import saleswebapp.service.DbReaderService;
@@ -22,7 +21,6 @@ import saleswebapp.validator.profile.ProfileValidator;
 
 import javax.validation.Valid;
 import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by Alexander Carl on 19.06.2017.

@@ -3,7 +3,7 @@ package saleswebapp.validator.passwordReset;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import saleswebapp.components.DTO.PasswordResetForm;
+import saleswebapp.components.PasswordResetForm;
 
 import javax.validation.ConstraintViolation;
 import java.util.HashSet;

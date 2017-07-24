@@ -3,11 +3,9 @@ package saleswebapp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import saleswebapp.components.DTO.ProfileForm;
-import saleswebapp.components.DTO.RestaurantForm;
+import saleswebapp.repository.impl.Restaurant;
 import saleswebapp.service.RestaurantService;
 
 import javax.validation.Valid;
@@ -43,12 +41,12 @@ public class TutorialController {
 
     @RequestMapping(value = "/EditableTable", method = RequestMethod.GET)
     public String editableTableTutorial(Model model) throws Exception {
-        model.addAttribute("restaurantForm", new RestaurantForm(restaurantService.getRestaurantById(11)));
+        model.addAttribute("restaurant", restaurantService.getRestaurantById(11));
         return "BootstrapsTutorial/EditableTable";
     }
 
     @RequestMapping(value = "/EditableTable", method = RequestMethod.POST)
-    public String processEditedTable(RestaurantForm restaurantForm) {
+    public String processEditedTable(Restaurant restaurant) {
         return "redirect:/home";
     }
 }

@@ -3,8 +3,7 @@ package saleswebapp.validator.profile;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import saleswebapp.components.DTO.PasswordResetForm;
-import saleswebapp.components.DTO.ProfileForm;
+import saleswebapp.components.ProfileForm;
 
 import javax.validation.ConstraintViolation;
 import java.util.HashSet;

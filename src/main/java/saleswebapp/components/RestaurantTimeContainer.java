@@ -23,7 +23,6 @@ public class RestaurantTimeContainer {
             this.startTime = null;
         }
 
-
         if(!(endTime == null)) {
             this.endTime = new SimpleDateFormat("HH:mm").format(endTime);
         } else {

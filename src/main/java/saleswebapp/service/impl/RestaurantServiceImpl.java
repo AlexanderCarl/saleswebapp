@@ -1,21 +1,31 @@
 package saleswebapp.service.impl;
 
-import com.sun.org.apache.regexp.internal.RE;
+import com.google.zxing.BarcodeFormat;
+import com.google.zxing.EncodeHintType;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
+import com.google.zxing.client.j2se.MatrixToImageWriter;
+import com.google.zxing.common.BitMatrix;
+import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import saleswebapp.components.DTO.*;
+import saleswebapp.components.RestaurantAddCategory;
+import saleswebapp.components.RestaurantDeleteCategory;
+import saleswebapp.components.RestaurantListForm;
+import saleswebapp.components.RestaurantTimeContainer;
 import saleswebapp.repository.impl.*;
 import saleswebapp.service.DbReaderService;
 import saleswebapp.service.DbWriterService;
 import saleswebapp.service.RestaurantService;
 
+import javax.imageio.ImageIO;
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Random;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.util.*;
 
 /**
  * Created by Alexander Carl on 08.07.2017.
@@ -83,18 +93,6 @@ public class RestaurantServiceImpl implements RestaurantService {
         return false;
     }
 
-    @Override
-    public List<RestaurantTypeForm> getAllRestaurantTypes() {
-        List<RestaurantType> restaurantTypes = dbReaderService.getAllRestaurantTypes();
-        List<RestaurantTypeForm> restaurantTypeFormList= new ArrayList<RestaurantTypeForm>();
-
-        for (RestaurantType restaurantType : restaurantTypes) {
-            restaurantTypeFormList.add(new RestaurantTypeForm(restaurantType));
-        }
-
-        return restaurantTypeFormList;
-    }
-
     /* 11.07.2017
     The way the customerID is created here is deliberately done different than in the findLunchApp.
     The id in the findLunchApp is created in an deprecated way and not checked for uniqueness.
@@ -120,18 +118,6 @@ public class RestaurantServiceImpl implements RestaurantService {
         }
 
         return newCustomerId;
-    }
-
-    @Override
-    public List<String> getAllKitchenTypes() {
-        List<KitchenType> kitchenTypeList = dbReaderService.getAllKitchenTypes();
-        List<String> allKitchenTypes = new ArrayList<String>();
-
-        for (KitchenType kitchenType : kitchenTypeList) {
-            allKitchenTypes.add(kitchenType.getName());
-        }
-
-        return  allKitchenTypes;
     }
 
     @Override
@@ -198,9 +184,9 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     //Security check if the concerning the DB-Object restaurant has been altered during transaction
     // and saves it if not.
-    public boolean restaurantHasBeenAlteredMeanwhile(RestaurantForm restaurantForm) {
-        Restaurant restaurantTransactionEnd = dbReaderService.getRestaurantById(restaurantForm.getId());
-        Restaurant restaurantTransactionStart = restaurantTransactionStore.get(restaurantForm.getId());
+    public boolean restaurantHasBeenAlteredMeanwhile(Restaurant restaurant) {
+        Restaurant restaurantTransactionEnd = dbReaderService.getRestaurantById(restaurant.getId());
+        Restaurant restaurantTransactionStart = restaurantTransactionStore.get(restaurant.getId());
 
         /*
         if (!restaurantTransactionEnd.equals(restaurantTransactionStart)) {
@@ -208,13 +194,61 @@ public class RestaurantServiceImpl implements RestaurantService {
         }
         */
 
-        dbWriterService.saveRestaurantChange(restaurantForm);
-        restaurantTransactionStore.remove(restaurantForm.getId());
+        restaurantTransactionStore.remove(restaurant.getId());
         return false;
     }
 
     @Override
-    public void addNewRestaurant(RestaurantForm restaurantForm) {
-        dbWriterService.setNewRestaurant(restaurantForm);
+    public void saveRestaurant(Restaurant restaurant) {
+        dbWriterService.saveRestaurant(restaurant);
+    }
+
+    @Override
+    //Creates tje QRCode as the in the findlunchApp but without saving it temporarely as a file on the hard drive.
+    public byte[] createQRCode(String qrUuid) {
+
+        //Creates a bitMatrix for the given String qrUuid
+        Map<EncodeHintType, Object> hintMap = new HashMap<EncodeHintType, Object>();
+        hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.H);
+        BitMatrix bitMatrix = null;
+        try {
+            bitMatrix = new MultiFormatWriter().encode(qrUuid, BarcodeFormat.QR_CODE, 250, 250, hintMap);
+        } catch (WriterException e) {
+            e.printStackTrace();
+        }
+
+        //Writes the BitMatrix to a (byte[])image
+        BufferedImage bufferedImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(bufferedImage, "png", byteArrayOutputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return byteArrayOutputStream.toByteArray();
+    }
+
+    @Override
+    public List<RestaurantType> getAllRestaurantTypes() {
+        return dbReaderService.getAllRestaurantTypes();
+    }
+
+    @Override
+    public List<KitchenType> getAllKitchenTypes() {
+        return dbReaderService.getAllKitchenTypes();
+    }
+
+    //The Html-Page does need the day numbers to be rendered correctly.
+    public List<RestaurantTimeContainer> populateRestaurantTimeDayNumber() {
+        List<RestaurantTimeContainer> times = new ArrayList<RestaurantTimeContainer>();
+
+        for (int i = 1; i < 8; i++) {
+            RestaurantTimeContainer restaurantTimeContainer = new RestaurantTimeContainer();
+            restaurantTimeContainer.setDayNumber(i);
+            times.add(restaurantTimeContainer);
+        }
+
+        return times;
     }
 }

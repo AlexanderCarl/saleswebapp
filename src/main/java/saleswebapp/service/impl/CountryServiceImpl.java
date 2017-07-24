@@ -2,7 +2,6 @@ package saleswebapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import saleswebapp.components.DTO.CountryForm;
 import saleswebapp.repository.impl.Country;
 import saleswebapp.service.CountryService;
 import saleswebapp.service.DbReaderService;
@@ -20,14 +19,7 @@ public class CountryServiceImpl implements CountryService {
     private DbReaderService dbReaderService;
 
     @Override
-    public List<CountryForm> getAllCountries() {
-        List<Country> countryList = dbReaderService.getAllCountries();
-        List<CountryForm> countryFormList = new ArrayList<CountryForm>();
-
-        for (Country country : countryList) {
-            countryFormList.add(new CountryForm(country));
-        }
-
-        return countryFormList;
+    public List<Country> getAllCountries() {
+        return dbReaderService.getAllCountries();
     }
 }

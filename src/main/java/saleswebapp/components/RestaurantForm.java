@@ -1,4 +1,4 @@
-package saleswebapp.components.DTO;
+package saleswebapp.components;
 
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -17,7 +17,7 @@ import java.util.*;
 
 /**
  * Created by Alexander Carl on 07.07.2017.
- * This form is used to transport all information of one (only one!) restaurant to the dialog "restaurant".
+ * NOT IN USE! Will be deleted soon.
  */
 public class RestaurantForm implements Serializable {
 
@@ -37,7 +37,6 @@ public class RestaurantForm implements Serializable {
     private String phone;
     private String url;
     //private RestaurantType restaurantType; //Anbietertyp
-    private ATestForm aTestForm;
 
     private List<String> restaurantKitchenTypesForm; //Küchentypen
     private List<String> restaurantCourseTypesForm; //Kategorien
@@ -89,11 +88,6 @@ public class RestaurantForm implements Serializable {
         this.phone = restaurant.getPhone();
         this.url = restaurant.getUrl();
 
-        ATestForm aTestForm = new ATestForm();
-        aTestForm.setId("4");
-        aTestForm.setName("Sonstiges");
-        this.aTestForm = aTestForm;
-
         //Fills the List<RestaurantKitchenType>
         List<KitchenType> kitchenTypes = restaurant.getKitchenTypes();
         List<String> restaurantKitchenTypeForms = new ArrayList<String>();
@@ -113,7 +107,7 @@ public class RestaurantForm implements Serializable {
         this.offerModifyPermission = restaurant.isOfferModifyPermission();
         this.blocked = restaurant.isBlocked();
         this.restaurantUUID = restaurant.getRestaurantUUID();
-        this.qrUuid = restaurant.getQrUuid();
+
         this.qrUuidBase64Encoded = Base64.getEncoder().encodeToString(qrUuid);
 
         restaurantTimeFiller(restaurant);
@@ -296,14 +290,6 @@ public class RestaurantForm implements Serializable {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public ATestForm getaTestForm() {
-        return aTestForm;
-    }
-
-    public void setaTestForm(ATestForm aTestForm) {
-        this.aTestForm = aTestForm;
     }
 
     public List<String> getRestaurantKitchenTypesForm() {

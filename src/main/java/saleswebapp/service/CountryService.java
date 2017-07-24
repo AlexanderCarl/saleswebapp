@@ -1,6 +1,6 @@
 package saleswebapp.service;
 
-import saleswebapp.components.DTO.CountryForm;
+import saleswebapp.repository.impl.Country;
 
 import java.util.List;
 
@@ -9,5 +9,5 @@ import java.util.List;
  */
 public interface CountryService {
 
-    List<CountryForm> getAllCountries();
+    List<Country> getAllCountries();
 }

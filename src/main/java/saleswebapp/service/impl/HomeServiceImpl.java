@@ -2,8 +2,8 @@ package saleswebapp.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import saleswebapp.components.DTO.HomeRestaurantForm;
-import saleswebapp.components.DTO.HomeToDoForm;
+import saleswebapp.components.HomeRestaurantForm;
+import saleswebapp.components.HomeToDoForm;
 import saleswebapp.repository.impl.Restaurant;
 import saleswebapp.repository.impl.ToDoList;
 import saleswebapp.service.DbReaderService;

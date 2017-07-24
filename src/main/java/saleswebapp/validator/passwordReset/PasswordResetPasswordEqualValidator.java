@@ -3,7 +3,7 @@ package saleswebapp.validator.passwordReset;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
-import saleswebapp.components.DTO.PasswordResetForm;
+import saleswebapp.components.PasswordResetForm;
 
 /**
  * Created by Alexander Carl on 18.06.2017.

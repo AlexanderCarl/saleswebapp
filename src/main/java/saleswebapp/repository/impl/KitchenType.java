@@ -1,6 +1,7 @@
 package saleswebapp.repository.impl;
 
 import javax.persistence.*;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 /**
@@ -11,12 +12,17 @@ import java.util.List;
 public class KitchenType  {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private int id;
 
     private String name;
 
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "kitchenTypes")
     private List<Restaurant> restaurantList;
+
+    public KitchenType() {
+        super();
+    }
 
     public int getId() {
         return id;

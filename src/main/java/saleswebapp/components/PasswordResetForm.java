@@ -1,4 +1,4 @@
-package saleswebapp.components.DTO;
+package saleswebapp.components;
 
 import saleswebapp.validator.passwordReset.PasswordResetCode;
 

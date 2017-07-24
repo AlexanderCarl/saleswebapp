@@ -1,9 +1,13 @@
-package saleswebapp.components.DTO;
+package saleswebapp.components;
+
+import java.io.Serializable;
 
 /**
  * Created by Alexander Carl on 18.07.2017.
  */
-public class RestaurantAddCategory {
+public class RestaurantAddCategory implements Serializable {
+
+    private static final long serialVersionUID = -5635323807555930056L;
 
     private String name; //Name of the category
     private int restaurantId;
@@ -31,5 +35,9 @@ public class RestaurantAddCategory {
 
     public void setRestaurantId(int restaurantId) {
         this.restaurantId = restaurantId;
+    }
+
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
     }
 }

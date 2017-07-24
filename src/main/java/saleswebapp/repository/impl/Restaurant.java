@@ -1,13 +1,21 @@
 package saleswebapp.repository.impl;
 
+import saleswebapp.components.RestaurantTimeContainer;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 /**
  * Created by Alexander Carl on 25.06.2017.
  */
 @Entity
-public class Restaurant {
+public class Restaurant implements Serializable {
+
+    private static final long serialVersionUID = -9222904263139207286L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -52,7 +60,7 @@ public class Restaurant {
 
     @Lob
     @Column(name = "qr_uuid")
-    private byte[] qrUuid;
+    private byte[] qrUUID;
 
     @Column(name = "swa_offer_modify_permission")
     private boolean offerModifyPermission;
@@ -76,6 +84,93 @@ public class Restaurant {
 
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<TimeSchedule> timeScheduleList;
+
+    @Transient
+    private String qrUuidBase64Encoded;
+
+    @Transient
+    private List<RestaurantTimeContainer> openingTimes;
+
+    @Transient
+    private List<RestaurantTimeContainer> offerTimes;
+
+    @Transient
+    private String restaurantTypeAsString;
+
+    @Transient
+    private List<String> kitchenTypesAsString;
+
+    @Transient
+    private int idOfSalesPerson; //The variable is named against the normal conventions because the variable name "idOfSalesPerson" did mess up the Spring Bean Containers.
+
+    public void restaurantKitchenTypesAsStringFiller() {
+        kitchenTypesAsString = new ArrayList<String>();
+
+        if(kitchenTypes != null) {
+            for(KitchenType kitchenType : kitchenTypes) {
+                kitchenTypesAsString.add(kitchenType.getName());
+            }
+        }
+    }
+
+    public void orderRestaurantTimeContainers() {
+        openingTimes.sort(Comparator.comparingInt(RestaurantTimeContainer::getDayNumber));
+        offerTimes.sort(Comparator.comparingInt(RestaurantTimeContainer::getDayNumber));
+    }
+
+    public void restaurantTimeContainerFiller() {
+
+        if(timeScheduleList.size() > 7) {
+            try {
+                throw new Exception("Error - The Table Time_Schedule contains more than 7 entries per week for restaurant-ID: " + id);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+        int dayNumber;
+        Date openingTime;
+        Date closingTime;
+        Date offerStartTime;
+        Date offerEndTime;
+
+        openingTimes = new ArrayList<RestaurantTimeContainer>();
+        offerTimes = new ArrayList<RestaurantTimeContainer>();
+        List<TimeSchedule> timeScheduleList = getTimeScheduleList();
+
+        for (int i = 1; i < 8; i++) {
+            TimeSchedule timeSchedule = new TimeSchedule();
+
+            try {
+                timeSchedule = timeScheduleList.get(i-1);
+            } catch (Exception e) {
+                //no entry in the db
+            }
+
+            dayNumber = 0; //Valid day numbers range from 1 to 7.
+            openingTime = null;
+            closingTime = null;
+            offerStartTime = null;
+            offerEndTime = null;
+
+            if(timeSchedule.getDayOfWeek().getDayNumber() == 0) {
+                dayNumber = i;
+            } else {
+                dayNumber = timeSchedule.getDayOfWeek().getDayNumber();
+            }
+            offerStartTime = timeSchedule.getOfferStartTime();
+            offerEndTime = timeSchedule.getOfferEndTime();
+            offerTimes.add(new RestaurantTimeContainer(offerStartTime, offerEndTime, dayNumber));
+
+            //The DB allows for more than one time schedule entry per day. But the FindLunchApplication only allows one pair of opening times per day.
+            //The SWApp handles this similar. If there is more than one pair of opening times per day it is ignored.
+            if(timeSchedule.getOpeningTimes().size() > 0) {
+                openingTime = timeSchedule.getOpeningTimes().get(0).getOpeningTime();
+                closingTime = timeSchedule.getOpeningTimes().get(0).getClosingTime();
+            }
+            openingTimes.add(new RestaurantTimeContainer(openingTime, closingTime, dayNumber));
+        }
+    }
 
     public List<TimeSchedule> getTimeScheduleList() {
         return timeScheduleList;
@@ -205,12 +300,12 @@ public class Restaurant {
         this.restaurantUUID = restaurantUUID;
     }
 
-    public byte[] getQrUuid() {
-        return qrUuid;
+    public byte[] getQrUUID() {
+        return qrUUID;
     }
 
-    public void setQrUuid(byte[] qrUuid) {
-        this.qrUuid = qrUuid;
+    public void setQrUUID(byte[] qrUuid) {
+        this.qrUUID = qrUuid;
     }
 
     public boolean isOfferModifyPermission() {
@@ -253,4 +348,55 @@ public class Restaurant {
         this.courseTypeList = courseTypeList;
     }
 
+    public static long getSerialVersionUID() {
+        return serialVersionUID;
+    }
+
+    public String getQrUuidBase64Encoded() {
+        return qrUuidBase64Encoded;
+    }
+
+    public void setQrUuidBase64Encoded(String qrUuidBase64Encoded) {
+        this.qrUuidBase64Encoded = qrUuidBase64Encoded;
+    }
+
+    public List<RestaurantTimeContainer> getOpeningTimes() {
+        return openingTimes;
+    }
+
+    public void setOpeningTimes(List<RestaurantTimeContainer> openingTimes) {
+        this.openingTimes = openingTimes;
+    }
+
+    public List<RestaurantTimeContainer> getOfferTimes() {
+        return offerTimes;
+    }
+
+    public void setOfferTimes(List<RestaurantTimeContainer> offerTimes) {
+        this.offerTimes = offerTimes;
+    }
+
+    public String getRestaurantTypeAsString() {
+        return restaurantTypeAsString;
+    }
+
+    public void setRestaurantTypeAsString(String restaurantTypeAsString) {
+        this.restaurantTypeAsString = restaurantTypeAsString;
+    }
+
+    public List<String> getKitchenTypesAsString() {
+        return kitchenTypesAsString;
+    }
+
+    public void setKitchenTypesAsString(List<String> kitchenTypesAsString) {
+        this.kitchenTypesAsString = kitchenTypesAsString;
+    }
+
+    public int getIdOfSalesPerson() {
+        return idOfSalesPerson;
+    }
+
+    public void setIdOfSalesPerson(int idOfSalesPerson) {
+        this.idOfSalesPerson = idOfSalesPerson;
+    }
 }

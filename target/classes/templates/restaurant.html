@@ -46,7 +46,7 @@
                         <th th:text="#{restaurant.label.redirectOffer}" />
                     </label>
 
-                    <a th:href="@{/offerOverview(id=${restaurantForm.id})}" class="btn btn-primary" style="width: 15%"> <th th:text="#{restaurant.label.button.redirectOffer}" /> </a>
+                    <a th:href="@{/offerOverview(id=${restaurant.id})}" class="btn btn-primary" style="width: 15%"> <th th:text="#{restaurant.label.button.redirectOffer}" /> </a>
                 </p>
             </div>
         </div>
@@ -63,33 +63,35 @@
             </p>
 
             <div class="col-lg-offset-3 col-lg-md-offset-3 col-sm-offset-3" style="padding-left: 55px; padding-bottom: 3%">
-                <div th:each="category : ${restaurantForm.restaurantCourseTypesForm}">
-                    <label th:text="${category}" />
+                <div th:each="category : ${restaurant.courseTypeList}">
+                    <label th:text="${category.name}" />
                 </div>
             </div>
 
             <form th:action="@{/restaurant/deleteCategory}" th:object="${restaurantDeleteCategory}" method="post">
                 <div class="form-inline">
                     <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.deleteCourseTypes}"></label>
-                    <input type="text" th:field="${restaurantDeleteCategory.name}" th:disabled="${restaurantForm.id == 0}" class="form-control" style="width: 250px" />
-                    <button class="btn btn-primary" style="width: 100px" type="submit" th:disabled="${restaurantForm.id == 0}"> <th th:text="#{restaurant.label.button.deleteCourseTypes}" /> </button>
+                    <input type="text" th:field="${restaurantDeleteCategory.name}" th:disabled="${restaurant.id == 0}" class="form-control" style="width: 250px" />
+                    <button class="btn btn-primary" style="width: 100px" type="submit" th:disabled="${restaurant.id == 0}"> <th th:text="#{restaurant.label.button.deleteCourseTypes}"/> </button>
                 </div>
 
+                <!-- restaurantId of the form restaurantDeleteCategory -->
                 <input type="text" style="visibility: hidden" th:field="*{restaurantId}" />
             </form>
 
             <form th:action="@{/restaurant/addCategory}" th:object="${restaurantAddCategory}" method="post">
                 <div class="form-inline">
                     <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.addCourseTypes}"></label>
-                    <input type="text" th:field="${restaurantAddCategory.name}" th:disabled="${restaurantForm.id == 0}" class="form-control" style="width: 250px" />
-                    <button class="btn btn-primary" style="width: 100px" type="submit" th:disabled="${restaurantForm.id == 0}"> <th th:text="#{restaurant.label.button.addCourseTypes}" /> </button>
+                    <input type="text" th:field="${restaurantAddCategory.name}" th:disabled="${restaurant.id == 0}" class="form-control" style="width: 250px" />
+                    <button class="btn btn-primary" style="width: 100px" type="submit" th:disabled="${restaurant.id == 0}"> <th th:text="#{restaurant.label.button.addCourseTypes}" /> </button>
                 </div>
 
+                <!-- restaurantId of the form restaurantAddCategory -->
                 <input type="text" style="visibility: hidden" th:field="*{restaurantId}" />
             </form>
         </div>
 
-        <form th:action="@{/saveRestaurant}" th:object="${restaurantForm}" method="post">
+        <form th:action="@{/saveRestaurant}" th:object="${restaurant}" method="post">
         <!-- KitchenTypes -->
         <div class="col-lg-6 col-lg-md-6 col-sm-12">
             <p class="form-inline">
@@ -98,9 +100,9 @@
             </p>
 
             <div class="col-lg-offset-3 col-lg-md-offset-3 col-sm-offset-3" style="padding-left: 55px">
-                <div th:each="kitchenType : ${restaurantKitchenTypes}">
-                    <input type="checkbox" th:field="*{restaurantKitchenTypesForm}" th:value="${kitchenType}" />
-                    <label th:text="${kitchenType}" />
+                <div th:each="kitchenType : ${kitchenTypes}">
+                    <input type="checkbox" th:field="${restaurant.kitchenTypesAsString}" th:value="${kitchenType.name}" />
+                    <label th:text="${kitchenType.name}" />
                 </div>
             </div>
         </div>
@@ -177,7 +179,7 @@
                         <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"> </label>
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.country}" /> </label>
 
-                        <select class="form-control" th:field="*{country}" style="width: 160px">
+                        <select class="form-control" th:field="${restaurant.country}" style="width: 160px">
                             <option th:each="country : ${countries}"
                                     th:value="${country.countryCode}"
                                     th:text="${country.name}">
@@ -191,7 +193,7 @@
                         <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"> </label>
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.RestaurantType}" /> </label>
 
-                        <select class="form-control" th:field="*{aTestForm}" style="width: 160px">
+                        <select class="form-control" th:field="${restaurant.restaurantTypeAsString}" style="width: 160px">
                             <option th:each="restaurantType : ${restaurantTypes}"
                                     th:value="${restaurantType.name}"
                                     th:text="${restaurantType.name}">
@@ -280,7 +282,7 @@
                 </p>
 
                 <div style="padding-left: 4%">
-                    <div th:each="openingTime : ${restaurantForm.openingTimes}">
+                    <div th:each="openingTime, stat : ${restaurant.openingTimes}">
                         <p class="form-inline">
                             <label class="span-top-padding col-lg-3 col-lg-md-3 col-sm-3">
                                 <th th:switch="${openingTime.dayNumber}">
@@ -295,11 +297,11 @@
                             </label>
 
                             <span class="timeField-side-padding">
-                                <input class="form-control" type="text" th:value="${openingTime.startTime}" maxlength="5" style="width: 62px" />
+                                <input class="form-control" type="text" th:field="*{openingTimes[__${stat.index}__].startTime}" maxlength="5" style="width: 62px" />
                             </span>
                             <span th:text="#{restaurant.label.timeTo}"></span>
                             <span class="timeField-side-padding">
-                                <input class="form-control" type="text" th:value="${openingTime.endTime}" maxlength="5" style="width: 62px" />
+                                <input class="form-control" type="text" th:field="*{openingTimes[__${stat.index}__].endTime}" maxlength="5" style="width: 62px" />
                             </span>
                         </p>
                     </div>
@@ -314,7 +316,7 @@
                 </p>
 
                 <div style="padding-left: 4%">
-                    <div th:each="offerTime : ${restaurantForm.offerTimes}">
+                    <div th:each="offerTime, stat : ${restaurant.offerTimes}">
                         <p class="form-inline">
                             <label class="span-top-padding col-lg-3 col-lg-md-3 col-sm-3">
                                 <th th:switch="${offerTime.dayNumber}">
@@ -329,11 +331,11 @@
                             </label>
 
                             <span class="timeField-side-padding">
-                                <input class="form-control" type="text" th:value="${offerTime.startTime}" maxlength="5" style="width: 62px" />
+                                <input class="form-control" type="text" th:field="*{offerTimes[__${stat.index}__].startTime}" maxlength="5" style="width: 62px" />
                             </span>
                             <span th:text="#{restaurant.label.timeTo}"></span>
                             <span class="timeField-side-padding">
-                                <input class="form-control" type="text" th:value="${offerTime.endTime}" maxlength="5" style="width: 62px" />
+                                <input class="form-control" type="text" th:field="*{offerTimes[__${stat.index}__].endTime}" maxlength="5" style="width: 62px" />
                             </span>
                         </p>
                     </div>
@@ -372,6 +374,8 @@
                     </label>
 
                     <input type="text" th:field="*{restaurantUUID}" class="form-control" style="width: 300px" disabled="disabled"/>
+                    <input type="text" style="visibility: hidden" th:field="*{restaurantUUID}" />
+                    <input type="text" style="visibility: hidden" th:field="*{qrUUID}" />
                 </p>
             </div>
 
@@ -382,7 +386,7 @@
                         <span th:text="#{restaurant.label.uuidPicture}" />
                     </label>
 
-                    <img th:src="@{'data:image/jpeg;base64,'+ ${restaurantForm.qrUuidBase64Encoded}}" alt="Fail" class="img-thumbnail" width="250" height="250" />
+                    <img th:src="@{'data:image/jpeg;base64,'+ ${restaurant.qrUuidBase64Encoded}}" alt="Fail" class="img-thumbnail" width="250" height="250" />
                 </p>
             </div>
         </div>
@@ -396,6 +400,7 @@
 
         <div>
             <input type="text" style="visibility: hidden" th:field="*{id}" />
+            <input type="text" style="visibility: hidden" th:field="*{IdOfSalesPerson}" />
         </div>
 
         </form>
