@@ -38,6 +38,53 @@ public class TimeSchedule {
     @OneToMany(mappedBy = "timeSchedule", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<OpeningTime> openingTimes;
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+
+        TimeSchedule other = (TimeSchedule) obj;
+        if (Integer.valueOf(id) == null) {
+            if (Integer.valueOf(other.id) != null)
+                return false;
+        }
+
+        if (id != other.getId()) {
+            return false;
+        }
+
+        if (!offerStartTime.equals(other.getOfferStartTime())) {
+            return false;
+        }
+
+        if (!offerEndTime.equals(other.getOfferEndTime())) {
+            return false;
+        }
+
+        if (dayOfWeek.getId() != (other.getDayOfWeek().getId())) {
+            return false;
+        }
+
+        if (!openingTimes.containsAll(other.getOpeningTimes())) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((Integer.valueOf(id) == null) ? 0 : (Integer.valueOf(id).hashCode()));
+
+        return result;
+    }
+
     public int getId() {
         return id;
     }

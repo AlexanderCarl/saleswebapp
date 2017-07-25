@@ -30,6 +30,45 @@ public class OpeningTime {
     @JoinColumn(name = "time_schedule_id")
     private TimeSchedule timeSchedule;
 
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+
+        OpeningTime other = (OpeningTime) obj;
+        if (Integer.valueOf(id) == null) {
+            if (Integer.valueOf(other.id) != null)
+                return false;
+        }
+
+        if (id != other.getId()) {
+            return false;
+        }
+
+        if (!openingTime.equals(other.getOpeningTime())) {
+            return false;
+        }
+
+        if (!closingTime.equals(other.getClosingTime())) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((Integer.valueOf(id) == null) ? 0 : (Integer.valueOf(id).hashCode()));
+
+        return result;
+    }
+
     public int getId() {
         return id;
     }

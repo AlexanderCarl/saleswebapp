@@ -4,10 +4,7 @@ import saleswebapp.components.RestaurantTimeContainer;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Alexander Carl on 25.06.2017.
@@ -191,15 +188,11 @@ public class Restaurant implements Serializable {
             return false;
         }
 
-        if (!password.equals(other.getPassword())) {
+        if (customerId != other.getCustomerId()) {
             return false;
         }
 
-        if (!firstName.equals(other.getFirstName())) {
-            return false;
-        }
-
-        if (!secondName.equals(other.getSecondName())) {
+        if (!name.equals(other.getName())) {
             return false;
         }
 
@@ -231,11 +224,47 @@ public class Restaurant implements Serializable {
             return false;
         }
 
-        if (!iban.equals(other.getIban())) {
+        if (!locationLatitude.equals(other.getLocationLatitude())) {
             return false;
         }
 
-        if (!bic.equals(other.getBic())) {
+        if (!locationLongitude.equals(other.getLocationLongitude())) {
+            return false;
+        }
+
+        if (!url.equals(other.getUrl())) {
+            return false;
+        }
+
+        if (!restaurantType.getName().equals(other.getRestaurantType().getName())) {
+            return false;
+        }
+
+        if (!restaurantUUID.equals(other.getRestaurantUUID())) {
+            return false;
+        }
+
+        if (!offerModifyPermission == other.isOfferModifyPermission()) {
+            return false;
+        }
+
+        if (!blocked == other.isBlocked()) {
+            return false;
+        }
+
+        if (salesPerson.getId() != other.getSalesPerson().getId()) {
+            return false;
+        }
+
+        if (!kitchenTypes.containsAll(other.getKitchenTypes())) {
+            return false;
+        }
+
+        if (!courseTypeList.containsAll(other.getCourseTypeList())) {
+            return false;
+        }
+
+        if (!timeScheduleList.containsAll(other.getTimeScheduleList())) {
             return false;
         }
 

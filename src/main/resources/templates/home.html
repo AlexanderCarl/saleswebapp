@@ -57,6 +57,22 @@
                     <a href="/saleswebapp/home" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
                     <th th:text="#{home.error.noValidAccessToRestaurant}" />
                 </div>
+
+                <div th:if="${param.newRestaurantAddedSuccessfully != null}" class="alert alert-success">
+                    <a href="/saleswebapp/home" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
+                    <th th:text="#{home.success.newRestaurantAddedSuccessfully}" />
+                </div>
+
+                <div th:if="${param.restaurantWasChangedMeanwhile != null}" class="alert alert-danger">
+                    <a href="/saleswebapp/home" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
+                    <th th:text="#{home.error.restaurantWasChangedMeanwhile}" />
+                </div>
+
+                <div th:if="${param.restaurantChangeSuccess != null}" class="alert alert-success">
+                    <a href="/saleswebapp/home" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
+                    <th th:text="#{home.success.restaurantChangeSuccess}" />
+                </div>
+
             </div>
 
         <div class="page-header">
