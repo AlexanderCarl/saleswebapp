@@ -5,11 +5,10 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 import saleswebapp.components.RestaurantDeleteCategory;
 import saleswebapp.components.RestaurantListForm;
 import saleswebapp.components.RestaurantAddCategory;
@@ -84,7 +83,6 @@ public class RestaurantController {
         restaurant.orderRestaurantTimeContainers(); //Ensure that the days of a week are shown in the correct order.
         restaurant.setRestaurantTypeAsString(restaurant.getRestaurantType().getName());
         restaurant.restaurantKitchenTypesAsStringFiller();
-        restaurant.setIdOfSalesPerson(restaurant.getSalesPerson().getId());
 
         model.addAttribute("restaurant", restaurant);
         model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
@@ -126,20 +124,53 @@ public class RestaurantController {
     }
 
     @RequestMapping(value = "/saveRestaurant", method = RequestMethod.POST)
-    public String processRestaurant(Restaurant restaurant, BindingResult bindingResult) {
+    public String processRestaurant(Restaurant restaurant, BindingResult restaurantBinder) {
+        //Security check for the bound restaurant fields
+        String[] suppressedFields = restaurantBinder.getSuppressedFields();
+        if (suppressedFields.length > 0) {
+            throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
+        }
         int restaurantId = restaurant.getId();
 
         //Checks if it is a new Restaurant or a change to an existing one
         if (restaurantId == 0) {
-            //restaurantService.saveRestaurant(restaurant);
+            restaurantService.saveRestaurant(restaurant);
             return "redirect:/home?newRestaurantAddedSuccessfully";
         } else {
             if (restaurantService.restaurantHasBeenAlteredMeanwhile(restaurant)) {
                 return "redirect:/home?restaurantWasChangedMeanwhile";
             } else {
-                //restaurantService.saveRestaurant(restaurant);
+                restaurantService.saveRestaurant(restaurant);
                 return "redirect:/home?restaurantChangeSuccess";
             }
         }
+    }
+
+    @InitBinder
+    public void initialiseBinder(WebDataBinder restaurantBinder) {
+        restaurantBinder.setAllowedFields(
+                "id",
+                "customerId",
+                "name",
+                "street",
+                "streetNumber",
+                "zip",
+                "city",
+                "country",
+                "locationLatitude",
+                "locationLongitude",
+                "email",
+                "phone",
+                "url",
+                "restaurantUUID",
+                "qrUUID",
+                "offerModifyPermission",
+                "blocked",
+                "openingTimes[0].startTime","openingTimes[0].endTime","openingTimes[1].startTime","openingTimes[1].endTime","openingTimes[2].startTime","openingTimes[2].endTime","openingTimes[3].startTime","openingTimes[3].endTime","openingTimes[4].startTime","openingTimes[4].endTime","openingTimes[5].startTime","openingTimes[5].endTime","openingTimes[6].startTime","openingTimes[6].endTime",
+                "offerTimes[0].startTime","offerTimes[0].endTime","offerTimes[1].startTime","offerTimes[1].endTime","offerTimes[2].startTime","offerTimes[2].endTime","offerTimes[3].startTime","offerTimes[3].endTime","offerTimes[4].startTime","offerTimes[4].endTime","offerTimes[5].startTime","offerTimes[5].endTime","offerTimes[6].startTime","offerTimes[6].endTime",
+                "restaurantTypeAsString",
+                "kitchenTypesAsString",
+                "idOfSalesPerson"
+        );
     }
 }

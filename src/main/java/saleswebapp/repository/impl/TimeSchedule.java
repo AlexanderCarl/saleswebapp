@@ -35,7 +35,7 @@ public class TimeSchedule {
     @JoinColumn(name = "day_of_week_id")
     private DayOfWeek dayOfWeek;
 
-    @OneToMany(mappedBy = "timeSchedule", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "timeSchedule", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<OpeningTime> openingTimes;
 
     public int getId() {

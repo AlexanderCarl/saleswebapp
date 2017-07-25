@@ -182,17 +182,14 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    //Security check if the concerning the DB-Object restaurant has been altered during transaction
-    // and saves it if not.
+    // Security check if the concerning the DB-Object restaurant has been altered during transaction.
     public boolean restaurantHasBeenAlteredMeanwhile(Restaurant restaurant) {
         Restaurant restaurantTransactionEnd = dbReaderService.getRestaurantById(restaurant.getId());
         Restaurant restaurantTransactionStart = restaurantTransactionStore.get(restaurant.getId());
 
-        /*
         if (!restaurantTransactionEnd.equals(restaurantTransactionStart)) {
             return true;
         }
-        */
 
         restaurantTransactionStore.remove(restaurant.getId());
         return false;

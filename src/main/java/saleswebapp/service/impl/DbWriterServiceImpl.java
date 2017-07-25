@@ -1,18 +1,29 @@
 package saleswebapp.service.impl;
 
+import com.google.maps.GeoApiContext;
+import com.google.maps.GeocodingApi;
+import com.google.maps.GeocodingApiRequest;
+import com.google.maps.model.GeocodingResult;
+import com.mysql.jdbc.log.LogUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
 import saleswebapp.components.ProfileForm;
 import saleswebapp.components.RestaurantAddCategory;
+import saleswebapp.components.RestaurantTimeContainer;
 import saleswebapp.repository.*;
-import saleswebapp.repository.impl.Country;
-import saleswebapp.repository.impl.CourseType;
-import saleswebapp.repository.impl.Restaurant;
-import saleswebapp.repository.impl.SalesPerson;
+import saleswebapp.repository.impl.*;
 import saleswebapp.service.DbWriterService;
 
 import javax.transaction.Transactional;
+import java.sql.Time;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by Alexander Carl on 18.06.2017.
@@ -24,21 +35,23 @@ public class DbWriterServiceImpl implements DbWriterService {
     private SalesPersonRepository salesPersonRepository;
 
     @Autowired
-    private CountryRepository countryRepository;
-
-    @Autowired
     private RestaurantRepository restaurantRepository;
 
     @Autowired
     private CourseTypeRepository courseTypeRepository;
 
     @Autowired
-    private RestaurantKitchenTypeRepository restaurantKitchenTypeRepository;
+    private RestaurantKitchenTypeRepository kitchenTypeRepository;
+
+    @Autowired
+    private RestaurantTypeRepository typeRepository;
 
     @Autowired
     private DayOfWeekRepository dayOfWeekRepository;
 
     private ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
+
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
     @Transactional
@@ -100,111 +113,185 @@ public class DbWriterServiceImpl implements DbWriterService {
 
     @Override
     @Transactional
-    public void saveRestaurant(Restaurant restaurant) {
-        restaurantRepository.saveAndFlush(restaurant);
+    public void saveRestaurant(Restaurant restaurantData) {
+        int restaurantId = restaurantData.getId();
+        Restaurant restaurantToSave;
+
+        if (restaurantId == 0) {
+            restaurantToSave = new Restaurant();
+            restaurantToSave.setSalesPerson(salesPersonRepository.getById(restaurantData.getIdOfSalesPerson()));
+        } else {
+            restaurantToSave = restaurantRepository.getRestaurantById(restaurantId);
+        }
+
+        restaurantToSave.setCustomerId(restaurantData.getCustomerId());
+        restaurantToSave.setName(restaurantData.getName());
+        restaurantToSave.setStreet(restaurantData.getStreet());
+        restaurantToSave.setStreetNumber(restaurantData.getStreetNumber());
+        restaurantToSave.setZip(restaurantData.getZip());
+        restaurantToSave.setCity(restaurantData.getCity());
+        restaurantToSave.setCountry(restaurantData.getCountry());
+        restaurantToSave.setEmail(restaurantData.getEmail());
+        restaurantToSave.setPhone(restaurantData.getPhone());
+        restaurantToSave.setUrl(restaurantData.getUrl());
+        restaurantToSave.setRestaurantUUID(restaurantData.getRestaurantUUID());
+        restaurantToSave.setQrUUID(restaurantData.getQrUUID());
+        restaurantToSave.setOfferModifyPermission(restaurantData.isOfferModifyPermission());
+        restaurantToSave.setBlocked(restaurantData.isBlocked());
+
+        //Sets the restaurant type
+        RestaurantType restaurantType = typeRepository.getByName(restaurantData.getRestaurantTypeAsString());
+        restaurantToSave.setRestaurantType(restaurantType);
+
+        //Sets the kitchen types
+        List<KitchenType> restaurantKitchenTypes = new ArrayList<KitchenType>();
+
+        for (String kitchenTypeName : restaurantData.getKitchenTypesAsString()) {
+            restaurantKitchenTypes.add(kitchenTypeRepository.getByName(kitchenTypeName));
+        }
+        restaurantToSave.setKitchenTypes(restaurantKitchenTypes);
+
+        //Sets the coordinates with GoogleMaps if left empty
+        if (restaurantData.getLocationLatitude() == null || restaurantData.getLocationLongitude() == null) {
+            HashMap<String, Float> googleMapsLocationValues = getLocationOfRestaurant(restaurantData);
+
+            if(googleMapsLocationValues == null) {
+                restaurantToSave.setLocationLatitude(restaurantData.getLocationLatitude());
+                restaurantToSave.setLocationLongitude(restaurantData.getLocationLatitude());
+            }
+
+            if (restaurantData.getLocationLongitude() == null) {
+                restaurantToSave.setLocationLongitude(googleMapsLocationValues.get("locationLongitude"));
+            } else {
+                restaurantToSave.setLocationLongitude(restaurantData.getLocationLatitude());
+            }
+
+            if (restaurantData.getLocationLatitude() == null) {
+                restaurantToSave.setLocationLatitude(googleMapsLocationValues.get("locationLatitude"));
+            } else {
+                restaurantToSave.setLocationLatitude(restaurantData.getLocationLatitude());
+            }
+        } else {
+            restaurantToSave.setLocationLatitude(restaurantData.getLocationLatitude());
+            restaurantToSave.setLocationLongitude(restaurantData.getLocationLatitude());
+        }
+
+        //Offer/Opening times
+        restaurantToSave.setTimeScheduleList(getTimeScheduleList(restaurantData, restaurantToSave));
+
+        restaurantRepository.saveAndFlush(restaurantToSave);
+        logger.debug("Restaurant (Customer-ID: " + restaurantToSave.getCustomerId() + ") wurde erfolgreich gespeichert.");
     }
 
-    /*
-    private Restaurant createOrGetRestaurant(RestaurantForm restaurantForm) {
-        Restaurant restaurant;
-
-        if(restaurantForm.getId() == 0) {
-            restaurant = new Restaurant();
-        } else {
-            restaurant = restaurantRepository.getRestaurantById(restaurantForm.getId());
-        }
-
-        restaurant.setCustomerId(restaurantForm.getCustomerId());
-        restaurant.setName(restaurantForm.getName());
-        restaurant.setStreet(restaurantForm.getStreet());
-        restaurant.setStreetNumber(restaurantForm.getStreetNumber());
-        restaurant.setZip(restaurantForm.getZip());
-        restaurant.setCity(restaurantForm.getCity());
-
-        Country country = restaurantRepository.getRestaurantById(restaurantForm.getId()).getCountry();
-        country.setCountryCode(restaurantForm.getCountry().getCountryCode());
-        country.setName(restaurantForm.getCountry().getName());
-        restaurant.setCountry(country);
-
-        restaurant.setLocationLatitude(restaurantForm.getLocationLatitude());
-        restaurant.setLocationLongitude(restaurantForm.getLocationLongitude());
-        restaurant.setEmail(restaurantForm.getEmail());
-        restaurant.setPhone(restaurantForm.getPhone());
-        restaurant.setUrl(restaurantForm.getUrl());
-
-        //Restaurant types temporary
-        RestaurantType restaurantType = restaurantRepository.getRestaurantById(restaurantForm.getId()).getRestaurantType();
-        restaurant.setRestaurantType(restaurantType);
-
-
-        RestaurantType restaurantType = new RestaurantType();
-        restaurantType.setId(restaurantForm.getRestaurantType().getId());
-        restaurantType.setName(restaurantForm.getRestaurantType().getName());
-        restaurant.setRestaurantType(restaurantType);
-
-
-        Kitchen types
-        List<KitchenType> listOfAllKitchenTypes = restaurantKitchenTypeRepository.getAllBy(); Used to get the ids for the kitchenTypes
-        List<String> listOfRestaurantKitchenTypes = restaurantForm.getRestaurantKitchenTypesForm();
-        List<KitchenType> listOfKitchenTypesToSubtract = new ArrayList<KitchenType>();
-
-
-        for(KitchenType kitchenType : listOfAllKitchenTypes) {
-            String kitchenTypeName = kitchenType.getName();
-            if(!listOfRestaurantKitchenTypes.contains(kitchenTypeName)) {
-                listOfKitchenTypesToSubtract.add(kitchenType);
-            }
-        }
-
-        listOfAllKitchenTypes.removeAll(listOfKitchenTypesToSubtract);
-        restaurant.setKitchenTypes(listOfAllKitchenTypes);
-
-        //Course Types are handled separately by the functions add/delete-CategoryToRestaurant
-
-        //Opening times/offer times
-        List<TimeSchedule> listOfTimeSchedulesToBeSaved = new ArrayList<TimeSchedule>();
+    private List<TimeSchedule> getTimeScheduleList(Restaurant restaurantData, Restaurant restaurantToSave) {
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
 
-        for(RestaurantTimeContainer timeContainerOfferTimes : restaurantForm.getOfferTimes()) {
-            RestaurantTimeContainer timeContainerOpeningTimes = restaurantForm.getOpeningTimes().get(timeContainerOfferTimes.getDayNumber());
-            DayOfWeek dayOfWeek = dayOfWeekRepository.getById(timeContainerOfferTimes.getDayNumber());
+        List<TimeSchedule> timeSchedulesToBeSaved = restaurantToSave.getTimeScheduleList();
+        if (timeSchedulesToBeSaved == null) {timeSchedulesToBeSaved = new ArrayList<TimeSchedule>(); }
 
-            OpeningTime openingTime = new OpeningTime();
-            try {
-                openingTime.setOpeningTime(sdf.parse(timeContainerOpeningTimes.getStartTime()));
-                openingTime.setClosingTime(sdf.parse(timeContainerOpeningTimes.getEndTime()));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-            //Setting the opening time as a list is strange as the programm (findLunch & SWA) only support one opening time per day.
-            List<OpeningTime> openingTimesList = new ArrayList<OpeningTime>();
-            openingTimesList.add(openingTime);
+        for(int i = 1; i < 8; i++) {
+            //The TimeContainers are ordered and the list.index reflects there day number. Therefore we have to transfer this information to the variable dayNumber.
+            RestaurantTimeContainer timeContainerOfferTimes = restaurantData.getOfferTimes().get(i-1);
+            RestaurantTimeContainer timeContainerOpeningTimes = restaurantData.getOpeningTimes().get(i-1);
+            DayOfWeek dayOfWeek = dayOfWeekRepository.getById(i);
 
-            TimeSchedule timeSchedule = new TimeSchedule();
+            TimeSchedule timeSchedule = timeSchedulesToBeSaved.get(i-1);
+            if (timeSchedule == null) {timeSchedule = new TimeSchedule(); }
             timeSchedule.setDayOfWeek(dayOfWeek);
+            timeSchedule.setRestaurant(restaurantData);
+
+            if(timeContainerOfferTimes.getStartTime() != "") {
+                try {
+                    timeSchedule.setOfferStartTime(sdf.parse(timeContainerOfferTimes.getStartTime()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                timeSchedule.setOfferStartTime(null);
+            }
+
+            if(timeContainerOfferTimes.getEndTime() != "") {
+                try {
+                    timeSchedule.setOfferEndTime(sdf.parse(timeContainerOfferTimes.getEndTime()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                timeSchedule.setOfferStartTime(null);
+            }
+
+            OpeningTime openingTime;
+            if(timeSchedulesToBeSaved.get(i-1).getOpeningTimes().size() == 0) {
+                openingTime = new OpeningTime();
+            } else {
+                openingTime = timeSchedulesToBeSaved.get(i-1).getOpeningTimes().get(0);
+            }
+
+            if (timeContainerOpeningTimes.getStartTime() != "") {
+                try {
+                    openingTime.setOpeningTime(sdf.parse(timeContainerOpeningTimes.getStartTime()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    openingTime.setOpeningTime(sdf.parse("00:00"));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            if (timeContainerOpeningTimes.getEndTime() != "") {
+                try {
+                    openingTime.setClosingTime(sdf.parse(timeContainerOpeningTimes.getEndTime()));
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            } else {
+                try {
+                    openingTime.setClosingTime(sdf.parse("00:00"));
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            //Setting the opening time as a list is questionable as the program (findLunch & SWA) only support one opening time per day.
+            List<OpeningTime> openingTimesList = timeSchedule.getOpeningTimes();
+            if (openingTimesList == null) {openingTimesList = new ArrayList<OpeningTime>(); }
+
+            openingTime.setTimeSchedule(timeSchedule);
+            openingTimesList.add(openingTime);
             timeSchedule.setOpeningTimes(openingTimesList);
 
-            try {
-                timeSchedule.setOfferStartTime(sdf.parse(timeContainerOfferTimes.getStartTime()));
-                timeSchedule.setOfferEndTime(sdf.parse(timeContainerOfferTimes.getEndTime()));
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
-
-            listOfTimeSchedulesToBeSaved.add(timeSchedule);
+            timeSchedulesToBeSaved.add(timeSchedule);
         }
-        restaurant.setTimeScheduleList(listOfTimeSchedulesToBeSaved);
-
-        restaurant.setOfferModifyPermission(restaurantForm.isOfferModifyPermission());
-        restaurant.setBlocked(restaurantForm.isBlocked());
-        restaurant.setRestaurantUUID(restaurantForm.getRestaurantUUID());
-        restaurant.setQrUuid(restaurantForm.getQrUuid());
-
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        String loggedInUser = "carl@hm.edu"; //DEV ONLY
-        restaurant.setSalesPerson(salesPersonRepository.getByEmail(loggedInUser));
-
-        return restaurant;
+        return timeSchedulesToBeSaved;
     }
-    */
+
+    private HashMap<String, Float> getLocationOfRestaurant(Restaurant restaurantData) {
+
+        // Replace the API key below with a valid API key.
+        GeoApiContext context = new GeoApiContext().setApiKey("AIzaSyAvO9bl1Yi2hn7mkTSniv5lXaPRii1JxjI");
+        GeocodingApiRequest req = GeocodingApi.newRequest(context).address(String.format("%1$s %2$s, %3$s %4$s", restaurantData.getStreetNumber(), restaurantData.getStreet(), restaurantData.getZip(), restaurantData.getCity()));
+        HashMap<String, Float> googleMapsLocationValues = new HashMap<String, Float>();
+
+        try {
+            GeocodingResult[] result = req.await();
+            if (result != null && result.length > 0) {
+                // Handle successful request.
+                GeocodingResult firstMatch = result[0];
+                if (firstMatch.geometry != null && firstMatch.geometry.location != null) {
+                    googleMapsLocationValues.put("locationLatitude", (float) firstMatch.geometry.location.lat);
+                    googleMapsLocationValues.put("locationLongitude", (float) firstMatch.geometry.location.lng);
+                } else {
+                    logger.debug("Restaurant address for restaurantID: " + restaurantData.getId() + " could not be found be GoogleMaps. Location Latitude/Longitude are not set by Google.");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+        return googleMapsLocationValues;
+    }
 }
+

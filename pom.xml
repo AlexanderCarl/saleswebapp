@@ -102,6 +102,13 @@
             <version>2.2</version>
         </dependency>
 
+        <!-- Location Latitude/Longitude -->
+        <dependency>
+            <groupId>com.google.maps</groupId>
+            <artifactId>google-maps-services</artifactId>
+            <version>0.1.14</version>
+        </dependency>
+
     </dependencies>
 
     <build>

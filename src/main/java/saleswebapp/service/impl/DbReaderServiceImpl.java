@@ -81,6 +81,4 @@ public class DbReaderServiceImpl implements DbReaderService {
     public List<KitchenType> getAllKitchenTypes() {
         return restaurantKitchenTypeRepository.getAllBy();
     }
-
-
 }

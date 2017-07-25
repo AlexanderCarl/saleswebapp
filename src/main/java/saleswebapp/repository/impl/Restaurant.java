@@ -68,7 +68,7 @@ public class Restaurant implements Serializable {
     @Column(name = "swa_blocked")
     private boolean blocked;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "swa_sales_person_id")
     private SalesPerson salesPerson;
 
@@ -101,7 +101,7 @@ public class Restaurant implements Serializable {
     private List<String> kitchenTypesAsString;
 
     @Transient
-    private int idOfSalesPerson; //The variable is named against the normal conventions because the variable name "idOfSalesPerson" did mess up the Spring Bean Containers.
+    private int idOfSalesPerson; //The variable is named against the normal conventions because the variable name "salesPersonId" did mess up the Spring Bean Containers.
 
     public void restaurantKitchenTypesAsStringFiller() {
         kitchenTypesAsString = new ArrayList<String>();
@@ -170,6 +170,85 @@ public class Restaurant implements Serializable {
             }
             openingTimes.add(new RestaurantTimeContainer(openingTime, closingTime, dayNumber));
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+
+        Restaurant other = (Restaurant) obj;
+        if (Integer.valueOf(id) == null) {
+            if (Integer.valueOf(other.id) != null)
+                return false;
+        }
+
+        if (id != other.getId()) {
+            return false;
+        }
+
+        if (!password.equals(other.getPassword())) {
+            return false;
+        }
+
+        if (!firstName.equals(other.getFirstName())) {
+            return false;
+        }
+
+        if (!secondName.equals(other.getSecondName())) {
+            return false;
+        }
+
+        if (!street.equals(other.getStreet())) {
+            return false;
+        }
+
+        if (!streetNumber.equals(other.getStreetNumber())) {
+            return false;
+        }
+
+        if (!zip.equals(other.getZip())) {
+            return false;
+        }
+
+        if (!city.equals(other.getCity())) {
+            return false;
+        }
+
+        if (!phone.equals(other.getPhone())) {
+            return false;
+        }
+
+        if (!country.getCountryCode().equals(other.getCountry().getCountryCode())) {
+            return false;
+        }
+
+        if (!email.equals(other.getEmail())) {
+            return false;
+        }
+
+        if (!iban.equals(other.getIban())) {
+            return false;
+        }
+
+        if (!bic.equals(other.getBic())) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((Integer.valueOf(id) == null) ? 0 : (Integer.valueOf(id).hashCode()));
+
+        return result;
     }
 
     public List<TimeSchedule> getTimeScheduleList() {

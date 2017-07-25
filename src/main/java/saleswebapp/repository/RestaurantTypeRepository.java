@@ -14,4 +14,6 @@ import java.util.List;
 public interface RestaurantTypeRepository extends JpaRepository<RestaurantType, Serializable> {
 
     List<RestaurantType> getAllBy();
+
+    RestaurantType getByName(String name);
 }
