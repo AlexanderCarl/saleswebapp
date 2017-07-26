@@ -76,7 +76,7 @@
                 </div>
 
                 <!-- restaurantId of the form restaurantDeleteCategory -->
-                <input type="text" style="visibility: hidden" th:field="*{restaurantId}" />
+                <input type="text" th:field="*{restaurantId}" />
             </form>
 
             <form th:action="@{/restaurant/addCategory}" th:object="${restaurantAddCategory}" method="post">
@@ -87,7 +87,7 @@
                 </div>
 
                 <!-- restaurantId of the form restaurantAddCategory -->
-                <input type="text" style="visibility: hidden" th:field="*{restaurantId}" />
+                <input type="text" th:field="*{restaurantId}" />
             </form>
         </div>
 

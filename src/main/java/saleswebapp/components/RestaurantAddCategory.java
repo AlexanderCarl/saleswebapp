@@ -1,5 +1,6 @@
 package saleswebapp.components;
 
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -9,7 +10,9 @@ public class RestaurantAddCategory implements Serializable {
 
     private static final long serialVersionUID = -5635323807555930056L;
 
+    @NotNull (message = "{restaurant.validation.addCategoryNotNull}")
     private String name; //Name of the category
+
     private int restaurantId;
 
     public RestaurantAddCategory() {
@@ -40,4 +43,5 @@ public class RestaurantAddCategory implements Serializable {
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
+
 }

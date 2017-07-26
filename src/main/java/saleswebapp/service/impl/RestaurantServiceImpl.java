@@ -45,7 +45,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     private DbWriterService dbWriterService;
 
     //The restaurants id is the key.
-    /*This Map is used to store the restaurant(data) which is then send to the user with the model.
+    /*This Map is used to store the restaurant(data) which is send to the user.
     * When the user presses save the restaurant(data) is loaded again from the DB und compared to the
     * restaurant(data) at the start (stored in the HashMap). If the restaurant(data) has been altered
     * on the server while the user worked on it, the save request is rejected. This logic
@@ -109,7 +109,7 @@ public class RestaurantServiceImpl implements RestaurantService {
             try {
                 restaurant = dbReaderService.getRestaurantByCustomerId(newCustomerId);
             } catch (NullPointerException e) {
-                //The new CustomerId is unqiue.
+                //The new CustomerId is unique.
             }
 
             if (restaurant == null) {

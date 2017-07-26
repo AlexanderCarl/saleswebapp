@@ -46,7 +46,7 @@ public class ProfileController {
     private ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder(256);
 
     //The sales persons id is the key.
-    /*This Map is used to store the profile(data) of a sales person which is then send to the user with the model.
+    /*This Map is used to store the profile(data) of the sales person which is send to the user.
     * When the user presses save the profile(data) is loaded from the DB again and compared to the
     * profile(data) at the start (stored in the HashMap). If the restaurant(data) has been altered
     * on the server while the user worked on it, the save request is rejected. This logic

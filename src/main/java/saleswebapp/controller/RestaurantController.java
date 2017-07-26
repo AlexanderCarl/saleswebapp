@@ -10,14 +10,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import saleswebapp.components.RestaurantDeleteCategory;
-import saleswebapp.components.RestaurantListForm;
 import saleswebapp.components.RestaurantAddCategory;
-import saleswebapp.components.RestaurantTimeContainer;
 import saleswebapp.repository.impl.Restaurant;
 import saleswebapp.service.CountryService;
 import saleswebapp.service.RestaurantService;
 import saleswebapp.service.SalesPersonService;
 
+import javax.validation.Valid;
 import java.util.Base64;
 import java.util.UUID;
 
@@ -41,28 +40,11 @@ public class RestaurantController {
     String loggedInUser = "carl@hm.edu"; //DEV-Only
 
     @RequestMapping(value = "/newRestaurant", method = RequestMethod.GET)
-    public String emptyRestaurant(Model model, @ModelAttribute("selectedRestaurant") RestaurantListForm restaurantListForm) {
+    public String emptyRestaurant(Model model) {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        Restaurant restaurant = new Restaurant();
-        restaurant.setCustomerId(restaurantService.getUniqueCustomerId());
-
-        String restaurantUUID = UUID.randomUUID().toString();
-        restaurant.setRestaurantUUID(restaurantUUID);
-        restaurant.setQrUUID(restaurantService.createQRCode(restaurantUUID));
-        restaurant.setQrUuidBase64Encoded(Base64.getEncoder().encodeToString(restaurant.getQrUUID()));
-        restaurant.setOpeningTimes(restaurantService.populateRestaurantTimeDayNumber());
-        restaurant.setOfferTimes(restaurantService.populateRestaurantTimeDayNumber());
-        restaurant.restaurantKitchenTypesAsStringFiller();
-        restaurant.setIdOfSalesPerson(salesPersonService.getSalesPersonByEmail(loggedInUser).getId());
-
-        model.addAttribute("restaurant", restaurant);
-        model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
-        model.addAttribute("countries", countryService.getAllCountries());
-        model.addAttribute("restaurantTypes", restaurantService.getAllRestaurantTypes());
-        model.addAttribute("kitchenTypes", restaurantService.getAllKitchenTypes());
-        model.addAttribute("restaurantAddCategory", new RestaurantAddCategory(0));
-        model.addAttribute("restaurantDeleteCategory", new RestaurantDeleteCategory(0));
+        Restaurant restaurant = preparedRestaurantForNewRestaurant();
+        model = modelForNewRestaurant(restaurant, model);
 
         return "restaurant";
     }
@@ -76,42 +58,36 @@ public class RestaurantController {
         }
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
-
-        restaurant.setQrUuidBase64Encoded(Base64.getEncoder().encodeToString(restaurant.getQrUUID()));
-        restaurant.restaurantTimeContainerFiller();
-        restaurant.orderRestaurantTimeContainers(); //Ensure that the days of a week are shown in the correct order.
-        restaurant.setRestaurantTypeAsString(restaurant.getRestaurantType().getName());
-        restaurant.restaurantKitchenTypesAsStringFiller();
-
-        model.addAttribute("restaurant", restaurant);
-        model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
-        model.addAttribute("countries", countryService.getAllCountries());
-        model.addAttribute("restaurantTypes", restaurantService.getAllRestaurantTypes());
-        model.addAttribute("kitchenTypes", restaurantService.getAllKitchenTypes());
-        model.addAttribute("restaurantAddCategory", new RestaurantAddCategory(restaurantId));
-        model.addAttribute("restaurantDeleteCategory", new RestaurantDeleteCategory(restaurantId));
-
+        Restaurant restaurant = preparedRestaurantForExistingRestaurant(restaurantId);
+        model = modelForExistingRestaurant(restaurant, model);
         restaurantService.addRestaurantToRestaurantTransactionStore(restaurant);
 
         return "restaurant";
     }
 
     @RequestMapping(value = "/restaurant/addCategory", method = RequestMethod.POST)
-    public String processNewCategory(RestaurantAddCategory restaurantAddCategory) {
+    public String processAddNewCategory(Model model, RestaurantAddCategory restaurantAddCategory, BindingResult bindingResult) {
         int restaurantId = restaurantAddCategory.getRestaurantId();
 
         //Safety check if the parameter is altered manually to 0.
         if (restaurantId == 0) {
             return "redirect:/newRestaurant";
         } else {
+
+            if(bindingResult.hasErrors()) {
+                Restaurant restaurant = preparedRestaurantForExistingRestaurant(restaurantId);
+                model = modelForExistingRestaurant(restaurant, model);
+
+                return "restaurant";
+            }
+
             restaurantService.addCategoryToRestaurant(restaurantAddCategory);
             return "redirect:/restaurant?id=" + restaurantId;
         }
     }
 
     @RequestMapping(value = "/restaurant/deleteCategory", method = RequestMethod.POST)
-    public String processDeleteCategory(RestaurantDeleteCategory restaurantDeleteCategory) {
+    public String processDeleteExistingCategory(RestaurantDeleteCategory restaurantDeleteCategory) {
         int restaurantId = restaurantDeleteCategory.getRestaurantId();
 
         //Safety check if the parameter is altered manually to 0.
@@ -172,5 +148,62 @@ public class RestaurantController {
                 "kitchenTypesAsString",
                 "idOfSalesPerson"
         );
+    }
+
+    //Used to prepare an restaurant object of an existing restaurant for its injection into the model
+    private Restaurant preparedRestaurantForExistingRestaurant(int restaurantId) {
+        Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
+
+        restaurant.setQrUuidBase64Encoded(Base64.getEncoder().encodeToString(restaurant.getQrUUID()));
+        restaurant.restaurantTimeContainerFiller();
+        restaurant.orderRestaurantTimeContainers(); //Ensure that the days of a week are shown in the correct order.
+        restaurant.setRestaurantTypeAsString(restaurant.getRestaurantType().getName());
+        restaurant.restaurantKitchenTypesAsStringFiller();
+
+        return restaurant;
+    }
+
+    private Model modelForExistingRestaurant(Restaurant restaurant, Model model) {
+
+        model.addAttribute("restaurant", restaurant);
+        model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
+        model.addAttribute("countries", countryService.getAllCountries());
+        model.addAttribute("restaurantTypes", restaurantService.getAllRestaurantTypes());
+        model.addAttribute("kitchenTypes", restaurantService.getAllKitchenTypes());
+        model.addAttribute("restaurantAddCategory", new RestaurantAddCategory(restaurant.getId()));
+        model.addAttribute("restaurantDeleteCategory", new RestaurantDeleteCategory(restaurant.getId()));
+
+        return model;
+    }
+
+    //Used to prepare an restaurant object of a new restaurant for its injection into the model
+    private Restaurant preparedRestaurantForNewRestaurant() {
+
+        Restaurant restaurant = new Restaurant();
+        restaurant.setCustomerId(restaurantService.getUniqueCustomerId());
+
+        String restaurantUUID = UUID.randomUUID().toString();
+        restaurant.setRestaurantUUID(restaurantUUID);
+        restaurant.setQrUUID(restaurantService.createQRCode(restaurantUUID));
+        restaurant.setQrUuidBase64Encoded(Base64.getEncoder().encodeToString(restaurant.getQrUUID()));
+        restaurant.setOpeningTimes(restaurantService.populateRestaurantTimeDayNumber());
+        restaurant.setOfferTimes(restaurantService.populateRestaurantTimeDayNumber());
+        restaurant.restaurantKitchenTypesAsStringFiller();
+        restaurant.setIdOfSalesPerson(salesPersonService.getSalesPersonByEmail(loggedInUser).getId());
+
+        return restaurant;
+    }
+
+    private Model modelForNewRestaurant(Restaurant restaurant, Model model) {
+
+        model.addAttribute("restaurant", restaurant);
+        model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
+        model.addAttribute("countries", countryService.getAllCountries());
+        model.addAttribute("restaurantTypes", restaurantService.getAllRestaurantTypes());
+        model.addAttribute("kitchenTypes", restaurantService.getAllKitchenTypes());
+        model.addAttribute("restaurantAddCategory", new RestaurantAddCategory(0));
+        model.addAttribute("restaurantDeleteCategory", new RestaurantDeleteCategory(0));
+
+        return model;
     }
 }
