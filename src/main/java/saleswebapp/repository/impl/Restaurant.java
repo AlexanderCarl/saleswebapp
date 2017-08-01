@@ -3,6 +3,9 @@ package saleswebapp.repository.impl;
 import saleswebapp.components.RestaurantTimeContainer;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.util.*;
 
@@ -21,15 +24,20 @@ public class Restaurant implements Serializable {
     @Column(name = "customer_id")
     private int customerId;
 
+    @Size(min=4, max=60, message = "{restaurant.validation.name}")
     private String name;
 
+    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜß]{4,60}$", message = "{restaurant.validation.street}")
     private String street;
 
+    @Pattern(regexp = "^[^0]{1,11}$", message = "{restaurant.validation.streetNumber}")
     @Column(name = "street_number")
     private String streetNumber;
 
+    @Pattern(regexp = "^[0-9]{5}$", message = "{restaurant.validation.zip}")
     private String zip;
 
+    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{3,60}$", message = "{restaurant.validation.city}")
     private String city;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -42,10 +50,14 @@ public class Restaurant implements Serializable {
     @Column(name = "location_longitude")
     private Float locationLongitude;
 
+    @Pattern(regexp = ".+@.+\\..+", message = "{universal.validation.pattern.email}")
     private String email;
 
+    @Pattern(regexp = "^[0][0-9/. \\-]{6,60}$", message = "{restaurant.validation.phone}")
     private String phone;
 
+    // Regex-Source: http://www.regexpal.com/93652
+    @Pattern(regexp = "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$|", message = "{restaurant.validation.url}")
     private String url;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -100,6 +112,18 @@ public class Restaurant implements Serializable {
     @Transient
     private int idOfSalesPerson; //The variable is named against the normal conventions because the variable name "salesPersonId" did mess up the Spring Bean Containers.
 
+    //Needed for the Regex Validator needs a String
+    //Regex-Sourece: https://stackoverflow.com/questions/3518504/regular-expression-for-matching-latitude-longitude-coordinates
+    @Transient
+    @Pattern(regexp = "(^(\\+|-)?(?:90(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\\.[0-9]{1,6})?))$)|", message = "{restaurant.validation.coordinatesLatitude}")
+    private String locationLatitudeAsString;
+
+    //Needed for the Regex Validator needs a String
+    //Regex-Sourece: https://stackoverflow.com/questions/3518504/regular-expression-for-matching-latitude-longitude-coordinates
+    @Transient
+    @Pattern(regexp = "(^(\\+|-)?(?:180(?:(?:\\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\\.[0-9]{1,6})?))$)|", message = "{restaurant.validation.coordinatesLongitude}")
+    private String locationLongitudeAsString;
+
     public void restaurantKitchenTypesAsStringFiller() {
         kitchenTypesAsString = new ArrayList<String>();
 
@@ -125,7 +149,7 @@ public class Restaurant implements Serializable {
             }
         }
 
-        int dayNumber;
+        int dayNumber = 0;
         Date openingTime;
         Date closingTime;
         Date offerStartTime;
@@ -135,26 +159,27 @@ public class Restaurant implements Serializable {
         offerTimes = new ArrayList<RestaurantTimeContainer>();
         List<TimeSchedule> timeScheduleList = getTimeScheduleList();
 
-        for (int i = 1; i < 8; i++) {
+        for (int i = 0; i < 7; i++) {
             TimeSchedule timeSchedule = new TimeSchedule();
 
             try {
-                timeSchedule = timeScheduleList.get(i-1);
+                timeSchedule = timeScheduleList.get(i);
             } catch (Exception e) {
                 //no entry in the db
             }
 
-            dayNumber = 0; //Valid day numbers range from 1 to 7.
             openingTime = null;
             closingTime = null;
-            offerStartTime = null;
-            offerEndTime = null;
 
-            if(timeSchedule.getDayOfWeek().getDayNumber() == 0) {
-                dayNumber = i;
-            } else {
-                dayNumber = timeSchedule.getDayOfWeek().getDayNumber();
+            try {
+                dayNumber = timeSchedule.getDayOfWeek().getId();
+            } catch (Exception e) {
+                //new time schedule
             }
+            if(dayNumber == 0) {
+                dayNumber = i+1;
+            }
+
             offerStartTime = timeSchedule.getOfferStartTime();
             offerEndTime = timeSchedule.getOfferEndTime();
             offerTimes.add(new RestaurantTimeContainer(offerStartTime, offerEndTime, dayNumber));
@@ -506,5 +531,21 @@ public class Restaurant implements Serializable {
 
     public void setIdOfSalesPerson(int idOfSalesPerson) {
         this.idOfSalesPerson = idOfSalesPerson;
+    }
+
+    public String getLocationLatitudeAsString() {
+        return locationLatitudeAsString;
+    }
+
+    public void setLocationLatitudeAsString(String locationLatitudeAsString) {
+        this.locationLatitudeAsString = locationLatitudeAsString;
+    }
+
+    public String getLocationLongitudeAsString() {
+        return locationLongitudeAsString;
+    }
+
+    public void setLocationLongitudeAsString(String locationLongitudeAsString) {
+        this.locationLongitudeAsString = locationLongitudeAsString;
     }
 }

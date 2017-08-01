@@ -17,13 +17,13 @@ public class ProfileForm implements Serializable {
 
     private int id;
 
-    @Pattern(regexp = "^[a-zA-Z]{4,60}$", message = "{profile.validation.firstName}")
+    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{4,60}$", message = "{profile.validation.firstName}")
     private String firstName;
 
-    @Pattern(regexp = "^[a-zA-Z]{4,60}$", message = "{profile.validation.secondName}")
+    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{4,60}$", message = "{profile.validation.secondName}")
     private String secondName;
 
-    @Pattern(regexp = "^[a-zA-Z]{4,60}$", message = "{profile.validation.street}")
+    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{4,60}$", message = "{profile.validation.street}")
     private String street;
 
     @Pattern(regexp = "^[^0]{1,6}$", message = "{profile.validation.streetNumber}")
@@ -32,7 +32,7 @@ public class ProfileForm implements Serializable {
     @Pattern(regexp = "^[0-9]{5}$", message = "{profile.validation.zip}")
     private String zip;
 
-    @Pattern(regexp = "^[a-zA-Z]{3,60}$", message = "{profile.validation.city}")
+    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{3,60}$", message = "{profile.validation.city}")
     private String city;
 
     private Country country;
@@ -47,7 +47,7 @@ public class ProfileForm implements Serializable {
     @Pattern(regexp = "^[A-Z]{2}([0-9a-zA-Z]{15,31})$" , message = "{profile.validation.iban}")
     private String iban;
 
-    @Pattern(regexp = "^([a-zA-Z]){4}([a-zA-Z]){2}([0-9a-zA-Z]){2}([0-9a-zA-Z]{3})?$", message = "{profile.validation.bic}")
+    @Pattern(regexp = "^([a-zA-Z]){4}([a-zA-Z]){2}([0-9a-zA-Z]){2}([0-9a-zA-Z]{3})?$" , message = "{profile.validation.bic}")
     private String bic;
 
     @ProfilPassword

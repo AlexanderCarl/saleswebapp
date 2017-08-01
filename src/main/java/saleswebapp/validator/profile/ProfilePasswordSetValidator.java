@@ -9,7 +9,6 @@ import saleswebapp.components.ProfileForm;
  * Created by Alexander Carl on 25.06.2017.
  */
 
-@Component
 public class ProfilePasswordSetValidator implements Validator {
 
     public boolean supports(Class<?> clazz) {

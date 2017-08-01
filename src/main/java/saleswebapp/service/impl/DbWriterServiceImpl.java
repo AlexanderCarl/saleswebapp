@@ -112,7 +112,6 @@ public class DbWriterServiceImpl implements DbWriterService {
     }
 
     @Override
-    @Transactional
     public void saveRestaurant(Restaurant restaurantData) {
         int restaurantId = restaurantData.getId();
         Restaurant restaurantToSave;
@@ -151,43 +150,65 @@ public class DbWriterServiceImpl implements DbWriterService {
         }
         restaurantToSave.setKitchenTypes(restaurantKitchenTypes);
 
-        //Sets the coordinates with GoogleMaps if left empty
-        if (restaurantData.getLocationLatitude() == null || restaurantData.getLocationLongitude() == null) {
-            HashMap<String, Float> googleMapsLocationValues = getLocationOfRestaurant(restaurantData);
-
-            if(googleMapsLocationValues == null) {
-                restaurantToSave.setLocationLatitude(restaurantData.getLocationLatitude());
-                restaurantToSave.setLocationLongitude(restaurantData.getLocationLatitude());
-            }
-
-            if (restaurantData.getLocationLongitude() == null) {
-                restaurantToSave.setLocationLongitude(googleMapsLocationValues.get("locationLongitude"));
-            } else {
-                restaurantToSave.setLocationLongitude(restaurantData.getLocationLatitude());
-            }
-
-            if (restaurantData.getLocationLatitude() == null) {
-                restaurantToSave.setLocationLatitude(googleMapsLocationValues.get("locationLatitude"));
-            } else {
-                restaurantToSave.setLocationLatitude(restaurantData.getLocationLatitude());
-            }
-        } else {
-            restaurantToSave.setLocationLatitude(restaurantData.getLocationLatitude());
-            restaurantToSave.setLocationLongitude(restaurantData.getLocationLatitude());
-        }
+        //Sets time schedule
+        restaurantToSave = getCoordinates(restaurantData, restaurantToSave);
 
         //Offer/Opening times
         restaurantToSave.setTimeScheduleList(getTimeScheduleList(restaurantData, restaurantToSave));
 
-        restaurantRepository.saveAndFlush(restaurantToSave);
+        restaurantRepository.save(restaurantToSave);
         logger.debug("Restaurant (Customer-ID: " + restaurantToSave.getCustomerId() + ") wurde erfolgreich gespeichert.");
+    }
+
+    private Restaurant getCoordinates (Restaurant restaurantData, Restaurant restaurantToSave)   {
+
+        //Sets the coordinates with GoogleMaps if left empty
+        if (restaurantData.getLocationLatitudeAsString() == "" || restaurantData.getLocationLongitudeAsString() == "") {
+            //No Valid  Google API-Key for the google service
+            //HashMap<String, Float> googleMapsLocationValues = getLocationOfRestaurant(restaurantData);
+            HashMap<String, Float> googleMapsLocationValues = null;
+
+            if(googleMapsLocationValues == null) {
+
+                if(restaurantData.getLocationLatitudeAsString() == "") {
+                    restaurantToSave.setLocationLatitude(new Float(0.0f));
+                } else {
+                    restaurantToSave.setLocationLatitude(Float.parseFloat(restaurantData.getLocationLatitudeAsString()));
+                }
+
+                if(restaurantData.getLocationLongitudeAsString() == "") {
+                    restaurantToSave.setLocationLongitude(new Float(0.0f));
+                } else {
+                    restaurantToSave.setLocationLongitude(Float.parseFloat(restaurantData.getLocationLongitudeAsString()));
+                }
+            }
+
+            if (googleMapsLocationValues != null && restaurantData.getLocationLongitudeAsString() == null) {
+                restaurantToSave.setLocationLongitude(googleMapsLocationValues.get("locationLongitude"));
+            }
+
+            if (googleMapsLocationValues != null && restaurantData.getLocationLatitudeAsString() == null) {
+                restaurantToSave.setLocationLatitude(googleMapsLocationValues.get("locationLatitude"));
+            }
+        } else {
+            restaurantToSave.setLocationLatitude(Float.parseFloat(restaurantData.getLocationLatitudeAsString()));
+            restaurantToSave.setLocationLongitude(Float.parseFloat(restaurantData.getLocationLongitudeAsString()));
+        }
+        return restaurantToSave;
     }
 
     private List<TimeSchedule> getTimeScheduleList(Restaurant restaurantData, Restaurant restaurantToSave) {
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
 
         List<TimeSchedule> timeSchedulesToBeSaved = restaurantToSave.getTimeScheduleList();
-        if (timeSchedulesToBeSaved == null) {timeSchedulesToBeSaved = new ArrayList<TimeSchedule>(); }
+        if (timeSchedulesToBeSaved == null) {
+            timeSchedulesToBeSaved = new ArrayList<TimeSchedule>();
+
+            for(int i = 0; i < 7; i++) {
+                TimeSchedule timeSchedule = new TimeSchedule();
+                timeSchedulesToBeSaved.add(new TimeSchedule());
+            }
+        }
 
         for(int i = 1; i < 8; i++) {
             //The TimeContainers are ordered and the list.index reflects there day number. Therefore we have to transfer this information to the variable dayNumber.
@@ -196,9 +217,8 @@ public class DbWriterServiceImpl implements DbWriterService {
             DayOfWeek dayOfWeek = dayOfWeekRepository.getById(i);
 
             TimeSchedule timeSchedule = timeSchedulesToBeSaved.get(i-1);
-            if (timeSchedule == null) {timeSchedule = new TimeSchedule(); }
             timeSchedule.setDayOfWeek(dayOfWeek);
-            timeSchedule.setRestaurant(restaurantData);
+            timeSchedule.setRestaurant(restaurantToSave);
 
             if(timeContainerOfferTimes.getStartTime() != "") {
                 try {
@@ -217,14 +237,18 @@ public class DbWriterServiceImpl implements DbWriterService {
                     e.printStackTrace();
                 }
             } else {
-                timeSchedule.setOfferStartTime(null);
+                timeSchedule.setOfferEndTime(null);
             }
 
-            OpeningTime openingTime;
-            if(timeSchedulesToBeSaved.get(i-1).getOpeningTimes().size() == 0) {
+            OpeningTime openingTime = null;
+            try {
+                openingTime = timeSchedule.getOpeningTimes().get(0);
+            } catch (Exception e) {
+                //no existing opening time
+            }
+
+            if(openingTime == null) {
                 openingTime = new OpeningTime();
-            } else {
-                openingTime = timeSchedulesToBeSaved.get(i-1).getOpeningTimes().get(0);
             }
 
             if (timeContainerOpeningTimes.getStartTime() != "") {
@@ -262,8 +286,6 @@ public class DbWriterServiceImpl implements DbWriterService {
             openingTime.setTimeSchedule(timeSchedule);
             openingTimesList.add(openingTime);
             timeSchedule.setOpeningTimes(openingTimesList);
-
-            timeSchedulesToBeSaved.add(timeSchedule);
         }
         return timeSchedulesToBeSaved;
     }

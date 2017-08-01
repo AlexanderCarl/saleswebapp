@@ -23,6 +23,10 @@ import saleswebapp.validator.passwordReset.PasswordResetValidator;
 import saleswebapp.validator.profile.ProfilePasswordEqualValidator;
 import saleswebapp.validator.profile.ProfilePasswordSetValidator;
 import saleswebapp.validator.profile.ProfileValidator;
+import saleswebapp.validator.restaurant.KitchenTypeValidator;
+import saleswebapp.validator.restaurant.OfferTimesValidator;
+import saleswebapp.validator.restaurant.OpeningTimesValidator;
+import saleswebapp.validator.restaurant.RestaurantValidator;
 
 import java.util.HashSet;
 import java.util.Locale;
@@ -106,6 +110,17 @@ public class WebApplicationContextConfig extends WebMvcAutoConfigurationAdapter 
         ProfileValidator profileValidator = new ProfileValidator();
         profileValidator.setSpringValidators(springValidators);
         return profileValidator;
+    }
+
+    @Bean
+    public RestaurantValidator restaurantValidator() {
+        Set<Validator> springValidators = new HashSet<Validator>();
+        springValidators.add(new OpeningTimesValidator());
+        springValidators.add(new OfferTimesValidator());
+        springValidators.add(new KitchenTypeValidator());
+        RestaurantValidator restaurantValidator = new RestaurantValidator();
+        restaurantValidator.setSpringValidators(springValidators);
+        return restaurantValidator;
     }
 
 }

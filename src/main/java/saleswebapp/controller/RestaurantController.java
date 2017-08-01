@@ -3,6 +3,7 @@ package saleswebapp.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -15,7 +16,11 @@ import saleswebapp.repository.impl.Restaurant;
 import saleswebapp.service.CountryService;
 import saleswebapp.service.RestaurantService;
 import saleswebapp.service.SalesPersonService;
+import saleswebapp.validator.restaurant.OfferTimesValidator;
+import saleswebapp.validator.restaurant.OpeningTimesValidator;
+import saleswebapp.validator.restaurant.RestaurantValidator;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Base64;
 import java.util.UUID;
@@ -24,6 +29,7 @@ import java.util.UUID;
  * Created by Alexander Carl on 06.07.2017.
  */
 @Controller
+@Scope("session")
 public class RestaurantController {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -37,6 +43,9 @@ public class RestaurantController {
     @Autowired
     private CountryService countryService;
 
+    @Autowired
+    private RestaurantValidator restaurantValidator;
+
     String loggedInUser = "carl@hm.edu"; //DEV-Only
 
     @RequestMapping(value = "/newRestaurant", method = RequestMethod.GET)
@@ -44,63 +53,64 @@ public class RestaurantController {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Restaurant restaurant = preparedRestaurantForNewRestaurant();
-        model = modelForNewRestaurant(restaurant, model);
+        model = getRestaurantModel(restaurant, model);
 
         return "restaurant";
     }
 
     //Loads the requested restaurant into the model, if the user has access.
     @RequestMapping(value = "/restaurant", method = RequestMethod.GET)
-    public String getRestaurant(Model model, @RequestParam("id") int restaurantId) {
+    public String getRestaurant(Model model, @RequestParam("id") int restaurantId, HttpServletRequest request) {
         //Checks if the user is allowed to see the requested restaurant. (security check, if the call parameter has been altered manually)
         if(!restaurantService.restaurantAssignedToSalesPerson(restaurantId)) {
             return "redirect:/home?noValidAccessToRestaurant";
         }
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
+        request.getSession().setAttribute("restaurantId", restaurantId);
         Restaurant restaurant = preparedRestaurantForExistingRestaurant(restaurantId);
-        model = modelForExistingRestaurant(restaurant, model);
+        model = getRestaurantModel(restaurant, model);
         restaurantService.addRestaurantToRestaurantTransactionStore(restaurant);
 
         return "restaurant";
     }
 
     @RequestMapping(value = "/restaurant/addCategory", method = RequestMethod.POST)
-    public String processAddNewCategory(Model model, RestaurantAddCategory restaurantAddCategory, BindingResult bindingResult) {
-        int restaurantId = restaurantAddCategory.getRestaurantId();
+    public String processAddNewCategory(Model model, RestaurantAddCategory restaurantAddCategory, HttpServletRequest request) {
+        int restaurantId = (int) request.getSession().getAttribute("restaurantId");
+        restaurantAddCategory.setRestaurantId(restaurantId);
 
-        //Safety check if the parameter is altered manually to 0.
-        if (restaurantId == 0) {
-            return "redirect:/newRestaurant";
-        } else {
-
-            if(bindingResult.hasErrors()) {
-                Restaurant restaurant = preparedRestaurantForExistingRestaurant(restaurantId);
-                model = modelForExistingRestaurant(restaurant, model);
-
-                return "restaurant";
-            }
-
-            restaurantService.addCategoryToRestaurant(restaurantAddCategory);
+        if(restaurantAddCategory.getName() == null) {
             return "redirect:/restaurant?id=" + restaurantId;
         }
+
+        restaurantService.addCategoryToRestaurant(restaurantAddCategory);
+        return "redirect:/restaurant?id=" + restaurantId;
     }
 
     @RequestMapping(value = "/restaurant/deleteCategory", method = RequestMethod.POST)
-    public String processDeleteExistingCategory(RestaurantDeleteCategory restaurantDeleteCategory) {
-        int restaurantId = restaurantDeleteCategory.getRestaurantId();
+    public String processDeleteExistingCategory(Model model, RestaurantDeleteCategory restaurantDeleteCategory, HttpServletRequest request) {
+        int restaurantId = (int) request.getSession().getAttribute("restaurantId");
+        restaurantDeleteCategory.setRestaurantId(restaurantId);
 
-        //Safety check if the parameter is altered manually to 0.
-        if (restaurantId == 0) {
-            return "redirect:/newRestaurant";
-        } else {
-            restaurantService.deleteCategoryFromRestaurant(restaurantDeleteCategory);
+        if(restaurantDeleteCategory.getName() == null) {
             return "redirect:/restaurant?id=" + restaurantId;
         }
+
+        restaurantService.deleteCategoryFromRestaurant(restaurantDeleteCategory);
+        return "redirect:/restaurant?id=" + restaurantId;
     }
 
     @RequestMapping(value = "/saveRestaurant", method = RequestMethod.POST)
-    public String processRestaurant(Restaurant restaurant, BindingResult restaurantBinder) {
+    public String processRestaurant(Model model, @Valid Restaurant restaurant, BindingResult restaurantBinder) {
+
+        if(restaurantBinder.hasErrors()) {
+            restaurant.setQrUuidBase64Encoded(Base64.getEncoder().encodeToString(restaurant.getQrUUID()));
+            model = getRestaurantModel(restaurant, model);
+
+            return "restaurant";
+        }
+
         //Security check for the bound restaurant fields
         String[] suppressedFields = restaurantBinder.getSuppressedFields();
         if (suppressedFields.length > 0) {
@@ -133,8 +143,8 @@ public class RestaurantController {
                 "zip",
                 "city",
                 "country",
-                "locationLatitude",
-                "locationLongitude",
+                "locationLatitudeAsString",
+                "locationLongitudeAsString",
                 "email",
                 "phone",
                 "url",
@@ -148,7 +158,9 @@ public class RestaurantController {
                 "kitchenTypesAsString",
                 "idOfSalesPerson"
         );
+        restaurantBinder.setValidator(restaurantValidator);
     }
+
 
     //Used to prepare an restaurant object of an existing restaurant for its injection into the model
     private Restaurant preparedRestaurantForExistingRestaurant(int restaurantId) {
@@ -159,21 +171,10 @@ public class RestaurantController {
         restaurant.orderRestaurantTimeContainers(); //Ensure that the days of a week are shown in the correct order.
         restaurant.setRestaurantTypeAsString(restaurant.getRestaurantType().getName());
         restaurant.restaurantKitchenTypesAsStringFiller();
+        restaurant.setLocationLatitudeAsString(String.valueOf(restaurant.getLocationLatitude()));
+        restaurant.setLocationLongitudeAsString(String.valueOf(restaurant.getLocationLongitude()));
 
         return restaurant;
-    }
-
-    private Model modelForExistingRestaurant(Restaurant restaurant, Model model) {
-
-        model.addAttribute("restaurant", restaurant);
-        model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
-        model.addAttribute("countries", countryService.getAllCountries());
-        model.addAttribute("restaurantTypes", restaurantService.getAllRestaurantTypes());
-        model.addAttribute("kitchenTypes", restaurantService.getAllKitchenTypes());
-        model.addAttribute("restaurantAddCategory", new RestaurantAddCategory(restaurant.getId()));
-        model.addAttribute("restaurantDeleteCategory", new RestaurantDeleteCategory(restaurant.getId()));
-
-        return model;
     }
 
     //Used to prepare an restaurant object of a new restaurant for its injection into the model
@@ -194,15 +195,15 @@ public class RestaurantController {
         return restaurant;
     }
 
-    private Model modelForNewRestaurant(Restaurant restaurant, Model model) {
+    private Model getRestaurantModel(Restaurant restaurant, Model model) {
 
         model.addAttribute("restaurant", restaurant);
         model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
         model.addAttribute("countries", countryService.getAllCountries());
         model.addAttribute("restaurantTypes", restaurantService.getAllRestaurantTypes());
         model.addAttribute("kitchenTypes", restaurantService.getAllKitchenTypes());
-        model.addAttribute("restaurantAddCategory", new RestaurantAddCategory(0));
-        model.addAttribute("restaurantDeleteCategory", new RestaurantDeleteCategory(0));
+        model.addAttribute("restaurantAddCategory", new RestaurantAddCategory());
+        model.addAttribute("restaurantDeleteCategory", new RestaurantDeleteCategory());
 
         return model;
     }

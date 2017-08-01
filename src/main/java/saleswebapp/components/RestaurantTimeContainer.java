@@ -1,5 +1,7 @@
 package saleswebapp.components;
 
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -10,6 +12,7 @@ public class RestaurantTimeContainer {
 
     private String startTime;
     private String endTime;
+
     private int dayNumber; //0=Monday
 
     public RestaurantTimeContainer() {

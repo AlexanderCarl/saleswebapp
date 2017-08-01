@@ -57,19 +57,25 @@ public class TimeSchedule {
             return false;
         }
 
-        if (!offerStartTime.equals(other.getOfferStartTime())) {
-            return false;
+        if(offerStartTime != null) {
+            if (!offerStartTime.equals(other.getOfferStartTime())) {
+                return false;
+            }
         }
 
-        if (!offerEndTime.equals(other.getOfferEndTime())) {
-            return false;
+        if(offerEndTime != null) {
+            if (!offerEndTime.equals(other.getOfferEndTime())) {
+                return false;
+            }
+        }
+
+        if(openingTimes != null) {
+            if (!openingTimes.containsAll(other.getOpeningTimes())) {
+                return false;
+            }
         }
 
         if (dayOfWeek.getId() != (other.getDayOfWeek().getId())) {
-            return false;
-        }
-
-        if (!openingTimes.containsAll(other.getOpeningTimes())) {
             return false;
         }
 

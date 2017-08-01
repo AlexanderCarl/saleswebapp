@@ -74,20 +74,14 @@
                     <input type="text" th:field="${restaurantDeleteCategory.name}" th:disabled="${restaurant.id == 0}" class="form-control" style="width: 250px" />
                     <button class="btn btn-primary" style="width: 100px" type="submit" th:disabled="${restaurant.id == 0}"> <th th:text="#{restaurant.label.button.deleteCourseTypes}"/> </button>
                 </div>
-
-                <!-- restaurantId of the form restaurantDeleteCategory -->
-                <input type="text" th:field="*{restaurantId}" />
             </form>
 
-            <form th:action="@{/restaurant/addCategory}" th:object="${restaurantAddCategory}" method="post">
+            <form th:action="@{/restaurant/addCategory}" th:object="${restaurantAddCategory}" method="post" style="margin-top: 10px">
                 <div class="form-inline">
                     <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.addCourseTypes}"></label>
                     <input type="text" th:field="${restaurantAddCategory.name}" th:disabled="${restaurant.id == 0}" class="form-control" style="width: 250px" />
                     <button class="btn btn-primary" style="width: 100px" type="submit" th:disabled="${restaurant.id == 0}"> <th th:text="#{restaurant.label.button.addCourseTypes}" /> </button>
                 </div>
-
-                <!-- restaurantId of the form restaurantAddCategory -->
-                <input type="text" th:field="*{restaurantId}" />
             </form>
         </div>
 
@@ -125,7 +119,7 @@
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.name}" /> </label>
 
                         <span th:classappend="${#fields.hasErrors('*{name}')}? has-error">
-                            <input type="text" th:field="*{name}" required="required" class="form-control" />
+                            <input type="text" th:field="*{name}" class="form-control" />
                         </span>
                     </p>
                 </div>
@@ -136,7 +130,7 @@
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.street}" /> </label>
 
                         <span th:classappend="${#fields.hasErrors('*{street}')}? has-error">
-                            <input type="text" th:field="*{street}" required="required" class="form-control" />
+                            <input type="text" th:field="*{street}" class="form-control" />
                         </span>
                     </p>
                 </div>
@@ -147,7 +141,7 @@
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.streetNumber}" /> </label>
 
                         <span th:classappend="${#fields.hasErrors('*{streetNumber}')}? has-error">
-                            <input type="text" th:field="*{streetNumber}" required="required" class="form-control" />
+                            <input type="text" th:field="*{streetNumber}" class="form-control" />
                         </span>
                     </p>
                 </div>
@@ -158,7 +152,7 @@
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.zip}" /> </label>
 
                         <span th:classappend="${#fields.hasErrors('*{zip}')}? has-error">
-                            <input type="text" th:field="*{zip}" required="required" class="form-control" />
+                            <input type="text" th:field="*{zip}" class="form-control" />
                         </span>
                     </p>
                 </div>
@@ -169,7 +163,7 @@
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.city}" /> </label>
 
                         <span th:classappend="${#fields.hasErrors('*{city}')}? has-error">
-                            <input type="text" th:field="*{city}" required="required" class="form-control" />
+                            <input type="text" th:field="*{city}" class="form-control" />
                         </span>
                     </p>
                 </div>
@@ -210,7 +204,7 @@
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.email}" /> </label>
 
                         <span th:classappend="${#fields.hasErrors('*{email}')}? has-error">
-                            <input type="text" th:field="*{email}" required="required" class="form-control" />
+                            <input type="text" th:field="*{email}" class="form-control" />
                         </span>
                     </p>
                 </div>
@@ -221,7 +215,7 @@
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.phone}" /> </label>
 
                         <span th:classappend="${#fields.hasErrors('*{phone}')}? has-error">
-                            <input type="text" th:field="*{phone}" required="required" class="form-control" />
+                            <input type="text" th:field="*{phone}" class="form-control" />
                         </span>
                     </p>
                 </div>
@@ -242,8 +236,8 @@
                         <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.longitude}" /> </label>
 
-                        <span th:classappend="${#fields.hasErrors('*{locationLongitude}')}? has-error">
-                            <input type="text" th:field="*{locationLongitude}" class="form-control" />
+                        <span th:classappend="${#fields.hasErrors('*{locationLongitudeAsString}')}? has-error">
+                            <input type="text" th:field="*{locationLongitudeAsString}" class="form-control" />
                         </span>
                     </p>
                 </div>
@@ -253,8 +247,8 @@
                         <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
                         <label class="col-lg-4 col-lg-md-2 col-sm-3 span-top-padding"> <th th:text="#{restaurant.label.latitude}" /> </label>
 
-                        <span th:classappend="${#fields.hasErrors('*{locationLatitude}')}? has-error">
-                            <input type="text" th:field="*{locationLatitude}" class="form-control" />
+                        <span th:classappend="${#fields.hasErrors('*{locationLatitudeAsString}')}? has-error">
+                            <input type="text" th:field="*{locationLatitudeAsString}" class="form-control" />
                         </span>
                     </p>
                 </div>
@@ -348,7 +342,7 @@
                 <p class="form-inline">
                     <label class="col-lg-3 col-lg-md-3 col-sm-3 col-form-label">
                         <label class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip.offerModifyPermission}"></label>
-                        <span th:text="#{restaurant.label.offerModiyPermission}" />
+                        <span th:text="#{restaurant.label.offerModifyPermission}" />
                     </label>
 
                     <input type="checkbox" th:field="*{offerModifyPermission}" />

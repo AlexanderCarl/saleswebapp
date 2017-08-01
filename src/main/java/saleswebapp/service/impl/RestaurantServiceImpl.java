@@ -177,6 +177,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
+    @Transactional
     public void addRestaurantToRestaurantTransactionStore(Restaurant restaurant) {
         restaurantTransactionStore.put(restaurant.getId(), restaurant);
     }
