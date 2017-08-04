@@ -22,6 +22,9 @@ public class DayOfWeek {
     @OneToMany(mappedBy = "dayOfWeek", fetch = FetchType.LAZY)
     private List<TimeSchedule> timeSchedules;
 
+    @ManyToMany(fetch = FetchType.LAZY, mappedBy = "dayOfWeeks")
+    private List<Offer> offerList;
+
     public int getId() {
         return id;
     }

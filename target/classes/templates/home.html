@@ -37,7 +37,7 @@
     </head>
 
     <body>
-        <div th:replace="fragments/navbar :: navbar"></div>
+        <div th:replace="fragments/navbarHome :: navbarHome"></div>
 
         <div class="container">
             <!--    Shows the status of the last transaction.
@@ -72,7 +72,6 @@
                     <a href="/saleswebapp/home" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
                     <th th:text="#{home.success.restaurantChangeSuccess}" />
                 </div>
-
             </div>
 
         <div class="page-header">

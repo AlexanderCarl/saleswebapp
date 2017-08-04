@@ -19,6 +19,14 @@ public class CourseType {
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
+    public CourseType(String name) {
+        this.name = name;
+    }
+
+    public CourseType() {
+        super();
+    }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

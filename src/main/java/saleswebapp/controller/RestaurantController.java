@@ -78,6 +78,7 @@ public class RestaurantController {
     @RequestMapping(value = "/restaurant/addCategory", method = RequestMethod.POST)
     public String processAddNewCategory(Model model, RestaurantAddCategory restaurantAddCategory, HttpServletRequest request) {
         int restaurantId = (int) request.getSession().getAttribute("restaurantId");
+        request.getSession().removeAttribute("restaurantId");
         restaurantAddCategory.setRestaurantId(restaurantId);
 
         if(restaurantAddCategory.getName() == null) {
@@ -91,6 +92,7 @@ public class RestaurantController {
     @RequestMapping(value = "/restaurant/deleteCategory", method = RequestMethod.POST)
     public String processDeleteExistingCategory(Model model, RestaurantDeleteCategory restaurantDeleteCategory, HttpServletRequest request) {
         int restaurantId = (int) request.getSession().getAttribute("restaurantId");
+        request.getSession().removeAttribute("restaurantId");
         restaurantDeleteCategory.setRestaurantId(restaurantId);
 
         if(restaurantDeleteCategory.getName() == null) {

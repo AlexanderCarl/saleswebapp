@@ -27,4 +27,12 @@ public interface DbReaderService {
 
     List<KitchenType> getAllKitchenTypes();
 
+    List<Offer> getAllOffersOfRestaurant(int restaurantId);
+
+    List<Offer> getAllOffersOfRestaurant(int restaurantId, String courseType);
+
+    List<Offer> getAllOffersOfRestaurantAndCourseTypeNull(int restaurantId);
+
+    List<CourseType> getAllCourseTypesOfRestaurant(int restaurantId);
+
 }

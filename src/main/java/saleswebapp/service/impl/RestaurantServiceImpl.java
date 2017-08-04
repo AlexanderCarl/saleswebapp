@@ -237,6 +237,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         return dbReaderService.getAllKitchenTypes();
     }
 
+    @Override
     //The Html-Page does need the day numbers to be rendered correctly.
     public List<RestaurantTimeContainer> populateRestaurantTimeDayNumber() {
         List<RestaurantTimeContainer> times = new ArrayList<RestaurantTimeContainer>();

@@ -36,6 +36,12 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Autowired
     private RestaurantKitchenTypeRepository restaurantKitchenTypeRepository;
 
+    @Autowired
+    private OfferRepository offerRepository;
+
+    @Autowired
+    private CourseTypeRepository courseTypeRepository;
+
     @Override
     public SalesPerson getSalesPersonByEmail(String email) {
         return salesPersonRepository.getByEmail(email);
@@ -81,4 +87,31 @@ public class DbReaderServiceImpl implements DbReaderService {
     public List<KitchenType> getAllKitchenTypes() {
         return restaurantKitchenTypeRepository.getAllBy();
     }
+
+    @Override
+    public List<Offer> getAllOffersOfRestaurant(int restaurantId) {
+        return offerRepository.getAllByRestaurantId(restaurantId);
+    }
+
+    @Override
+    public List<Offer> getAllOffersOfRestaurant(int restaurantId, String courseTypeAsString) {
+        List<CourseType> courseTypeList = courseTypeRepository.getAllByNameAndRestaurantId(courseTypeAsString, restaurantId);
+
+        //
+        List<Offer> offerList = offerRepository.getAllByRestaurantIdAndCourseType(restaurantId, courseTypeList.get(0));
+
+        return offerList;
+    }
+
+    @Override
+    public List<Offer> getAllOffersOfRestaurantAndCourseTypeNull(int restaurantId) {
+        return offerRepository.getAllByCourseTypeIsNullAndRestaurantId(restaurantId);
+    }
+
+    @Override
+    public List<CourseType> getAllCourseTypesOfRestaurant(int restaurantId) {
+        return courseTypeRepository.getAllByRestaurantId(restaurantId);
+    }
+
+
 }

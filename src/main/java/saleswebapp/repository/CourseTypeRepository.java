@@ -6,11 +6,16 @@ import org.springframework.data.jpa.repository.Query;
 import saleswebapp.repository.impl.CourseType;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Created by Alexander Carl on 20.07.2017.
  */
 public interface CourseTypeRepository extends JpaRepository<CourseType, Serializable> {
+
+    List<CourseType> getAllByNameAndRestaurantId(String courseTypeAsString, int restaurantId);
+
+    List<CourseType> getAllByRestaurantId(int restaurantId);
 
     /*
     The delete is written as a query because Hibernate would require additional config
@@ -20,4 +25,5 @@ public interface CourseTypeRepository extends JpaRepository<CourseType, Serializ
     @Modifying
     @Query("delete from CourseType where id = ?1")
     void deleteById(int id);
+
 }
