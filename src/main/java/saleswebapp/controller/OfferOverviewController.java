@@ -56,6 +56,7 @@ public class OfferOverviewController {
 
         request.getSession().setAttribute("idForCancelButton", 0);
         request.getSession().setAttribute("restaurantId", restaurantId);
+        request.getSession().setAttribute("pageStatus", "filteredByRestaurantId");
         model = prepareModel(model, restaurantId, loggedInUser);
         model.addAttribute("offerList", getOfferList(restaurantId));
 
@@ -65,8 +66,15 @@ public class OfferOverviewController {
     //Loads the requested offers into the model, filtered by course type
     @RequestMapping(value = "/offerOverviewByCourseType")
     public String getOffersForCourseType(Model model, @RequestParam("courseType") String courseTypeAsString, HttpServletRequest request) {
-
         int restaurantId = (int) request.getSession().getAttribute("restaurantId");
+
+        //Checks if the user is allowed to see the requested restaurant. (security check, if the call parameter has been altered manually)
+        if(!restaurantService.restaurantAssignedToSalesPerson(restaurantId)) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+
+        request.getSession().setAttribute("pageStatus", "filteredByRestaurantIdAndCourseType");
+        request.getSession().setAttribute("courseType", courseTypeAsString);
         request.getSession().setAttribute("idForCancelButton", restaurantId);
         model = prepareModel(model, restaurantId, loggedInUser);
         model.addAttribute("offerList", getOfferList(restaurantId, courseTypeAsString));
@@ -84,6 +92,29 @@ public class OfferOverviewController {
         } else {
             return "redirect:/offerOverviewByRestaurant?id=" + id;
         }
+    }
+
+    //Delete a offer
+    @RequestMapping(value = "/offerOverview/remove")
+    public String deleteOffer(@RequestParam("offerId") int offerId, HttpServletRequest request) {
+
+        String pageStatus = (String) request.getSession().getAttribute("pageStatus");
+        int restaurantId = (int) request.getSession().getAttribute("restaurantId");
+
+        //Checks if the user is allowed to see the requested offer which belongs to a restaurant he has access to. (security check, if the call parameter has been altered manually)
+        if(!restaurantService.restaurantAssignedToSalesPerson(restaurantId)) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+
+        offerService.deleteOffer(offerId);
+
+        if(pageStatus.equals("filteredByRestaurantId")) {
+            return "redirect:/offerOverviewByRestaurant?id=" + restaurantId;
+        } else {
+            String courseTypeAsString = (String) request.getSession().getAttribute("courseType");
+            return "redirect:/offerOverviewByCourseType" + courseTypeAsString;
+        }
+
     }
 
     private Model prepareModel(Model model, int restaurantId, String loggedInUser) {

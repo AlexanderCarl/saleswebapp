@@ -3,6 +3,9 @@
 
     <head th:include="fragments/head :: head">
         <title>SalesWebApp offerOverview</title>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.1/angular.min.js"></script>
+        <script src="/webstore/resources/js/controllers.js"></script>
     </head>
 
     <body>
@@ -90,7 +93,7 @@
                     <td> <span th:text="${offer.startDateAsString}" /> </td>
                     <td> <span th:text="${offer.endDateAsString}" /> </td>
                     <td style="width: 75px">
-                        <a href="#" class="label label-danger"> <!-- ng-click="removeFromCart(offer.id)"> -->
+                        <a th:href="@{/offerOverview/remove(offerId=${offer.id})}" class="label label-danger"> <!-- ng-click="removeFromCart(offer.id)"> -->
                             <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{universal.label.delete}" />
                         </a>
                     </td>

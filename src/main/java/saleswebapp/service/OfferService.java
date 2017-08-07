@@ -14,4 +14,6 @@ public interface OfferService {
     List<Offer> getAllOffersOfRestaurant(int restaurantId, String courseTypeAsString);
 
     List<Offer> getAllOffersOfRestaurantAndCourseTypeNull(int restaurantId);
+
+    void deleteOffer(int offerId);
 }

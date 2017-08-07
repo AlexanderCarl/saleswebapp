@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import saleswebapp.repository.impl.Offer;
 import saleswebapp.service.DbReaderService;
+import saleswebapp.service.DbWriterService;
 import saleswebapp.service.OfferService;
 
 import java.util.List;
@@ -16,6 +17,9 @@ public class OfferServiceImpl implements OfferService {
 
     @Autowired
     private DbReaderService dbReaderService;
+
+    @Autowired
+    private DbWriterService dbWriterService;
 
     @Override
     public List<Offer> getAllOffersOfRestaurant(int restaurantId) {
@@ -31,4 +35,10 @@ public class OfferServiceImpl implements OfferService {
     public List<Offer> getAllOffersOfRestaurantAndCourseTypeNull(int restaurantId) {
         return dbReaderService.getAllOffersOfRestaurantAndCourseTypeNull(restaurantId);
     }
+
+    @Override
+    public void deleteOffer(int offerId) {
+        dbWriterService.deleteOffer(offerId);
+    }
+
 }

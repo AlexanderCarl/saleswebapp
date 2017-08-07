@@ -17,6 +17,7 @@ import saleswebapp.repository.*;
 import saleswebapp.repository.impl.*;
 import saleswebapp.service.DbWriterService;
 
+import javax.transaction.TransactionScoped;
 import javax.transaction.Transactional;
 import java.sql.Time;
 import java.text.ParseException;
@@ -48,6 +49,18 @@ public class DbWriterServiceImpl implements DbWriterService {
 
     @Autowired
     private DayOfWeekRepository dayOfWeekRepository;
+
+    @Autowired
+    private OfferRepository offerRepository;
+
+    @Autowired
+    private OfferHasAdditivesRepository offerHasAdditivesRepository;
+
+    @Autowired
+    private OfferHasAllergenicRepository offerHasAllergenicRepository;
+
+    @Autowired
+    private OfferPhotoRepository offerPhotoRepository;
 
     private ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
 
@@ -112,6 +125,7 @@ public class DbWriterServiceImpl implements DbWriterService {
     }
 
     @Override
+    @Transactional
     public void saveRestaurant(Restaurant restaurantData) {
         int restaurantId = restaurantData.getId();
         Restaurant restaurantToSave;
@@ -290,6 +304,7 @@ public class DbWriterServiceImpl implements DbWriterService {
         return timeSchedulesToBeSaved;
     }
 
+    //Not used because an activ/valid google ApiKey is needed.
     private HashMap<String, Float> getLocationOfRestaurant(Restaurant restaurantData) {
 
         // Replace the API key below with a valid API key.
@@ -314,6 +329,18 @@ public class DbWriterServiceImpl implements DbWriterService {
             return null;
         }
         return googleMapsLocationValues;
+    }
+
+    @Override
+    @Transactional
+    public void deleteOffer(int offerId) {
+
+        offerHasAllergenicRepository.deleteByOfferId(offerId);
+        offerHasAdditivesRepository.deleteByOfferId(offerId);
+        offerPhotoRepository.deleteByOfferId(offerId);
+        offerRepository.deleteById(offerId);
+
+        logger.debug("Offer with id: " + offerId +" has been deleted.");
     }
 }
 

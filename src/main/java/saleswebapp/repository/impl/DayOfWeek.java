@@ -25,6 +25,13 @@ public class DayOfWeek {
     @ManyToMany(fetch = FetchType.LAZY, mappedBy = "dayOfWeeks")
     private List<Offer> offerList;
 
+    @PreRemove
+    private void removeDayOfWeeksFromOffer() {
+        for(Offer offer : offerList) {
+            offer.getDayOfWeeks().remove(offer);
+        }
+    }
+
     public int getId() {
         return id;
     }

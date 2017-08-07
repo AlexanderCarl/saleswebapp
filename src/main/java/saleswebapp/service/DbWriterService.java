@@ -22,4 +22,6 @@ public interface DbWriterService {
 
     void saveRestaurant(Restaurant restaurant);
 
+    void deleteOffer(int offerId);
+
 }

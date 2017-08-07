@@ -121,7 +121,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    @Transactional
     public void addCategoryToRestaurant(RestaurantAddCategory restaurantAddCategory) {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         loggedInUser = "carl@hm.edu"; //Dev-Only
@@ -148,7 +147,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    @Transactional
     public void deleteCategoryFromRestaurant(RestaurantDeleteCategory restaurantDeleteCategory) {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         loggedInUser = "carl@hm.edu"; //Dev-Only
@@ -177,7 +175,6 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    @Transactional
     public void addRestaurantToRestaurantTransactionStore(Restaurant restaurant) {
         restaurantTransactionStore.put(restaurant.getId(), restaurant);
     }
