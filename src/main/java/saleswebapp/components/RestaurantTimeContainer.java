@@ -12,8 +12,9 @@ public class RestaurantTimeContainer {
 
     private String startTime;
     private String endTime;
-
     private int dayNumber; //0=Monday
+    private String dayNumberAsString; //Needed for the dialog "offer"
+
 
     public RestaurantTimeContainer() {
         super();
@@ -33,6 +34,7 @@ public class RestaurantTimeContainer {
         }
 
         this.dayNumber = dayNumber;
+        this.dayNumberAsString = String.valueOf(dayNumber);
     }
 
     public String getStartTime() {
@@ -57,5 +59,13 @@ public class RestaurantTimeContainer {
 
     public void setDayNumber(int dayNumber) {
         this.dayNumber = dayNumber;
+    }
+
+    public String getDayNumberAsString() {
+        return dayNumberAsString;
+    }
+
+    public void setDayNumberAsString(String dayNumberAsString) {
+        this.dayNumberAsString = dayNumberAsString;
     }
 }

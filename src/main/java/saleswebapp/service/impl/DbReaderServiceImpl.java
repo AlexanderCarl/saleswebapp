@@ -42,6 +42,12 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Autowired
     private CourseTypeRepository courseTypeRepository;
 
+    @Autowired
+    private AdditiveRepository additiveRepository;
+
+    @Autowired
+    private AllergenicRepository allergenicRepository;
+
     @Override
     public SalesPerson getSalesPersonByEmail(String email) {
         return salesPersonRepository.getByEmail(email);
@@ -113,5 +119,19 @@ public class DbReaderServiceImpl implements DbReaderService {
         return courseTypeRepository.getAllByRestaurantId(restaurantId);
     }
 
+    @Override
+    public Offer getOffer(int offerId) {
+        return offerRepository.getById(offerId);
+    }
+
+    @Override
+    public List<Additive> getAllAdditives() {
+        return additiveRepository.findAll();
+    }
+
+    @Override
+    public List<Allergenic> getAllAllergenic() {
+        return allergenicRepository.findAll();
+    }
 
 }

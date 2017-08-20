@@ -46,7 +46,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     //The restaurants id is the key.
     /*This Map is used to store the restaurant(data) which is send to the user.
-    * When the user presses save the restaurant(data) is loaded again from the DB und compared to the
+    * When the user presses save, the restaurant(data) is loaded again from the DB und compared to the
     * restaurant(data) at the start (stored in the HashMap). If the restaurant(data) has been altered
     * on the server while the user worked on it, the save request is rejected. This logic
     * is used to ensure data consistency.
@@ -199,7 +199,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    //Creates tje QRCode as the in the findlunchApp but without saving it temporarely as a file on the hard drive.
+    //Creates tje QRCode as the in the findlunchApp but without saving it temporarily as a file on the hard drive.
     public byte[] createQRCode(String qrUuid) {
 
         //Creates a bitMatrix for the given String qrUuid
@@ -246,5 +246,10 @@ public class RestaurantServiceImpl implements RestaurantService {
         }
 
         return times;
+    }
+
+    @Override
+    public List<CourseType> getAllCourseTypesOfRestaurant(int restaurantId) {
+        return dbReaderService.getAllCourseTypesOfRestaurant(restaurantId);
     }
 }

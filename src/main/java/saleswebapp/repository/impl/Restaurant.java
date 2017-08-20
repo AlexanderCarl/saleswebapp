@@ -110,7 +110,7 @@ public class Restaurant implements Serializable {
     private List<String> kitchenTypesAsString;
 
     @Transient
-    private int idOfSalesPerson; //The variable is named against the normal conventions because the variable name "salesPersonId" did mess up the Spring Bean Containers.
+    private int idOfSalesPerson; //The variable is named against the normal conventions because the variable name "salesPersonId" does mess up hibernate as it is already used in an other related object.
 
     //Needed for the Regex Validator needs a String
     //Regex-Sourece: https://stackoverflow.com/questions/3518504/regular-expression-for-matching-latitude-longitude-coordinates

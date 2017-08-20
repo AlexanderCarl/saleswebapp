@@ -5,12 +5,9 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import saleswebapp.repository.CourseTypeRepository;
 import saleswebapp.repository.impl.CourseType;
 import saleswebapp.repository.impl.Offer;
-import saleswebapp.service.DbReaderService;
 import saleswebapp.service.OfferService;
 import saleswebapp.service.RestaurantService;
 
@@ -30,9 +27,6 @@ public class OfferOverviewController {
 
     @Autowired
     private RestaurantService restaurantService;
-
-    @Autowired
-    private DbReaderService dbReaderService;
 
     String loggedInUser = "carl@hm.edu"; //DEV-Only
 
@@ -114,14 +108,13 @@ public class OfferOverviewController {
             String courseTypeAsString = (String) request.getSession().getAttribute("courseType");
             return "redirect:/offerOverviewByCourseType" + courseTypeAsString;
         }
-
     }
 
     private Model prepareModel(Model model, int restaurantId, String loggedInUser) {
 
         List<CourseType> courseTypeList = null;
         try {
-            courseTypeList = dbReaderService.getAllCourseTypesOfRestaurant(restaurantId);
+            courseTypeList = restaurantService.getAllCourseTypesOfRestaurant(restaurantId);
         } catch (Exception e) {
             // Restaurant has no course types so far.
         }
@@ -202,7 +195,6 @@ public class OfferOverviewController {
                     // The offer has no assigned end date
                 }
             }
-
         }
         return offerList;
     }

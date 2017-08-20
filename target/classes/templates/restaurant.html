@@ -9,6 +9,11 @@
     <div th:replace="fragments/navbar :: navbar"></div>
 
     <div class="container">
+
+        <div class="page-header">
+            <h3><th th:text="#{restaurant.label.heading}" /></h3>
+        </div>
+
         <div class="row" style="padding-top: 25px">
             <div>
                 <p class="form-inline">
@@ -46,13 +51,13 @@
                         <th th:text="#{restaurant.label.redirectOffer}" />
                     </label>
 
-                    <a th:href="@{/offerOverview(id=${restaurant.id})}" class="btn btn-primary" style="width: 15%"> <th th:text="#{restaurant.label.button.redirectOffer}" /> </a>
+                    <a th:href="@{/offerOverviewByRestaurant(id=${restaurant.id})}" class="btn btn-primary" style="width: 15%"> <th th:text="#{restaurant.label.button.redirectOffer}" /> </a>
                 </p>
             </div>
         </div>
 
         <div class="page-header">
-            <h3><th th:text="#{restaurant.label.headingRestaurantCategories}" /></h3>
+            <h3><th th:text="${restaurant.name}" /></h3>
         </div>
 
         <!-- Category/CourseTypes -->
@@ -102,12 +107,9 @@
         </div>
 
         <div class="clearfix visible-lg visible-lg-md visible-sm "></div>
-        <div class="page-header">
-            <h3><th th:text="#{restaurant.label.headingRestaurantData}" /></h3>
-        </div>
 
         <!-- restaurant data -->
-        <div class="row">
+        <div class="row" style="margin-top: 35px">
             <ul th:if="${#fields.hasErrors('*')}">
                 <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="text-danger" />
             </ul>
@@ -280,13 +282,13 @@
                         <p class="form-inline">
                             <label class="span-top-padding col-lg-3 col-lg-md-3 col-sm-3">
                                 <th th:switch="${openingTime.dayNumber}">
-                                    <span th:case="'1'"><span th:text="#{restaurant.label.monday}" /></span>
-                                    <span th:case="'2'"><span th:text="#{restaurant.label.tuesday}" /></span>
-                                    <span th:case="'3'"><span th:text="#{restaurant.label.wednesday}" /></span>
-                                    <span th:case="'4'"><span th:text="#{restaurant.label.thursday}" /></span>
-                                    <span th:case="'5'"><span th:text="#{restaurant.label.friday}" /></span>
-                                    <span th:case="'6'"><span th:text="#{restaurant.label.saturday}" /></span>
-                                    <span th:case="'7'"><span th:text="#{restaurant.label.sunday}" /></span>
+                                    <span th:case="'1'"><span th:text="#{universal.label.monday}" /></span>
+                                    <span th:case="'2'"><span th:text="#{universal.label.tuesday}" /></span>
+                                    <span th:case="'3'"><span th:text="#{universal.label.wednesday}" /></span>
+                                    <span th:case="'4'"><span th:text="#{universal.label.thursday}" /></span>
+                                    <span th:case="'5'"><span th:text="#{universal.label.friday}" /></span>
+                                    <span th:case="'6'"><span th:text="#{universal.label.saturday}" /></span>
+                                    <span th:case="'7'"><span th:text="#{universal.label.sunday}" /></span>
                                 </th>
                             </label>
 
@@ -314,13 +316,13 @@
                         <p class="form-inline">
                             <label class="span-top-padding col-lg-3 col-lg-md-3 col-sm-3">
                                 <th th:switch="${offerTime.dayNumber}">
-                                    <span th:case="'1'"><span th:text="#{restaurant.label.monday}" /></span>
-                                    <span th:case="'2'"><span th:text="#{restaurant.label.tuesday}" /></span>
-                                    <span th:case="'3'"><span th:text="#{restaurant.label.wednesday}" /></span>
-                                    <span th:case="'4'"><span th:text="#{restaurant.label.thursday}" /></span>
-                                    <span th:case="'5'"><span th:text="#{restaurant.label.friday}" /></span>
-                                    <span th:case="'6'"><span th:text="#{restaurant.label.saturday}" /></span>
-                                    <span th:case="'7'"><span th:text="#{restaurant.label.sunday}" /></span>
+                                    <span th:case="'1'"><span th:text="#{universal.label.monday}" /></span>
+                                    <span th:case="'2'"><span th:text="#{universal.label.tuesday}" /></span>
+                                    <span th:case="'3'"><span th:text="#{universal.label.wednesday}" /></span>
+                                    <span th:case="'4'"><span th:text="#{universal.label.thursday}" /></span>
+                                    <span th:case="'5'"><span th:text="#{universal.label.friday}" /></span>
+                                    <span th:case="'6'"><span th:text="#{universal.label.saturday}" /></span>
+                                    <span th:case="'7'"><span th:text="#{universal.label.sunday}" /></span>
                                 </th>
                             </label>
 

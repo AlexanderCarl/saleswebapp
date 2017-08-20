@@ -1,6 +1,6 @@
 package saleswebapp.service;
 
-import saleswebapp.repository.impl.Offer;
+import saleswebapp.repository.impl.*;
 
 import java.util.List;
 
@@ -16,4 +16,16 @@ public interface OfferService {
     List<Offer> getAllOffersOfRestaurantAndCourseTypeNull(int restaurantId);
 
     void deleteOffer(int offerId);
+
+    Offer getOffer(int offerId);
+
+    List<Additive> getAllAdditives();
+
+    List<Allergenic> getAllAllergenic();
+
+    void addOfferToRestaurantTransaction(Offer offer);
+
+    boolean offerHasBeenAlteredMeanwhile(Offer offer);
+
+    void saveOffer(Offer offer);
 }

@@ -3,12 +3,14 @@ package saleswebapp.repository.impl;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Created by Alexander Carl on 02.08.2017.
  */
 @Entity
-public class Additives {
+@Table(name = "additives")
+public class Additive {
 
     @Id
     private int id;

@@ -227,7 +227,7 @@ INSERT IGNORE INTO `findlunchandswa`.`time_schedule` (`id`, `restaurant_id`, `of
 (106, 101, '1970-01-01 00:00:00', '1970-01-01 23:59:00', 6),
 (107, 101, '1970-01-01 00:00:00', '1970-01-01 23:59:00', 7);
 
-INSERT IGNORE INTO `additives` (`id`, `name`, `description`, `short`) VALUES 
+INSERT IGNORE INTO `additive` (`id`, `name`, `description`, `short`) VALUES
 (1, 'Farbstoffe E 100 - E 180', 'mit Farbstoff', 'a'), 
 (2, 'Konservierungsstoffe E 200 - E 219, E 230 - E 235, E 239, E 249 - E 252, E 280 - E 285, E 1105', 'mit Konservierungsstoff', 'b'),
 (3, 'Geschmacksverstärker E 620 - E 635', 'mit Geschmacksverstärker', 'c'), 
@@ -259,7 +259,7 @@ INSERT IGNORE INTO `allergenic` (`id`, `name`, `description`, `short`) VALUES
 (13, 'Soja', 'Sojabohnen und daraus gewonnene Erzeugnisse, also etwa Miso, Sojasauce, Sojaöl, Gebäck, Marinaden, Kaffeeweißer, Suppen, Saucen, Dressings. Ausgenommen ist vollständig raffiniertes Sojabohnen-Öl und -Fett.', '13'), 
 (14, 'Weichtiere', 'Schnecken, Tintenfisch, Austern, Muscheln und alle Erzeugnisse, in denen Weichtiere oder Spuren von ihnen enthalten sind, also Gewürzmischungen, Saucen, asiatische Spezialitäten, Salate oder Pasten.', '14');
 
--- offer has additives
+-- offer has additive
 INSERT IGNORE INTO `findlunchandswa`.`offer_has_additives` (`offer_id`, `additives_id`) VALUES
 (1, 1),
 (1, 2),

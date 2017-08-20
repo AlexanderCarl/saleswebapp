@@ -25,4 +25,6 @@ public interface OfferRepository extends JpaRepository<Offer, Serializable> {
 
     void deleteById(int offerId);
 
+    Offer getById(int offerId);
+
 }

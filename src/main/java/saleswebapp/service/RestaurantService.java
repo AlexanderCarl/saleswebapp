@@ -4,6 +4,7 @@ import saleswebapp.components.RestaurantAddCategory;
 import saleswebapp.components.RestaurantDeleteCategory;
 import saleswebapp.components.RestaurantListForm;
 import saleswebapp.components.RestaurantTimeContainer;
+import saleswebapp.repository.impl.CourseType;
 import saleswebapp.repository.impl.KitchenType;
 import saleswebapp.repository.impl.Restaurant;
 import saleswebapp.repository.impl.RestaurantType;
@@ -40,4 +41,6 @@ public interface RestaurantService {
     List<KitchenType> getAllKitchenTypes();
 
     List<RestaurantTimeContainer> populateRestaurantTimeDayNumber();
+
+    List<CourseType> getAllCourseTypesOfRestaurant(int restaurantId);
 }

@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `findlunchandswa`.`country` (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
 
--- ——————————————————————————
+-- ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 -- Table `findlunchandswa`.`day_of_week`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `findlunchandswa`.`day_of_week` (
@@ -674,12 +674,12 @@ CREATE TABLE IF NOT EXISTS `findlunchandswa`.`offer_has_allergenic` (
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
--- Table `findlunchandswa`.`additives`
+-- Table `findlunchandswa`.`additive`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `findlunchandswa`.`offer_has_additives` ;
-DROP TABLE IF EXISTS `findlunchandswa`.`additives` ;
+DROP TABLE IF EXISTS `findlunchandswa`.`additive` ;
 
-CREATE TABLE IF NOT EXISTS `findlunchandswa`.`additives` (
+CREATE TABLE IF NOT EXISTS `findlunchandswa`.`additive` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(255) NOT NULL,
   `description` VARCHAR(255) NULL,
@@ -700,7 +700,7 @@ CREATE TABLE IF NOT EXISTS `findlunchandswa`.`offer_has_additives` (
   INDEX `fk_offer_has_additives_offer1_idx` (`offer_id` ASC),
   CONSTRAINT `fk_offer_has_additives_additives1`
     FOREIGN KEY (`additives_id`)
-    REFERENCES `findlunchandswa`.`additives` (`id`)
+    REFERENCES `findlunchandswa`.`additive` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_offer_has_additives_offer1`

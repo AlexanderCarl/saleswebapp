@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.LocaleResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -20,6 +21,9 @@ import org.thymeleaf.spring4.SpringTemplateEngine;
 import org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ITemplateResolver;
+import saleswebapp.validator.offer.DateValidator;
+import saleswebapp.validator.offer.ImageValidator;
+import saleswebapp.validator.offer.OfferValidator;
 import saleswebapp.validator.passwordReset.PasswordResetPasswordEqualValidator;
 import saleswebapp.validator.passwordReset.PasswordResetValidator;
 import saleswebapp.validator.profile.ProfilePasswordEqualValidator;
@@ -125,12 +129,29 @@ public class WebApplicationContextConfig extends WebMvcAutoConfigurationAdapter 
         return restaurantValidator;
     }
 
+    @Bean
+    public OfferValidator offerValidator() {
+        Set<Validator> springValidators = new HashSet<Validator>();
+        springValidators.add(new DateValidator());
+        springValidators.add(new ImageValidator());
+        OfferValidator offerValidator = new OfferValidator();
+        offerValidator.setSpringValidators(springValidators);
+        return offerValidator;
+    }
+
     @Override
     public void configurePathMatch(PathMatchConfigurer configurer) {
         UrlPathHelper urlPathHelper = new UrlPathHelper();
         urlPathHelper.setRemoveSemicolonContent(false);
 
         configurer.setUrlPathHelper(urlPathHelper);
+    }
+
+    @Bean
+    public CommonsMultipartResolver multipartResolver(){
+        CommonsMultipartResolver resolver = new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("UTF-8");
+        return resolver;
     }
 
 }

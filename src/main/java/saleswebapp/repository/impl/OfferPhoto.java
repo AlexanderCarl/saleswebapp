@@ -17,9 +17,14 @@ public class OfferPhoto {
     @JoinColumn(name = "offer_id")
     private Offer offer;
 
+    @Lob
     private byte[] photo;
 
+    @Lob
     private byte[] thumbnail;
+
+    @Transient
+    private String photoBase64Encoded;
 
     public int getId() {
         return id;

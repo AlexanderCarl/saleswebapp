@@ -35,4 +35,10 @@ public interface DbReaderService {
 
     List<CourseType> getAllCourseTypesOfRestaurant(int restaurantId);
 
+    Offer getOffer(int offerId);
+
+    List<Additive> getAllAdditives();
+
+    List<Allergenic> getAllAllergenic();
+
 }

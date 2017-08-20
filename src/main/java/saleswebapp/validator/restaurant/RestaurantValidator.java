@@ -43,7 +43,7 @@ public class RestaurantValidator implements Validator {
             errors.rejectValue(propertyPath, "", message);
         }
 
-        //Handles all violations for the classic Spring Validatiors
+        //Handles all violations for the classic Spring Validators
         for (Validator validator : springValidators) {
             validator.validate(target, errors);
         }

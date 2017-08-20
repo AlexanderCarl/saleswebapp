@@ -7,7 +7,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "offer_has_additives")
-public class OfferHasAdditives {
+public class OfferHasAdditive {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -19,7 +19,7 @@ public class OfferHasAdditives {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "additives_id")
-    private Additives additives;
+    private Additive additive;
 
     public int getId() {
         return id;
@@ -37,11 +37,11 @@ public class OfferHasAdditives {
         this.offer = offer;
     }
 
-    public Additives getAdditives() {
-        return additives;
+    public Additive getAdditive() {
+        return additive;
     }
 
-    public void setAdditives(Additives additives) {
-        this.additives = additives;
+    public void setAdditive(Additive additive) {
+        this.additive = additive;
     }
 }
