@@ -20,4 +20,6 @@ public interface DayOfWeekRepository extends JpaRepository<DayOfWeek, Serializab
      *      4.2) Dont use a Day_of_week table at all. It just makes it unstable, complicated und costs a lot of time.
      */
     DayOfWeek getById(int id);
+
+    List<DayOfWeek> getAllBy();
 }

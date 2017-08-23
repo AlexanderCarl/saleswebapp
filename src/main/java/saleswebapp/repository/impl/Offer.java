@@ -1,5 +1,8 @@
 package saleswebapp.repository.impl;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.springframework.util.Assert;
 import org.springframework.web.multipart.MultipartFile;
 import saleswebapp.components.RestaurantTimeContainer;
 
@@ -31,6 +34,7 @@ public class Offer {
     private String title;
 
     @Size(min=4, max=255, message = "{offer.validation.description}")
+    @Column(name = "description")
     private String description;
 
     private Double price;
@@ -53,6 +57,7 @@ public class Offer {
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private CourseType courseType;
 
+    @Column(name = "[order]")
     private int order;
 
     @Column(name = "swa_comment_of_last_change")
@@ -75,7 +80,7 @@ public class Offer {
     @OneToMany(mappedBy = "offer", fetch = FetchType.EAGER)
     private List<OfferHasAllergenic> offerHasAllergenics;
 
-    @OneToMany(mappedBy = "offer", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "offer", cascade = CascadeType.ALL)
     private List<OfferPhoto> offerPhotos;
 
     @Transient
@@ -216,6 +221,183 @@ public class Offer {
             offerEndTime = timeSchedule.getOfferEndTime();
             offerTimes.add(new RestaurantTimeContainer(offerStartTime, offerEndTime, dayNumber));
         }
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+
+        Offer other = (Offer) obj;
+        if(Integer.valueOf(id) == null) {
+            if (Integer.valueOf(other.id) != null)
+                return false;
+        }
+
+        if(id != other.getId()) {
+            return false;
+        }
+
+        if(changeRequestId != other.getChangeRequestId()) {
+            return false;
+        }
+
+        int restaurantId = restaurant.getId();
+        int otherRestaurantId = other.getRestaurant().getId();
+        if (restaurantId != otherRestaurantId) {
+            return false;
+        }
+
+        if(!title.equals(other.getTitle())) {
+            return false;
+        }
+
+        if(!description.equals(other.getDescription())) {
+            return false;
+        }
+
+        if(!(Double.compare(price, other.getPrice()) == 0)) {
+            return false;
+        }
+
+        if(preparationTime != other.getPreparationTime()) {
+            return false;
+        }
+
+        if(startDate.compareTo(other.getStartDate()) != 0) {
+            return false;
+        }
+
+        if(endDate.compareTo(other.getEndDate()) != 0) {
+            return false;
+        }
+
+        if(neededPoints != other.getNeededPoints()) {
+            return false;
+        }
+
+        if(soldOut != other.isSoldOut()) {
+            return false;
+        }
+
+        if(courseType.getId() != other.getCourseType().getId()) {
+            return false;
+        }
+
+        if(commentOfLastChange != null && other.getCommentOfLastChange() != null) {
+            if (!commentOfLastChange.equals(other.getCommentOfLastChange())) {
+                return false;
+            }
+        }
+
+        if(salesPerson != null && other.getSalesPerson() != null) {
+            if (salesPerson.getId() != other.getSalesPerson().getId()) {
+                return false;
+            }
+        }
+
+        //DayOfWeeks check
+        if(dayOfWeeks != null && other.getDayOfWeeks() != null) {
+            List<Integer> dayOfWeeksIds = new ArrayList<Integer>();
+            List<Integer> otherDayOfWeeksIds = new ArrayList<Integer>();
+
+            for(DayOfWeek dayOfWeek : dayOfWeeks) {
+                dayOfWeeksIds.add(dayOfWeek.getId());
+            }
+
+            for(DayOfWeek dayOfWeek : other.getDayOfWeeks()) {
+                otherDayOfWeeksIds.add(dayOfWeek.getId());
+            }
+
+            if(!dayOfWeeksIds.containsAll(otherDayOfWeeksIds)) {
+                return false;
+            }
+        }
+
+        if(dayOfWeeks == null && other.getDayOfWeeks() != null || dayOfWeeks != null && other.getDayOfWeeks() == null) {
+            return false;
+        }
+
+        //OfferHasAdditives check
+        if(offerHasAdditives != null && other.getOfferHasAdditives() != null) {
+            List<Integer> offerHasAdditivesIds = new ArrayList<Integer>();
+            List<Integer> otherOfferHasAdditivesIds = new ArrayList<Integer>();
+
+            for(OfferHasAdditive offerHasAdditive : offerHasAdditives) {
+                offerHasAdditivesIds.add(offerHasAdditive.getId());
+            }
+
+            for(OfferHasAdditive offerHasAdditive : other.getOfferHasAdditives()) {
+                otherOfferHasAdditivesIds.add(offerHasAdditive.getId());
+            }
+
+            if(!offerHasAdditivesIds.containsAll(otherOfferHasAdditivesIds)) {
+                return false;
+            }
+        }
+
+        if(offerHasAdditives == null && other.getOfferHasAdditives() != null || offerHasAdditives != null && other.getOfferHasAdditives() == null) {
+            return false;
+        }
+
+        //Allergenic check
+        if(offerHasAllergenics != null && other.getOfferHasAllergenics() != null) {
+            List<Integer> offerHasAllergenicsIds = new ArrayList<Integer>();
+            List<Integer> otherOfferHasAllergenicsIds = new ArrayList<Integer>();
+
+            for(OfferHasAllergenic offerHasAllergenic : offerHasAllergenics) {
+                offerHasAllergenicsIds.add(offerHasAllergenic.getId());
+            }
+
+            for(OfferHasAllergenic offerHasAllergenic : other.getOfferHasAllergenics()) {
+                otherOfferHasAllergenicsIds.add(offerHasAllergenic.getId());
+            }
+
+            if(!offerHasAllergenicsIds.containsAll(otherOfferHasAllergenicsIds)) {
+                return false;
+            }
+        }
+
+        if(offerHasAllergenics == null && other.getOfferHasAllergenics() != null || offerHasAllergenics != null && other.getOfferHasAllergenics() == null) {
+            return false;
+        }
+
+        //Offer photos check
+        if(offerPhotos != null && other.getOfferPhotos() != null) {
+            List<Integer> offerPhotosIds = new ArrayList<Integer>();
+            List<Integer> otherOfferPhotosIds = new ArrayList<Integer>();
+
+            for(OfferPhoto offerPhoto : offerPhotos) {
+                offerPhotosIds.add(offerPhoto.getId());
+            }
+
+            for(OfferPhoto offerPhoto : other.getOfferPhotos()) {
+                otherOfferPhotosIds.add(offerPhoto.getId());
+            }
+
+            if(!offerPhotosIds.containsAll(otherOfferPhotosIds)) {
+                return false;
+            }
+        }
+
+        if(offerPhotos == null && other.getOfferPhotos() != null || offerPhotos != null && other.getOfferPhotos() == null) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((Integer.valueOf(id) == null) ? 0 : (Integer.valueOf(id).hashCode()));
+
+        return result;
     }
 
     public int getId() {

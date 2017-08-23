@@ -46,21 +46,21 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
-    public boolean offerHasBeenAlteredMeanwhile(Offer offer) {
-        Offer offerTransactionEnd = dbReaderService.getOffer(offer.getId());
-        Offer offerTransactionStart = offerTransactionStore.get(offer.getId());
+    public boolean offerHasBeenAlteredMeanwhile(int offerId) {
+        Offer offerTransactionEnd = dbReaderService.getOffer(offerId);
+        Offer offerTransactionStart = offerTransactionStore.get(offerId);
 
         if(!offerTransactionEnd.equals(offerTransactionStart)) {
             return true;
         }
 
-        offerTransactionStore.remove(offer.getId());
+        offerTransactionStore.remove(offerId);
         return false;
     }
 
     @Override
     public void saveOffer(Offer offer) {
-        //not ready yet
+        dbWriterService.saveOffer(offer);
     }
 
     @Override

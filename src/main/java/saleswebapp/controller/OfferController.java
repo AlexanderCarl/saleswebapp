@@ -50,7 +50,7 @@ public class OfferController {
 
         request.getSession().setAttribute("newOffer", false);
         request.getSession().setAttribute("offerId", 0);
-        request.getSession().setAttribute("restaurantIdForNewOffers", 0);
+        request.getSession().setAttribute("restaurantId", 0);
         model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
         model.addAttribute("offer", new Offer());
         model.addAttribute("dataInputDisabled", true);
@@ -66,7 +66,7 @@ public class OfferController {
 
         request.getSession().setAttribute("newOffer", true);
         request.getSession().setAttribute("offerId", 0);
-        request.getSession().setAttribute("restaurantIdForNewOffers", restaurantId);
+        request.getSession().setAttribute("restaurantId", restaurantId);
 
         Offer offer = new Offer();
         offer.setIdOfRestaurant(restaurantId);
@@ -82,13 +82,13 @@ public class OfferController {
     public String getExistingOffer(Model model, @RequestParam("id") int offerId, HttpServletRequest request) {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        request.getSession().setAttribute("newOffer", false);
-        request.getSession().setAttribute("offerId", offerId);
-        request.getSession().setAttribute("restaurantIdForNewOffers", 0);
-
         Offer offer = offerService.getOffer(offerId);
         Restaurant restaurant = offer.getRestaurant();
         int restaurantId = restaurant.getId();
+
+        request.getSession().setAttribute("newOffer", false);
+        request.getSession().setAttribute("offerId", offerId);
+        request.getSession().setAttribute("restaurantId", restaurantId);
 
         offerService.addOfferToRestaurantTransaction(offer);
         model = prepareModelForChosenRestaurant(model, restaurantId);
@@ -99,9 +99,11 @@ public class OfferController {
 
     @RequestMapping(value = "/saveOffer", method = RequestMethod.POST)
     public String saveOffer (Model model, @Valid Offer offer, BindingResult offerBinder, HttpServletRequest request) {
+        int restaurantId = (int) request.getSession().getAttribute("restaurantId");
+        int offerId = (int) request.getSession().getAttribute("offerId");
+        boolean newOffer = (boolean) request.getSession().getAttribute("newOffer");
 
         if (offerBinder.hasErrors()) {
-            int restaurantId = (int) request.getSession().getAttribute("restaurantIdForNewOffers");
             offer.setIdOfRestaurant(restaurantId);
             offer.offerTimesContainerFiller(restaurantService.getRestaurantById(restaurantId));
 
@@ -117,17 +119,17 @@ public class OfferController {
             throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
         }
 
-        int offerId = (int) request.getSession().getAttribute("offerId");
-        boolean newOffer = (boolean) request.getSession().getAttribute("newOffer");
-
         //Checks if it is a new offer or a change to an existing one
         if (newOffer == true && offerId == 0) {
+            offer.setIdOfRestaurant(restaurantId);
             offerService.saveOffer(offer);
             return "redirect:/home?newOfferAddedSuccessfully";
         } else {
-            if(offerService.offerHasBeenAlteredMeanwhile(offer)) {
+            if (offerService.offerHasBeenAlteredMeanwhile(offerId)) {
                 return "redirect:/home?offerWasChangedMeanwhile";
             } else if(newOffer == false && offerId != 0) {
+                offer.setIdOfRestaurant(restaurantId);
+                offer.setId(offerId);
                 offerService.saveOffer(offer);
                 return "redirect:/home?offerChangeSuccess";
             } else {

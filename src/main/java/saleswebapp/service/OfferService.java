@@ -25,7 +25,7 @@ public interface OfferService {
 
     void addOfferToRestaurantTransaction(Offer offer);
 
-    boolean offerHasBeenAlteredMeanwhile(Offer offer);
+    boolean offerHasBeenAlteredMeanwhile(int offerId);
 
     void saveOffer(Offer offer);
 }

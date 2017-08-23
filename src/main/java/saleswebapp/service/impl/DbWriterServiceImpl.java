@@ -4,7 +4,6 @@ import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.GeocodingApiRequest;
 import com.google.maps.model.GeocodingResult;
-import com.mysql.jdbc.log.LogUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +14,10 @@ import saleswebapp.components.RestaurantAddCategory;
 import saleswebapp.components.RestaurantTimeContainer;
 import saleswebapp.repository.*;
 import saleswebapp.repository.impl.*;
+import saleswebapp.service.DbReaderService;
 import saleswebapp.service.DbWriterService;
 
-import javax.transaction.TransactionScoped;
 import javax.transaction.Transactional;
-import java.sql.Time;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -31,6 +29,9 @@ import java.util.List;
  */
 @Service
 public class DbWriterServiceImpl implements DbWriterService {
+
+    @Autowired
+    private DbReaderService dbReaderService;
 
     @Autowired
     private SalesPersonRepository salesPersonRepository;
@@ -61,6 +62,12 @@ public class DbWriterServiceImpl implements DbWriterService {
 
     @Autowired
     private OfferPhotoRepository offerPhotoRepository;
+
+    @Autowired
+    private AdditiveRepository additiveRepository;
+
+    @Autowired
+    private AllergenicRepository allergenicRepository;
 
     private ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
 
@@ -340,7 +347,103 @@ public class DbWriterServiceImpl implements DbWriterService {
         offerPhotoRepository.deleteByOfferId(offerId);
         offerRepository.deleteById(offerId);
 
-        logger.debug("Offer with id: " + offerId +" has been deleted.");
+        logger.debug("Offer (ID: " + offerId +") has been deleted.");
+    }
+
+    @Override
+    @Transactional
+    public void saveOffer(Offer offer) {
+        int offerId = offer.getId();
+        Offer offerToSave = new Offer();
+
+        if (offerId == 0) {
+            offerToSave.setId(0);
+            offerToSave.setRestaurant(restaurantRepository.getRestaurantById(offer.getIdOfRestaurant()));
+        } else {
+            offerToSave.setId(offerId);
+            offerToSave.setRestaurant(restaurantRepository.getRestaurantById(offer.getIdOfRestaurant()));
+        }
+
+        //Saved offer have no changeRequestIds. Only change requests for offers need this attribute.
+        offerToSave.setChangeRequestId(0);
+
+        offerToSave.setTitle(offer.getTitle());
+        offerToSave.setDescription(offer.getDescription());
+        offerToSave.setPrice(Double.valueOf(offer.getPriceAsString()));
+        offerToSave.setPreparationTime(Integer.parseInt(offer.getPreparationTimeAsString()));
+
+        //Start- + Enddate
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
+        try {
+            offerToSave.setStartDate(sdf.parse(offer.getStartDateAsString()));
+            offerToSave.setEndDate(sdf.parse(offer.getEndDateAsString()));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        offerToSave.setNeededPoints(Integer.parseInt(offer.getNeededPointsAsString()));
+
+        //Course type
+        List<CourseType> courseTypes = courseTypeRepository.getAllByNameAndRestaurantId(offer.getCourseTypeAsString(), offer.getIdOfRestaurant());
+        CourseType courseType = courseTypes.get(0); //There should only be one course type per name and restaurant
+        offerToSave.setCourseType(courseType);
+
+        offerToSave.setCommentOfLastChange(offer.getNewChangeComment());
+        offerToSave.setSalesPerson(offer.getSalesPerson());
+
+        //Additives
+        List<Additive> allAdditvies = additiveRepository.getAllBy();
+        List<OfferHasAdditive> offerHasAdditives = new ArrayList<OfferHasAdditive>();
+        List<String> additivesAsString = offer.getAdditivesAsString();
+
+        if(additivesAsString != null) {
+            for (Additive additive : allAdditvies) {
+                if (additivesAsString.contains(additive.getName())) {
+                    OfferHasAdditive offerHasAdditive = new OfferHasAdditive();
+                    offerHasAdditive.setAdditive(additive);
+                    offerHasAdditive.setOffer(offerToSave);
+
+                    offerHasAdditives.add(offerHasAdditive);
+                }
+            }
+            offerToSave.setOfferHasAdditives(offerHasAdditives);
+        }
+
+        //Allergenics
+        List<Allergenic> allAllergenics = allergenicRepository.getAllBy();
+        List<OfferHasAllergenic> offerHasAllergenics = new ArrayList<OfferHasAllergenic>();
+        List<String> allergenicsAsString = offer.getAllergenicsAsString();
+
+        if(allergenicsAsString != null) {
+            for(Allergenic allergenic : allAllergenics) {
+                if(allergenicsAsString.contains(allergenic.getName())) {
+                    OfferHasAllergenic offerHasAllergenic = new OfferHasAllergenic();
+                    offerHasAllergenic.setAllergenic(allergenic);
+                    offerHasAllergenic.setOffer(offerToSave);
+
+                    offerHasAllergenics.add(offerHasAllergenic);
+                }
+            }
+            offerToSave.setOfferHasAllergenics(offerHasAllergenics);
+        }
+
+
+        //DayOfWeek
+        List<DayOfWeek> allDaysOfWeek = dayOfWeekRepository.getAllBy();
+        List<DayOfWeek> offerDaysOfWeek = new ArrayList<DayOfWeek>();
+        List<String> validDaysOfWeek = offer.getValidnessDaysOfWeekAsString();
+
+        if(validDaysOfWeek != null) {
+            for(DayOfWeek dayOfWeek : allDaysOfWeek) {
+                if(validDaysOfWeek.contains(Integer.toString(dayOfWeek.getId()))) {
+                    offerDaysOfWeek.add(dayOfWeek);
+                }
+            }
+            offerToSave.setDayOfWeeks(offerDaysOfWeek);
+        }
+
+        offerRepository.save(offerToSave);
+        logger.debug("Angebot (Offer-ID: " + offerToSave.getId() + ") wurde erfolgreich gespeichert.");
     }
 }
 

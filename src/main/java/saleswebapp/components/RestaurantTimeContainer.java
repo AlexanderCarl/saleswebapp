@@ -15,7 +15,6 @@ public class RestaurantTimeContainer {
     private int dayNumber; //0=Monday
     private String dayNumberAsString; //Needed for the dialog "offer"
 
-
     public RestaurantTimeContainer() {
         super();
     }

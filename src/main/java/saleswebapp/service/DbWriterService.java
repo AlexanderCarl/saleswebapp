@@ -3,6 +3,7 @@ package saleswebapp.service;
 import saleswebapp.components.ProfileForm;
 import saleswebapp.components.RestaurantAddCategory;
 import saleswebapp.repository.impl.CourseType;
+import saleswebapp.repository.impl.Offer;
 import saleswebapp.repository.impl.Restaurant;
 
 /**
@@ -23,5 +24,7 @@ public interface DbWriterService {
     void saveRestaurant(Restaurant restaurant);
 
     void deleteOffer(int offerId);
+
+    void saveOffer(Offer offer);
 
 }
