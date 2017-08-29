@@ -1,7 +1,10 @@
 package saleswebapp.controller;
 
+import com.google.cloud.sql.jdbc.internal.Url;
+import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,9 +23,20 @@ import saleswebapp.validator.offer.DateValidator;
 import saleswebapp.validator.offer.ImageValidator;
 import saleswebapp.validator.offer.OfferValidator;
 
+import javax.annotation.Resource;
+import javax.imageio.ImageIO;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 
@@ -57,6 +71,7 @@ public class OfferController {
         model.addAttribute("restaurantName", "");
         model.addAttribute("allergenicsList", offerService.getAllAllergenic());
         model.addAttribute("additivesList", offerService.getAllAdditives());
+        model = preparePictures(model, new Offer());
 
         return "offer";
     }
@@ -73,6 +88,7 @@ public class OfferController {
         offer.offerTimesContainerFiller(restaurantService.getRestaurantById(restaurantId));
 
         model = prepareModelForChosenRestaurant(model, restaurantId);
+        model = preparePictures(model, offer);
         model.addAttribute("offer", offer);
 
         return "offer";
@@ -91,8 +107,11 @@ public class OfferController {
         request.getSession().setAttribute("restaurantId", restaurantId);
 
         offerService.addOfferToRestaurantTransaction(offer);
+        Offer preparedExistingOffer = prepareExistingOffer(offer, restaurant);
+
         model = prepareModelForChosenRestaurant(model, restaurantId);
-        model.addAttribute("offer", prepareExistingOffer(offer, restaurant));
+        model = preparePictures(model, preparedExistingOffer);
+        model.addAttribute("offer", preparedExistingOffer);
 
         return "offer";
     }
@@ -106,8 +125,10 @@ public class OfferController {
         if (offerBinder.hasErrors()) {
             offer.setIdOfRestaurant(restaurantId);
             offer.offerTimesContainerFiller(restaurantService.getRestaurantById(restaurantId));
+            offer.setId(offerId);
 
             model = prepareModelForChosenRestaurant(model, restaurantId);
+            model = preparePictures(model, offer);
             model.addAttribute("offer", offer);
 
             return "offer";
@@ -197,6 +218,64 @@ public class OfferController {
 
         model.addAttribute("courseTypes", courseTypes);
 
+        return model;
+    }
+
+    private Model preparePictures(Model model, Offer offer) {
+        int numberOfExistingPictures = 0;
+        List<OfferPhoto> offerPhotos = offer.getOfferPhotos();
+
+        try {
+            numberOfExistingPictures = offerPhotos.size();
+        } catch (Exception e) {
+            //zero existing pictures
+        }
+
+        BufferedImage defaultImage;
+        byte[] defaultImageAsByte = null;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        File file = null;
+
+        try {
+            file = new ClassPathResource("static/defaultOfferImage.jpg").getFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            defaultImage = ImageIO.read(file);
+            ImageIO.write(defaultImage, "jpg", baos);
+            defaultImageAsByte = baos.toByteArray();
+            baos.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String defaultImageBase64 = Base64.getEncoder().encodeToString(defaultImageAsByte);
+
+        switch (numberOfExistingPictures) {
+            case 1:
+                model.addAttribute("firstPicture", Base64.getEncoder().encodeToString(offerPhotos.get(0).getThumbnail()));
+                model.addAttribute("secondPicture", defaultImageBase64);
+                model.addAttribute("thirdPicture", defaultImageBase64);
+                break;
+
+            case 2:
+                model.addAttribute("firstPicture", Base64.getEncoder().encodeToString(offerPhotos.get(0).getThumbnail()));
+                model.addAttribute("secondPicture", Base64.getEncoder().encodeToString(offerPhotos.get(1).getThumbnail()));
+                model.addAttribute("thirdPicture", defaultImageBase64);
+                break;
+
+            case 3:
+                model.addAttribute("firstPicture", Base64.getEncoder().encodeToString(offerPhotos.get(0).getThumbnail()));
+                model.addAttribute("secondPicture", Base64.getEncoder().encodeToString(offerPhotos.get(1).getThumbnail()));
+                model.addAttribute("thirdPicture", Base64.getEncoder().encodeToString(offerPhotos.get(2).getThumbnail()));
+                break;
+
+            default:
+                model.addAttribute("firstPicture", defaultImageBase64);
+                model.addAttribute("secondPicture", defaultImageBase64);
+                model.addAttribute("thirdPicture", defaultImageBase64);
+        }
         return model;
     }
 

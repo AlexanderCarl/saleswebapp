@@ -42,15 +42,17 @@ public class ImageValidator implements Validator {
         }
 
         for(MultipartFile multipartFile : multipartFiles) {
-            double fileSizeInMegabytes = multipartFile.getSize() / (1024 * 1024);
-            String fileType = multipartFile.getContentType();
+            if(multipartFile.getSize() > 0) {
+                double fileSizeInMegabytes = multipartFile.getSize() / (1024 * 1024);
+                String fileType = multipartFile.getContentType();
 
-            if(fileSizeInMegabytes > 5) {
-                errors.rejectValue("firstOfferImage", "offer.validation.imageSize");
-            }
+                if(fileSizeInMegabytes > 5) {
+                    errors.reject("offer.validation.imageSize");
+                }
 
-            if(!(fileType.equals("image/jpeg") || fileType.equals("application/octet-stream"))) {
-                errors.rejectValue("firstOfferImage", "offer.validation.imageType");
+                if(!(fileType.equals("image/jpeg"))) {
+                    errors.reject("offer.validation.imageType");
+                }
             }
         }
     }

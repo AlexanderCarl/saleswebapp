@@ -263,9 +263,9 @@
             <div class="col-lg-12 col-lg-md-12 col-sm-12">
                 <div class="col-lg-offset-1 col-lg-md-offset-1 col-sm-offset-1">
 
-                    <img th:src="@{defaultOfferImage.jpg}" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em" />
-                    <img th:src="@{defaultOfferImage.jpg}" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em" />
-                    <img th:src="@{defaultOfferImage.jpg}" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em" />
+                    <img th:src="@{'data:image/jpeg;base64,'+ ${firstPicture}}" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em" />
+                    <img th:src="@{'data:image/jpeg;base64,'+ ${secondPicture}}" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em" />
+                    <img th:src="@{'data:image/jpeg;base64,'+ ${thirdPicture}}" style="float: left; width: 30%; margin-right: 1%; margin-bottom: 0.5em" />
                     <p style="clear: both;" />
 
                     <!-- first two buttons -->

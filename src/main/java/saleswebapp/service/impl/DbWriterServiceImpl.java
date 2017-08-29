@@ -4,11 +4,13 @@ import com.google.maps.GeoApiContext;
 import com.google.maps.GeocodingApi;
 import com.google.maps.GeocodingApiRequest;
 import com.google.maps.model.GeocodingResult;
+import org.imgscalr.Scalr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 import saleswebapp.components.ProfileForm;
 import saleswebapp.components.RestaurantAddCategory;
 import saleswebapp.components.RestaurantTimeContainer;
@@ -17,7 +19,13 @@ import saleswebapp.repository.impl.*;
 import saleswebapp.service.DbReaderService;
 import saleswebapp.service.DbWriterService;
 
+import javax.imageio.ImageIO;
 import javax.transaction.Transactional;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -364,7 +372,7 @@ public class DbWriterServiceImpl implements DbWriterService {
             offerToSave.setRestaurant(restaurantRepository.getRestaurantById(offer.getIdOfRestaurant()));
         }
 
-        //Saved offer have no changeRequestIds. Only change requests for offers need this attribute.
+        //Saved offers have no changeRequestIds. Only change requests for offers need this attribute.
         offerToSave.setChangeRequestId(0);
 
         offerToSave.setTitle(offer.getTitle());
@@ -442,8 +450,93 @@ public class DbWriterServiceImpl implements DbWriterService {
             offerToSave.setDayOfWeeks(offerDaysOfWeek);
         }
 
+        //Photos
+        List<OfferPhoto> offerPhotos = offerRepository.getById(offerId).getOfferPhotos();
+
+        if(offerPhotos == null) {
+            offerPhotos = new ArrayList<OfferPhoto>();
+        }
+
+        if(offer.getFirstOfferImage().getSize() > 0) {
+            OfferPhoto offerPhoto = new OfferPhoto();
+
+            try {
+                offerPhoto = offerPhotos.get(0);
+            } catch (Exception e) {
+                //firstOfferImage is null
+            }
+
+            try {
+                offerPhoto.setPhoto(offer.getFirstOfferImage().getBytes());
+                offerPhoto.setOffer(offerToSave);
+                offerPhoto.setThumbnail(createThumbnail(offer.getFirstOfferImage()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            offerPhotos.add(offerPhoto);
+        }
+
+        if(offer.getSecondOfferImage().getSize() > 0) {
+            OfferPhoto offerPhoto = new OfferPhoto();
+
+            try {
+                offerPhoto = offerPhotos.get(1);
+            } catch (Exception e) {
+                //firstOfferImage is null
+            }
+
+            try {
+                offerPhoto.setPhoto(offer.getSecondOfferImage().getBytes());
+                offerPhoto.setOffer(offerToSave);
+                offerPhoto.setThumbnail(createThumbnail(offer.getSecondOfferImage()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            offerPhotos.add(offerPhoto);
+        }
+
+        if(offer.getThirdOfferImage().getSize() > 0) {
+            OfferPhoto offerPhoto = new OfferPhoto();
+
+            try {
+                offerPhoto = offerPhotos.get(2);
+            } catch (Exception e) {
+                //firstOfferImage is null
+            }
+
+            try {
+                offerPhoto.setPhoto(offer.getThirdOfferImage().getBytes());
+                offerPhoto.setOffer(offerToSave);
+                offerPhoto.setThumbnail(createThumbnail(offer.getThirdOfferImage()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            offerPhotos.add(offerPhoto);
+        }
+        offerToSave.setOfferPhotos(offerPhotos);
+
         offerRepository.save(offerToSave);
         logger.debug("Angebot (Offer-ID: " + offerToSave.getId() + ") wurde erfolgreich gespeichert.");
+    }
+
+    private byte[] createThumbnail(MultipartFile multipartFile) throws IOException {
+        InputStream inputStream = null;
+
+        inputStream = new ByteArrayInputStream(multipartFile.getBytes());
+        BufferedImage image = ImageIO.read(inputStream);
+        inputStream.close();
+
+        BufferedImage thumbnail = Scalr.resize(image, 200);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        ImageIO.write(thumbnail, "jpeg", baos);
+        baos.flush();
+        byte[] thumbnailAsByte = baos.toByteArray();
+        baos.close();
+
+        return  thumbnailAsByte;
     }
 }
 

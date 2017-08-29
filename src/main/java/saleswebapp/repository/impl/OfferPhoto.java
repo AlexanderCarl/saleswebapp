@@ -13,7 +13,7 @@ public class OfferPhoto {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "offer_id")
     private Offer offer;
 
@@ -57,4 +57,13 @@ public class OfferPhoto {
     public void setThumbnail(byte[] thumbnail) {
         this.thumbnail = thumbnail;
     }
+
+    public String getPhotoBase64Encoded() {
+        return photoBase64Encoded;
+    }
+
+    public void setPhotoBase64Encoded(String photoBase64Encoded) {
+        this.photoBase64Encoded = photoBase64Encoded;
+    }
+
 }

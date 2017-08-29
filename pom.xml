@@ -107,6 +107,12 @@
             <version>1.3.2</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.imgscalr</groupId>
+            <artifactId>imgscalr-lib</artifactId>
+            <version>4.2</version>
+        </dependency>
+
         <!-- QR-Code -->
         <dependency>
             <groupId>com.google.zxing</groupId>

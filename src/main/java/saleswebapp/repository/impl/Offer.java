@@ -376,7 +376,9 @@ public class Offer {
             }
 
             for(OfferPhoto offerPhoto : other.getOfferPhotos()) {
-                otherOfferPhotosIds.add(offerPhoto.getId());
+                if(offerPhoto.getPhotoBase64Encoded() != "empty") {
+                    otherOfferPhotosIds.add(offerPhoto.getId());
+                }
             }
 
             if(!offerPhotosIds.containsAll(otherOfferPhotosIds)) {
