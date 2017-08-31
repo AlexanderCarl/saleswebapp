@@ -64,6 +64,16 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    public OfferPhoto getOfferPhoto(int offerPhotoId) {
+        return dbReaderService.getOfferPhoto(offerPhotoId);
+    }
+
+    @Override
+    public void deleteOfferPhoto(int offerPhotoId) {
+        dbWriterService.deleteOfferPhoto(offerPhotoId);
+    }
+
+    @Override
     public List<Offer> getAllOffersOfRestaurant(int restaurantId) {
         return dbReaderService.getAllOffersOfRestaurant(restaurantId);
     }

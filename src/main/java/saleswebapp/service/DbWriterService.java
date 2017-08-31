@@ -27,4 +27,6 @@ public interface DbWriterService {
 
     void saveOffer(Offer offer);
 
+    void deleteOfferPhoto(int offerPhotoId);
+
 }

@@ -101,7 +101,7 @@ public class Offer {
     @Transient
     private String newChangeComment;
 
-    //The number of images per offer is limited to four
+    //The number of images per offer is limited to three
     @Transient
     private MultipartFile firstOfferImage;
 
@@ -673,4 +673,5 @@ public class Offer {
     public void setNeededPointsAsString(String neededPointsAsString) {
         this.neededPointsAsString = neededPointsAsString;
     }
+
 }

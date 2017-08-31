@@ -358,6 +358,8 @@ public class DbWriterServiceImpl implements DbWriterService {
         logger.debug("Offer (ID: " + offerId +") has been deleted.");
     }
 
+
+
     @Override
     @Transactional
     public void saveOffer(Offer offer) {
@@ -396,7 +398,12 @@ public class DbWriterServiceImpl implements DbWriterService {
         CourseType courseType = courseTypes.get(0); //There should only be one course type per name and restaurant
         offerToSave.setCourseType(courseType);
 
-        offerToSave.setCommentOfLastChange(offer.getNewChangeComment());
+        if(!offer.getNewChangeComment().equals("")) {
+            offerToSave.setCommentOfLastChange(offer.getNewChangeComment());
+        } else {
+            offerToSave.setCommentOfLastChange(offer.getCommentOfLastChange());
+        }
+
         offerToSave.setSalesPerson(offer.getSalesPerson());
 
         //Additives
@@ -451,7 +458,12 @@ public class DbWriterServiceImpl implements DbWriterService {
         }
 
         //Photos
-        List<OfferPhoto> offerPhotos = offerRepository.getById(offerId).getOfferPhotos();
+        List<OfferPhoto> offerPhotos = null;
+        try {
+            offerPhotos = offerRepository.getById(offerId).getOfferPhotos();
+        } catch (Exception e) {
+            //Offer has no offerPhotos or the offer is new.
+        }
 
         if(offerPhotos == null) {
             offerPhotos = new ArrayList<OfferPhoto>();
@@ -520,6 +532,12 @@ public class DbWriterServiceImpl implements DbWriterService {
 
         offerRepository.save(offerToSave);
         logger.debug("Angebot (Offer-ID: " + offerToSave.getId() + ") wurde erfolgreich gespeichert.");
+    }
+
+    @Override
+    @Transactional
+    public void deleteOfferPhoto(int offerPhotoId) {
+        offerPhotoRepository.deleteById(offerPhotoId);
     }
 
     private byte[] createThumbnail(MultipartFile multipartFile) throws IOException {

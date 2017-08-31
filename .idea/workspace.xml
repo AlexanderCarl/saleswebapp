@@ -3,20 +3,23 @@
   <component name="ChangeListManager">
     <list default="true" id="c0cf9450-ea71-430d-bd31-7dc6981d6dbf" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/controller/OfferController.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/controller/OfferController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/repository/impl/Offer.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/repository/impl/Offer.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/repository/impl/OfferPhoto.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/repository/impl/OfferPhoto.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/DbWriterServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/service/impl/DbWriterServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/validator/offer/ImageValidator.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/validator/offer/ImageValidator.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/saleswebapp/validator/offer/DateValidator.class" afterPath="$PROJECT_DIR$/target/classes/saleswebapp/validator/offer/DateValidator.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/SalesWebApp.iml" afterPath="$PROJECT_DIR$/SalesWebApp.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/OfferController.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/controller/OfferController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/OfferPhotoRepository.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/OfferPhotoRepository.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Offer.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Offer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/OfferPhoto.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/OfferPhoto.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/OfferService.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/OfferService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/ImageValidator.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/ImageValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/OfferServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/OfferServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/DateValidator.java" afterPath="$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/DateValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages_de.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages_de.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/messages_en.properties" afterPath="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/offer.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/offer.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/templates/offer.html" afterPath="$PROJECT_DIR$/target/classes/templates/offer.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/templates/offerOverview.html" afterPath="$PROJECT_DIR$/src/main/resources/templates/offerOverview.html" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,8 +48,18 @@
       <file leaf-file-name="DbWriterServiceImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1174">
-              <caret line="516" column="40" lean-forward="true" selection-start-line="516" selection-start-column="40" selection-end-line="516" selection-end-column="40" />
+            <state relative-caret-position="198">
+              <caret line="460" column="28" lean-forward="true" selection-start-line="460" selection-start-column="28" selection-end-line="460" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DateValidator.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/DateValidator.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="289">
+              <caret line="34" column="40" lean-forward="false" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -55,71 +68,239 @@
       <file leaf-file-name="offer.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/templates/offer.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="267" column="154" lean-forward="false" selection-start-line="267" selection-start-column="154" selection-end-line="267" selection-end-column="154" />
+            <state relative-caret-position="493">
+              <caret line="306" column="85" lean-forward="false" selection-start-line="306" selection-start-column="85" selection-end-line="306" selection-end-column="85" />
               <folding>
                 <element signature="n#style#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#1;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#img#2;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <marker date="1504009919059" expanded="true" signature="328:347" ph="Angebot anpassen" />
-                <marker date="1504009919059" expanded="true" signature="630:658" ph="Bereit die Seite für das Anlegen eines neuen Angebots vor." />
-                <marker date="1504009919059" expanded="true" signature="705:725" ph="Angebot anlegen" />
-                <marker date="1504009919059" expanded="true" signature="937:964" ph="neues Essensangebot" />
-                <marker date="1504009919059" expanded="true" signature="1225:1259" ph="Wählen Sie das Restaurant aus, für welches ein Angebote erstellt oder gepflegt werden sollen." />
-                <marker date="1504009919059" expanded="true" signature="1306:1332" ph="Restaurant auswählen" />
-                <marker date="1504009919059" expanded="true" signature="2092:2121" ph="Wählen Sie das Angebot, welches Sie pflegen möchten." />
-                <marker date="1504009919059" expanded="true" signature="2168:2189" ph="Angebot auswählen" />
-                <marker date="1504009919059" expanded="true" signature="3495:3512" ph="Angebotsname" />
-                <marker date="1504009919059" expanded="true" signature="4115:4134" ph="Angebots-Id" />
-                <marker date="1504009919059" expanded="true" signature="4818:4843" ph="Die Preisangabe ist in € und wird mit &quot;.&quot; getrennt." />
-                <marker date="1504009919059" expanded="true" signature="4948:4965" ph="Preis" />
-                <marker date="1504009919059" expanded="true" signature="5467:5493" ph="Gibt an wieviele Punkte von einem Endkunden benötigt werden um die Speise ohne eine Geldzahlung zu erwerben." />
-                <marker date="1504009919059" expanded="true" signature="5598:5616" ph="Punkte" />
-                <marker date="1504009919059" expanded="true" signature="6326:6353" ph="Zubereitunszeit" />
-                <marker date="1504009919059" expanded="true" signature="6992:7013" ph="Startdatum" />
-                <marker date="1504009919059" expanded="true" signature="7640:7659" ph="Enddatum" />
-                <marker date="1504009919059" expanded="true" signature="8282:8304" ph="Kategorie" />
-                <marker date="1504009919059" expanded="true" signature="9059:9088" ph="Wählen sie mit Hilfe der Checkboxen die Additive aus, welche zu diesem Angebot gehören. Markierte Additive werden für das Angebot gespeichert." />
-                <marker date="1504009919059" expanded="true" signature="9169:9190" ph="Additive" />
-                <marker date="1504009919059" expanded="true" signature="10014:10045" ph="Wählen sie mit Hilfe der Checkboxen die Allergene aus, welche in diesem Angebot vorhanden sind. Markierte Allergene werden für das Angebot gespeichert." />
-                <marker date="1504009919059" expanded="true" signature="10126:10148" ph="Allergene" />
-                <marker date="1504009919059" expanded="true" signature="11050:11079" ph="Angebote sind während der gesamten Öffnungszeiten gültig, wenn kein Feld in der Tabelle markiert wird. Sobald ein oder mehrere Feld(er) in der Tabelle markiert werden ist das Angebot nur noch zu diesen Zeiten gültig." />
-                <marker date="1504009919059" expanded="true" signature="11160:11181" ph="Gültigkeit" />
-                <marker date="1504009919059" expanded="true" signature="11657:11679" ph="Montag" />
-                <marker date="1504009919059" expanded="true" signature="11765:11788" ph="Dienstag" />
-                <marker date="1504009919059" expanded="true" signature="11874:11899" ph="Mittwoch" />
-                <marker date="1504009919059" expanded="true" signature="11985:12009" ph="Donnerstag" />
-                <marker date="1504009919059" expanded="true" signature="12095:12117" ph="Freitag" />
-                <marker date="1504009919059" expanded="true" signature="12203:12227" ph="Samstag" />
-                <marker date="1504009919059" expanded="true" signature="12313:12335" ph="Sonntag" />
-                <marker date="1504009919059" expanded="true" signature="12753:12771" ph="bis" />
-                <marker date="1504009919059" expanded="true" signature="13589:13620" ph="Erlaubt das hinzufügen einer kurzen Beschreibung. Die Beschreibung darf maximal 255 Zeichen lang sein." />
-                <marker date="1504009919059" expanded="true" signature="13701:13724" ph="Beschreibung" />
-                <marker date="1504009919059" expanded="true" signature="14504:14516" ph="Produktbilder Vorschau" />
-                <marker date="1504009919059" expanded="true" signature="14504:14527" ph="Produktbilder" />
-                <marker date="1504009919059" expanded="true" signature="15549:15569" ph="hinzufügen" />
-                <marker date="1504009919059" expanded="true" signature="15856:15879" ph="löschen" />
-                <marker date="1504009919059" expanded="true" signature="16343:16363" ph="hinzufügen" />
-                <marker date="1504009919059" expanded="true" signature="16651:16674" ph="löschen" />
-                <marker date="1504009919059" expanded="true" signature="17138:17158" ph="hinzufügen" />
-                <marker date="1504009919059" expanded="true" signature="17445:17468" ph="löschen" />
-                <marker date="1504009919059" expanded="true" signature="18047:18075" ph="eigener Änderungskommentar" />
-                <marker date="1504009919059" expanded="true" signature="18641:18672" ph="Kommentar der letzten Änderung" />
-                <marker date="1504009919059" expanded="true" signature="19239:19259" ph="Speichern" />
-                <marker date="1504009919059" expanded="true" signature="19371:19393" ph="Abbrechen" />
+                <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#span#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#a#0;n#div#1;n#span#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#span#1;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#a#0;n#div#1;n#span#1;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#span#2;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#1;n#a#0;n#div#1;n#span#2;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <marker date="1504179253297" expanded="true" signature="328:347" ph="Angebot anpassen" />
+                <marker date="1504179253297" expanded="true" signature="630:658" ph="Bereit die Seite für das Anlegen eines neuen Angebots vor." />
+                <marker date="1504179253297" expanded="true" signature="705:725" ph="Angebot anlegen" />
+                <marker date="1504179253297" expanded="true" signature="937:964" ph="neues Essensangebot" />
+                <marker date="1504179253297" expanded="true" signature="1225:1259" ph="Wählen Sie das Restaurant aus, für welches ein Angebote erstellt oder gepflegt werden sollen." />
+                <marker date="1504179253297" expanded="true" signature="1306:1332" ph="Restaurant auswählen" />
+                <marker date="1504179253297" expanded="true" signature="2092:2121" ph="Wählen Sie das Angebot, welches Sie pflegen möchten." />
+                <marker date="1504179253297" expanded="true" signature="2168:2189" ph="Angebot auswählen" />
+                <marker date="1504179253297" expanded="true" signature="3495:3512" ph="Angebotsname" />
+                <marker date="1504179253297" expanded="true" signature="4115:4134" ph="Angebots-Id" />
+                <marker date="1504179253297" expanded="true" signature="4818:4843" ph="Die Preisangabe ist in € und wird mit &quot;.&quot; getrennt." />
+                <marker date="1504179253297" expanded="true" signature="4948:4965" ph="Preis" />
+                <marker date="1504179253297" expanded="true" signature="5467:5493" ph="Gibt an wieviele Punkte von einem Endkunden benötigt werden um die Speise ohne eine Geldzahlung zu erwerben." />
+                <marker date="1504179253297" expanded="true" signature="5598:5616" ph="Punkte" />
+                <marker date="1504179253297" expanded="true" signature="6326:6353" ph="Zubereitunszeit" />
+                <marker date="1504179253297" expanded="true" signature="6992:7013" ph="Startdatum" />
+                <marker date="1504179253297" expanded="true" signature="7640:7659" ph="Enddatum" />
+                <marker date="1504179253297" expanded="true" signature="8282:8304" ph="Kategorie" />
+                <marker date="1504179253297" expanded="true" signature="9059:9088" ph="Wählen sie mit Hilfe der Checkboxen die Additive aus, welche zu diesem Angebot gehören. Markierte Additive werden für das Angebot gespeichert." />
+                <marker date="1504179253297" expanded="true" signature="9169:9190" ph="Additive" />
+                <marker date="1504179253297" expanded="true" signature="10014:10045" ph="Wählen sie mit Hilfe der Checkboxen die Allergene aus, welche in diesem Angebot vorhanden sind. Markierte Allergene werden für das Angebot gespeichert." />
+                <marker date="1504179253297" expanded="true" signature="10126:10148" ph="Allergene" />
+                <marker date="1504179253297" expanded="true" signature="11050:11079" ph="Angebote sind während der gesamten Öffnungszeiten gültig, wenn kein Feld in der Tabelle markiert wird. Sobald ein oder mehrere Feld(er) in der Tabelle markiert werden ist das Angebot nur noch zu diesen Zeiten gültig." />
+                <marker date="1504179253297" expanded="true" signature="11160:11181" ph="Gültigkeit" />
+                <marker date="1504179253297" expanded="true" signature="11657:11679" ph="Montag" />
+                <marker date="1504179253297" expanded="true" signature="11765:11788" ph="Dienstag" />
+                <marker date="1504179253297" expanded="true" signature="11874:11899" ph="Mittwoch" />
+                <marker date="1504179253297" expanded="true" signature="11985:12009" ph="Donnerstag" />
+                <marker date="1504179253297" expanded="true" signature="12095:12117" ph="Freitag" />
+                <marker date="1504179253297" expanded="true" signature="12203:12227" ph="Samstag" />
+                <marker date="1504179253297" expanded="true" signature="12313:12335" ph="Sonntag" />
+                <marker date="1504179253297" expanded="true" signature="12753:12771" ph="bis" />
+                <marker date="1504179253297" expanded="true" signature="13589:13620" ph="Erlaubt das hinzufügen einer kurzen Beschreibung. Die Beschreibung darf maximal 255 Zeichen lang sein." />
+                <marker date="1504179253297" expanded="true" signature="13701:13724" ph="Beschreibung" />
+                <marker date="1504179253297" expanded="true" signature="14504:14516" ph="Produktbilder Vorschau" />
+                <marker date="1504179253297" expanded="true" signature="14504:14527" ph="Produktbilder" />
+                <marker date="1504179253297" expanded="true" signature="15548:15568" ph="hinzufügen" />
+                <marker date="1504179253297" expanded="true" signature="16031:16054" ph="löschen" />
+                <marker date="1504179253297" expanded="true" signature="16464:16484" ph="hinzufügen" />
+                <marker date="1504179253297" expanded="true" signature="16950:16973" ph="löschen" />
+                <marker date="1504179253297" expanded="true" signature="17382:17402" ph="hinzufügen" />
+                <marker date="1504179253297" expanded="true" signature="17865:17888" ph="löschen" />
+                <marker date="1504179253297" expanded="true" signature="18412:18440" ph="eigener Änderungskommentar" />
+                <marker date="1504179253297" expanded="true" signature="19006:19037" ph="Kommentar der letzten Änderung" />
+                <marker date="1504179253297" expanded="true" signature="19604:19624" ph="Speichern" />
+                <marker date="1504179253297" expanded="true" signature="19736:19758" ph="Abbrechen" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OfferController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Offer.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Offer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="253">
+              <caret line="125" column="4" lean-forward="false" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="messages_de.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/messages_de.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="383">
+              <caret line="227" column="38" lean-forward="true" selection-start-line="227" selection-start-column="38" selection-end-line="227" selection-end-column="38" />
+              <folding />
+            </state>
+          </provider>
+          <provider editor-type-id="ResourceBundle">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="278">
+              <caret line="156" column="67" lean-forward="false" selection-start-line="156" selection-start-column="66" selection-end-line="156" selection-end-column="67" />
+              <folding>
+                <marker date="1503468760810" expanded="true" signature="2692:2725" ph="Ihr Benutzerprofil wurde erfolgreich gespeichert." />
+                <marker date="1503468760810" expanded="true" signature="3013:3050" ph="Ihr Benutzerprofil wurde während Ihrer Änderungen angepasst. Bitte versuchen Sie es erneut." />
+                <marker date="1503468760810" expanded="true" signature="3337:3373" ph="Sie haben keine Zugriffsberechtigung auf dieses Restaurant." />
+                <marker date="1503468760810" expanded="true" signature="3666:3709" ph="Ein neues Restaurant wurde erfolgreich hinzugefügt." />
+                <marker date="1503468760810" expanded="true" signature="4000:4040" ph="Das geöffnete Restaurant wurde während Ihrer Änderungen angepasst. Bitte veruchen Sie es erneut." />
+                <marker date="1503468760810" expanded="true" signature="4326:4357" ph="Die Änderungen am Angebot wurden erfolgreich gepeichert." />
+                <marker date="1503468760810" expanded="true" signature="4638:4669" ph="Die Änderungen am Angebot wurden erfolgreich gepeichert." />
+                <marker date="1503468760810" expanded="true" signature="4955:4990" ph="Das geöffnete Angebot wurde während Ihrer Änderungen angepasst. Bitte veruchen Sie es erneut." />
+                <marker date="1503468760810" expanded="true" signature="5278:5316" ph="Ein neues Angebot wurde erfolgreich hinzugefügt." />
+                <marker date="1503468760810" expanded="true" signature="5598:5629" ph="Die Angebotsbearbeitung war fehlerhaft. Bitte versuchen Sie es erneut." />
+                <marker date="1503468760810" expanded="true" signature="5744:5772" ph="ToDo Liste" />
+                <marker date="1503468760810" expanded="true" signature="5999:6030" ph="Restaurant" />
+                <marker date="1503468760810" expanded="true" signature="6100:6123" ph="Vorgangsnummer" />
+                <marker date="1503468760810" expanded="true" signature="6299:6330" ph="Anliegen" />
+                <marker date="1503468760810" expanded="true" signature="6380:6410" ph="Zeitpunkt" />
+                <marker date="1503468760810" expanded="true" signature="6460:6485" ph="gelesen" />
+                <marker date="1503468760810" expanded="true" signature="7474:7508" ph="Änderungen freigeben" />
+                <marker date="1503468760810" expanded="true" signature="7602:7636" ph="Besuchsaufforderung" />
+                <marker date="1503468760810" expanded="true" signature="7724:7758" ph="Umsatzwarnung" />
+                <marker date="1503468760810" expanded="true" signature="8367:8401" ph="Restaurants" />
+                <marker date="1503468760810" expanded="true" signature="8634:8665" ph="Name" />
+                <marker date="1503468760810" expanded="true" signature="8715:8747" ph="Email" />
+                <marker date="1503468760810" expanded="true" signature="8797:8829" ph="Telefon" />
+                <marker date="1503468760810" expanded="true" signature="8879:8912" ph="Straße" />
+                <marker date="1503468760810" expanded="true" signature="8962:8993" ph="Stadt" />
+                <marker date="1503468760810" expanded="true" signature="9043:9073" ph="PLZ" />
+                <marker date="1503468760810" expanded="true" signature="9200:9231" ph="Name" />
+                <marker date="1503468760810" expanded="true" signature="9281:9313" ph="Email" />
+                <marker date="1503468760810" expanded="true" signature="9363:9395" ph="Telefon" />
+                <marker date="1503468760810" expanded="true" signature="9445:9478" ph="Straße" />
+                <marker date="1503468760810" expanded="true" signature="9528:9559" ph="Stadt" />
+                <marker date="1503468760810" expanded="true" signature="9609:9639" ph="PLZ" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OfferController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/OfferController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-907">
-              <caret line="73" column="50" lean-forward="false" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
+            <state relative-caret-position="-199">
+              <caret line="106" column="62" lean-forward="true" selection-start-line="106" selection-start-column="62" selection-end-line="106" selection-end-column="62" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RestaurantController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/RestaurantController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2302">
+              <caret line="170" column="42" lean-forward="true" selection-start-line="170" selection-start-column="42" selection-end-line="170" selection-end-column="100" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="restaurant.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/templates/restaurant.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="595">
+              <caret line="53" column="71" lean-forward="true" selection-start-line="53" selection-start-column="71" selection-end-line="53" selection-end-column="71" />
+              <folding>
+                <marker date="1502475733375" expanded="true" signature="328:352" ph="Restaurant anpassen" />
+                <marker date="1502475733375" expanded="true" signature="681:720" ph="Wählen Sie eine Restaurant aus um dieses zu laden." />
+                <marker date="1502475733375" expanded="true" signature="771:802" ph="Restaurant laden" />
+                <marker date="1502475733375" expanded="true" signature="1635:1676" ph="Legt ein neues Restaurant an, welches nach ausfüllen der benötigten Felder gespeichert werden kann." />
+                <marker date="1502475733375" expanded="true" signature="1727:1760" ph="Restaurant anlegen" />
+                <marker date="1502475733375" expanded="true" signature="1905:1945" ph="neues Restaurant" />
+                <marker date="1502475733375" expanded="true" signature="2247:2285" ph="Weiterleitung zu Essensübersicht des ausgewählten Restaurants." />
+                <marker date="1502475733375" expanded="true" signature="2336:2366" ph="Angebote pflegen" />
+                <marker date="1502475733375" expanded="true" signature="2545:2582" ph="Angebote" />
+                <marker date="1502475733375" expanded="true" signature="2714:2725" ph="Restaurant Kategorien" />
+                <marker date="1502475733375" expanded="true" signature="2960:2996" ph="Erlaubt das löschen und hinzufügen von Kategorien." />
+                <marker date="1502475733375" expanded="true" signature="3072:3100" ph="Speisekategorie(n)" />
+                <marker date="1502475733375" expanded="true" signature="3667:3709" ph="Das löschen von Kategorien ist nur bei bereits angelegten Restaurants möglich. Um eine Kategorie zu löschen geben Sie deren Namen ein und drücken löschen. Fehlerhafte Schreibweisen werden ignoriert. &#10; - Eine Kategorie: &quot;Frühstück&quot; &#10; - Mehrere Kategorien: &quot;Frühstück, Rotweine, Weissweine&quot;&#10;&#10;VORSICHT: Bestehe Angebote, welche die betreffende Kategorie aufweisen erhalten die Kategorie null." />
+                <marker date="1502475733375" expanded="true" signature="4024:4065" ph="löschen" />
+                <marker date="1502475733375" expanded="true" signature="4381:4420" ph="Das hinzufügen von Kategorien ist nur bei bereits angelegten Restaurants möglich. &#10; - Eine Kategorie: &quot;Frühstück&quot; &#10; - Mehrere Kategorien: &quot;Frühstück, Rotweine, Weissweine&quot;." />
+                <marker date="1502475733375" expanded="true" signature="4732:4770" ph="hinzufügen" />
+                <marker date="1502475733375" expanded="true" signature="5127:5164" ph="Wählen sie mit Hilfe der Checkbox die Küchentypen aus, welche zum Restaurant passen. Markierte Typen werden für Ihr Restaurant gespeichert." />
+                <marker date="1502475733375" expanded="true" signature="5241:5270" ph="Küchentypen" />
+                <marker date="1502475733375" expanded="true" signature="6373:6394" ph="Name" />
+                <marker date="1502475733375" expanded="true" signature="6949:6972" ph="Straße" />
+                <marker date="1502475733375" expanded="true" signature="7531:7560" ph="Hausnummer" />
+                <marker date="1502475733375" expanded="true" signature="8131:8151" ph="PLZ" />
+                <marker date="1502475733375" expanded="true" signature="8704:8725" ph="Stadt" />
+                <marker date="1502475733375" expanded="true" signature="9281:9305" ph="Land" />
+                <marker date="1502475733375" expanded="true" signature="10030:10061" ph="Restaurant-Typ" />
+                <marker date="1502475733375" expanded="true" signature="10897:10919" ph="Email" />
+                <marker date="1502475733375" expanded="true" signature="11476:11498" ph="Telefon" />
+                <marker date="1502475733375" expanded="true" signature="12055:12075" ph="URL" />
+                <marker date="1502475733375" expanded="true" signature="12628:12654" ph="Längengrad" />
+                <marker date="1502475733375" expanded="true" signature="13251:13276" ph="Breitengrad" />
+                <marker date="1502475733375" expanded="true" signature="13871:13898" ph="Kunden-Id" />
+                <marker date="1502475733375" expanded="true" signature="14513:14548" ph="Bitte geben Sie die Zeitangaben im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
+                <marker date="1502475733375" expanded="true" signature="14628:14657" ph="Öffnungszeiten" />
+                <marker date="1502475733375" expanded="true" signature="15110:15132" ph="Montag" />
+                <marker date="1502475733375" expanded="true" signature="15218:15241" ph="Dienstag" />
+                <marker date="1502475733375" expanded="true" signature="15327:15352" ph="Mittwoch" />
+                <marker date="1502475733375" expanded="true" signature="15438:15462" ph="Donnerstag" />
+                <marker date="1502475733375" expanded="true" signature="15548:15570" ph="Freitag" />
+                <marker date="1502475733375" expanded="true" signature="15656:15680" ph="Samstag" />
+                <marker date="1502475733375" expanded="true" signature="15766:15788" ph="Sonntag" />
+                <marker date="1502475733375" expanded="true" signature="16189:16212" ph="bis" />
+                <marker date="1502475733375" expanded="true" signature="16799:16834" ph="Bitte geben Sie die Zeitangaben im Format &quot;mm:hh&quot; ein. z.B. 09:00" />
+                <marker date="1502475733375" expanded="true" signature="16914:16941" ph="Angebotszeiten" />
+                <marker date="1502475733375" expanded="true" signature="17388:17410" ph="Montag" />
+                <marker date="1502475733375" expanded="true" signature="17496:17519" ph="Dienstag" />
+                <marker date="1502475733375" expanded="true" signature="17605:17630" ph="Mittwoch" />
+                <marker date="1502475733375" expanded="true" signature="17716:17740" ph="Donnerstag" />
+                <marker date="1502475733375" expanded="true" signature="17826:17848" ph="Freitag" />
+                <marker date="1502475733375" expanded="true" signature="17934:17958" ph="Samstag" />
+                <marker date="1502475733375" expanded="true" signature="18044:18066" ph="Sonntag" />
+                <marker date="1502475733375" expanded="true" signature="18465:18488" ph="bis" />
+                <marker date="1502475733375" expanded="true" signature="19152:19198" ph="Durch die Markierung dieser Checkbox erhält das Restaurant die Erlaubnis seine Essensangebote selbstständig, d.h. ohne Zutun eines Vertriebsmitarbeiters abzuändern." />
+                <marker date="1502475733375" expanded="true" signature="19278:19289" ph="Änderungserlaubnis" />
+                <marker date="1502475733375" expanded="true" signature="19278:19322" ph="..." />
+                <marker date="1502475733375" expanded="true" signature="19672:19704" ph="Durch die Markierung dieser Checkbox wird das Restaurant gesperrt." />
+                <marker date="1502475733375" expanded="true" signature="19757:19781" ph="Restaurant sperren" />
+                <marker date="1502475733375" expanded="true" signature="20175:20208" ph="Diese Zeichenkette entspricht dem Wert des QR-Codes. Der QR-Code wird einmalig bei der Erstellung eines neuen Restaurants angelegt und kann nicht geändert werden." />
+                <marker date="1502475733375" expanded="true" signature="20261:20286" ph="Restaurant Uuid" />
+                <marker date="1502475733375" expanded="true" signature="20997:21025" ph="QR-Code" />
+                <marker date="1502475733375" expanded="true" signature="21522:21542" ph="Speichern" />
+                <marker date="1502475733375" expanded="true" signature="21654:21676" ph="Abbrechen" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="OfferServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/OfferServiceImpl.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="72" column="53" lean-forward="false" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="53" />
+              <folding>
+                <element signature="e#2436#2437#0" expanded="true" />
+                <element signature="e#2498#2499#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -139,7 +320,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>tran</find>
       <find>email</find>
       <find>required</find>
       <find>url</find>
@@ -169,6 +349,7 @@
       <find>salesPer</find>
       <find>comm</find>
       <find>64</find>
+      <find>hide</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -188,51 +369,51 @@
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/head.html" />
         <option value="$PROJECT_DIR$/src/main/resources/static/controllers.js" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/OfferHasAlergenicRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/OfferPhotoRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/RestaurantService.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/OfferOverviewController.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/OfferRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/OfferHasAdditive.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Additive.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/OfferHasAllergenicRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/OfferHasAdditivesRepository.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/static/main.css" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/FileBucket.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/MultiFileBucket.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Restaurant.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/GlobalControllerExceptionHandler.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/restaurant/RestaurantValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/OfferValidator.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/config/WebApplicationContextConfig.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/RestaurantServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/DateValidator.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/restaurant.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/navbar.html" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/fragments/navbarHome.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/offerOverview.html" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/components/RestaurantTimeContainer.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/DayOfWeek.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/OfferService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/OfferServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/CourseTypeRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/AdditiveRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/AllergenicRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/DayOfWeekRepository.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/OfferHasAllergenic.java" />
         <option value="$PROJECT_DIR$/src/main/resources/templates/home.html" />
-        <option value="$PROJECT_DIR$/src/main/resources/messages_de.properties" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Offer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/OfferPhoto.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/src/main/resources/templates/offer.html" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/ImageValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/OfferPhotoRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/OfferService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/OfferServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/offerOverview.html" />
+        <option value="$PROJECT_DIR$/src/main/resources/templates/offer.html" />
         <option value="$PROJECT_DIR$/src/main/java/saleswebapp/controller/OfferController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Offer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/DateValidator.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_de.properties" />
+        <option value="$PROJECT_DIR$/src/main/resources/messages_en.properties" />
       </list>
     </option>
   </component>
@@ -296,7 +477,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -764,6 +944,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1306,11 +1487,13 @@
       <workItem from="1503483782245" duration="2247000" />
       <workItem from="1503947247958" duration="3794000" />
       <workItem from="1503989267852" duration="23531000" />
+      <workItem from="1504075075195" duration="3531000" />
+      <workItem from="1504166542505" duration="15315000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="918380000" />
+    <option name="totallyTimeSpent" value="937226000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1322,12 +1505,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1696" height="1026" extended-state="7" />
+    <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29039302" sideWeight="0.50238097" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1343,10 +1526,10 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29039302" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14519651" sideWeight="0.49761903" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23095238" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17738095" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
@@ -1399,15 +1582,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java</url>
-          <line>187</line>
-          <properties />
-          <option name="timeStamp" value="355" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="381" />
+      <option name="time" value="388" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1416,52 +1591,11 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordRequestForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/PasswordMapContainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/HomeToDoForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/HomeRestaurantForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/FileBucket.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/components/MultiFileBucket.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/SalesPerson.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-204">
           <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_en.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="178" column="62" lean-forward="false" selection-start-line="178" selection-start-column="62" selection-end-line="178" selection-end-column="62" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/restaurant/OpeningTimesValidator.java">
@@ -1485,11 +1619,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="23" column="8" lean-forward="false" selection-start-line="23" selection-start-column="8" selection-end-line="23" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#495#496#0" expanded="false" />
-            <element signature="e#554#555#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1529,33 +1659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/offerOverview.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="501">
-          <caret line="106" column="37" lean-forward="true" selection-start-line="106" selection-start-column="37" selection-end-line="106" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#4;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
-            <marker date="1502377760828" expanded="true" signature="503:534" ph="Essensangebot Übersicht" />
-            <marker date="1502377760828" expanded="true" signature="817:856" ph="Weiterleitung zum Dialog &quot;Essensangebot Einzelansicht&quot; welcher das erstellen von neuen Angeboten ermöglicht." />
-            <marker date="1502377760828" expanded="true" signature="903:934" ph="Angebote anlegen" />
-            <marker date="1502377760828" expanded="true" signature="1071:1103" ph="neues Essensangebot" />
-            <marker date="1502377760828" expanded="true" signature="1364:1406" ph="Wählen Sie eine Restaurant aus um dessen Essensangebot in die Tabelle zu laden." />
-            <marker date="1502377760828" expanded="true" signature="1453:1497" ph="Angebote laden" />
-            <marker date="1502377760828" expanded="true" signature="2261:2299" ph="Wählen Sie eine Restaurant aus um dessen Essensangebot in die Tabelle zu laden." />
-            <marker date="1502377760828" expanded="true" signature="2346:2375" ph="Angebote laden" />
-            <marker date="1502377760828" expanded="true" signature="3370:3405" ph="Name" />
-            <marker date="1502377760828" expanded="true" signature="3459:3493" ph="Kategorie" />
-            <marker date="1502377760828" expanded="true" signature="3547:3578" ph="Preis" />
-            <marker date="1502377760828" expanded="true" signature="3656:3697" ph="Zubereitungszeit" />
-            <marker date="1502377760828" expanded="true" signature="3787:3830" ph="Zeigt die Zubereitungszeit einer Speise in Minuten." />
-            <marker date="1502377760828" expanded="true" signature="3904:3939" ph="Startdatum" />
-            <marker date="1502377760828" expanded="true" signature="3993:4026" ph="Enddatum" />
-            <marker date="1502377760828" expanded="true" signature="5057:5079" ph="löschen" />
-            <marker date="1502377760828" expanded="true" signature="5503:5525" ph="Abbrechen" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/CourseType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -1568,20 +1671,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="134">
           <caret line="16" column="4" lean-forward="false" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/OfferService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="29" column="32" lean-forward="false" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="27" column="21" lean-forward="false" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -1649,51 +1738,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="77" column="66" lean-forward="false" selection-start-line="77" selection-start-column="66" selection-end-line="77" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_de.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3944">
-          <caret line="232" column="124" lean-forward="false" selection-start-line="232" selection-start-column="124" selection-end-line="232" selection-end-column="124" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="41" column="40" lean-forward="false" selection-start-line="41" selection-start-column="40" selection-end-line="41" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/DateValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="27" column="78" lean-forward="false" selection-start-line="27" selection-start-column="78" selection-end-line="27" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/OfferValidator.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/OfferServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1190">
-          <caret line="87" column="34" lean-forward="false" selection-start-line="87" selection-start-column="34" selection-end-line="87" selection-end-column="34" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1705,9 +1753,350 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/DayOfWeek.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="21" column="57" lean-forward="false" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.0.33/tomcat-embed-core-8.0.33.jar!/org/apache/tomcat/util/threads/TaskThread.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/OfferPhoto.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="51" column="28" lean-forward="false" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/config/SecurityWebApplicationInitializer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/config/WebApplicationContextConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1700">
+          <caret line="138" column="30" lean-forward="false" selection-start-line="138" selection-start-column="30" selection-end-line="138" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/ImageValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="45" column="85" lean-forward="true" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/4.2.6.RELEASE/spring-context-4.2.6.RELEASE.jar!/org/springframework/validation/Errors.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="28" column="9" lean-forward="false" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/DbReaderService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="697">
+          <caret line="43" column="44" lean-forward="true" selection-start-line="43" selection-start-column="44" selection-end-line="43" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/OfferPhotoRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="20" column="38" lean-forward="false" selection-start-line="20" selection-start-column="38" selection-end-line="20" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/DbWriterService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="29" column="16" lean-forward="true" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/OfferService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="33" column="44" lean-forward="false" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbReaderServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1139">
+          <caret line="143" column="4" lean-forward="false" selection-start-line="143" selection-start-column="4" selection-end-line="143" selection-end-column="4" />
+          <folding>
+            <element signature="e#3972#3973#0" expanded="false" />
+            <element signature="e#4047#4048#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/offerOverview.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="531">
+          <caret line="98" column="25" lean-forward="true" selection-start-line="98" selection-start-column="25" selection-end-line="98" selection-end-column="25" />
+          <folding>
+            <element signature="n#style#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#3;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1504171168000" expanded="true" signature="503:534" ph="Essensangebot Übersicht" />
+            <marker date="1504171168000" expanded="true" signature="817:856" ph="Weiterleitung zum Dialog &quot;Essensangebot Einzelansicht&quot; welcher das erstellen von neuen Angeboten ermöglicht." />
+            <marker date="1504171168000" expanded="true" signature="903:934" ph="Angebote anlegen" />
+            <marker date="1504171168000" expanded="true" signature="1071:1103" ph="neues Essensangebot" />
+            <marker date="1504171168000" expanded="true" signature="1364:1406" ph="Wählen Sie eine Restaurant aus um dessen Essensangebot in die Tabelle zu laden." />
+            <marker date="1504171168000" expanded="true" signature="1453:1497" ph="Angebote laden" />
+            <marker date="1504171168000" expanded="true" signature="2261:2299" ph="Wählen Sie eine Restaurant aus um dessen Essensangebot in die Tabelle zu laden." />
+            <marker date="1504171168000" expanded="true" signature="2346:2375" ph="Angebote laden" />
+            <marker date="1504171168000" expanded="true" signature="3370:3405" ph="Name" />
+            <marker date="1504171168000" expanded="true" signature="3459:3493" ph="Kategorie" />
+            <marker date="1504171168000" expanded="true" signature="3547:3578" ph="Preis" />
+            <marker date="1504171168000" expanded="true" signature="3656:3697" ph="Zubereitungszeit" />
+            <marker date="1504171168000" expanded="true" signature="3787:3830" ph="Zeigt die Zubereitungszeit einer Speise in Minuten." />
+            <marker date="1504171168000" expanded="true" signature="3904:3939" ph="Startdatum" />
+            <marker date="1504171168000" expanded="true" signature="3993:4026" ph="Enddatum" />
+            <marker date="1504171168000" expanded="true" signature="5011:5033" ph="löschen" />
+            <marker date="1504171168000" expanded="true" signature="5457:5479" ph="Abbrechen" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/OfferOverviewController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="616">
+          <caret line="92" column="90" lean-forward="true" selection-start-line="92" selection-start-column="90" selection-end-line="92" selection-end-column="90" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/profile.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="31" column="73" lean-forward="true" selection-start-line="31" selection-start-column="73" selection-end-line="31" selection-end-column="99" />
+          <folding>
+            <element signature="n#style#0;n#label#0;n#p#0;n#div#0;n#div#0;n#form#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1500636363619" expanded="true" signature="329:350" ph="Benutzerprofil anpassen" />
+            <marker date="1500636363619" expanded="true" signature="822:859" ph="Bitte geben Sie die Kontaktdaten an, unter welchen Sie geschäftlich erreichbar sein wollen." />
+            <marker date="1500636363619" expanded="true" signature="913:942" ph="Benutzerdaten" />
+            <marker date="1500636363619" expanded="true" signature="1252:1275" ph="Vorname" />
+            <marker date="1500636363619" expanded="true" signature="1859:1883" ph="Nachname" />
+            <marker date="1500636363619" expanded="true" signature="2469:2489" ph="Straße" />
+            <marker date="1500636363619" expanded="true" signature="3067:3093" ph="Hausnummer" />
+            <marker date="1500636363619" expanded="true" signature="3683:3700" ph="Postleitzahl" />
+            <marker date="1500636363619" expanded="true" signature="4272:4290" ph="Stadt" />
+            <marker date="1500636363619" expanded="true" signature="4865:4886" ph="Land" />
+            <marker date="1500636363619" expanded="true" signature="5599:5618" ph="Telefon" />
+            <marker date="1500636363619" expanded="true" signature="6194:6213" ph="Mail" />
+            <marker date="1500636363619" expanded="true" signature="6789:6807" ph="IBAN" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/offer.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="306" column="85" lean-forward="false" selection-start-line="306" selection-start-column="85" selection-end-line="306" selection-end-column="85" />
+          <folding>
+            <element signature="n#style#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#1;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#img#2;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#span#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#span#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#a#0;n#div#1;n#span#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#span#1;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#a#0;n#div#1;n#span#1;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#span#2;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#1;n#a#0;n#div#1;n#span#2;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <marker date="1504179253297" expanded="true" signature="328:347" ph="Angebot anpassen" />
+            <marker date="1504179253297" expanded="true" signature="630:658" ph="Bereit die Seite für das Anlegen eines neuen Angebots vor." />
+            <marker date="1504179253297" expanded="true" signature="705:725" ph="Angebot anlegen" />
+            <marker date="1504179253297" expanded="true" signature="937:964" ph="neues Essensangebot" />
+            <marker date="1504179253297" expanded="true" signature="1225:1259" ph="Wählen Sie das Restaurant aus, für welches ein Angebote erstellt oder gepflegt werden sollen." />
+            <marker date="1504179253297" expanded="true" signature="1306:1332" ph="Restaurant auswählen" />
+            <marker date="1504179253297" expanded="true" signature="2092:2121" ph="Wählen Sie das Angebot, welches Sie pflegen möchten." />
+            <marker date="1504179253297" expanded="true" signature="2168:2189" ph="Angebot auswählen" />
+            <marker date="1504179253297" expanded="true" signature="3495:3512" ph="Angebotsname" />
+            <marker date="1504179253297" expanded="true" signature="4115:4134" ph="Angebots-Id" />
+            <marker date="1504179253297" expanded="true" signature="4818:4843" ph="Die Preisangabe ist in € und wird mit &quot;.&quot; getrennt." />
+            <marker date="1504179253297" expanded="true" signature="4948:4965" ph="Preis" />
+            <marker date="1504179253297" expanded="true" signature="5467:5493" ph="Gibt an wieviele Punkte von einem Endkunden benötigt werden um die Speise ohne eine Geldzahlung zu erwerben." />
+            <marker date="1504179253297" expanded="true" signature="5598:5616" ph="Punkte" />
+            <marker date="1504179253297" expanded="true" signature="6326:6353" ph="Zubereitunszeit" />
+            <marker date="1504179253297" expanded="true" signature="6992:7013" ph="Startdatum" />
+            <marker date="1504179253297" expanded="true" signature="7640:7659" ph="Enddatum" />
+            <marker date="1504179253297" expanded="true" signature="8282:8304" ph="Kategorie" />
+            <marker date="1504179253297" expanded="true" signature="9059:9088" ph="Wählen sie mit Hilfe der Checkboxen die Additive aus, welche zu diesem Angebot gehören. Markierte Additive werden für das Angebot gespeichert." />
+            <marker date="1504179253297" expanded="true" signature="9169:9190" ph="Additive" />
+            <marker date="1504179253297" expanded="true" signature="10014:10045" ph="Wählen sie mit Hilfe der Checkboxen die Allergene aus, welche in diesem Angebot vorhanden sind. Markierte Allergene werden für das Angebot gespeichert." />
+            <marker date="1504179253297" expanded="true" signature="10126:10148" ph="Allergene" />
+            <marker date="1504179253297" expanded="true" signature="11050:11079" ph="Angebote sind während der gesamten Öffnungszeiten gültig, wenn kein Feld in der Tabelle markiert wird. Sobald ein oder mehrere Feld(er) in der Tabelle markiert werden ist das Angebot nur noch zu diesen Zeiten gültig." />
+            <marker date="1504179253297" expanded="true" signature="11160:11181" ph="Gültigkeit" />
+            <marker date="1504179253297" expanded="true" signature="11657:11679" ph="Montag" />
+            <marker date="1504179253297" expanded="true" signature="11765:11788" ph="Dienstag" />
+            <marker date="1504179253297" expanded="true" signature="11874:11899" ph="Mittwoch" />
+            <marker date="1504179253297" expanded="true" signature="11985:12009" ph="Donnerstag" />
+            <marker date="1504179253297" expanded="true" signature="12095:12117" ph="Freitag" />
+            <marker date="1504179253297" expanded="true" signature="12203:12227" ph="Samstag" />
+            <marker date="1504179253297" expanded="true" signature="12313:12335" ph="Sonntag" />
+            <marker date="1504179253297" expanded="true" signature="12753:12771" ph="bis" />
+            <marker date="1504179253297" expanded="true" signature="13589:13620" ph="Erlaubt das hinzufügen einer kurzen Beschreibung. Die Beschreibung darf maximal 255 Zeichen lang sein." />
+            <marker date="1504179253297" expanded="true" signature="13701:13724" ph="Beschreibung" />
+            <marker date="1504179253297" expanded="true" signature="14504:14516" ph="Produktbilder Vorschau" />
+            <marker date="1504179253297" expanded="true" signature="14504:14527" ph="Produktbilder" />
+            <marker date="1504179253297" expanded="true" signature="15548:15568" ph="hinzufügen" />
+            <marker date="1504179253297" expanded="true" signature="16031:16054" ph="löschen" />
+            <marker date="1504179253297" expanded="true" signature="16464:16484" ph="hinzufügen" />
+            <marker date="1504179253297" expanded="true" signature="16950:16973" ph="löschen" />
+            <marker date="1504179253297" expanded="true" signature="17382:17402" ph="hinzufügen" />
+            <marker date="1504179253297" expanded="true" signature="17865:17888" ph="löschen" />
+            <marker date="1504179253297" expanded="true" signature="18412:18440" ph="eigener Änderungskommentar" />
+            <marker date="1504179253297" expanded="true" signature="19006:19037" ph="Kommentar der letzten Änderung" />
+            <marker date="1504179253297" expanded="true" signature="19604:19624" ph="Speichern" />
+            <marker date="1504179253297" expanded="true" signature="19736:19758" ph="Abbrechen" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="460" column="28" lean-forward="true" selection-start-line="460" selection-start-column="28" selection-end-line="460" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Offer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="125" column="4" lean-forward="false" selection-start-line="125" selection-start-column="4" selection-end-line="125" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/DateValidator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="34" column="40" lean-forward="false" selection-start-line="34" selection-start-column="40" selection-end-line="34" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/home.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="156" column="67" lean-forward="false" selection-start-line="156" selection-start-column="66" selection-end-line="156" selection-end-column="67" />
+          <folding>
+            <marker date="1503468760810" expanded="true" signature="2692:2725" ph="Ihr Benutzerprofil wurde erfolgreich gespeichert." />
+            <marker date="1503468760810" expanded="true" signature="3013:3050" ph="Ihr Benutzerprofil wurde während Ihrer Änderungen angepasst. Bitte versuchen Sie es erneut." />
+            <marker date="1503468760810" expanded="true" signature="3337:3373" ph="Sie haben keine Zugriffsberechtigung auf dieses Restaurant." />
+            <marker date="1503468760810" expanded="true" signature="3666:3709" ph="Ein neues Restaurant wurde erfolgreich hinzugefügt." />
+            <marker date="1503468760810" expanded="true" signature="4000:4040" ph="Das geöffnete Restaurant wurde während Ihrer Änderungen angepasst. Bitte veruchen Sie es erneut." />
+            <marker date="1503468760810" expanded="true" signature="4326:4357" ph="Die Änderungen am Angebot wurden erfolgreich gepeichert." />
+            <marker date="1503468760810" expanded="true" signature="4638:4669" ph="Die Änderungen am Angebot wurden erfolgreich gepeichert." />
+            <marker date="1503468760810" expanded="true" signature="4955:4990" ph="Das geöffnete Angebot wurde während Ihrer Änderungen angepasst. Bitte veruchen Sie es erneut." />
+            <marker date="1503468760810" expanded="true" signature="5278:5316" ph="Ein neues Angebot wurde erfolgreich hinzugefügt." />
+            <marker date="1503468760810" expanded="true" signature="5598:5629" ph="Die Angebotsbearbeitung war fehlerhaft. Bitte versuchen Sie es erneut." />
+            <marker date="1503468760810" expanded="true" signature="5744:5772" ph="ToDo Liste" />
+            <marker date="1503468760810" expanded="true" signature="5999:6030" ph="Restaurant" />
+            <marker date="1503468760810" expanded="true" signature="6100:6123" ph="Vorgangsnummer" />
+            <marker date="1503468760810" expanded="true" signature="6299:6330" ph="Anliegen" />
+            <marker date="1503468760810" expanded="true" signature="6380:6410" ph="Zeitpunkt" />
+            <marker date="1503468760810" expanded="true" signature="6460:6485" ph="gelesen" />
+            <marker date="1503468760810" expanded="true" signature="7474:7508" ph="Änderungen freigeben" />
+            <marker date="1503468760810" expanded="true" signature="7602:7636" ph="Besuchsaufforderung" />
+            <marker date="1503468760810" expanded="true" signature="7724:7758" ph="Umsatzwarnung" />
+            <marker date="1503468760810" expanded="true" signature="8367:8401" ph="Restaurants" />
+            <marker date="1503468760810" expanded="true" signature="8634:8665" ph="Name" />
+            <marker date="1503468760810" expanded="true" signature="8715:8747" ph="Email" />
+            <marker date="1503468760810" expanded="true" signature="8797:8829" ph="Telefon" />
+            <marker date="1503468760810" expanded="true" signature="8879:8912" ph="Straße" />
+            <marker date="1503468760810" expanded="true" signature="8962:8993" ph="Stadt" />
+            <marker date="1503468760810" expanded="true" signature="9043:9073" ph="PLZ" />
+            <marker date="1503468760810" expanded="true" signature="9200:9231" ph="Name" />
+            <marker date="1503468760810" expanded="true" signature="9281:9313" ph="Email" />
+            <marker date="1503468760810" expanded="true" signature="9363:9395" ph="Telefon" />
+            <marker date="1503468760810" expanded="true" signature="9445:9478" ph="Straße" />
+            <marker date="1503468760810" expanded="true" signature="9528:9559" ph="Stadt" />
+            <marker date="1503468760810" expanded="true" signature="9609:9639" ph="PLZ" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_en.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="590">
+          <caret line="238" column="118" lean-forward="false" selection-start-line="238" selection-start-column="118" selection-end-line="238" selection-end-column="118" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/messages_de.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="227" column="38" lean-forward="true" selection-start-line="227" selection-start-column="38" selection-end-line="227" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/OfferServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="72" column="53" lean-forward="false" selection-start-line="72" selection-start-column="53" selection-end-line="72" selection-end-column="53" />
+          <folding>
+            <element signature="e#2436#2437#0" expanded="true" />
+            <element signature="e#2498#2499#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/OfferController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-199">
+          <caret line="106" column="62" lean-forward="true" selection-start-line="106" selection-start-column="62" selection-end-line="106" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/RestaurantController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
+        <state relative-caret-position="2302">
           <caret line="170" column="42" lean-forward="true" selection-start-line="170" selection-start-column="42" selection-end-line="170" selection-end-column="100" />
           <folding />
         </state>
@@ -1715,8 +2104,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/templates/restaurant.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="384" column="73" lean-forward="false" selection-start-line="384" selection-start-column="73" selection-end-line="384" selection-end-column="73" />
+        <state relative-caret-position="595">
+          <caret line="53" column="71" lean-forward="true" selection-start-line="53" selection-start-column="71" selection-end-line="53" selection-end-column="71" />
           <folding>
             <marker date="1502475733375" expanded="true" signature="328:352" ph="Restaurant anpassen" />
             <marker date="1502475733375" expanded="true" signature="681:720" ph="Wählen Sie eine Restaurant aus um dieses zu laden." />
@@ -1780,146 +2169,6 @@
             <marker date="1502475733375" expanded="true" signature="21522:21542" ph="Speichern" />
             <marker date="1502475733375" expanded="true" signature="21654:21676" ph="Abbrechen" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/DayOfWeek.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="21" column="57" lean-forward="false" selection-start-line="21" selection-start-column="57" selection-end-line="21" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/Offer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="70" column="26" lean-forward="true" selection-start-line="70" selection-start-column="26" selection-end-line="70" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/8.0.33/tomcat-embed-core-8.0.33.jar!/org/apache/tomcat/util/threads/TaskThread.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/repository/impl/OfferPhoto.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="15" column="37" lean-forward="false" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/service/impl/DbWriterServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1174">
-          <caret line="516" column="40" lean-forward="true" selection-start-line="516" selection-start-column="40" selection-end-line="516" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/templates/offer.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="267" column="154" lean-forward="false" selection-start-line="267" selection-start-column="154" selection-end-line="267" selection-end-column="154" />
-          <folding>
-            <element signature="n#style#0;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#1;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#img#2;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#1;n#div#3;n#form#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <marker date="1504009919059" expanded="true" signature="328:347" ph="Angebot anpassen" />
-            <marker date="1504009919059" expanded="true" signature="630:658" ph="Bereit die Seite für das Anlegen eines neuen Angebots vor." />
-            <marker date="1504009919059" expanded="true" signature="705:725" ph="Angebot anlegen" />
-            <marker date="1504009919059" expanded="true" signature="937:964" ph="neues Essensangebot" />
-            <marker date="1504009919059" expanded="true" signature="1225:1259" ph="Wählen Sie das Restaurant aus, für welches ein Angebote erstellt oder gepflegt werden sollen." />
-            <marker date="1504009919059" expanded="true" signature="1306:1332" ph="Restaurant auswählen" />
-            <marker date="1504009919059" expanded="true" signature="2092:2121" ph="Wählen Sie das Angebot, welches Sie pflegen möchten." />
-            <marker date="1504009919059" expanded="true" signature="2168:2189" ph="Angebot auswählen" />
-            <marker date="1504009919059" expanded="true" signature="3495:3512" ph="Angebotsname" />
-            <marker date="1504009919059" expanded="true" signature="4115:4134" ph="Angebots-Id" />
-            <marker date="1504009919059" expanded="true" signature="4818:4843" ph="Die Preisangabe ist in € und wird mit &quot;.&quot; getrennt." />
-            <marker date="1504009919059" expanded="true" signature="4948:4965" ph="Preis" />
-            <marker date="1504009919059" expanded="true" signature="5467:5493" ph="Gibt an wieviele Punkte von einem Endkunden benötigt werden um die Speise ohne eine Geldzahlung zu erwerben." />
-            <marker date="1504009919059" expanded="true" signature="5598:5616" ph="Punkte" />
-            <marker date="1504009919059" expanded="true" signature="6326:6353" ph="Zubereitunszeit" />
-            <marker date="1504009919059" expanded="true" signature="6992:7013" ph="Startdatum" />
-            <marker date="1504009919059" expanded="true" signature="7640:7659" ph="Enddatum" />
-            <marker date="1504009919059" expanded="true" signature="8282:8304" ph="Kategorie" />
-            <marker date="1504009919059" expanded="true" signature="9059:9088" ph="Wählen sie mit Hilfe der Checkboxen die Additive aus, welche zu diesem Angebot gehören. Markierte Additive werden für das Angebot gespeichert." />
-            <marker date="1504009919059" expanded="true" signature="9169:9190" ph="Additive" />
-            <marker date="1504009919059" expanded="true" signature="10014:10045" ph="Wählen sie mit Hilfe der Checkboxen die Allergene aus, welche in diesem Angebot vorhanden sind. Markierte Allergene werden für das Angebot gespeichert." />
-            <marker date="1504009919059" expanded="true" signature="10126:10148" ph="Allergene" />
-            <marker date="1504009919059" expanded="true" signature="11050:11079" ph="Angebote sind während der gesamten Öffnungszeiten gültig, wenn kein Feld in der Tabelle markiert wird. Sobald ein oder mehrere Feld(er) in der Tabelle markiert werden ist das Angebot nur noch zu diesen Zeiten gültig." />
-            <marker date="1504009919059" expanded="true" signature="11160:11181" ph="Gültigkeit" />
-            <marker date="1504009919059" expanded="true" signature="11657:11679" ph="Montag" />
-            <marker date="1504009919059" expanded="true" signature="11765:11788" ph="Dienstag" />
-            <marker date="1504009919059" expanded="true" signature="11874:11899" ph="Mittwoch" />
-            <marker date="1504009919059" expanded="true" signature="11985:12009" ph="Donnerstag" />
-            <marker date="1504009919059" expanded="true" signature="12095:12117" ph="Freitag" />
-            <marker date="1504009919059" expanded="true" signature="12203:12227" ph="Samstag" />
-            <marker date="1504009919059" expanded="true" signature="12313:12335" ph="Sonntag" />
-            <marker date="1504009919059" expanded="true" signature="12753:12771" ph="bis" />
-            <marker date="1504009919059" expanded="true" signature="13589:13620" ph="Erlaubt das hinzufügen einer kurzen Beschreibung. Die Beschreibung darf maximal 255 Zeichen lang sein." />
-            <marker date="1504009919059" expanded="true" signature="13701:13724" ph="Beschreibung" />
-            <marker date="1504009919059" expanded="true" signature="14504:14516" ph="Produktbilder Vorschau" />
-            <marker date="1504009919059" expanded="true" signature="14504:14527" ph="Produktbilder" />
-            <marker date="1504009919059" expanded="true" signature="15549:15569" ph="hinzufügen" />
-            <marker date="1504009919059" expanded="true" signature="15856:15879" ph="löschen" />
-            <marker date="1504009919059" expanded="true" signature="16343:16363" ph="hinzufügen" />
-            <marker date="1504009919059" expanded="true" signature="16651:16674" ph="löschen" />
-            <marker date="1504009919059" expanded="true" signature="17138:17158" ph="hinzufügen" />
-            <marker date="1504009919059" expanded="true" signature="17445:17468" ph="löschen" />
-            <marker date="1504009919059" expanded="true" signature="18047:18075" ph="eigener Änderungskommentar" />
-            <marker date="1504009919059" expanded="true" signature="18641:18672" ph="Kommentar der letzten Änderung" />
-            <marker date="1504009919059" expanded="true" signature="19239:19259" ph="Speichern" />
-            <marker date="1504009919059" expanded="true" signature="19371:19393" ph="Abbrechen" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="520">
-          <caret line="51" column="28" lean-forward="false" selection-start-line="51" selection-start-column="28" selection-end-line="51" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/config/SecurityWebApplicationInitializer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/config/WebApplicationContextConfig.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1700">
-          <caret line="138" column="30" lean-forward="false" selection-start-line="138" selection-start-column="30" selection-end-line="138" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/validator/offer/ImageValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="45" column="85" lean-forward="true" selection-start-line="45" selection-start-column="85" selection-end-line="45" selection-end-column="85" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/saleswebapp/controller/OfferController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-907">
-          <caret line="73" column="50" lean-forward="false" selection-start-line="73" selection-start-column="50" selection-end-line="73" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>

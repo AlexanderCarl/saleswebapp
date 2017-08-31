@@ -41,4 +41,6 @@ public interface DbReaderService {
 
     List<Allergenic> getAllAllergenic();
 
+    OfferPhoto getOfferPhoto(int offerPhotoId);
+
 }

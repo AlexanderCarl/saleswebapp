@@ -25,13 +25,28 @@ public class DateValidator implements Validator {
 
         DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-mm-yyyy");
 
-        if(!offer.getStartDateAsString().equals("") && offer.getEndDateAsString().equals("")) {
-            DateTime startDate = formatter.parseDateTime(offer.getStartDateAsString());
-            DateTime endDate = formatter.parseDateTime(offer.getEndDateAsString());
+        if(!offer.getStartDateAsString().equals("") && !offer.getEndDateAsString().equals("")) {
+            DateTime startDate = null;
+            DateTime endDate = null;
 
-            if (startDate.isAfter(endDate)) {
-                errors.rejectValue("endDateAsString", "offer.validation.timeWindow");
+            try {
+                startDate = formatter.parseDateTime(offer.getStartDateAsString());
+            } catch (Exception e) {
+                //The regex pattern has flaws and is therefore not 100% safe.
             }
+
+            try {
+                endDate = formatter.parseDateTime(offer.getEndDateAsString());
+            } catch (Exception e) {
+                //The regex pattern has flaws and is therefore not 100% safe.
+            }
+
+            if(startDate != null && endDate != null) {
+                if (startDate.isAfter(endDate)) {
+                    errors.reject("offer.validation.timeWindow");
+                }
+            }
+
         }
     }
 }

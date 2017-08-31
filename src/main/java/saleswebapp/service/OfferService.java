@@ -28,4 +28,8 @@ public interface OfferService {
     boolean offerHasBeenAlteredMeanwhile(int offerId);
 
     void saveOffer(Offer offer);
+
+    OfferPhoto getOfferPhoto(int offerPhotoId);
+
+    void deleteOfferPhoto(int offerPhotoId);
 }

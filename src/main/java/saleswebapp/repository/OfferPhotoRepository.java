@@ -16,4 +16,10 @@ public interface OfferPhotoRepository extends JpaRepository<OfferPhoto, Serializ
     @Query("delete from OfferPhoto where offer_id = ?1")
     void deleteByOfferId(int offerId);
 
+    @Modifying
+    @Query("delete from OfferPhoto where id = ?1")
+    void deleteById(int offerPhotoId);
+
+    OfferPhoto getOfferPhotoById(int offerPhotoId);
+
 }

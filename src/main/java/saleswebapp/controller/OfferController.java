@@ -78,6 +78,7 @@ public class OfferController {
 
     @RequestMapping(value = "/newOfferForRestaurant", method = RequestMethod.GET)
     public String newOfferForRestaurant(Model model, @RequestParam("id") int restaurantId, HttpServletRequest request) {
+        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         request.getSession().setAttribute("newOffer", true);
         request.getSession().setAttribute("offerId", 0);
@@ -105,6 +106,7 @@ public class OfferController {
         request.getSession().setAttribute("newOffer", false);
         request.getSession().setAttribute("offerId", offerId);
         request.getSession().setAttribute("restaurantId", restaurantId);
+        request.getSession().setAttribute("commentOfLastChange", offer.getCommentOfLastChange());
 
         offerService.addOfferToRestaurantTransaction(offer);
         Offer preparedExistingOffer = prepareExistingOffer(offer, restaurant);
@@ -116,11 +118,25 @@ public class OfferController {
         return "offer";
     }
 
+    @RequestMapping(value = "/offer/remove")
+    public String deleteOfferImage(@RequestParam("offerPhotoId") int offerPhotoId, HttpServletRequest request) {
+        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        OfferPhoto offerPhoto = offerService.getOfferPhoto(offerPhotoId);
+        int offerId = offerPhoto.getOffer().getId();
+        offerService.deleteOfferPhoto(offerPhotoId);
+
+        return "redirect:/offer?id=" + offerId;
+    }
+
     @RequestMapping(value = "/saveOffer", method = RequestMethod.POST)
     public String saveOffer (Model model, @Valid Offer offer, BindingResult offerBinder, HttpServletRequest request) {
+        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+
         int restaurantId = (int) request.getSession().getAttribute("restaurantId");
         int offerId = (int) request.getSession().getAttribute("offerId");
         boolean newOffer = (boolean) request.getSession().getAttribute("newOffer");
+        String commentOfLastChange = (String) request.getSession().getAttribute("commentOfLastChange");
 
         if (offerBinder.hasErrors()) {
             offer.setIdOfRestaurant(restaurantId);
@@ -139,6 +155,9 @@ public class OfferController {
         if (suppressedFields.length > 0) {
             throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
         }
+
+        //comment of last change persists if the new comment is empty
+        offer.setCommentOfLastChange(commentOfLastChange);
 
         //Checks if it is a new offer or a change to an existing one
         if (newOffer == true && offerId == 0) {
@@ -253,28 +272,54 @@ public class OfferController {
         String defaultImageBase64 = Base64.getEncoder().encodeToString(defaultImageAsByte);
 
         switch (numberOfExistingPictures) {
+            case 0:
+                model.addAttribute("firstPicture", defaultImageBase64);
+                model.addAttribute("firstPictureDeleteDisabled", true);
+
+                model.addAttribute("secondPicture", defaultImageBase64);
+                model.addAttribute("secondPictureDeleteDisabled", true);
+
+                model.addAttribute("thirdPicture", defaultImageBase64);
+                model.addAttribute("thirdPictureDeleteDisabled", true);
+                break;
+
             case 1:
                 model.addAttribute("firstPicture", Base64.getEncoder().encodeToString(offerPhotos.get(0).getThumbnail()));
+                model.addAttribute("idOfFirstPicture", offerPhotos.get(0).getId());
+                model.addAttribute("firstPictureDeleteDisabled", false);
+
                 model.addAttribute("secondPicture", defaultImageBase64);
+                model.addAttribute("secondPictureDeleteDisabled", true);
+
                 model.addAttribute("thirdPicture", defaultImageBase64);
+                model.addAttribute("thirdPictureDeleteDisabled", true);
                 break;
 
             case 2:
                 model.addAttribute("firstPicture", Base64.getEncoder().encodeToString(offerPhotos.get(0).getThumbnail()));
+                model.addAttribute("idOfFirstPicture", offerPhotos.get(0).getId());
+                model.addAttribute("firstPictureDeleteDisabled", false);
+
                 model.addAttribute("secondPicture", Base64.getEncoder().encodeToString(offerPhotos.get(1).getThumbnail()));
+                model.addAttribute("idOfSecondPicture", offerPhotos.get(1).getId());
+                model.addAttribute("secondPictureDeleteDisabled", false);
+
                 model.addAttribute("thirdPicture", defaultImageBase64);
+                model.addAttribute("thirdPictureDeleteDisabled", true);
                 break;
 
-            case 3:
+            default: // 3 and more pics
                 model.addAttribute("firstPicture", Base64.getEncoder().encodeToString(offerPhotos.get(0).getThumbnail()));
-                model.addAttribute("secondPicture", Base64.getEncoder().encodeToString(offerPhotos.get(1).getThumbnail()));
-                model.addAttribute("thirdPicture", Base64.getEncoder().encodeToString(offerPhotos.get(2).getThumbnail()));
-                break;
+                model.addAttribute("idOfFirstPicture", offerPhotos.get(0).getId());
+                model.addAttribute("firstPictureDeleteDisabled", false);
 
-            default:
-                model.addAttribute("firstPicture", defaultImageBase64);
-                model.addAttribute("secondPicture", defaultImageBase64);
-                model.addAttribute("thirdPicture", defaultImageBase64);
+                model.addAttribute("secondPicture", Base64.getEncoder().encodeToString(offerPhotos.get(1).getThumbnail()));
+                model.addAttribute("idOfSecondPicture", offerPhotos.get(1).getId());
+                model.addAttribute("secondPictureDeleteDisabled", false);
+
+                model.addAttribute("thirdPicture", Base64.getEncoder().encodeToString(offerPhotos.get(2).getThumbnail()));
+                model.addAttribute("idOfThirdPicture", offerPhotos.get(2).getId());
+                model.addAttribute("thirdPictureDeleteDisabled", false);
         }
         return model;
     }

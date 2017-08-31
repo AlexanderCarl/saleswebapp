@@ -270,39 +270,46 @@
 
                     <!-- first two buttons -->
                     <span style="float: left; width: 30%; margin-bottom: 0.5em; margin-left: 1.25%">
-                        <span class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
+                        <div class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
                             <span th:text="#{offer.label.addImage}" />
                             <input th:field="${offer.firstOfferImage}" type="file" />
-                        </span>
-                        <span class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
-                            <span th:text="#{offer.label.deleteImage}" />
-                            <input th:field="${offer.firstOfferImage}" type="file" />
-                        </span>
+                        </div>
+
+                        <div style="margin-top: 10px">
+                            <a th:href="@{/offer/remove(offerPhotoId=${idOfFirstPicture})}" class="btn btn-sm btn-danger" th:disabled="${firstPictureDeleteDisabled}">
+                                <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
+                            </a>
+                        </div>
                     </span>
+
                     <!-- second two buttons -->
                     <span style="float: left; width: 30%; margin-bottom: 0.5em; margin-left: 1.25%">
-                        <span class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
+                        <div class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
                             <span th:text="#{offer.label.addImage}" />
                             <input th:field="${offer.secondOfferImage}" type="file" />
-                        </span>
-                        <span class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
-                            <span th:text="#{offer.label.deleteImage}" />
-                            <input th:field="${offer.secondOfferImage}" type="file" />
-                        </span>
+                        </div>
+
+                        <div style="margin-top: 10px">
+                            <a th:href="@{/offer/remove(offerPhotoId=${idOfSecondPicture})}" class="btn btn-sm btn-danger" th:disabled="${secondPictureDeleteDisabled}">
+                                <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
+                            </a>
+                        </div>
                     </span>
+
                     <!-- third two buttons -->
                     <span style="float: left; width: 30%; margin-bottom: 0.5em; margin-left: 1.25%">
-                        <span class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
+                        <div class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
                             <span th:text="#{offer.label.addImage}" />
                             <input th:field="${offer.thirdOfferImage}" type="file" />
-                        </span>
-                        <span class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
-                            <span th:text="#{offer.label.deleteImage}" />
-                            <input th:field="${offer.thirdOfferImage}" type="file" />
-                        </span>
+                        </div>
+
+                        <div style="margin-top: 10px">
+                            <a th:href="@{/offer/remove(offerPhotoId=${idOfThirdPicture})}" class="btn btn-sm btn-danger" th:disabled="${thirdPictureDeleteDisabled}">
+                                <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
+                            </a>
+                        </div>
                     </span>
                     <p style="clear: both;" />
-
                 </div>
             </div>
         </div>

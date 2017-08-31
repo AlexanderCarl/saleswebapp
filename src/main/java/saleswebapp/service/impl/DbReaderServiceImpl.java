@@ -48,6 +48,9 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Autowired
     private AllergenicRepository allergenicRepository;
 
+    @Autowired
+    private OfferPhotoRepository offerPhotoRepository;
+
     @Override
     public SalesPerson getSalesPersonByEmail(String email) {
         return salesPersonRepository.getByEmail(email);
@@ -132,6 +135,11 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Override
     public List<Allergenic> getAllAllergenic() {
         return allergenicRepository.findAll();
+    }
+
+    @Override
+    public OfferPhoto getOfferPhoto(int offerPhotoId) {
+        return offerPhotoRepository.getOfferPhotoById(offerPhotoId);
     }
 
 }
