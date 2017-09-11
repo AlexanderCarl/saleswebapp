@@ -23,7 +23,7 @@ public class DateValidator implements Validator {
     public void validate(Object target, Errors errors) {
         Offer offer = (Offer) target;
 
-        DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-mm-yyyy");
+        DateTimeFormatter formatter = DateTimeFormat.forPattern("dd-M-yyyy");
 
         if(!offer.getStartDateAsString().equals("") && !offer.getEndDateAsString().equals("")) {
             DateTime startDate = null;
@@ -32,13 +32,13 @@ public class DateValidator implements Validator {
             try {
                 startDate = formatter.parseDateTime(offer.getStartDateAsString());
             } catch (Exception e) {
-                //The regex pattern has flaws and is therefore not 100% safe.
+                //The regex pattern is not 100% safe
             }
 
             try {
                 endDate = formatter.parseDateTime(offer.getEndDateAsString());
             } catch (Exception e) {
-                //The regex pattern has flaws and is therefore not 100% safe.
+                //The regex pattern is not 100% safe
             }
 
             if(startDate != null && endDate != null) {
@@ -47,6 +47,9 @@ public class DateValidator implements Validator {
                 }
             }
 
+            if(startDate == null || endDate == null) {
+                errors.reject("offer.validation.dates");
+            }
         }
     }
 }

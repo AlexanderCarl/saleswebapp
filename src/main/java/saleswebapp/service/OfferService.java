@@ -1,5 +1,6 @@
 package saleswebapp.service;
 
+import org.springframework.ui.Model;
 import saleswebapp.repository.impl.*;
 
 import java.util.List;
@@ -23,7 +24,7 @@ public interface OfferService {
 
     List<Allergenic> getAllAllergenic();
 
-    void addOfferToRestaurantTransaction(Offer offer);
+    void addOfferToTransactionStore(Offer offer);
 
     boolean offerHasBeenAlteredMeanwhile(int offerId);
 
@@ -32,4 +33,10 @@ public interface OfferService {
     OfferPhoto getOfferPhoto(int offerPhotoId);
 
     void deleteOfferPhoto(int offerPhotoId);
+
+    Offer prepareExistingOffer(Offer offer, Restaurant restaurant);
+
+    Model prepareOfferPictures(Model model, Offer offer);
+
+    String getDefaultOfferImageBase64();
 }

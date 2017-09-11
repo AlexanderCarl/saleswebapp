@@ -8,7 +8,7 @@ import java.util.List;
  */
 @Entity
 @Table(name = "swa_todo_request_typ")
-public class ToDoListRequestTyp {
+public class ToDoRequestTyp {
 
     @Id
     private int id;
@@ -16,7 +16,7 @@ public class ToDoListRequestTyp {
     private String name;
 
     @OneToMany(mappedBy = "toDoRequestTyp", fetch = FetchType.LAZY)
-    private List<ToDoList> toDoLists;
+    private List<ToDo> toDos;
 
     public int getId() {
         return id;
@@ -34,11 +34,11 @@ public class ToDoListRequestTyp {
         this.name = name;
     }
 
-    public List<ToDoList> getToDoLists() {
-        return toDoLists;
+    public List<ToDo> getToDos() {
+        return toDos;
     }
 
-    public void setToDoLists(List<ToDoList> toDoLists) {
-        this.toDoLists = toDoLists;
+    public void setToDos(List<ToDo> toDos) {
+        this.toDos = toDos;
     }
 }

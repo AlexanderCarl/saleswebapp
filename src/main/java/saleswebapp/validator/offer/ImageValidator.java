@@ -23,22 +23,16 @@ public class ImageValidator implements Validator {
         Offer offer = (Offer) target;
 
         List<MultipartFile> multipartFiles = new ArrayList<MultipartFile>();
-        try {
+        if(offer.getFirstOfferImage() != null) {
             multipartFiles.add(offer.getFirstOfferImage());
-        } catch (Exception e) {
-            // the firstOfferImage is null
         }
 
-        try {
+        if(offer.getSecondOfferImage() != null) {
             multipartFiles.add(offer.getSecondOfferImage());
-        } catch (Exception e) {
-            // the secondOfferImage is null
         }
 
-        try {
+        if(offer.getThirdOfferImage() != null) {
             multipartFiles.add(offer.getThirdOfferImage());
-        } catch (Exception e) {
-            // the thirdOfferImage is null
         }
 
         for(MultipartFile multipartFile : multipartFiles) {

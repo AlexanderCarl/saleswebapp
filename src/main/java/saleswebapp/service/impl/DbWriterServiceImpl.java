@@ -77,6 +77,9 @@ public class DbWriterServiceImpl implements DbWriterService {
     @Autowired
     private AllergenicRepository allergenicRepository;
 
+    @Autowired
+    private ToDoRepository toDoRepository;
+
     private ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -374,13 +377,11 @@ public class DbWriterServiceImpl implements DbWriterService {
             offerToSave.setRestaurant(restaurantRepository.getRestaurantById(offer.getIdOfRestaurant()));
         }
 
-        //Saved offers have no changeRequestIds. Only change requests for offers need this attribute.
-        offerToSave.setChangeRequestId(0);
-
         offerToSave.setTitle(offer.getTitle());
         offerToSave.setDescription(offer.getDescription());
         offerToSave.setPrice(Double.valueOf(offer.getPriceAsString()));
         offerToSave.setPreparationTime(Integer.parseInt(offer.getPreparationTimeAsString()));
+        offerToSave.setChangeRequestId(offer.getChangeRequestId());
 
         //Start- + Enddate
         SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
@@ -531,13 +532,53 @@ public class DbWriterServiceImpl implements DbWriterService {
         offerToSave.setOfferPhotos(offerPhotos);
 
         offerRepository.save(offerToSave);
-        logger.debug("Angebot (Offer-ID: " + offerToSave.getId() + ") wurde erfolgreich gespeichert.");
+        logger.debug("Offer (Offer-ID: " + offerToSave.getId() + ") has been saved.");
     }
 
     @Override
     @Transactional
     public void deleteOfferPhoto(int offerPhotoId) {
         offerPhotoRepository.deleteById(offerPhotoId);
+    }
+
+    @Override
+    @Transactional
+    public void deleteToDo(int toDoId) {
+        toDoRepository.deleteById(toDoId);
+        logger.debug("ToDo (ToDo-ID: " + toDoId + ") has been deleted.");
+    }
+
+    @Override
+    @Transactional
+    public void deleteOfferChangeRequest(int offerToDeleteId, int offerToUpdateId, int toDoId) {
+        //Sets the changeRequestId of the existing offer to 0 because the corresponding changeRequest gets deleted.
+        Offer offerToUpdate = offerRepository.getById(offerToUpdateId);
+        offerToUpdate.setChangeRequestId(0);
+        offerRepository.save(offerToUpdate);
+
+        toDoRepository.deleteById(toDoId);
+
+        offerHasAllergenicRepository.deleteByOfferId(offerToDeleteId);
+        offerHasAdditivesRepository.deleteByOfferId(offerToDeleteId);
+        offerPhotoRepository.deleteByOfferId(offerToDeleteId);
+        offerRepository.deleteById(offerToDeleteId);
+
+        logger.debug("OfferChangeRequest (Offer-ID: " + offerToDeleteId + ") has been deleted.");
+    }
+
+    @Override
+    @Transactional
+    public void saveOfferChangeRequest(int offerChangeRequestId, Offer changedOffer, int toDoId) {
+        toDoRepository.deleteById(toDoId);
+
+        saveOffer(changedOffer);
+
+        offerHasAllergenicRepository.deleteByOfferId(offerChangeRequestId);
+        offerHasAdditivesRepository.deleteByOfferId(offerChangeRequestId);
+        offerPhotoRepository.deleteByOfferId(offerChangeRequestId);
+        offerRepository.deleteById(offerChangeRequestId);
+
+        logger.debug("OfferChangeRequest (Offer-ID: " + changedOffer.getId() + ") has been saved.");
     }
 
     private byte[] createThumbnail(MultipartFile multipartFile) throws IOException {

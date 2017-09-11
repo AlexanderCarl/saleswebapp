@@ -13,8 +13,8 @@ import java.io.Serializable;
 @Repository
 public interface SalesPersonRepository extends JpaRepository<SalesPerson, Serializable> {
 
-    public SalesPerson getByEmail(String userEmail);
+    SalesPerson getByEmail(String userEmail);
 
-    public SalesPerson getById(int id);
+    SalesPerson getById(int id);
 
 }

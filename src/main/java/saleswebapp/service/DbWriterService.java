@@ -29,4 +29,10 @@ public interface DbWriterService {
 
     void deleteOfferPhoto(int offerPhotoId);
 
+    void deleteToDo(int toDoId);
+
+    void deleteOfferChangeRequest(int offerToDeleteId, int offerToUpdateId, int ToDoId);
+
+    void saveOfferChangeRequest(int offerChangeRequestId, Offer changedOffer, int toDoId);
+
 }

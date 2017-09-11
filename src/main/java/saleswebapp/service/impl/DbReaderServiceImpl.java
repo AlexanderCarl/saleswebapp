@@ -28,7 +28,7 @@ public class DbReaderServiceImpl implements DbReaderService {
     private RestaurantRepository restaurantRepository;
 
     @Autowired
-    private ToDoListRepository toDoListRepository;
+    private ToDoRepository toDoRepository;
 
     @Autowired
     private RestaurantTypeRepository restaurantTypeRepository;
@@ -78,8 +78,8 @@ public class DbReaderServiceImpl implements DbReaderService {
     }
 
     @Override
-    public List<ToDoList> getAllToDosOfSalesPerson(String email) {
-        return toDoListRepository.getAllBySalesPersonEmail(email);
+    public List<ToDo> getAllToDosOfSalesPerson(String email) {
+        return toDoRepository.getAllBySalesPersonEmail(email);
     }
 
     @Override
@@ -140,6 +140,11 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Override
     public OfferPhoto getOfferPhoto(int offerPhotoId) {
         return offerPhotoRepository.getOfferPhotoById(offerPhotoId);
+    }
+
+    @Override
+    public ToDo getToDoById(int toDoId) {
+        return toDoRepository.getById(toDoId);
     }
 
 }

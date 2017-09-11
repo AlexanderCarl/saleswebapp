@@ -65,7 +65,6 @@ public class RestaurantController {
         if(!restaurantService.restaurantAssignedToSalesPerson(restaurantId)) {
             return "redirect:/home?noValidAccessToRestaurant";
         }
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         request.getSession().setAttribute("restaurantId", restaurantId);
         Restaurant restaurant = preparedRestaurantForExistingRestaurant(restaurantId);

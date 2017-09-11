@@ -75,14 +75,14 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     //Ensures that a salesPerson can only see his Restaurants. Also if he changes the call parameter manually.
     @Override
-    public boolean restaurantAssignedToSalesPerson(int id) {
+    public boolean restaurantAssignedToSalesPerson(int restaurantId) {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         String salesPersonOfRestaurant;
 
         try {
-            salesPersonOfRestaurant = dbReaderService.getRestaurantById(id).getSalesPerson().getEmail();
+            salesPersonOfRestaurant = dbReaderService.getRestaurantById(restaurantId).getSalesPerson().getEmail();
         } catch (NullPointerException e) {
-            logger.debug("Error - User: " + loggedInUser + " - There is no restaurant with the requested id: " + id + " in the DB.");
+            logger.debug("Error - User: " + loggedInUser + " - There is no restaurant with the requested id: " + restaurantId + " in the DB.");
             //The user will see the alert-danger box which tells him that he has no access to the restaurant with this (faulty) restaurantID.
             return false;
         }

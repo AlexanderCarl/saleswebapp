@@ -10,7 +10,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "swa_todo_list")
-public class ToDoList {
+public class ToDo {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,15 +18,19 @@ public class ToDoList {
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "todo_request_typ_id")
-    private ToDoListRequestTyp toDoRequestTyp;
+    private ToDoRequestTyp toDoRequestTyp;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "sales_person_id")
     private SalesPerson salesPerson;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "offer_id")
+    private Offer offer;
 
     @Type(type = "timestamp")
     private Date datetime;
@@ -39,11 +43,11 @@ public class ToDoList {
         this.id = id;
     }
 
-    public ToDoListRequestTyp getToDoRequestTyp() {
+    public ToDoRequestTyp getToDoRequestTyp() {
         return toDoRequestTyp;
     }
 
-    public void setToDoRequestTyp(ToDoListRequestTyp toDoRequestTyp) {
+    public void setToDoRequestTyp(ToDoRequestTyp toDoRequestTyp) {
         this.toDoRequestTyp = toDoRequestTyp;
     }
 
@@ -69,5 +73,13 @@ public class ToDoList {
 
     public void setDatetime(Date datetime) {
         this.datetime = datetime;
+    }
+
+    public Offer getOffer() {
+        return offer;
+    }
+
+    public void setOffer(Offer offer) {
+        this.offer = offer;
     }
 }

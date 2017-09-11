@@ -71,7 +71,7 @@ public class OfferController {
         model.addAttribute("restaurantName", "");
         model.addAttribute("allergenicsList", offerService.getAllAllergenic());
         model.addAttribute("additivesList", offerService.getAllAdditives());
-        model = preparePictures(model, new Offer());
+        model = offerService.prepareOfferPictures(model, new Offer());
 
         return "offer";
     }
@@ -88,8 +88,8 @@ public class OfferController {
         offer.setIdOfRestaurant(restaurantId);
         offer.offerTimesContainerFiller(restaurantService.getRestaurantById(restaurantId));
 
-        model = prepareModelForChosenRestaurant(model, restaurantId);
-        model = preparePictures(model, offer);
+        model = prepareModelForGivenRestaurant(model, restaurantId);
+        model = offerService.prepareOfferPictures(model, offer);
         model.addAttribute("offer", offer);
 
         return "offer";
@@ -102,17 +102,19 @@ public class OfferController {
         Offer offer = offerService.getOffer(offerId);
         Restaurant restaurant = offer.getRestaurant();
         int restaurantId = restaurant.getId();
+        int changeRequestId = offer.getChangeRequestId();
 
         request.getSession().setAttribute("newOffer", false);
         request.getSession().setAttribute("offerId", offerId);
         request.getSession().setAttribute("restaurantId", restaurantId);
         request.getSession().setAttribute("commentOfLastChange", offer.getCommentOfLastChange());
+        request.getSession().setAttribute("changeRequestId" , changeRequestId);
 
-        offerService.addOfferToRestaurantTransaction(offer);
-        Offer preparedExistingOffer = prepareExistingOffer(offer, restaurant);
+        offerService.addOfferToTransactionStore(offer);
+        Offer preparedExistingOffer = offerService.prepareExistingOffer(offer, restaurant);
 
-        model = prepareModelForChosenRestaurant(model, restaurantId);
-        model = preparePictures(model, preparedExistingOffer);
+        model = prepareModelForGivenRestaurant(model, restaurantId);
+        model = offerService.prepareOfferPictures(model, preparedExistingOffer);
         model.addAttribute("offer", preparedExistingOffer);
 
         return "offer";
@@ -130,25 +132,14 @@ public class OfferController {
     }
 
     @RequestMapping(value = "/saveOffer", method = RequestMethod.POST)
-    public String saveOffer (Model model, @Valid Offer offer, BindingResult offerBinder, HttpServletRequest request) {
+    public String saveOffer(Model model, @Valid Offer offer, BindingResult offerBinder, HttpServletRequest request) {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         int restaurantId = (int) request.getSession().getAttribute("restaurantId");
         int offerId = (int) request.getSession().getAttribute("offerId");
         boolean newOffer = (boolean) request.getSession().getAttribute("newOffer");
         String commentOfLastChange = (String) request.getSession().getAttribute("commentOfLastChange");
-
-        if (offerBinder.hasErrors()) {
-            offer.setIdOfRestaurant(restaurantId);
-            offer.offerTimesContainerFiller(restaurantService.getRestaurantById(restaurantId));
-            offer.setId(offerId);
-
-            model = prepareModelForChosenRestaurant(model, restaurantId);
-            model = preparePictures(model, offer);
-            model.addAttribute("offer", offer);
-
-            return "offer";
-        }
+        int changeRequestId = (int) request.getSession().getAttribute("changeRequestId");
 
         //Security check for the bound offer fields
         String[] suppressedFields = offerBinder.getSuppressedFields();
@@ -156,10 +147,27 @@ public class OfferController {
             throw new RuntimeException("Attempting to bind disallowed fields: " + StringUtils.arrayToCommaDelimitedString(suppressedFields));
         }
 
-        //comment of last change persists if the new comment is empty
-        offer.setCommentOfLastChange(commentOfLastChange);
+        if (offerBinder.hasErrors()) {
+            offer.setIdOfRestaurant(restaurantId);
+            offer.offerTimesContainerFiller(restaurantService.getRestaurantById(restaurantId));
+            offer.setId(offerId);
 
-        //Checks if it is a new offer or a change to an existing one
+            model = prepareModelForGivenRestaurant(model, restaurantId);
+            model = offerService.prepareOfferPictures(model, offer);
+            model.addAttribute("offer", offer);
+
+            return "offer";
+        }
+
+        //Keeps the former change comment if no new change comment has been entered.
+        if (offer.getNewChangeComment().equals("")) {
+            offer.setCommentOfLastChange(commentOfLastChange);
+        }
+
+        /*
+        * 1) Distinguish between a new offer and an offer update.
+        * 2) Checks if the offer has been altered while the user worked on it.
+         */
         if (newOffer == true && offerId == 0) {
             offer.setIdOfRestaurant(restaurantId);
             offerService.saveOffer(offer);
@@ -170,6 +178,7 @@ public class OfferController {
             } else if(newOffer == false && offerId != 0) {
                 offer.setIdOfRestaurant(restaurantId);
                 offer.setId(offerId);
+                offer.setChangeRequestId(changeRequestId);
                 offerService.saveOffer(offer);
                 return "redirect:/home?offerChangeSuccess";
             } else {
@@ -178,43 +187,7 @@ public class OfferController {
         }
     }
 
-    private Offer prepareExistingOffer(Offer offer, Restaurant restaurant) {
-
-        try {
-            String startDate = offer.getStartDate().toString();
-            startDate = startDate.substring(0, startDate.length() - 11);
-            offer.setStartDateAsString(offer.reOrderDate(startDate));
-        } catch (Exception e) {
-            // The offer has no assigned start date
-        }
-
-        try {
-            String endDate = offer.getEndDate().toString();
-            endDate = endDate.substring(0, endDate.length() - 11);
-            offer.setEndDateAsString(offer.reOrderDate(endDate));
-        } catch (Exception e) {
-            // The offer has no assigned end date
-        }
-
-        offer.setNeededPointsAsString(String.valueOf(offer.getNeededPoints()));
-        offer.setPriceAsString(String.valueOf(offer.getPrice()));
-        offer.setPreparationTimeAsString(String.valueOf(offer.getPreparationTime()));
-        offer.setIdOfRestaurant(offer.getRestaurant().getId());
-        offer.daysOfWeekAsStringFiller();
-        offer.offerTimesContainerFiller(restaurant);
-        offer.allergenicFiller();
-        offer.additivesFiller();
-
-        try {
-            offer.setCourseTypeAsString(offer.getCourseType().getName());
-        } catch (Exception e) {
-            // offer has no course type (courseType is null because the courseType has been deleted).
-        }
-
-        return offer;
-    }
-
-    private Model prepareModelForChosenRestaurant(Model model, int restaurantId) {
+    private Model prepareModelForGivenRestaurant(Model model, int restaurantId) {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
@@ -237,90 +210,6 @@ public class OfferController {
 
         model.addAttribute("courseTypes", courseTypes);
 
-        return model;
-    }
-
-    private Model preparePictures(Model model, Offer offer) {
-        int numberOfExistingPictures = 0;
-        List<OfferPhoto> offerPhotos = offer.getOfferPhotos();
-
-        try {
-            numberOfExistingPictures = offerPhotos.size();
-        } catch (Exception e) {
-            //zero existing pictures
-        }
-
-        BufferedImage defaultImage;
-        byte[] defaultImageAsByte = null;
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        File file = null;
-
-        try {
-            file = new ClassPathResource("static/defaultOfferImage.jpg").getFile();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        try {
-            defaultImage = ImageIO.read(file);
-            ImageIO.write(defaultImage, "jpg", baos);
-            defaultImageAsByte = baos.toByteArray();
-            baos.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        String defaultImageBase64 = Base64.getEncoder().encodeToString(defaultImageAsByte);
-
-        switch (numberOfExistingPictures) {
-            case 0:
-                model.addAttribute("firstPicture", defaultImageBase64);
-                model.addAttribute("firstPictureDeleteDisabled", true);
-
-                model.addAttribute("secondPicture", defaultImageBase64);
-                model.addAttribute("secondPictureDeleteDisabled", true);
-
-                model.addAttribute("thirdPicture", defaultImageBase64);
-                model.addAttribute("thirdPictureDeleteDisabled", true);
-                break;
-
-            case 1:
-                model.addAttribute("firstPicture", Base64.getEncoder().encodeToString(offerPhotos.get(0).getThumbnail()));
-                model.addAttribute("idOfFirstPicture", offerPhotos.get(0).getId());
-                model.addAttribute("firstPictureDeleteDisabled", false);
-
-                model.addAttribute("secondPicture", defaultImageBase64);
-                model.addAttribute("secondPictureDeleteDisabled", true);
-
-                model.addAttribute("thirdPicture", defaultImageBase64);
-                model.addAttribute("thirdPictureDeleteDisabled", true);
-                break;
-
-            case 2:
-                model.addAttribute("firstPicture", Base64.getEncoder().encodeToString(offerPhotos.get(0).getThumbnail()));
-                model.addAttribute("idOfFirstPicture", offerPhotos.get(0).getId());
-                model.addAttribute("firstPictureDeleteDisabled", false);
-
-                model.addAttribute("secondPicture", Base64.getEncoder().encodeToString(offerPhotos.get(1).getThumbnail()));
-                model.addAttribute("idOfSecondPicture", offerPhotos.get(1).getId());
-                model.addAttribute("secondPictureDeleteDisabled", false);
-
-                model.addAttribute("thirdPicture", defaultImageBase64);
-                model.addAttribute("thirdPictureDeleteDisabled", true);
-                break;
-
-            default: // 3 and more pics
-                model.addAttribute("firstPicture", Base64.getEncoder().encodeToString(offerPhotos.get(0).getThumbnail()));
-                model.addAttribute("idOfFirstPicture", offerPhotos.get(0).getId());
-                model.addAttribute("firstPictureDeleteDisabled", false);
-
-                model.addAttribute("secondPicture", Base64.getEncoder().encodeToString(offerPhotos.get(1).getThumbnail()));
-                model.addAttribute("idOfSecondPicture", offerPhotos.get(1).getId());
-                model.addAttribute("secondPictureDeleteDisabled", false);
-
-                model.addAttribute("thirdPicture", Base64.getEncoder().encodeToString(offerPhotos.get(2).getThumbnail()));
-                model.addAttribute("idOfThirdPicture", offerPhotos.get(2).getId());
-                model.addAttribute("thirdPictureDeleteDisabled", false);
-        }
         return model;
     }
 

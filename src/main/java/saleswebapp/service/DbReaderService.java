@@ -19,7 +19,7 @@ public interface DbReaderService {
 
     Restaurant getRestaurantById(int id);
 
-    List<ToDoList> getAllToDosOfSalesPerson(String email);
+    List<ToDo> getAllToDosOfSalesPerson(String email);
 
     List<RestaurantType> getAllRestaurantTypes();
 
@@ -42,5 +42,7 @@ public interface DbReaderService {
     List<Allergenic> getAllAllergenic();
 
     OfferPhoto getOfferPhoto(int offerPhotoId);
+
+    ToDo getToDoById(int toDoId);
 
 }

@@ -26,7 +26,7 @@
         <script type="text/javascript" th:src="@{https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js}" />
         <link rel="stylesheet" type="text/css" th:href="@{webjars/bootstrap/3.3.7/css/bootstrap.min.css}" />
         <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
-        <link rel="stylesheet" type="text/css" th:href="@{/static/main.css}" />
+        <link rel="stylesheet" type="text/css" th:href="@{main.css}" />
 
         <script th:inline="none">
             $(document).ready(function(){
@@ -93,6 +93,20 @@
                     <th th:text="#{home.error.offerControllerError}" />
                 </div>
 
+                <div th:if="${param.noValidAccessToToDo != null}" class="alert alert-danger">
+                    <a href="/saleswebapp/home" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
+                    <th th:text="#{home.error.noValidAccessToToDo}" />
+                </div>
+
+                <div th:if="${param.changeRequestDeleted != null}" class="alert alert-success">
+                    <a href="/saleswebapp/home" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
+                    <th th:text="#{home.success.offerChangeRequestDeleted}" />
+                </div>
+
+                <div th:if="${param.offerChangeRequestSuccess != null}" class="alert alert-success">
+                    <a href="/saleswebapp/home" class="close" data-dismiss="alert" aria-label="close" title="close">x</a>
+                    <th th:text="#{home.success.offerChangeRequestSaved}" />
+                </div>
             </div>
 
         <div class="page-header">
@@ -105,7 +119,7 @@
                 <th> <span th:text="#{home.label.toDoTable.restaurant}" /> </th>
                 <th>
                     <span th:text="#{home.label.toDoTable.id}" />
-                    <span class="glyphicon glyphicon-question-sign" th:title="#{restaurant.label.tooltip}" />
+                    <span class="glyphicon glyphicon-question-sign" th:title="#{home.label.tooltip.toDoTable.id}" />
                 </th>
                 <th> <span th:text="#{home.label.toDoTable.RequestTyp}" /> </th>
                 <th> <span th:text="#{home.label.toDoTable.timestamp}" /> </th>
@@ -119,7 +133,7 @@
                 <td>
                     <!-- Displays the processId(id) as a link if the requestTyp is a changeRequest -->
                     <div th:switch="${toDo.requestTyp}">
-                        <span th:case="'Änderung freigeben'"> <a class="btn-link" th:href="@{/changeRequest(id=${toDo.id})}" th:text="${toDo.id}" /> </span>
+                        <span th:case="'Änderung freigeben'"> <a class="btn-link" th:href="@{/offerChangeRequest(id=${toDo.id})}" th:text="${toDo.id}" /> </span>
                         <span th:case="'Besuchsaufforderung'"> <span th:text="${toDo.id}" /> </span>
                         <span th:case="'Umsatzwarnung'"> <span th:text="${toDo.id}" /> </span>
                     </div>
@@ -138,10 +152,19 @@
                 <td>
                     <div th:switch="${toDo.requestTyp}">
                         <span th:case="'Änderung freigeben'">  </span>
-                        <span th:case="'Besuchsaufforderung'"> #deleteIcon </span>
-                        <span th:case="'Umsatzwarnung'"> #deleteIcon </span>
+                        <span th:case="'Besuchsaufforderung'">
+                            <a th:href="@{/home/remove(toDo=${toDo.id})}" class="label label-danger">
+                                <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{universal.label.delete}" />
+                            </a>
+                        </span>
+                        <span th:case="'Umsatzwarnung'">
+                            <a th:href="@{/home/remove(toDo=${toDo.id})}" class="label label-danger">
+                                <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{universal.label.delete}" />
+                            </a>
+                        </span>
                     </div>
                 </td>
+
             </tr>
             </tbody>
         </table>
@@ -184,10 +207,9 @@
             </tr>
             </tbody>
         </table>
+    </div>
 
-        </div>
-
-        <div th:replace="fragments/footer :: footer"></div>
+    <div th:replace="fragments/footer :: footer"></div>
     </body>
 
 </html>

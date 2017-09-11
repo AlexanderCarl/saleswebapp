@@ -1,6 +1,6 @@
 package saleswebapp.components;
 
-import saleswebapp.repository.impl.ToDoList;
+import saleswebapp.repository.impl.ToDo;
 
 import java.io.Serializable;
 
@@ -22,13 +22,13 @@ public class HomeToDoForm implements Serializable {
         super();
     }
 
-    public HomeToDoForm(ToDoList toDoList) {
-        this.id = toDoList.getId();
-        this.restaurantId = toDoList.getRestaurant().getId();
-        this.requestTyp = toDoList.getToDoRequestTyp().getName();
-        this.restaurantName = toDoList.getRestaurant().getName();
+    public HomeToDoForm(ToDo toDo) {
+        this.id = toDo.getId();
+        this.restaurantId = toDo.getRestaurant().getId();
+        this.requestTyp = toDo.getToDoRequestTyp().getName();
+        this.restaurantName = toDo.getRestaurant().getName();
 
-        String time = toDoList.getDatetime().toString();
+        String time = toDo.getDatetime().toString();
         this.timestamp = time.substring(0, time.length() - 5);
     }
 

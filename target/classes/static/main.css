@@ -5,16 +5,20 @@
 }
 
 .span-top-padding {
-    padding-top: 1%;
+    margin-top: 1%;
 }
 
 .timeField-side-padding {
-    padding-right: 1.5%; !important;
-    padding-left: 1.5%; !important;
+    margin-right: 1.5%; !important;
+    margin-left: 1.5%; !important;
 }
 
 .timeField-width {
     width: 630px; !important;
+}
+
+.input-warning {
+    border-color: sandybrown;
 }
 
 /* Sticky footer styles

@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
     <head th:include="fragments/head :: head">
-        <title>SalesWebApp restaurant</title>
+        <title>SalesWebApp Offer</title>
     </head>
 
     <body>
@@ -211,7 +211,7 @@
                     <div th:each="offerTime, stat : ${offer.offerTimes}">
                         <p class="form-inline">
                             <label class="span-top-padding col-lg-3 col-lg-md-3 col-sm-3">
-                                <th th:switch="${offerTime.dayNumber}">
+                                <span th:switch="${offerTime.dayNumber}">
                                     <span th:case="'1'"><span th:text="#{universal.label.monday}" /></span>
                                     <span th:case="'2'"><span th:text="#{universal.label.tuesday}" /></span>
                                     <span th:case="'3'"><span th:text="#{universal.label.wednesday}" /></span>
@@ -219,7 +219,7 @@
                                     <span th:case="'5'"><span th:text="#{universal.label.friday}" /></span>
                                     <span th:case="'6'"><span th:text="#{universal.label.saturday}" /></span>
                                     <span th:case="'7'"><span th:text="#{universal.label.sunday}" /></span>
-                                </th>
+                                </span>
                             </label>
 
                             <span class="timeField-side-padding">
@@ -318,17 +318,6 @@
             <div class="col-lg-6 col-lg-md-6 col-sm-12">
                 <p class="form-inline">
                     <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
-                    <label class="span-top-padding"> <th th:text="#{offer.label.newChangeComment}" /> </label>
-                </p>
-
-                <div class="col-lg-offset-1 col-lg-md-offset-1 col-sm-offset-1">
-                    <textarea class="form-control" rows="5" th:field="${offer.newChangeComment}" th:disabled="${dataInputDisabled}" />
-                </div>
-            </div>
-
-            <div class="col-lg-6 col-lg-md-6 col-sm-12">
-                <p class="form-inline">
-                    <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
                     <label class="span-top-padding"> <th th:text="#{offer.label.commentOfLastChange}" /> </label>
                 </p>
 
@@ -336,10 +325,23 @@
                     <textarea class="form-control" rows="5" th:field="${offer.commentOfLastChange}" disabled="disabled" />
                 </div>
             </div>
+
+            <div class="col-lg-6 col-lg-md-6 col-sm-12">
+                <p class="form-inline">
+                    <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                    <label class="span-top-padding"> <th th:text="#{offer.label.newChangeComment}" /> </label>
+                </p>
+
+                <div class="col-lg-offset-1 col-lg-md-offset-1 col-sm-offset-1">
+                    <span th:classappend="${#fields.hasErrors('*{newChangeComment}')}? has-error">
+                        <textarea class="form-control" rows="5" th:field="${offer.newChangeComment}" th:disabled="${dataInputDisabled}" />
+                    </span>
+                </div>
+            </div>
         </div>
 
         <div class="row" style="margin-top: 25px">
-            <div class="btn-toolbar" style="padding-bottom: 5%; padding-top: 1.5%">
+            <div class="btn-toolbar" style="margin-bottom: 5%; margin-top: 1.5%">
                 <button class="btn btn-primary" style="width: 15%" type="submit" th:disabled="${dataInputDisabled}" > <th th:text="#{universal.label.save}" /> </button>
                 <a th:href="@{home}" class="btn btn-primary" style="width: 15%"> <th th:text="#{universal.label.cancel}" /> </a>
             </div>

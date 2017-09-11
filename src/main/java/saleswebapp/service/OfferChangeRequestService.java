@@ -1,0 +1,27 @@
+package saleswebapp.service;
+
+import org.springframework.ui.Model;
+import saleswebapp.repository.impl.CourseType;
+import saleswebapp.repository.impl.Offer;
+import saleswebapp.repository.impl.ToDo;
+
+import java.util.List;
+
+/**
+ * Created by Alexander Carl on 07.09.2017.
+ */
+public interface OfferChangeRequestService {
+
+    ToDo getToDoById(int id);
+
+    List<CourseType> getCourseTypes(int restaurantId);
+
+    Model prepareOfferPicturesForExistingOffer(Model model, Offer offer);
+
+    void deleteOfferChangeRequest(int offerToDeleteId, int offerToUpdateId, int toDoId);
+
+    void saveOfferChangeRequest(int offerChangeRequestId, Offer changedOffer, int toDoId);
+
+    Model addAttribtueChangesToModel (Model model, boolean allFalse, Offer preparedExistingOffer, Offer preparedChangedOffer);
+
+}

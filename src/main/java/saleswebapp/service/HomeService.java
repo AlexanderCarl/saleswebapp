@@ -13,4 +13,8 @@ public interface HomeService {
     List<HomeRestaurantForm> createHomeRestaurantFormListForSalesPerson(String email);
 
     List<HomeToDoForm> getAllToDosForSalesPerson(String email);
+
+    boolean toDoAssignedToSalePerson(int toDoId);
+
+    void deleteToDo(int toDoId);
 }

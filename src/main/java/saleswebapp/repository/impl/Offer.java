@@ -9,9 +9,7 @@ import saleswebapp.components.RestaurantTimeContainer;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 /**
  * Created by Alexander Carl on 02.08.2017.
@@ -81,7 +79,7 @@ public class Offer {
     private List<OfferHasAllergenic> offerHasAllergenics;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "offer", cascade = CascadeType.ALL)
-    private List<OfferPhoto> offerPhotos;
+    private Set<OfferPhoto> offerPhotos;
 
     @Transient
     private String courseTypeAsString;
@@ -98,6 +96,7 @@ public class Offer {
     @Transient
     private List<String> validnessDaysOfWeekAsString;
 
+    @Size(min=0, max=65535, message = "{offer.validation.changeComment}")
     @Transient
     private String newChangeComment;
 
@@ -151,15 +150,6 @@ public class Offer {
         }
     }
 
-    //changes the the date format (String) from 2017-08-31 (yyyy-mm-dd) to 31-08-2017 (dd-mm-yyyy) to better match the regex validation
-    public String reOrderDate(String date) {
-        String year = date.substring(0,4);
-        String month = date.substring(5,7);
-        String day = date.substring(8,10);
-
-        return day + "-" + month + "-" + year;
-    }
-
     public void additivesFiller() {
         additivesAsString = new ArrayList<String>();
 
@@ -168,6 +158,15 @@ public class Offer {
                 additivesAsString.add(offerHasAdditive.getAdditive().getName());
             }
         }
+    }
+
+    //changes the the date format (String) from 2017-08-31 (yyyy-mm-dd) to 31-08-2017 (dd-mm-yyyy) to better match the regex validation
+    public String reOrderDate(String date) {
+        String year = date.substring(0,4);
+        String month = date.substring(5,7);
+        String day = date.substring(8,10);
+
+        return day + "-" + month + "-" + year;
     }
 
     public void daysOfWeekAsStringFiller() {
@@ -611,11 +610,18 @@ public class Offer {
     }
 
     public List<OfferPhoto> getOfferPhotos() {
-        return offerPhotos;
+        List<OfferPhoto> offerPhotosAsList = new ArrayList<OfferPhoto>();
+        if(offerPhotos != null) {
+            offerPhotosAsList.addAll(offerPhotos);
+        }
+        return offerPhotosAsList;
     }
 
     public void setOfferPhotos(List<OfferPhoto> offerPhotos) {
-        this.offerPhotos = offerPhotos;
+        if(offerPhotos != null) {
+            Set<OfferPhoto> offerPhotosAsSet = new HashSet<OfferPhoto>(offerPhotos);
+            this.offerPhotos = offerPhotosAsSet;
+        }
     }
 
     public MultipartFile getFirstOfferImage() {
