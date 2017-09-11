@@ -17,6 +17,7 @@ import saleswebapp.repository.impl.SalesPerson;
 import saleswebapp.service.CountryService;
 import saleswebapp.service.DbReaderService;
 import saleswebapp.service.DbWriterService;
+import saleswebapp.service.ProfileService;
 import saleswebapp.validator.profile.ProfileValidator;
 
 import javax.validation.Valid;
@@ -29,40 +30,24 @@ import java.util.HashMap;
 @Controller
 public class ProfileController {
 
-    private final Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    @Autowired
-    private DbReaderService dbReaderService;
-
-    @Autowired
-    private DbWriterService dbWriterService;
-
     @Autowired
     private CountryService countryService;
 
     @Autowired
+    private ProfileService profileService;
+
+    @Autowired
     private ProfileValidator profileValidator;
 
-    private ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder(256);
-
-    //The sales persons id is the key.
-    /*This Map is used to store the profile(data) of the sales person which is send to the user.
-    * When the user presses save the profile(data) is loaded from the DB again and compared to the
-    * profile(data) at the start (stored in the HashMap). If the restaurant(data) has been altered
-    * on the server while the user worked on it, the save request is rejected. This logic
-    * is used to ensure data consistency.
-    * The word transaction is used twice here:
-    * 1) Transaction: Start by the GET.Request for the restaurant model - End by the comparison check if the DB-Object has been altered.
-    * 2) Transaction: Only used to save the restaurant(data) with @Transactional */
-    private static HashMap<Integer, SalesPerson> salesPersonsTransactionStart = new HashMap<Integer, SalesPerson>();
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String profile(Model model) {
         String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         loggedInUser = "carl@hm.edu"; //Dev-Only
 
-        SalesPerson salesPerson = dbReaderService.getSalesPersonByEmail(loggedInUser);
-        salesPersonsTransactionStart.put(salesPerson.getId(), salesPerson);
+        SalesPerson salesPerson = profileService.getSalesByEmail(loggedInUser);
+        profileService.addSalesPersonToTransactionStore(salesPerson);
 
         model.addAttribute("profileForm", new ProfileForm(salesPerson));
         model.addAttribute("countries", countryService.getAllCountries());
@@ -70,8 +55,8 @@ public class ProfileController {
         return "profile";
     }
 
-    @RequestMapping(value = "/profile", method = RequestMethod.POST)
-    public String processProfile(Model model, @Valid ProfileForm profileForm, BindingResult bindingResult) {
+    @RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
+    public String saveProfile(Model model, @Valid ProfileForm profileForm, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             //The attributes must be added again to the profile. This can also be done using the @ModelAttribute Annotation
             model.addAttribute("profileForm", profileForm);
@@ -81,42 +66,19 @@ public class ProfileController {
         }
 
         //Security check if the concerning the DB-Object salesPerson has been altered during transaction.
-        SalesPerson salesPersonTransactionEnd = dbReaderService.getSalesPersonById(profileForm.getId());
-        if (!salesPersonTransactionEnd.equals(salesPersonsTransactionStart.get(profileForm.getId()))) {
+        if (profileService.salesPersonHasBeenAlteredMeanwhile(profileForm.getId())) {
             return "redirect:/home?profileWasChangedMeanwhile";
-        }
-
-        //SecurityContext check if the email of the concerning DB-Object salesPerson has changed.
-        if (!salesPersonTransactionEnd.getEmail().equals(profileForm.getEmail())) {
-            dbWriterService.saveProfileChange(profileForm);
-            passwordSave(profileForm);
-            logger.debug("Logout - User: " + salesPersonTransactionEnd.getEmail() + " logged out.");
-            SecurityContextHolder.getContext().setAuthentication(null);
-            return "redirect:/login?profileEmailWasChanged";
-        }
-
-        dbWriterService.saveProfileChange(profileForm);
-        passwordSave(profileForm);
-        salesPersonsTransactionStart.remove(profileForm.getId());
-        return "redirect:/home?profileChangeSuccess";
-    }
-
-    /*
-    Saves the new password if the conditions are correct.
-    This function is always called when the user profile is saved. Therefore the function
-    needs to check for itself if a password change is required or not.
-     */
-    private void passwordSave(ProfileForm profileForm) {
-
-        if(!profileForm.getValidPassword().equals("")) {
-            String encodedOldPassword = shaPasswordEncoder.encodePassword(profileForm.getValidPassword(), null); //Password before it gets changed
-
-            if(salesPersonsTransactionStart.get(profileForm.getId()).getPassword().equals(encodedOldPassword)) {
-
-                if(profileForm.getNewPassword().equals(profileForm.getRepeatNewPassword())) {
-                    String encodedNewPassword = shaPasswordEncoder.encodePassword(profileForm.getNewPassword(), null);
-                    dbWriterService.setNewPassword(profileForm.getId(), encodedNewPassword);
-                }
+        } else {
+            if (profileService.emailOfSalesPersonHasBeenAltered(profileForm.getId())) {
+                profileService.saveSalesPerson(profileForm);
+                profileService.setNewPassword(profileForm);
+                logger.debug("User (User-ID: " + profileForm.getId() + ") logged out successfully.");
+                SecurityContextHolder.getContext().setAuthentication(null);
+                return "redirect:/login?profileEmailWasChanged";
+            } else {
+                profileService.saveSalesPerson(profileForm);
+                profileService.setNewPassword(profileForm);
+                return "redirect:/home?profileChangeSuccess";
             }
         }
     }

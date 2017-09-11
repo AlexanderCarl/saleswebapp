@@ -7,7 +7,6 @@ import javax.persistence.*;
  * The table user has a flaw. In the FindLunch Application the relation between user und restaurant is m:n. This makes it possible for a user to have several favorites.
  * But this does also means that a user with multiple "favorite restaurants" has multiple entries in the user table.
  * I leave the table as it is because I know that user table will be over-worked in the near future.
- * I leave out the column restaurant, as it is faulty and the column account_id as it is not needed for the salesWebApp.
  */
 @Entity
 @Table(name = "user")

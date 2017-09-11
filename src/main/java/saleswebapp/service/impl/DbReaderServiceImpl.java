@@ -8,6 +8,7 @@ import saleswebapp.repository.*;
 import saleswebapp.repository.impl.*;
 import saleswebapp.service.DbReaderService;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -99,22 +100,46 @@ public class DbReaderServiceImpl implements DbReaderService {
 
     @Override
     public List<Offer> getAllOffersOfRestaurant(int restaurantId) {
-        return offerRepository.getAllByRestaurantId(restaurantId);
+
+        List<Offer> offerList = offerRepository.getAllByRestaurantId(restaurantId);
+        List<Offer> offerListToReturn = new ArrayList<Offer>();
+
+        for(Offer offer : offerList) {
+            if(offer.isChangeRequest() == false) {
+                offerListToReturn.add(offer);
+            }
+        }
+
+        return offerListToReturn;
     }
 
     @Override
     public List<Offer> getAllOffersOfRestaurant(int restaurantId, String courseTypeAsString) {
         List<CourseType> courseTypeList = courseTypeRepository.getAllByNameAndRestaurantId(courseTypeAsString, restaurantId);
-
-        //
         List<Offer> offerList = offerRepository.getAllByRestaurantIdAndCourseType(restaurantId, courseTypeList.get(0));
+        List<Offer> offerListToReturn = new ArrayList<Offer>();
 
-        return offerList;
+        for(Offer offer : offerList) {
+            if(offer.isChangeRequest() == false) {
+                offerListToReturn.add(offer);
+            }
+        }
+
+        return offerListToReturn;
     }
 
     @Override
     public List<Offer> getAllOffersOfRestaurantAndCourseTypeNull(int restaurantId) {
-        return offerRepository.getAllByCourseTypeIsNullAndRestaurantId(restaurantId);
+        List<Offer> offerList = offerRepository.getAllByCourseTypeIsNullAndRestaurantId(restaurantId);
+        List<Offer> offerListToReturn = new ArrayList<Offer>();
+
+        for(Offer offer : offerList) {
+            if(offer.isChangeRequest() == false) {
+                offerListToReturn.add(offer);
+            }
+        }
+
+        return offerListToReturn;
     }
 
     @Override

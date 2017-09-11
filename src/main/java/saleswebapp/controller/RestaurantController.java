@@ -54,6 +54,7 @@ public class RestaurantController {
 
         Restaurant restaurant = preparedRestaurantForNewRestaurant();
         model = getRestaurantModel(restaurant, model);
+        model.addAttribute("offerLinkDisabled", true);
 
         return "restaurant";
     }

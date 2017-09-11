@@ -15,7 +15,7 @@
         </div>
 
         <div class="row">
-        <form th:action="@{/profile}" th:object="${profileForm}" method="post">
+        <form th:action="@{/saveProfile}" th:object="${profileForm}" method="post">
 
             <ul th:if="${#fields.hasErrors('*')}">
                 <li th:each="err : ${#fields.errors('*')}" th:text="${err}" class="text-danger" />

@@ -51,7 +51,7 @@
                         <th th:text="#{restaurant.label.redirectOffer}" />
                     </label>
 
-                    <a th:href="@{/offerOverviewByRestaurant(id=${restaurant.id})}" class="btn btn-primary" style="width: 15%"> <th th:text="#{restaurant.label.button.redirectOffer}" /> </a>
+                    <a th:href="@{/offerOverviewByRestaurant(id=${restaurant.id})}" th:disabled="${offerLinkDisabled}" class="btn btn-primary" style="width: 15%"> <th th:text="#{restaurant.label.button.redirectOffer}" /> </a>
                 </p>
             </div>
         </div>

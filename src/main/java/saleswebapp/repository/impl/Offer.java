@@ -65,6 +65,9 @@ public class Offer {
     @JoinColumn(name = "swa_last_changed_by")
     private SalesPerson salesPerson;
 
+    @Column(name = "swa_change_request")
+    private boolean changeRequest;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "offer_has_day_of_week",
             joinColumns = {@JoinColumn(name = "offer_id")},
@@ -131,7 +134,7 @@ public class Offer {
     @Transient
     private String endDateAsString;
 
-    @Pattern(regexp = "^[0-9]{1,3}$", message = "{offer.validation.neededPoints}")
+    @Pattern(regexp = "^[1-9][0-9]{0,2}$", message = "{offer.validation.neededPoints}")
     @Transient
     private String neededPointsAsString;
 
@@ -674,6 +677,14 @@ public class Offer {
 
     public String getNeededPointsAsString() {
         return neededPointsAsString;
+    }
+
+    public boolean isChangeRequest() {
+        return changeRequest;
+    }
+
+    public void setChangeRequest(boolean changeRequest) {
+        this.changeRequest = changeRequest;
     }
 
     public void setNeededPointsAsString(String neededPointsAsString) {

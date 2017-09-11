@@ -49,7 +49,7 @@
                     <th th:text="#{offerOverview.label.courseTpe}" />
                 </label>
 
-                <select class="form-control" onchange="window.location.href= 'offerOverviewByCourseType?courseType=' + this.value" style="width: 350px">
+                <select class="form-control" onchange="window.location.href= 'offerOverviewByCourseType?courseType=' + this.value" style="width: 350px" th:disabled="${disableCategoryFilter}">
                     <option th:each="courseType : ${courseTypeList}"
                             th:value="${courseType.name}"
                             th:text="${courseType.name}"

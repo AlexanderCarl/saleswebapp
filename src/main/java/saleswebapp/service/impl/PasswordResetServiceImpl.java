@@ -1,5 +1,7 @@
 package saleswebapp.service.impl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -30,7 +32,6 @@ public class PasswordResetServiceImpl implements PasswordResetService{
     private ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder(256);
 
     @Override
-    @Transactional
     public void setNewPassword(String newPassword, String securityCode) {
 
         String userEmail =  passwordRequestService.getUserEmail(securityCode);

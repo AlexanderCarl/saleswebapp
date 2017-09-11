@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * Created by Alexander Carl on 04.07.2017.
- * This form is used in the dialog home. (Therefore the name HomeToDoForm)
+ * This form is used in the dialog home.
  */
 public class HomeToDoForm implements Serializable {
 

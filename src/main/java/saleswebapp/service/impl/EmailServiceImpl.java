@@ -61,6 +61,6 @@ public class EmailServiceImpl implements EmailService {
         }
         javaMailSender.send(mailMessage);
 
-        logger.debug("PasswordRequestForm success - User " + userEmail + " PasswordResetMail was send.");
+        logger.debug("PasswordRequestMail (User: " + userEmail + ") has been send.");
     }
 }

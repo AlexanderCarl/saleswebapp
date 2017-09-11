@@ -80,8 +80,6 @@ public class DbWriterServiceImpl implements DbWriterService {
     @Autowired
     private ToDoRepository toDoRepository;
 
-    private ShaPasswordEncoder encoder = new ShaPasswordEncoder(256);
-
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     @Override
@@ -122,6 +120,7 @@ public class DbWriterServiceImpl implements DbWriterService {
         salesPerson.setBic(profileForm.getBic());
 
         salesPersonRepository.saveAndFlush(salesPerson);
+        logger.debug("SalesPerson`s (ID: " + profileForm.getId() +") profile change has been saved.");
     }
 
     @Override
@@ -188,8 +187,13 @@ public class DbWriterServiceImpl implements DbWriterService {
         //Offer/Opening times
         restaurantToSave.setTimeScheduleList(getTimeScheduleList(restaurantData, restaurantToSave));
 
-        restaurantRepository.save(restaurantToSave);
-        logger.debug("Restaurant (Customer-ID: " + restaurantToSave.getCustomerId() + ") wurde erfolgreich gespeichert.");
+        restaurantRepository.saveAndFlush(restaurantToSave);
+
+        if(restaurantId == 0) {
+            logger.debug("Restaurant (Customer-ID: " + restaurantToSave.getCustomerId() + ") has been added.");
+        } else {
+            logger.debug("Restaurant (ID: " + restaurantId + ") changes have been saved.");
+        }
     }
 
     private Restaurant getCoordinates (Restaurant restaurantData, Restaurant restaurantToSave)   {
@@ -352,7 +356,6 @@ public class DbWriterServiceImpl implements DbWriterService {
     @Override
     @Transactional
     public void deleteOffer(int offerId) {
-
         offerHasAllergenicRepository.deleteByOfferId(offerId);
         offerHasAdditivesRepository.deleteByOfferId(offerId);
         offerPhotoRepository.deleteByOfferId(offerId);
@@ -360,8 +363,6 @@ public class DbWriterServiceImpl implements DbWriterService {
 
         logger.debug("Offer (ID: " + offerId +") has been deleted.");
     }
-
-
 
     @Override
     @Transactional
@@ -531,8 +532,13 @@ public class DbWriterServiceImpl implements DbWriterService {
         }
         offerToSave.setOfferPhotos(offerPhotos);
 
-        offerRepository.save(offerToSave);
-        logger.debug("Offer (Offer-ID: " + offerToSave.getId() + ") has been saved.");
+        offerRepository.saveAndFlush(offerToSave);
+
+        if(offerId == 0) {
+            logger.debug("Offer (Customer-ID: " + offerToSave.getRestaurant().getCustomerId() + ") has been added.");
+        } else {
+            logger.debug("Offer (ID: " + offerId + ") changes have been saved.");
+        }
     }
 
     @Override

@@ -6,6 +6,5 @@ import org.springframework.security.web.context.AbstractSecurityWebApplicationIn
  * Created by Alexander Carl on 06.06.2017.
  */
 public class SecurityWebApplicationInitializer extends AbstractSecurityWebApplicationInitializer {
-    //Implementation of the class AbstractSecurityWebApplicationInitializer does ensure loading of the SecurityConfig class during the program start.
-
+    //Implementation of the class AbstractSecurityWebApplicationInitializer does ensure loading of the SecurityConfig class during the programme start.
 }

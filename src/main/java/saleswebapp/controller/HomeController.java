@@ -37,7 +37,7 @@ public class HomeController {
     @RequestMapping(value = "/home/logout")
     public String logout() {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        logger.debug("Logout - User " + loggedInUser + " logged out.");
+        logger.debug("Logout - User: " + loggedInUser + " logged out.");
         SecurityContextHolder.getContext().setAuthentication(null);
 
         return "redirect:/login?logout";

@@ -36,6 +36,7 @@ public class OfferOverviewController {
 
         request.getSession().setAttribute("idForCancelButton", 0);
         model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
+        model.addAttribute("disableCategoryFilter", true);
 
         return "offerOverview";
     }

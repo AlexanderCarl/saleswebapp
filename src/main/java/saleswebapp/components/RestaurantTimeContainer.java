@@ -1,7 +1,5 @@
 package saleswebapp.components;
 
-import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Size;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 

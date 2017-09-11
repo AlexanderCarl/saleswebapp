@@ -68,5 +68,4 @@ public class OfferPhoto {
     public void setPhotoBase64Encoded(String photoBase64Encoded) {
         this.photoBase64Encoded = photoBase64Encoded;
     }
-
 }
