@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import saleswebapp.service.EmailService;
 import saleswebapp.service.HomeService;
 import saleswebapp.service.OfferService;
 
@@ -30,6 +31,7 @@ public class HomeController {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("restaurants", homeService.createHomeRestaurantFormListForSalesPerson(loggedInUser));
         model.addAttribute("toDos", homeService.getAllToDosForSalesPerson(loggedInUser));
+        model.addAttribute("currentPayment", homeService.getCurrentPaymentOfSalesPerson(loggedInUser));
 
         return "home";
     }
@@ -50,9 +52,6 @@ public class HomeController {
             return "redirect:/home?noValidAccessToToDo";
         }
         homeService.deleteToDo(toDoId);
-
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        logger.debug(loggedInUser + ": ToDo with the ID: " + toDoId + " has been deleted.");
 
         return "redirect:/home";
     }

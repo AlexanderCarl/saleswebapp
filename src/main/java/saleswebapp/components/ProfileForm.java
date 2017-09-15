@@ -11,9 +11,7 @@ import java.io.Serializable;
 /**
  * Created by Alexander Carl on 19.06.2017.
  */
-public class ProfileForm implements Serializable {
-
-    private static final long serialVersionUID = -4294454887497669957L;
+public class ProfileForm{
 
     private int id;
 
@@ -74,10 +72,6 @@ public class ProfileForm implements Serializable {
        this.email = salesPerson.getEmail();
        this.iban = salesPerson.getIban();
        this.bic = salesPerson.getBic();
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public int getId() {

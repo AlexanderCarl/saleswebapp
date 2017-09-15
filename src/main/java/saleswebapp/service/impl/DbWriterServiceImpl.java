@@ -120,7 +120,7 @@ public class DbWriterServiceImpl implements DbWriterService {
         salesPerson.setBic(profileForm.getBic());
 
         salesPersonRepository.saveAndFlush(salesPerson);
-        logger.debug("SalesPerson`s (ID: " + profileForm.getId() +") profile change has been saved.");
+        logger.debug("SalesPerson`s (Sales-Person ID: " + profileForm.getId() +") profile change has been saved.");
     }
 
     @Override
@@ -192,7 +192,7 @@ public class DbWriterServiceImpl implements DbWriterService {
         if(restaurantId == 0) {
             logger.debug("Restaurant (Customer-ID: " + restaurantToSave.getCustomerId() + ") has been added.");
         } else {
-            logger.debug("Restaurant (ID: " + restaurantId + ") changes have been saved.");
+            logger.debug("Restaurant (Restaurant-ID: " + restaurantId + ") changes have been saved.");
         }
     }
 
@@ -361,7 +361,7 @@ public class DbWriterServiceImpl implements DbWriterService {
         offerPhotoRepository.deleteByOfferId(offerId);
         offerRepository.deleteById(offerId);
 
-        logger.debug("Offer (ID: " + offerId +") has been deleted.");
+        logger.debug("Offer (Offer-ID: " + offerId +") has been deleted.");
     }
 
     @Override
@@ -535,9 +535,9 @@ public class DbWriterServiceImpl implements DbWriterService {
         offerRepository.saveAndFlush(offerToSave);
 
         if(offerId == 0) {
-            logger.debug("Offer (Customer-ID: " + offerToSave.getRestaurant().getCustomerId() + ") has been added.");
+            logger.debug("Offer for restaurant (Customer-ID: " + offerToSave.getRestaurant().getCustomerId() + ") has been added.");
         } else {
-            logger.debug("Offer (ID: " + offerId + ") changes have been saved.");
+            logger.debug("Offer (Offer-ID: " + offerId + ") changes have been saved.");
         }
     }
 

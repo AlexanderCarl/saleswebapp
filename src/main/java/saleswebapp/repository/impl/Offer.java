@@ -68,7 +68,7 @@ public class Offer {
     @Column(name = "swa_change_request")
     private boolean changeRequest;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "offer_has_day_of_week",
             joinColumns = {@JoinColumn(name = "offer_id")},
             inverseJoinColumns = {@JoinColumn(name = "day_of_week_id")}

@@ -1,22 +1,21 @@
 package saleswebapp.components;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import saleswebapp.repository.impl.ToDo;
 
 import java.io.Serializable;
 
 /**
  * Created by Alexander Carl on 04.07.2017.
- * This form is used in the dialog home.
  */
-public class HomeToDoForm implements Serializable {
-
-    private static final long serialVersionUID = -456375631841131140L;
+public class HomeToDoForm {
 
     private int id;
     private int restaurantId;
     private String requestTyp;
     private String restaurantName;
     private String timestamp;
+    private DateReOrder dateReOrder = new DateReOrder();
 
     public HomeToDoForm() {
         super();
@@ -29,11 +28,8 @@ public class HomeToDoForm implements Serializable {
         this.restaurantName = toDo.getRestaurant().getName();
 
         String time = toDo.getDatetime().toString();
-        this.timestamp = time.substring(0, time.length() - 5);
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
+        time = time.substring(0, time.length() - 5);
+        this.timestamp = dateReOrder.reOrderDateTimeString(time);
     }
 
     public int getId() {

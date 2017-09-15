@@ -43,7 +43,6 @@ public class PasswordResetValidator  implements Validator {
         }
 
         //Handles all violations for the classic Spring Validatiors
-        //In this example, the UnitsInStockValidator is added through WebAppContextConfig
         for(Validator validator: springValidators) {
             validator.validate(target, errors);
         }

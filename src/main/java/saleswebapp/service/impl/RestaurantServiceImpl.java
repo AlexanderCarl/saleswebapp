@@ -44,7 +44,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Autowired
     private DbWriterService dbWriterService;
 
-    //The restaurants id is the key.
+    //The restaurant`s id is the key.
     /*This Map is used to store the restaurant(data) which is send to the user.
     * When the user presses save, the restaurant(data) is loaded again from the DB und compared to the
     * restaurant(data) at the start (stored in the HashMap). If the restaurant(data) has been altered
@@ -199,7 +199,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    //Creates tje QRCode as the in the findlunchApp but without saving it temporarily as a file on the hard drive.
+    //Creates the QRCode like in the findlunchApp but without saving it temporarily as a file on the hard drive.
     public byte[] createQRCode(String qrUuid) {
 
         //Creates a bitMatrix for the given String qrUuid

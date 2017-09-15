@@ -7,11 +7,8 @@ import java.io.Serializable;
 
 /**
  * Created by Alexander Carl on 15.06.2017.
- * This class represents the form used for the PasswordReset
  */
-public class PasswordResetForm implements Serializable {
-
-    private static final long serialVersionUID = -3704533112076648467L;
+public class PasswordResetForm {
 
     @PasswordResetCode
     private String securityCode;
@@ -20,10 +17,6 @@ public class PasswordResetForm implements Serializable {
     private String newPassword;
 
     private String newPasswordRepeat;
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public String getSecurityCode() {
         return securityCode;

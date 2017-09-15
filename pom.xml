@@ -72,15 +72,21 @@
         </dependency>
 
         <dependency>
+            <groupId>org.webjars</groupId>
+            <artifactId>datatables</artifactId>
+            <version>1.10.12</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf</artifactId>
-            <version>${thymeleaf.version}</version>
+            <version>2.1.4.RELEASE</version>
         </dependency>
 
         <dependency>
             <groupId>org.thymeleaf</groupId>
             <artifactId>thymeleaf-spring4</artifactId>
-            <version>${thymeleaf.version}</version>
+            <version>2.1.4.RELEASE</version>
         </dependency>
 
         <dependency>

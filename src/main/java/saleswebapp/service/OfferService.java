@@ -39,4 +39,6 @@ public interface OfferService {
     Model prepareOfferPictures(Model model, Offer offer);
 
     String getDefaultOfferImageBase64();
+
+    boolean toDoEntryWithOfferExists(int offerId);
 }

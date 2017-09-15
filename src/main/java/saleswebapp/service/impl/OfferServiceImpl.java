@@ -148,6 +148,17 @@ public class OfferServiceImpl implements OfferService {
     }
 
     @Override
+    public boolean toDoEntryWithOfferExists(int offerId) {
+        Offer offer = dbReaderService.getOffer(offerId);
+
+        if(offer.getChangeRequestId() == 0) {
+            return false;
+        }
+
+        return true;
+    }
+
+    @Override
     public Model prepareOfferPictures(Model model, Offer offer) {
         int numberOfExistingPictures = 0;
         List<OfferPhoto> offerPhotos = offer.getOfferPhotos();

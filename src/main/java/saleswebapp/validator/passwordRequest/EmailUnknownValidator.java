@@ -20,7 +20,7 @@ public class EmailUnknownValidator implements ConstraintValidator<EmailUnknown, 
     private DbReaderService DbReaderService;
 
     public void initialize(EmailUnknown constraintAnnotation) {
-        //  intentionally left blank; this is the place to initialize the constraint annotation for any sensible default values.
+        // intentionally left blank; this is the place to initialize the constraint annotation for any logical default values.
     }
 
     public boolean isValid(String value, ConstraintValidatorContext context) {

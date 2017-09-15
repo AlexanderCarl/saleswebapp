@@ -15,9 +15,10 @@ public interface DayOfWeekRepository extends JpaRepository<DayOfWeek, Serializab
      * 1) The DayNumbers are set wrong
      * 2) There is no need for 2 extra field for the dayNumber besides the id
      * 3) There is no need for the whole table. The dayNumber could simple be stored as an int value.
-     * 4) Storing the days as Strings has the strong disadvantage that it makes more effort to internationalize the site later.
-     *      4.1) Solution 1) Dont store the strings in the DB
-     *      4.2) Dont use a Day_of_week table at all. It just makes it unstable, complicated und costs a lot of time.
+     * 4) Storing the days as Strings in the DB makes internationalisation of the page harder.
+     *      Proposal:
+     *      4.1) Don`t store the strings in the DB
+     *      4.2) Don`t use a Day_of_week table. It just makes it unstable, complicated und costs a lot of time. Just use the integers from 1 to 7 to identify the days of the week.
      */
     DayOfWeek getById(int id);
 

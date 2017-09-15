@@ -100,7 +100,7 @@ public class WebApplicationContextConfig extends WebMvcAutoConfigurationAdapter 
     }
 
     @Bean
-    public PasswordResetValidator productValidator() {
+    public PasswordResetValidator passwordResetValidator() {
         Set<Validator> springValidators = new HashSet<Validator>();
         springValidators.add(new PasswordResetPasswordEqualValidator());
         PasswordResetValidator productValidator = new PasswordResetValidator();

@@ -76,6 +76,7 @@
     <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.38" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:bootstrap:3.3.7" level="project" />
     <orderEntry type="library" name="Maven: org.webjars:jquery:3.2.1" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:datatables:1.10.12" level="project" />
     <orderEntry type="library" name="Maven: org.thymeleaf:thymeleaf:2.1.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: ognl:ognl:3.0.8" level="project" />
     <orderEntry type="library" name="Maven: org.javassist:javassist:3.18.1-GA" level="project" />

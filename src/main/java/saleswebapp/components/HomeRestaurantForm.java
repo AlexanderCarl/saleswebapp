@@ -6,11 +6,8 @@ import java.io.Serializable;
 
 /**
  * Created by Alexander Carl on 04.07.2017.
- * This form is used in the dialog home.
  */
-public class HomeRestaurantForm implements Serializable {
-
-    private static final long serialVersionUID = 1391547254178163094L;
+public class HomeRestaurantForm {
 
     private int id;
     private String name;
@@ -34,10 +31,6 @@ public class HomeRestaurantForm implements Serializable {
         this.streetNumber = restaurant.getStreetNumber();
         this.city = restaurant.getCity();
         this.zip = restaurant.getZip();
-    }
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
     }
 
     public String getName() {

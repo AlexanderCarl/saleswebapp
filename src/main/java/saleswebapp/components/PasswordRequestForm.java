@@ -7,19 +7,12 @@ import java.io.Serializable;
 
 /**
  * Created by Alexander Carl on 13.06.2017.
- * This class represents the form used for the PasswordResetCodeRequest
  */
-public class PasswordRequestForm implements Serializable {
-
-    private static final long serialVersionUID = 5615550315753342L;
+public class PasswordRequestForm {
 
     @Pattern(regexp = ".+@.+\\..+", message = "{universal.validation.pattern.email}")
     @EmailUnknown
     private String email;
-
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 
     public String getEmail() {
         return email;

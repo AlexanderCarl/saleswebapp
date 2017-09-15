@@ -52,6 +52,12 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Autowired
     private OfferPhotoRepository offerPhotoRepository;
 
+    @Autowired
+    private DonationPerMonthRepository donationPerMonthRepository;
+
+    @Autowired
+    private OfferReservationRepository offerReservationRepository;
+
     @Override
     public SalesPerson getSalesPersonByEmail(String email) {
         return salesPersonRepository.getByEmail(email);
@@ -170,6 +176,16 @@ public class DbReaderServiceImpl implements DbReaderService {
     @Override
     public ToDo getToDoById(int toDoId) {
         return toDoRepository.getById(toDoId);
+    }
+
+    @Override
+    public List<OfferReservation> getAllOfferReservationsByRestaurantId(int restaurantId) {
+        return offerReservationRepository.getAllByRestaurantId(restaurantId);
+    }
+
+    @Override
+    public List<DonationPerMonth> getAllDonationsByRestaurantId(int restaurantId) {
+        return donationPerMonthRepository.getAllByRestaurantId(restaurantId);
     }
 
 }

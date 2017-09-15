@@ -46,10 +46,6 @@ public class DateValidator implements Validator {
                     errors.reject("offer.validation.timeWindow");
                 }
             }
-
-            if(startDate == null || endDate == null) {
-                errors.reject("offer.validation.dates");
-            }
         }
     }
 }

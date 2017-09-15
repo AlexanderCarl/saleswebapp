@@ -17,4 +17,6 @@ public interface HomeService {
     boolean toDoAssignedToSalePerson(int toDoId);
 
     void deleteToDo(int toDoId);
+
+    String getCurrentPaymentOfSalesPerson(String email);
 }

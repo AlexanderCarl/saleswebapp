@@ -5,9 +5,7 @@ import java.io.Serializable;
 /**
  * Created by Alexander Carl on 20.07.2017.
  */
-public class RestaurantDeleteCategory implements Serializable {
-
-    private static final long serialVersionUID = -2159686726260297955L;
+public class RestaurantDeleteCategory {
 
     private String name;
     private int restaurantId;
@@ -36,7 +34,4 @@ public class RestaurantDeleteCategory implements Serializable {
         this.restaurantId = restaurantId;
     }
 
-    public static long getSerialVersionUID() {
-        return serialVersionUID;
-    }
 }

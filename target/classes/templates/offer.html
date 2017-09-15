@@ -117,7 +117,7 @@
             <div class="col-lg-6 col-lg-md-12 col-sm-12">
                 <div>
                     <p class="form-inline">
-                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="glyphicon glyphicon-question-sign" th:title="#{offer.validation.preparationTime}"></label>
                         <label class="span-top-padding" style="width: 175px"> <th th:text="#{offer.label.preparationTime}" /> </label>
 
                         <span th:classappend="${#fields.hasErrors('*{preparationTimeAsString}')}? has-error">
@@ -128,7 +128,7 @@
 
                 <div>
                     <p class="form-inline">
-                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="glyphicon glyphicon-question-sign" th:title="#{offer.validation.startDate}"></label>
                         <label class="span-top-padding" style="width: 175px"> <th th:text="#{offer.label.startDate}" /> </label>
 
                         <span th:classappend="${#fields.hasErrors('*{startDateAsString}')}? has-error">
@@ -139,7 +139,7 @@
 
                 <div>
                     <p class="form-inline">
-                        <label class="glyphicon glyphicon-question-sign" style="visibility: hidden"></label>
+                        <label class="glyphicon glyphicon-question-sign" th:title="#{offer.validation.endDate}"></label>
                         <label class="span-top-padding" style="width: 175px"> <th th:text="#{offer.label.endDate}" /> </label>
 
                         <span th:classappend="${#fields.hasErrors('*{endDateAsString}')}? has-error">

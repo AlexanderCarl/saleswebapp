@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import saleswebapp.components.DateReOrder;
 import saleswebapp.repository.impl.CourseType;
 import saleswebapp.repository.impl.Offer;
 import saleswebapp.service.OfferService;
@@ -27,6 +28,8 @@ public class OfferOverviewController {
 
     @Autowired
     private RestaurantService restaurantService;
+
+    private DateReOrder dateReOrder = new DateReOrder();
 
     String loggedInUser = "carl@hm.edu"; //DEV-Only
 
@@ -101,7 +104,12 @@ public class OfferOverviewController {
             return "redirect:/home?noValidAccessToRestaurant";
         }
 
-        offerService.deleteOffer(offerId);
+        //Checks if an toDo_List entry exists
+        if(!offerService.toDoEntryWithOfferExists(offerId)) {
+            offerService.deleteOffer(offerId);
+        } else {
+            return "redirect:/home?toDoListEntryForOfferExists";
+        }
 
         if(pageStatus.equals("filteredByRestaurantId")) {
             return "redirect:/offerOverviewByRestaurant?id=" + restaurantId;
@@ -183,15 +191,17 @@ public class OfferOverviewController {
                 }
 
                 try {
-                    String time = offer.getStartDate().toString();
-                    offer.setStartDateAsString(time.substring(0, time.length() - 11));
+                    String date = offer.getStartDate().toString();
+                    date = date.substring(0, date.length() - 11);
+                    offer.setStartDateAsString(dateReOrder.reOrderDateString(date));
                 } catch (Exception e) {
                     // The offer has no assigned start date
                 }
 
                 try {
-                    String time = offer.getEndDate().toString();
-                    offer.setEndDateAsString(time.substring(0, time.length() - 11));
+                    String date = offer.getEndDate().toString();
+                    date = date.substring(0, date.length() - 11);
+                    offer.setEndDateAsString(dateReOrder.reOrderDateString(date));
                 } catch (Exception e) {
                     // The offer has no assigned end date
                 }
@@ -199,5 +209,4 @@ public class OfferOverviewController {
         }
         return offerList;
     }
-
 }

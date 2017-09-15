@@ -29,7 +29,7 @@ public class ProfileServiceImpl implements ProfileService {
 
     private ShaPasswordEncoder shaPasswordEncoder = new ShaPasswordEncoder(256);
 
-    //The sales persons id is the key.
+    //The sales person`s id is the key.
     /*This Map is used to store the profile(data) of the sales person which is send to the user.
     * When the user presses save the profile is loaded  again from the DB and then compared to the
     * profile at the start of the transaction (stored in the HashMap). If the profile has been altered

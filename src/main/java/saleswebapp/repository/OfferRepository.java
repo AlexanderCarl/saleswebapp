@@ -23,8 +23,10 @@ public interface OfferRepository extends JpaRepository<Offer, Serializable> {
 
     List<Offer> getAllByCourseTypeIsNullAndRestaurantId(int restaurantId);
 
-    void deleteById(int offerId);
-
     Offer getById(int offerId);
+
+    @Modifying
+    @Query("delete from Offer where id = ?1")
+    void deleteById(int offerId);
 
 }

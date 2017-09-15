@@ -16,5 +16,4 @@ public interface SalesPersonRepository extends JpaRepository<SalesPerson, Serial
     SalesPerson getByEmail(String userEmail);
 
     SalesPerson getById(int id);
-
 }

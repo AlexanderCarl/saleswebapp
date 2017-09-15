@@ -83,6 +83,7 @@ public class OfferController {
         request.getSession().setAttribute("newOffer", true);
         request.getSession().setAttribute("offerId", 0);
         request.getSession().setAttribute("restaurantId", restaurantId);
+        request.getSession().setAttribute("changeRequestId" , 0);
 
         Offer offer = new Offer();
         offer.setIdOfRestaurant(restaurantId);

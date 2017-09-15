@@ -45,4 +45,8 @@ public interface DbReaderService {
 
     ToDo getToDoById(int toDoId);
 
+    List<OfferReservation> getAllOfferReservationsByRestaurantId(int restaurantId);
+
+    List<DonationPerMonth> getAllDonationsByRestaurantId(int restaurantId);
+
 }
