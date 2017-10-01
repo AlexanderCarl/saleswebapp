@@ -1,8 +1,5 @@
 package saleswebapp.repository.impl;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-import org.springframework.util.Assert;
 import org.springframework.web.multipart.MultipartFile;
 import saleswebapp.components.RestaurantTimeContainer;
 
@@ -286,9 +283,11 @@ public class Offer {
             return false;
         }
 
+        /*
         if(courseType.getId() != other.getCourseType().getId()) {
             return false;
         }
+        */
 
         if(commentOfLastChange != null && other.getCommentOfLastChange() != null) {
             if (!commentOfLastChange.equals(other.getCommentOfLastChange())) {

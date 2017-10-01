@@ -71,7 +71,10 @@
                 <tr>
                     <th> <span th:text="#{offerOverview.label.table.offerName}" /> </th>
                     <th> <span th:text="#{offerOverview.label.table.category}" /> </th>
-                    <th> <span th:text="#{offerOverview.label.table.price}" /> </th>
+                    <th>
+                        <span th:text="#{offerOverview.label.table.price}" />
+                        <span class="glyphicon glyphicon-question-sign" th:title="#{offerOverview.label.tooltip.price}" />
+                    </th>
                     <th>
                         <span th:text="#{offerOverview.label.table.preparationTime}" />
                         <span class="glyphicon glyphicon-question-sign" th:title="#{offerOverview.label.tooltip.preparationTime}" />

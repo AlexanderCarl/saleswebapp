@@ -9,9 +9,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.session.HttpSessionEventPublisher;
-import saleswebapp.service.impl.AuthenticationServiceImpl;
+import saleswebapp.service.impl.LoginServiceImpl;
 
 /**
  * Created by Alexander Carl on 06.06.2017.
@@ -22,7 +21,7 @@ import saleswebapp.service.impl.AuthenticationServiceImpl;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private AuthenticationServiceImpl authenticationService;
+    private LoginServiceImpl authenticationService;
 
     @Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth) throws Exception {

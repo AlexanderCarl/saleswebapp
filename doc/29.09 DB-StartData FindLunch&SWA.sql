@@ -1,48 +1,45 @@
-﻿-- Insert Users and Restaurant value for demo!!!--
+﻿-- Testdaten SalesWebApp
 
--- TEST BESTELLUNG:
-/*INSERT INGNORE INTO `findlunchandswa`.`reservation` (`id`, `reservation_number`, `amount`, `reservation_time`, `total_price`, `donation`, `used_points`, `user_id`, `offer_id`, `euro_per_point_id`, `restaurant_id`) VALUES (1, 1, 1, '2017-05-17 21:16:00', 1.0, 0.0, 0.0, 101, 101, 1, NULL, 101); */
+INSERT INTO `findlunchandswa`.`country` (`country_code`, `name`) VALUES ('DE', 'Deutschland');
+INSERT INTO `findlunchandswa`.`country` (`country_code`, `name`) VALUES ('UK', 'United Kingdom');
 
-INSERT IGNORE INTO `findlunchandswa`.`country` (`country_code`, `name`) VALUES ('DE', 'Deutschland');
-INSERT IGNORE INTO `findlunchandswa`.`country` (`country_code`, `name`) VALUES ('UK', 'United Kingdom');
+INSERT INTO `findlunchandswa`.`swa_sales_person` (`id`, `password`, `first_name`, `second_name`, `street`, `street_number`, `zip`, `city`, `phone`, `country_code`, `email`, `iban`, `bic`, `salary_percentage`) VALUES (1, "dc76e9f0c0006e8f919e0c515c66dbba3982f785", "Alexander", "Carl", "Lothstr", "666", "87654", "StackOverflowCity", "666/1234 1234", "DE", "carl@hm.edu", "DE123456789012312312312312", "THEBIC1234567890", 0.33);
+INSERT INTO `findlunchandswa`.`swa_sales_person` (`id`, `password`, `first_name`, `second_name`, `street`, `street_number`, `zip`, `city`, `phone`, `country_code`, `email`, `iban`, `bic`, `salary_percentage`) VALUES (2, "dc76e9f0c0006e8f919e0c515c66dbba3982f785", "Alex2nd", "Karl", "Lotharstr.", "999", "12345", "StackOverflowCity", "999/1234 1234", "DE", "alexander.carl@ymail.com", "DE123456789012312312312312", "THEBIC1234567890", 0.33);
 
-INSERT IGNORE INTO `findlunchandswa`.`swa_sales_person` (`id`, `password`, `first_name`, `second_name`, `street`, `street_number`, `zip`, `city`, `phone`, `country_code`, `email`, `iban`, `bic`, `salary_percentage`) VALUES (1, "dc76e9f0c0006e8f919e0c515c66dbba3982f785", "Alexander", "Carl", "Lothstr", "666", "87654", "StackOverflowCity", "666/1234 1234", "DE", "carl@hm.edu", "DE123456789012312312312312", "THEBIC1234567890", 0.33);
-INSERT IGNORE INTO `findlunchandswa`.`swa_sales_person` (`id`, `password`, `first_name`, `second_name`, `street`, `street_number`, `zip`, `city`, `phone`, `country_code`, `email`, `iban`, `bic`, `salary_percentage`) VALUES (2, "dc76e9f0c0006e8f919e0c515c66dbba3982f785", "Alex2nd", "Karl", "Lotharstr.", "999", "12345", "StackOverflowCity", "999/1234 1234", "DE", "alexander.carl@ymail.com", "DE123456789012312312312312", "THEBIC1234567890", 0.33);
+INSERT INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (1, 'Montag', 1);
+INSERT INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (2, 'Dienstag', 2);
+INSERT INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (3, 'Mittwoch', 3);
+INSERT INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (4, 'Donnerstag', 4);
+INSERT INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (5, 'Freitag', 5);
+INSERT INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (6, 'Samstag', 6);
+INSERT INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (7, 'Sonntag', 7);
 
-INSERT IGNORE INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (1, 'Montag', 1);
-INSERT IGNORE INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (2, 'Dienstag', 2);
-INSERT IGNORE INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (3, 'Mittwoch', 3);
-INSERT IGNORE INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (4, 'Donnerstag', 4);
-INSERT IGNORE INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (5, 'Freitag', 5);
-INSERT IGNORE INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (6, 'Samstag', 6);
-INSERT IGNORE INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (7, 'Sonntag', 7);
+INSERT INTO `findlunchandswa`.`kitchen_type` (`id`, `name`) VALUES (1, 'Italienisch');
+INSERT INTO `findlunchandswa`.`kitchen_type` (`id`, `name`) VALUES (2, 'Indisch');
+INSERT INTO `findlunchandswa`.`kitchen_type` (`id`, `name`) VALUES (3, 'Griechisch');
+INSERT INTO `findlunchandswa`.`kitchen_type` (`id`, `name`) VALUES (4, 'Asiatisch');
+INSERT INTO `findlunchandswa`.`kitchen_type` (`id`, `name`) VALUES (5, 'Bayerisch');
 
-INSERT IGNORE INTO `findlunchandswa`.`kitchen_type` (`id`, `name`) VALUES (1, 'Italienisch');
-INSERT IGNORE INTO `findlunchandswa`.`kitchen_type` (`id`, `name`) VALUES (2, 'Indisch');
-INSERT IGNORE INTO `findlunchandswa`.`kitchen_type` (`id`, `name`) VALUES (3, 'Griechisch');
-INSERT IGNORE INTO `findlunchandswa`.`kitchen_type` (`id`, `name`) VALUES (4, 'Asiatisch');
-INSERT IGNORE INTO `findlunchandswa`.`kitchen_type` (`id`, `name`) VALUES (5, 'Bayerisch');
+INSERT INTO `findlunchandswa`.`restaurant_type` (`id`, `name`) VALUES (1, 'Imbiss');
+INSERT INTO `findlunchandswa`.`restaurant_type` (`id`, `name`) VALUES (2, 'Restaurant');
+INSERT INTO `findlunchandswa`.`restaurant_type` (`id`, `name`) VALUES (3, 'Bäckerei');
+INSERT INTO `findlunchandswa`.`restaurant_type` (`id`, `name`) VALUES (4, 'Sonstiges');
 
-INSERT IGNORE INTO `findlunchandswa`.`restaurant_type` (`id`, `name`) VALUES (1, 'Imbiss');
-INSERT IGNORE INTO `findlunchandswa`.`restaurant_type` (`id`, `name`) VALUES (2, 'Restaurant');
-INSERT IGNORE INTO `findlunchandswa`.`restaurant_type` (`id`, `name`) VALUES (3, 'Bäckerei');
-INSERT IGNORE INTO `findlunchandswa`.`restaurant_type` (`id`, `name`) VALUES (4, 'Sonstiges');
+INSERT INTO `findlunchandswa`.`user_type` (`id`,`name`) VALUES (1, "Anbieter");
+INSERT INTO `findlunchandswa`.`user_type` (`id`,`name`) VALUES (2, "Kunde");
+INSERT INTO `findlunchandswa`.`user_type` (`id`,`name`) VALUES (3, "Betreiber");
 
-INSERT IGNORE INTO `findlunchandswa`.`user_type` (`id`,`name`) VALUES (1, "Anbieter");
-INSERT IGNORE INTO `findlunchandswa`.`user_type` (`id`,`name`) VALUES (2, "Kunde");
-INSERT IGNORE INTO `findlunchandswa`.`user_type` (`id`,`name`) VALUES (3, "Betreiber");
+INSERT INTO `findlunchandswa`.`euro_per_point` (`id`,`euro`) VALUES (1, 1.0);
 
-INSERT IGNORE INTO `findlunchandswa`.`euro_per_point` (`id`,`euro`) VALUES (1, 1.0);
-
-INSERT IGNORE INTO `findlunchandswa`.`minimum_profit` (`id`,`profit`) VALUES (1, 10);
+INSERT INTO `findlunchandswa`.`minimum_profit` (`id`,`profit`) VALUES (1, 10);
 
 -- account type
-INSERT IGNORE INTO `findlunchandswa`.`account_type` (`id`,`name`) VALUES (1, 'Forderungskonto');
-INSERT IGNORE INTO `findlunchandswa`.`account_type` (`id`,`name`) VALUES (2, 'Kundenkonto');
+INSERT INTO `findlunchandswa`.`account_type` (`id`,`name`) VALUES (1, 'Forderungskonto');
+INSERT INTO `findlunchandswa`.`account_type` (`id`,`name`) VALUES (2, 'Kundenkonto');
 
 -- booking reason
-INSERT IGNORE INTO `findlunchandswa`.`booking_reason` (`id`,`reason`) VALUES (1, 'Forderung');
-INSERT IGNORE INTO `findlunchandswa`.`booking_reason` (`id`,`reason`) VALUES (2, 'Einzahlung');
+INSERT INTO `findlunchandswa`.`booking_reason` (`id`,`reason`) VALUES (1, 'Forderung');
+INSERT INTO `findlunchandswa`.`booking_reason` (`id`,`reason`) VALUES (2, 'Einzahlung');
 
 -- ToDo Request Types
 INSERT INTO `findlunchandswa`.`swa_todo_request_typ` (`id`, `name`) VALUES (1, 'Änderung freigeben');
@@ -50,7 +47,7 @@ INSERT INTO `findlunchandswa`.`swa_todo_request_typ` (`id`, `name`) VALUES (2, '
 INSERT INTO `findlunchandswa`.`swa_todo_request_typ` (`id`, `name`) VALUES (3, 'Besuchsaufforderung');
 
 -- Account Data
-INSERT IGNORE INTO `account` (`id`, `account_number`, `account_type_id`) VALUES
+INSERT INTO `account` (`id`, `account_number`, `account_type_id`) VALUES
 (1, 1, 1),
 (2, 728666923, 2),
 (3, 656553911, 2),
@@ -65,7 +62,7 @@ INSERT INTO `restaurant` (`id`, `customer_id`, `name`, `street`, `street_number`
 	(101, 118829006, 'Ionic Cafe', 'Lothstraße', '64', '80335', 'München', 'DE', 48.1543, 11.5569, 'restaurant@ionic.com', '0000', NULL, 2, '8df50fb6-a0ff-4f9e-989a-2a9bea222435', _binary 0x99504E470D0A1A0A0000000D49484452000000FA000000FA0100000000A0976790000002224944415478DAED993D8E84300C858D28527284DC042E86C4485C6CE6263902650A84F73D9BD50C2BB4C536585A52A0217C456CF9F92723FAFB7ACA0DDCC00DFC6B40B0B2BE96B6E0E521F835726B0A0524D535E3F10005C05E559760C053C62C0D775EAAA54AB7EEAFE1808156E8D26A1D96312890CCCB1BE2005444C0E26113866AA75A1B002701732D60CA4AD0D3FB7122BD8B015BB5C78E0CC8018887E924895D0DB8E81791DA77B30A1EC59C1E0AD8A45569742E088589D9548BF49FAE0E00E0056BB05377AB9815351ED0F9B10BA8355B36E55E28C0D213B6E7C2C8C809A6E43D72E30075E0B11B5D052915CAEABB1F753306B0A003D9AC0D712FAFF2C38A0040B367A662F18A440A796D1FF1100190C60BA530518D826F7075348052477384BA09F9CF9A081CE41F0180F2ED1B3B101A4065217C6301E8D52756F8315B9B94F6D6586301ECE52AE3C14B12EC39CA3F020029B51E14E6EA64C0A7AB23005E2D8525891AABE22B16501B6B4320AA6AD59246A56312BB1E40A21F394ECE5EE1DD8ACF6C1F04D895C56F0C5F0F8F50000AD183F3CF23F3ECC5C6497D060358D22D1E8A5F21E05B39E6870000BD2C267A344C56DC85D36F2C40F7E95CAC6E16AB46E1807DE67510D98A89EA58580300EFDB83EA374678A4F3EB850B01AB9B3DBA760B0AAFF03181EFD6985D53AB310136EC6CE225C386560F83790880F100E5AF9CCE4DFE7629ACA10053965DC1C0D5AD17F7C3A41601B8FFE0B8811BB881BF005F90AE3281AE9564D70000000049454E44AE426082, 0, 0, 2);
 	
 -- User Data
-INSERT IGNORE INTO `findlunchandswa`.`user` (`id`, `username`, `password`, `restaurant_id`, `user_type_id`, `account_id`) VALUES
+INSERT INTO `findlunchandswa`.`user` (`id`, `username`, `password`, `restaurant_id`, `user_type_id`, `account_id`) VALUES
 (1, 'admin@admin.com', '$2a$10$Wo0WJitsLCrhuY4LJoOFRO.xfAWvTVuB8ktPZCqx1lFi67XnIimd6', NULL, 1, NULL),
 (2, 'user@user.de', '$2a$10$mkHTGZbKAMRsC54cH6kOYenXTnk4vFOTBQBFYgrQsJ7hkL3oClFSC', NULL, 2, NULL),
 (3, 'owner@owner.com', '$2a$10$TlzzmKRGrRe/KzPUp111Ue0i.jMm.6uk5b62NCoL6N5DNZEmLkqFa', NULL, 3, 1),
@@ -88,7 +85,7 @@ INSERT INTO `course_types` (`id`, `restaurant_id`, `name`, `sort_by`) VALUES
 	(6, 11, 'Vorspeise', 1);
 
 -- offer
-INSERT IGNORE INTO `findlunchandswa`.`offer` (`id`,`swa_change_request_id`, `restaurant_id`, `title`, `description`, `price`, `preparation_time`, `start_date`, `end_date`, `needed_points`, `sold_out`, `course_type`, `swa_change_request`) VALUES
+INSERT INTO `findlunchandswa`.`offer` (`id`,`swa_change_request_id`, `restaurant_id`, `title`, `description`, `price`, `preparation_time`, `start_date`, `end_date`, `needed_points`, `sold_out`, `course_type`, `swa_change_request`) VALUES
 (1, 102, 11,'Champignonreispfanne (Tg1) ', 'vegan', '1.00', 2, '2017-01-08', '2017-08-31', 30, FALSE, 3, 0),
 (2, 0, 11, 'Hackbällchen mit Paprikasauce (Tg3)', 'Rindfleisch und Schweinefleisch', '1.90', 4, '2017-01-08', '2017-08-31', 35, FALSE, 3, 0),
 (3, 0, 11, 'Pfannkuchen mit Schokosauce (Tg2)', 'fleischlos', '1.59', 3, '2017-01-08', '2017-08-31', 25, FALSE, 3, 0),
@@ -111,7 +108,7 @@ INSERT INTO `findlunchandswa`.`swa_todo_list` (`id`, `todo_request_typ_id`, `sal
 INSERT INTO `findlunchandswa`.`swa_todo_list` (`id`, `todo_request_typ_id`, `sales_person_id`, `restaurant_id`, `offer_id`, `datetime`) VALUES (3, 3, 1, 12, null, '2017-07-02 11:50:36');
 
 -- offer has day
-INSERT IGNORE INTO `findlunchandswa`.`offer_has_day_of_week` (`offer_id`, `day_of_week_id`) VALUES
+INSERT INTO `findlunchandswa`.`offer_has_day_of_week` (`offer_id`, `day_of_week_id`) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
@@ -218,7 +215,7 @@ INSERT IGNORE INTO `findlunchandswa`.`offer_has_day_of_week` (`offer_id`, `day_o
 (102, 6);
 
 -- time schedule
-INSERT IGNORE INTO `findlunchandswa`.`time_schedule` (`id`, `restaurant_id`, `offer_start_time`, `offer_end_time`, `day_of_week_id`) VALUES
+INSERT INTO `findlunchandswa`.`time_schedule` (`id`, `restaurant_id`, `offer_start_time`, `offer_end_time`, `day_of_week_id`) VALUES
 (1, 11, '1970-01-01 00:00:00', '1970-01-01 23:59:00', 1),
 (2, 11, '1970-01-01 00:00:00', '1970-01-01 23:59:00', 2),
 (3, 11, '1970-01-01 00:00:00', '1970-01-01 23:59:00', 3),
@@ -248,7 +245,7 @@ INSERT IGNORE INTO `findlunchandswa`.`time_schedule` (`id`, `restaurant_id`, `of
 (106, 101, '1970-01-01 00:00:00', '1970-01-01 23:59:00', 6),
 (107, 101, '1970-01-01 00:00:00', '1970-01-01 23:59:00', 7);
 
-INSERT IGNORE INTO `additives` (`id`, `name`, `description`, `short`) VALUES 
+INSERT INTO `additives` (`id`, `name`, `description`, `short`) VALUES 
 (1, 'Farbstoffe E 100 - E 180', 'mit Farbstoff', 'a'), 
 (2, 'Konservierungsstoffe E 200 - E 219, E 230 - E 235, E 239, E 249 - E 252, E 280 - E 285, E 1105', 'mit Konservierungsstoff', 'b'),
 (3, 'Geschmacksverstärker E 620 - E 635', 'mit Geschmacksverstärker', 'c'), 
@@ -264,7 +261,7 @@ INSERT IGNORE INTO `additives` (`id`, `name`, `description`, `short`) VALUES
 (13, 'Zutaten mit gentechnisch veränderten Organismen', 'gentechnisch verändert', 'm'), 
 (14, 'Gentechnisch veränderte Organismen', 'enthält Sojaöl, aus gentechnisch veränderter Soja hergestellt', 'n');
 
-INSERT IGNORE INTO `allergenic` (`id`, `name`, `description`, `short`) VALUES 
+INSERT INTO `allergenic` (`id`, `name`, `description`, `short`) VALUES 
 (1, 'Getreideprodukte (Glutenhaltig)', 'Weizen, Roggen, Gerste, Hafer, Dinkel, Kamut und daraus hergestellte Erzeugnisse, also Stärke, Brot, Nudeln, Panaden, Wurstwaren, Desserts etc.. Ausgenommen sind Glukosesirup auf Weizen- und Gerstenbasis. ', '1'), 
 (2, 'Fisch', 'Betroffen sind alle Süß- und Salzwasserfischarten, Kaviar, Fischextrakte, Würzpasten, Saucen etc.. Ganz genau genommen müsste auch ausgewiesen werden, wenn Produkte von Tieren verarbeitet werden, die mit Fischmehl gefüttert wurden.', '2'), 
 (3, 'Krebstiere', 'Garnelen, Hummer, Krebse, Scampi, Shrimps, Langusten und sämtliche daraus gewonnenen Erzeugnisse. Wer also in seinen Gerichten asiatische Gewürzmischung oder Paste mit Extrakten aus Krebstieren verwendet, muss das deklarieren. ', '3'), 
@@ -281,7 +278,7 @@ INSERT IGNORE INTO `allergenic` (`id`, `name`, `description`, `short`) VALUES
 (14, 'Weichtiere', 'Schnecken, Tintenfisch, Austern, Muscheln und alle Erzeugnisse, in denen Weichtiere oder Spuren von ihnen enthalten sind, also Gewürzmischungen, Saucen, asiatische Spezialitäten, Salate oder Pasten.', '14');
 
 -- offer has additives
-INSERT IGNORE INTO `findlunchandswa`.`offer_has_additives` (`offer_id`, `additives_id`) VALUES
+INSERT INTO `findlunchandswa`.`offer_has_additives` (`offer_id`, `additives_id`) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
@@ -368,7 +365,7 @@ INSERT IGNORE INTO `findlunchandswa`.`offer_has_additives` (`offer_id`, `additiv
 
 
 -- offer has allergenic
-INSERT IGNORE INTO `findlunchandswa`.`offer_has_allergenic` (`offer_id`, `allergenic_id`) VALUES
+INSERT INTO `findlunchandswa`.`offer_has_allergenic` (`offer_id`, `allergenic_id`) VALUES
 (1, 1),
 (1, 2),
 (1, 3),
@@ -504,6 +501,4 @@ INSERT INTO `opening_time` (`id`, `opening_time`, `closing_time`, `time_schedule
 -- restaurant_has_kitchen_type
 INSERT INTO `restaurant_has_kitchen_type` (`restaurant_id`, `kitchen_type_id`) VALUES
 	(11, 3),
-	(11, 4),
-	(131, 3),
-	(132, 3);
+	(11, 4);

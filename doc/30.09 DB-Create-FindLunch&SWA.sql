@@ -16,6 +16,14 @@ DROP SCHEMA IF EXISTS `findlunchandswa` ;
 CREATE SCHEMA IF NOT EXISTS `findlunchandswa` DEFAULT CHARACTER SET utf8;
 USE `findlunchandswa`;
 
+-- Create User & grant privileges
+DROP USER IF EXISTS 'SalesWebAppUser'@'localhost';
+CREATE USER 'SalesWebAppUser'@'localhost' IDENTIFIED BY 'SWADBPassword';
+GRANT SELECT ON findlunchandswa.* TO 'SalesWebAppUser'@'localhost';
+GRANT INSERT ON findlunchandswa.* TO 'SalesWebAppUser'@'localhost';
+GRANT UPDATE ON findlunchandswa.* TO 'SalesWebAppUser'@'localhost';
+GRANT DELETE ON findlunchandswa.* TO 'SalesWebAppUser'@'localhost';
+
 -- -----------------------------------------------------
 -- Table `findlunchandswa`.`country`
 -- -----------------------------------------------------
@@ -67,7 +75,7 @@ CREATE TABLE IF NOT EXISTS `restaurant` (
   `qr_uuid` blob NOT NULL,
   `swa_offer_modify_permission` tinyint(1) NOT NULL DEFAULT '0',
   `swa_blocked` tinyint(1) NOT NULL DEFAULT '0',
-  `swa_sales_person_id` int(11) DEFAULT NULL,
+  `swa_sales_person_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_restaurant_countries1_idx` (`country_code`),
   KEY `fk_restaurant_restaurant_type1_idx` (`restaurant_type_id`),
@@ -181,7 +189,7 @@ CREATE TABLE IF NOT EXISTS `offer` (
   `order` int(11) NOT NULL DEFAULT '1',
   `swa_comment_of_last_change` text,
   `swa_last_changed_by` int(11) DEFAULT NULL,
-  `swa_change_request` tinyint(4) NOT NULL DEFAULT '0',
+  `swa_change_request` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   KEY `fk_product_restaurant1_idx` (`restaurant_id`),

@@ -17,7 +17,7 @@ import java.util.Arrays;
  * Created by Alexander Carl on 07.06.2017.
  */
 @Service
-public class AuthenticationServiceImpl implements UserDetailsService {
+public class LoginServiceImpl implements UserDetailsService {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
