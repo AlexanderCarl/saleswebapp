@@ -49,12 +49,16 @@ public class OpeningTime {
             return false;
         }
 
-        if (!openingTime.equals(other.getOpeningTime())) {
-            return false;
+        if(openingTime != null && other.getOpeningTime() != null) {
+            if(!openingTime.equals(other.getOpeningTime())) {
+                return false;
+            }
         }
 
-        if (!closingTime.equals(other.getClosingTime())) {
-            return false;
+        if (closingTime != null && other.getClosingTime() != null) {
+            if (!closingTime.equals(other.getClosingTime())) {
+                return false;
+            }
         }
 
         return true;

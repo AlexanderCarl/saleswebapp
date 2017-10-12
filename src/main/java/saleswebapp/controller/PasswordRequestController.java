@@ -1,5 +1,7 @@
 package saleswebapp.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +20,8 @@ import javax.validation.Valid;
 @Controller
 public class PasswordRequestController {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
     @Autowired
     private EmailService emailService;
 
@@ -34,8 +38,13 @@ public class PasswordRequestController {
         if(bindingResult.hasErrors()) {
             return "passwordRequest";
         }
-        emailService.generatePasswordRequest(passwordRequestForm.getEmail());
+        emailService.generatePasswordRequestMail(passwordRequestForm.getEmail());
 
-        return "redirect:/passwordReset";
+        if(emailService.sendMail() == true) {
+            return "redirect:/passwordReset";
+        } else {
+            logger.debug("PasswordRequestMail (User: " + passwordRequestForm.getEmail() + ") has been send.");
+            return "redirect:/login?mailAccountTakesToLongToAnswer";
+        }
     }
 }

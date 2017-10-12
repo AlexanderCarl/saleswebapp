@@ -1,43 +1,28 @@
 package saleswebapp.controller;
 
-import com.google.cloud.sql.jdbc.internal.Url;
-import org.apache.catalina.core.ApplicationContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MaxUploadSizeExceededException;
-import org.springframework.web.multipart.MultipartException;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-import saleswebapp.repository.impl.*;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import saleswebapp.repository.impl.CourseType;
+import saleswebapp.repository.impl.Offer;
+import saleswebapp.repository.impl.OfferPhoto;
+import saleswebapp.repository.impl.Restaurant;
 import saleswebapp.service.OfferService;
 import saleswebapp.service.RestaurantService;
-import saleswebapp.validator.offer.DateValidator;
-import saleswebapp.validator.offer.ImageValidator;
 import saleswebapp.validator.offer.OfferValidator;
 
-import javax.annotation.Resource;
-import javax.imageio.ImageIO;
-import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Base64;
-import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -133,10 +118,19 @@ public class OfferController {
     }
 
     @RequestMapping(value = "/saveOffer", method = RequestMethod.POST)
-    public String saveOffer(Model model, @Valid Offer offer, BindingResult offerBinder, HttpServletRequest request) {
+    public String saveOffer(Model model, @Valid Offer offer, BindingResult offerBinder, HttpServletRequest request,
+                            @RequestParam(required = false, value = "home") String homeFlag,
+                            @RequestParam(required = false, value = "offerOverview") String offerOverviewFlag) {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        int restaurantId = (int) request.getSession().getAttribute("restaurantId");
+        int restaurantId;
+        try {
+            restaurantId = (int) request.getSession().getAttribute("restaurantId");
+        } catch (Exception e) {
+            //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
+            return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
+        }
+
         int offerId = (int) request.getSession().getAttribute("offerId");
         boolean newOffer = (boolean) request.getSession().getAttribute("newOffer");
         String commentOfLastChange = (String) request.getSession().getAttribute("commentOfLastChange");
@@ -172,7 +166,13 @@ public class OfferController {
         if (newOffer == true && offerId == 0) {
             offer.setIdOfRestaurant(restaurantId);
             offerService.saveOffer(offer);
-            return "redirect:/home?newOfferAddedSuccessfully";
+
+            if(offerOverviewFlag != null) {
+                return "redirect:/offerOverviewByRestaurant?id=" + restaurantId;
+            } else {
+                //homeFlag is set now
+                return "redirect:/home?newOfferAddedSuccessfully";
+            }
         } else {
             if (offerService.offerHasBeenAlteredMeanwhile(offerId)) {
                 return "redirect:/home?offerWasChangedMeanwhile";
@@ -181,10 +181,16 @@ public class OfferController {
                 offer.setId(offerId);
                 offer.setChangeRequestId(changeRequestId);
                 offerService.saveOffer(offer);
-                return "redirect:/home?offerChangeSuccess";
-            } else {
-                return "redirect:/home?offerControllerError";
+
+                if(offerOverviewFlag != null) {
+                    return "redirect:/offerOverviewByRestaurant?id=" + restaurantId;
+                }
+
+                if(homeFlag != null) {
+                    return "redirect:/home?offerChangeSuccess";
+                }
             }
+            return "redirect:/home?offerControllerError";
         }
     }
 
@@ -231,7 +237,9 @@ public class OfferController {
                 "firstOfferImage",
                 "secondOfferImage",
                 "thirdOfferImage",
-                "newChangeComment"
+                "newChangeComment",
+                "home",
+                "offerOverview"
         );
         offerBinder.setValidator(offerValidator);
     }

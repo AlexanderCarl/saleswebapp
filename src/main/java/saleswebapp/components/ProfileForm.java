@@ -6,7 +6,6 @@ import saleswebapp.validator.profile.ProfilPassword;
 import saleswebapp.validator.profile.ProfileEmailUnique;
 
 import javax.validation.constraints.Pattern;
-import java.io.Serializable;
 
 /**
  * Created by Alexander Carl on 19.06.2017.
@@ -15,10 +14,10 @@ public class ProfileForm{
 
     private int id;
 
-    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{4,60}$", message = "{profile.validation.firstName}")
+    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{3,60}$", message = "{profile.validation.firstName}")
     private String firstName;
 
-    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{4,60}$", message = "{profile.validation.secondName}")
+    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{3,60}$", message = "{profile.validation.secondName}")
     private String secondName;
 
     @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{4,60}$", message = "{profile.validation.street}")

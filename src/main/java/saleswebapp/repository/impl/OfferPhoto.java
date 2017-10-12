@@ -1,8 +1,5 @@
 package saleswebapp.repository.impl;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 
 /**

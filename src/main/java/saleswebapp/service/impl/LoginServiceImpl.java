@@ -36,7 +36,7 @@ public class LoginServiceImpl implements UserDetailsService {
             UserDetails userDetails = (UserDetails) new User(userEmail, "unknownEMail", Arrays.asList(new SimpleGrantedAuthority("ROLE_USER")));
             logger.debug("Login failure - User: " + userEmail + " id or password unknown.");
             return userDetails;
-            //The sha256-Code is always longer than the 11 chars of the "unknownEMail" String, therefore the else statement will never lead to a successfull log in.
+            //The sha256-Code is always longer than the 11 chars of the "unknownEMail" String, therefore the else statement will never lead to a successful log in.
         }
     }
 }

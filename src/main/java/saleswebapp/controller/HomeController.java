@@ -8,9 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import saleswebapp.service.EmailService;
 import saleswebapp.service.HomeService;
-import saleswebapp.service.OfferService;
 
 /**
  * Created by Alexander Carl on 06.06.2017.

@@ -3,7 +3,6 @@ package saleswebapp.components;
 import saleswebapp.validator.passwordRequest.EmailUnknown;
 
 import javax.validation.constraints.Pattern;
-import java.io.Serializable;
 
 /**
  * Created by Alexander Carl on 13.06.2017.

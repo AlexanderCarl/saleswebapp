@@ -8,7 +8,6 @@ import org.imgscalr.Scalr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import saleswebapp.components.ProfileForm;
@@ -120,7 +119,7 @@ public class DbWriterServiceImpl implements DbWriterService {
         salesPerson.setBic(profileForm.getBic());
 
         salesPersonRepository.saveAndFlush(salesPerson);
-        logger.debug("SalesPerson`s (Sales-Person ID: " + profileForm.getId() +") profile change has been saved.");
+        logger.debug("SalesPerson`s (Sales-Person ID: " + profileForm.getId() +") profile has been saved.");
     }
 
     @Override
@@ -181,7 +180,7 @@ public class DbWriterServiceImpl implements DbWriterService {
         }
         restaurantToSave.setKitchenTypes(restaurantKitchenTypes);
 
-        //Sets time schedule
+        //Sets coordinates
         restaurantToSave = getCoordinates(restaurantData, restaurantToSave);
 
         //Offer/Opening times
@@ -192,10 +191,11 @@ public class DbWriterServiceImpl implements DbWriterService {
         if(restaurantId == 0) {
             logger.debug("Restaurant (Customer-ID: " + restaurantToSave.getCustomerId() + ") has been added.");
         } else {
-            logger.debug("Restaurant (Restaurant-ID: " + restaurantId + ") changes have been saved.");
+            logger.debug("Restaurant (Restaurant-ID: " + restaurantId + ") has been saved.");
         }
     }
 
+    //Part of saveRestaurant
     private Restaurant getCoordinates (Restaurant restaurantData, Restaurant restaurantToSave)   {
 
         //Sets the coordinates with GoogleMaps if left empty
@@ -233,6 +233,7 @@ public class DbWriterServiceImpl implements DbWriterService {
         return restaurantToSave;
     }
 
+    //Part of saveRestaurant - Transfers the opening and offer times from the RestaurantTimeContainer`s back to the DB-Schema.
     private List<TimeSchedule> getTimeScheduleList(Restaurant restaurantData, Restaurant restaurantToSave) {
         SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
 
@@ -294,11 +295,7 @@ public class DbWriterServiceImpl implements DbWriterService {
                     e.printStackTrace();
                 }
             } else {
-                try {
-                    openingTime.setOpeningTime(sdf.parse("00:00"));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                openingTime.setOpeningTime(null);
             }
 
             if (timeContainerOpeningTimes.getEndTime() != "") {
@@ -308,11 +305,7 @@ public class DbWriterServiceImpl implements DbWriterService {
                     e.printStackTrace();
                 }
             } else {
-                try {
-                    openingTime.setClosingTime(sdf.parse("00:00"));
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+                openingTime.setClosingTime(null);
             }
 
             //Setting the opening time as a list is questionable as the program (findLunch & SWA) only support one opening time per day.
@@ -343,7 +336,7 @@ public class DbWriterServiceImpl implements DbWriterService {
                     googleMapsLocationValues.put("locationLatitude", (float) firstMatch.geometry.location.lat);
                     googleMapsLocationValues.put("locationLongitude", (float) firstMatch.geometry.location.lng);
                 } else {
-                    logger.debug("Restaurant address for restaurantID: " + restaurantData.getId() + " could not be found be GoogleMaps. Location Latitude/Longitude are not set by Google.");
+                    logger.debug("Restaurant address for restaurantID: " + restaurantData.getId() + " could not be found be by GoogleMaps. Location Latitude/Longitude are not set by Google.");
                 }
             }
         } catch (Exception e) {
@@ -397,7 +390,10 @@ public class DbWriterServiceImpl implements DbWriterService {
 
         //Course type
         List<CourseType> courseTypes = courseTypeRepository.getAllByNameAndRestaurantId(offer.getCourseTypeAsString(), offer.getIdOfRestaurant());
-        CourseType courseType = courseTypes.get(0); //There should only be one course type per name and restaurant
+        CourseType courseType = null;
+        if(courseTypes.size() > 0) {
+            courseType = courseTypes.get(0); //There should only be one course type per name and restaurant
+        }
         offerToSave.setCourseType(courseType);
 
         if(!offer.getNewChangeComment().equals("")) {
@@ -537,7 +533,7 @@ public class DbWriterServiceImpl implements DbWriterService {
         if(offerId == 0) {
             logger.debug("Offer for restaurant (Customer-ID: " + offerToSave.getRestaurant().getCustomerId() + ") has been added.");
         } else {
-            logger.debug("Offer (Offer-ID: " + offerId + ") changes have been saved.");
+            logger.debug("Offer (Offer-ID: " + offerId + ") has been saved.");
         }
     }
 

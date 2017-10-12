@@ -38,6 +38,10 @@
                             <p> <th th:text="#{login.success.pwChangeSuccess}" /> </p>
                         </div>
 
+                        <div th:if="${param.mailAccountTakesToLongToAnswer != null}" class="alert alert-danger" role="alert">
+                            <p> <th th:text="#{login.error.mail}" /> </p>
+                        </div>
+
                         <div class="panel-body">
                             <form th:action="@{/login}" method="post" class="form-horizontal" role="form">
 

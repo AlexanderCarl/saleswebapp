@@ -3,20 +3,19 @@ package saleswebapp.service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
-import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
 import saleswebapp.components.Messages;
 import saleswebapp.repository.impl.SalesPerson;
+import saleswebapp.service.DbReaderService;
 import saleswebapp.service.EmailService;
 import saleswebapp.service.PasswordRequestService;
-import saleswebapp.service.DbReaderService;
 
-import javax.annotation.PostConstruct;
 import java.util.Locale;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * Created by Alexander Carl on 15.06.2017.
@@ -38,9 +37,20 @@ public class EmailServiceImpl implements EmailService {
     @Autowired
     private Messages messages;
 
+    private SimpleMailMessage mailMessage;
+
+    private Timer timer;
+
+    private String userEmail;
+
+    private Thread mailingThread;
+
+    private boolean mailHasBeenSend;
+
     @Override
-    public void generatePasswordRequest(String userEmail) {
+    public void generatePasswordRequestMail(String userEmail) {
         logger.debug("PasswordRequestForm success - User " + userEmail + " requested a PasswordResetMail.");
+        this.userEmail = userEmail;
         String resetCode = passwordRequestService.createPasswordResetCode(userEmail);
         SalesPerson salesPerson = DbReaderService.getSalesPersonByEmail(userEmail);
         String localeAsString = LocaleContextHolder.getLocale().toString();
@@ -60,13 +70,54 @@ public class EmailServiceImpl implements EmailService {
                 messages.getMessage("mail.text.mailTextPart3", locale) + "\n" +
                 messages.getMessage("mail.text.mailTextPart4", locale);
 
-        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage = new SimpleMailMessage();
         mailMessage.setTo(userEmail);
         mailMessage.setFrom("no-reply@SalesWebApp.com");
         mailMessage.setSubject(subject);
         mailMessage.setText(mailText);
-        javaMailSender.send(mailMessage);
+    }
 
-        logger.debug("PasswordRequestMail (User: " + userEmail + ") has been send.");
+    /* Timer explanation:
+    * The Google test mail account does`t answer within 30 seconds if it is used for the first
+    * since several days. Therefore the program receives a time out. If the Google test mail account
+    * is called after it has been "waken up" it answers within 3 seconds.
+    * Thus the mailing process is started in its own thread and if it does`t finish within 6 seconds
+    * the thread is stopped and the user receives a message in the login dialog. If the user try`s again a
+    * minute later it works fine.
+    *
+    * To stop the mailing thread the depreciated function Thread.stop is needed. Thread.interrupt isn`t working
+    * as the mailing thread needs to be stopped from outside.
+     */
+
+    public boolean sendMail() {
+        timer = new Timer();
+        mailHasBeenSend = false;
+
+        mailingThread = new Thread (
+                new Runnable() {
+                    @Override
+                    public void run() {
+                        javaMailSender.send(mailMessage);
+                        mailHasBeenSend = true;
+                        logger.debug("A password request mail (User: " + userEmail + ") has been send.");
+                    }
+                }
+        );
+
+        mailingThread.start();
+        timer.schedule(new StopClock(), 6 * 1000); // 5 seconds
+        try {
+            Thread.sleep(6*1100);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return mailHasBeenSend;
+    }
+
+    private class StopClock extends TimerTask {
+        public void run() {
+            mailingThread.stop();
+            timer.cancel();
+        }
     }
 }

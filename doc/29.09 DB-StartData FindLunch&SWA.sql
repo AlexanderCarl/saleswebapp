@@ -3,7 +3,7 @@
 INSERT INTO `findlunchandswa`.`country` (`country_code`, `name`) VALUES ('DE', 'Deutschland');
 INSERT INTO `findlunchandswa`.`country` (`country_code`, `name`) VALUES ('UK', 'United Kingdom');
 
-INSERT INTO `findlunchandswa`.`swa_sales_person` (`id`, `password`, `first_name`, `second_name`, `street`, `street_number`, `zip`, `city`, `phone`, `country_code`, `email`, `iban`, `bic`, `salary_percentage`) VALUES (1, "dc76e9f0c0006e8f919e0c515c66dbba3982f785", "Alexander", "Carl", "Lothstr", "666", "87654", "StackOverflowCity", "666/1234 1234", "DE", "carl@hm.edu", "DE123456789012312312312312", "THEBIC1234567890", 0.33);
+INSERT INTO `findlunchandswa`.`swa_sales_person` (`id`, `password`, `first_name`, `second_name`, `street`, `street_number`, `zip`, `city`, `phone`, `country_code`, `email`, `iban`, `bic`, `salary_percentage`) VALUES (1, "4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2", "Alexander", "Carl", "Lothstr", "666", "87654", "StackOverflowCity", "666/1234 1234", "DE", "carl@hm.edu", "DE123456789012312312312312", "THEBIC1234567890", 0.33);
 INSERT INTO `findlunchandswa`.`swa_sales_person` (`id`, `password`, `first_name`, `second_name`, `street`, `street_number`, `zip`, `city`, `phone`, `country_code`, `email`, `iban`, `bic`, `salary_percentage`) VALUES (2, "dc76e9f0c0006e8f919e0c515c66dbba3982f785", "Alex2nd", "Karl", "Lotharstr.", "999", "12345", "StackOverflowCity", "999/1234 1234", "DE", "alexander.carl@ymail.com", "DE123456789012312312312312", "THEBIC1234567890", 0.33);
 
 INSERT INTO `findlunchandswa`.`day_of_week` (`id`, `name`, `day_number`) VALUES (1, 'Montag', 1);

@@ -3,7 +3,6 @@ package saleswebapp.components;
 import saleswebapp.validator.passwordReset.PasswordResetCode;
 
 import javax.validation.constraints.Pattern;
-import java.io.Serializable;
 
 /**
  * Created by Alexander Carl on 15.06.2017.

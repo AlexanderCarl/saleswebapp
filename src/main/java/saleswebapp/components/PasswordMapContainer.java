@@ -2,8 +2,6 @@ package saleswebapp.components;
 
 import org.joda.time.DateTime;
 
-import java.sql.Timestamp;
-
 /**
  * Created by Alexander Carl on 15.06.2017.
  * This class is used in the PasswordRequestService HashMap.

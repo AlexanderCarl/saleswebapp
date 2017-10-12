@@ -6,6 +6,28 @@
     </head>
 
     <body>
+    <script th:inline="javascript">
+        //<![CDATA[
+        var onFileChange = function (fileInputElement) {
+            var file = fileInputElement.files[0];
+            var infoElement = fileInputElement.parentNode.parentNode.querySelector('.text-info');
+            var errorElement = fileInputElement.parentNode.parentNode.querySelector('.text-danger');
+
+            infoElement.style.display = 'block';
+            errorElement.style.display = 'none';
+
+            infoElement.innerHTML = file.name;
+
+            if (file.size > 5242880) {
+                fileInputElement.value = '';
+                infoElement.style.display = 'none';
+                errorElement.style.display = 'block';
+                errorElement.innerHTML = 'Dateien die größer als 5 MB sind werden nicht hochgeladen.';
+            }
+        };
+        //]]>
+    </script>
+
     <div th:replace="fragments/navbar :: navbar"></div>
 
     <div class="container">
@@ -272,7 +294,7 @@
                     <span style="float: left; width: 30%; margin-bottom: 0.5em; margin-left: 1.25%">
                         <div class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
                             <span th:text="#{offer.label.addImage}" />
-                            <input th:field="${offer.firstOfferImage}" type="file" />
+                            <input th:field="${offer.firstOfferImage}" onchange="onFileChange(this)" type="file" />
                         </div>
 
                         <div style="margin-top: 10px">
@@ -280,13 +302,16 @@
                                 <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
                             </a>
                         </div>
+
+                        <p class="text-info" style="overflow: hidden; margin-right: 20px; white-space: nowrap; margin-top: 10px"></p>
+                        <p class="text-danger" style="margin-top: 10px"></p>
                     </span>
 
                     <!-- second two buttons -->
                     <span style="float: left; width: 30%; margin-bottom: 0.5em; margin-left: 1.25%">
                         <div class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
                             <span th:text="#{offer.label.addImage}" />
-                            <input th:field="${offer.secondOfferImage}" type="file" />
+                            <input th:field="${offer.secondOfferImage}" onchange="onFileChange(this)" type="file" />
                         </div>
 
                         <div style="margin-top: 10px">
@@ -294,13 +319,16 @@
                                 <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
                             </a>
                         </div>
+
+                        <p class="text-info" style="overflow: hidden; margin-right: 20px; white-space: nowrap; margin-top: 10px"></p>
+                        <p class="text-danger" style="margin-top: 10px"></p>
                     </span>
 
                     <!-- third two buttons -->
                     <span style="float: left; width: 30%; margin-bottom: 0.5em; margin-left: 1.25%">
                         <div class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
                             <span th:text="#{offer.label.addImage}" />
-                            <input th:field="${offer.thirdOfferImage}" type="file" />
+                            <input th:field="${offer.thirdOfferImage}" onchange="onFileChange(this)" type="file" />
                         </div>
 
                         <div style="margin-top: 10px">
@@ -308,8 +336,11 @@
                                 <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
                             </a>
                         </div>
+
+                        <p class="text-info" style="overflow: hidden; margin-right: 20px; white-space: nowrap; margin-top: 10px"></p>
+                        <p class="text-danger" style="margin-top: 10px"></p>
                     </span>
-                    <p style="clear: both;" />
+
                 </div>
             </div>
         </div>
@@ -342,8 +373,9 @@
 
         <div class="row" style="margin-top: 25px">
             <div class="btn-toolbar" style="margin-bottom: 5%; margin-top: 1.5%">
-                <button class="btn btn-primary" style="width: 15%" type="submit" th:disabled="${dataInputDisabled}" > <th th:text="#{universal.label.save}" /> </button>
-                <a th:href="@{home}" class="btn btn-primary" style="width: 15%"> <th th:text="#{universal.label.cancel}" /> </a>
+                <button class="btn btn-primary" name="home" value="home" type="submit" th:disabled="${dataInputDisabled}" style="width: 225px" > <th th:text="#{offer.label.saveToHome}" /> </button>
+                <button class="btn btn-primary" name="offerOverview" value="offerOverview" type="submit" th:disabled="${dataInputDisabled}" style="width: 225px" > <th th:text="#{offer.label.saveToOfferOverview}" /> </button>
+                <a th:href="@{home}" class="btn btn-primary" style="width: 150px"> <th th:text="#{universal.label.cancel}" /> </a>
             </div>
         </div>
 

@@ -9,15 +9,16 @@ import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.*;
-import saleswebapp.components.RestaurantDeleteCategory;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import saleswebapp.components.RestaurantAddCategory;
+import saleswebapp.components.RestaurantDeleteCategory;
 import saleswebapp.repository.impl.Restaurant;
 import saleswebapp.service.CountryService;
 import saleswebapp.service.RestaurantService;
 import saleswebapp.service.SalesPersonService;
-import saleswebapp.validator.restaurant.OfferTimesValidator;
-import saleswebapp.validator.restaurant.OpeningTimesValidator;
 import saleswebapp.validator.restaurant.RestaurantValidator;
 
 import javax.servlet.http.HttpServletRequest;
@@ -77,7 +78,14 @@ public class RestaurantController {
 
     @RequestMapping(value = "/restaurant/addCategory", method = RequestMethod.POST)
     public String processAddNewCategory(Model model, RestaurantAddCategory restaurantAddCategory, HttpServletRequest request) {
-        int restaurantId = (int) request.getSession().getAttribute("restaurantId");
+
+        int restaurantId;
+            try {
+                restaurantId = (int) request.getSession().getAttribute("restaurantId");
+            } catch (Exception e) {
+                //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
+                return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
+            }
         request.getSession().removeAttribute("restaurantId");
         restaurantAddCategory.setRestaurantId(restaurantId);
 
@@ -91,7 +99,14 @@ public class RestaurantController {
 
     @RequestMapping(value = "/restaurant/deleteCategory", method = RequestMethod.POST)
     public String processDeleteExistingCategory(Model model, RestaurantDeleteCategory restaurantDeleteCategory, HttpServletRequest request) {
-        int restaurantId = (int) request.getSession().getAttribute("restaurantId");
+
+        int restaurantId;
+            try {
+                restaurantId = (int) request.getSession().getAttribute("restaurantId");
+            } catch (Exception e) {
+                //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
+                return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
+            }
         request.getSession().removeAttribute("restaurantId");
         restaurantDeleteCategory.setRestaurantId(restaurantId);
 
@@ -108,7 +123,8 @@ public class RestaurantController {
 
         if(restaurantBinder.hasErrors()) {
             restaurant.setQrUuidBase64Encoded(Base64.getEncoder().encodeToString(restaurant.getQrUUID()));
-            model = getRestaurantModel(restaurant, model);
+            Restaurant restaurantWithDayNumbers = restaurantService.setDayNumbers(restaurant);
+            model = getRestaurantModel(restaurantWithDayNumbers, model);
 
             return "restaurant";
         }

@@ -1,6 +1,5 @@
 package saleswebapp.validator.profile;
 
-import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 import saleswebapp.components.ProfileForm;

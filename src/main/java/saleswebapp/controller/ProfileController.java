@@ -3,7 +3,6 @@ package saleswebapp.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,13 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import saleswebapp.components.ProfileForm;
 import saleswebapp.repository.impl.SalesPerson;
 import saleswebapp.service.CountryService;
-import saleswebapp.service.DbReaderService;
-import saleswebapp.service.DbWriterService;
 import saleswebapp.service.ProfileService;
 import saleswebapp.validator.profile.ProfileValidator;
 
 import javax.validation.Valid;
-import java.util.HashMap;
 
 /**
  * Created by Alexander Carl on 19.06.2017.

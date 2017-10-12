@@ -2,8 +2,6 @@ package saleswebapp.components;
 
 import saleswebapp.repository.impl.Restaurant;
 
-import java.io.Serializable;
-
 /**
  * Created by Alexander Carl on 08.07.2017.
  * This class is used for the restaurant dropdown (list) at the beginning of the restaurant dialog.

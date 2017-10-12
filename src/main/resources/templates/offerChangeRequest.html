@@ -6,6 +6,28 @@
     </head>
 
     <body>
+    <script th:inline="javascript">
+        //<![CDATA[
+        var onFileChange = function (fileInputElement) {
+            var file = fileInputElement.files[0];
+            var infoElement = fileInputElement.parentNode.parentNode.querySelector('.text-info');
+            var errorElement = fileInputElement.parentNode.parentNode.querySelector('.text-danger');
+
+            infoElement.style.display = 'block';
+            errorElement.style.display = 'none';
+
+            infoElement.innerHTML = file.name;
+
+            if (file.size > 5242880) {
+                fileInputElement.value = '';
+                infoElement.style.display = 'none';
+                errorElement.style.display = 'block';
+                errorElement.innerHTML = 'Dateien die größer als 5 MB sind werden nicht hochgeladen.';
+            }
+        };
+        //]]>
+    </script>
+
     <div th:replace="fragments/navbar :: navbar"></div>
 
     <div class="container">
@@ -398,15 +420,15 @@
                         <h3><th th:text="#{offerChangeRequest.label.originalImages}" /></h3>
                     </div>
 
-                    <div class="col-lg-offset-1 col-lg-md-offset-1 col-sm-offset-1">
+                    <div class="col-lg-offset-2 col-lg-md-offset-2 col-sm-offset-2">
                         <div>
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferFirstPicture}}" style="margin-bottom: 20px; width: 280px; height: 190px" />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferFirstPicture}}" style="margin-left: 8%; margin-bottom: 20px; width: 280px; height: 190px" />
                         </div>
                         <div>
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferSecondPicture}}" style="margin-bottom: 20px; width: 280px; height: 190px"  />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferSecondPicture}}" style="margin-left: 8%; margin-bottom: 20px; width: 280px; height: 190px"  />
                         </div>
                         <div>
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferThirdPicture}}" style="margin-bottom: 10px; width: 280px; height: 190px"  />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferThirdPicture}}" style="margin-left: 8%; margin-bottom: 10px; width: 280px; height: 190px"  />
                         </div>
                         <p style="clear: both;" />
                     </div>
@@ -418,15 +440,19 @@
                         <h3><th th:text="#{offerChangeRequest.label.changedOfferImages}" /></h3>
                     </div>
 
+                    <!--
                     <div class="col-lg-offset-1 col-lg-md-offset-1 col-sm-offset-1">
+                    -->
+
+                    <div>
                         <!-- first image of the offerChange Request -->
                         <span class="col-lg-8 col-lg-md-5 col-sm-6">
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${firstPicture}}" style="margin-bottom: 10px; width: 278px; height: 190px" />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${firstPicture}}" style="margin-bottom: 10px; width: 280px; height: 190px" />
                         </span>
-                        <span class="col-lg-3 col-lg-md-3 col-sm-3" style="margin-top: 8%">
+                        <span class="col-lg-4 col-lg-md-4 col-sm-4" style="margin-top: 6%">
                             <div class="btn btn-primary btn-file" style="width: 150px">
                                 <span th:text="#{offer.label.addImage}" />
-                                <input th:field="${offer.firstOfferImage}" type="file" />
+                                <input th:field="${offer.firstOfferImage}" onchange="onFileChange(this)" type="file" />
                             </div>
 
                             <div style="margin-top: 10px">
@@ -434,17 +460,20 @@
                                     <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
                                 </a>
                             </div>
+
+                            <p class="text-info" style="overflow: hidden; margin-right: 20px; white-space: nowrap; margin-top: 10px"></p>
+                            <p class="text-danger" style="margin-top: 10px"></p>
                         </span>
                         <p style="clear: both;" />
 
                         <!-- second image of the offerChange Request -->
                         <span class="col-lg-8 col-lg-md-5 col-sm-6">
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${secondPicture}}" style="margin-bottom: 10px; width: 278px; height: 190px" />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${secondPicture}}" style="margin-bottom: 10px; width: 280px; height: 190px" />
                         </span>
-                        <span class="col-lg-3 col-lg-md-3 col-sm-3" style="margin-top: 8%">
+                        <span class="col-lg-4 col-lg-md-4 col-sm-4" style="margin-top: 6%">
                             <div class="btn btn-primary btn-file" style="width: 150px">
                                 <span th:text="#{offer.label.addImage}" />
-                                <input th:field="${offer.secondOfferImage}" type="file" />
+                                <input th:field="${offer.secondOfferImage}" onchange="onFileChange(this)" type="file" />
                             </div>
 
                             <div style="margin-top: 10px">
@@ -452,17 +481,20 @@
                                     <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
                                 </a>
                             </div>
+
+                            <p class="text-info" style="overflow: hidden; margin-right: 20px; white-space: nowrap; margin-top: 10px"></p>
+                            <p class="text-danger" style="margin-top: 10px"></p>
                         </span>
                         <p style="clear: both;" />
 
                         <!-- third image of the offerChange Request -->
                         <span class="col-lg-8 col-lg-md-5 col-sm-6">
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${thirdPicture}}" style="margin-bottom: 10px; width: 278px; height: 190px" />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${thirdPicture}}" style="margin-bottom: 10px; width: 280px; height: 190px" />
                         </span>
-                        <span class="col-lg-3 col-lg-md-3 col-sm-3" style="margin-top: 8%">
+                        <span class="col-lg-4 col-lg-md-4 col-sm-4" style="margin-top: 6%">
                             <div class="btn btn-primary btn-file" style="width: 150px">
                                 <span th:text="#{offer.label.addImage}" />
-                                <input th:field="${offer.thirdOfferImage}" type="file" />
+                                <input th:field="${offer.thirdOfferImage}" onchange="onFileChange(this)" type="file" />
                             </div>
 
                             <div style="margin-top: 10px">
@@ -470,6 +502,9 @@
                                     <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
                                 </a>
                             </div>
+
+                            <p class="text-info" style="overflow: hidden; margin-right: 20px; white-space: nowrap; margin-top: 10px"></p>
+                            <p class="text-danger" style="margin-top: 10px"></p>
                         </span>
                         <p style="clear: both;" />
 
@@ -508,7 +543,7 @@
             <div class="btn-toolbar" style="margin-bottom: 5%; margin-top: 1.5%">
                 <button class="btn btn-primary" style="width: 20%" type="submit"> <th th:text="#{offerChangeRequest.button.saveChangedOffer}" /> </button>
                 <a th:href="@{/offerChangeRequest/remove(toDoId=${toDoId})}" class="btn btn-danger" style="width: 20%"> <th th:text="#{offerChangeRequest.button.deleteChangeOffer}" /> </a>
-                <a th:href="@{home}" class="btn btn-primary" style="width: 10%"> <th th:text="#{universal.label.cancel}" /> </a>
+                <a th:href="@{home}" class="btn btn-primary" style="width: 150px"> <th th:text="#{universal.label.cancel}" /> </a>
             </div>
         </div>
 

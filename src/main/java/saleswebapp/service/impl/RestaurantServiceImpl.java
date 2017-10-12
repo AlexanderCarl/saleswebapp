@@ -21,7 +21,6 @@ import saleswebapp.service.DbWriterService;
 import saleswebapp.service.RestaurantService;
 
 import javax.imageio.ImageIO;
-import javax.transaction.Transactional;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -251,5 +250,24 @@ public class RestaurantServiceImpl implements RestaurantService {
     @Override
     public List<CourseType> getAllCourseTypesOfRestaurant(int restaurantId) {
         return dbReaderService.getAllCourseTypesOfRestaurant(restaurantId);
+    }
+
+    @Override
+    public Restaurant setDayNumbers(Restaurant restaurant) {
+        List<RestaurantTimeContainer> openingTimes = restaurant.getOpeningTimes();
+        List<RestaurantTimeContainer> offerTimes = restaurant.getOfferTimes();
+
+        for(int i = 0; i < 7; i++) {
+            int dayNumber = i + 1;
+            openingTimes.get(i).setDayNumber(dayNumber);
+            openingTimes.get(i).setDayNumberAsString(String.valueOf(dayNumber));
+            offerTimes.get(i).setDayNumber(dayNumber);
+            offerTimes.get(i).setDayNumberAsString(String.valueOf(dayNumber));
+        }
+
+        restaurant.setOpeningTimes(openingTimes);
+        restaurant.setOfferTimes(offerTimes);
+
+        return restaurant;
     }
 }

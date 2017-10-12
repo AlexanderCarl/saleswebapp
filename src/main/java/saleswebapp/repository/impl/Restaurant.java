@@ -3,7 +3,6 @@ package saleswebapp.repository.impl;
 import saleswebapp.components.RestaurantTimeContainer;
 
 import javax.persistence.*;
-import javax.validation.constraints.Digits;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
@@ -30,14 +29,14 @@ public class Restaurant implements Serializable {
     @Pattern(regexp = "^[a-zA-ZäöüÄÖÜß]{4,60}$", message = "{restaurant.validation.street}")
     private String street;
 
-    @Pattern(regexp = "^[^0]{1,11}$", message = "{restaurant.validation.streetNumber}")
+    @Size(min=1, max=11, message = "{restaurant.validation.streetNumber}")
     @Column(name = "street_number")
     private String streetNumber;
 
     @Pattern(regexp = "^[0-9]{5}$", message = "{restaurant.validation.zip}")
     private String zip;
 
-    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{3,60}$", message = "{restaurant.validation.city}")
+    @Size(min=3, max=60, message = "{restaurant.validation.city}")
     private String city;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -56,8 +55,9 @@ public class Restaurant implements Serializable {
     @Pattern(regexp = "^[0][0-9/. \\-]{6,60}$", message = "{restaurant.validation.phone}")
     private String phone;
 
-    // Regex-Source: http://www.regexpal.com/93652
-    @Pattern(regexp = "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$|", message = "{restaurant.validation.url}")
+    // Regex-Source: http://www.regexpal.com/93652 - Hat sich als instabil erwiesen.
+    //@Pattern(regexp = "^(http:\\/\\/www\\.|https:\\/\\/www\\.|http:\\/\\/|https:\\/\\/)?[a-z0-9]+([\\-\\.]{1}[a-z0-9]+)*\\.[a-z]{2,5}(:[0-9]{1,5})?(\\/.*)?$|", message = "{restaurant.validation.url}")
+    @Size(min=0, max=60, message = "{restaurant.validation.url}")
     private String url;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -249,16 +249,22 @@ public class Restaurant implements Serializable {
             return false;
         }
 
-        if (!locationLatitude.equals(other.getLocationLatitude())) {
-            return false;
+        if(locationLatitude != null && other.getLocationLatitude() != null) {
+            if (!locationLatitude.equals(other.getLocationLatitude())) {
+                return false;
+            }
         }
 
-        if (!locationLongitude.equals(other.getLocationLongitude())) {
-            return false;
+        if(locationLongitude != null && other.getLocationLongitude() != null) {
+            if (!locationLongitude.equals(other.getLocationLongitude())) {
+                return false;
+            }
         }
 
-        if (!url.equals(other.getUrl())) {
-            return false;
+        if(url != null && other.getUrl() != null) {
+            if (!url.equals(other.getUrl())) {
+                return false;
+            }
         }
 
         if (!restaurantType.getName().equals(other.getRestaurantType().getName())) {

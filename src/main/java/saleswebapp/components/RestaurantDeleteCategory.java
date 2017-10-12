@@ -1,7 +1,5 @@
 package saleswebapp.components;
 
-import java.io.Serializable;
-
 /**
  * Created by Alexander Carl on 20.07.2017.
  */

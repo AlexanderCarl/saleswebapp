@@ -43,4 +43,6 @@ public interface RestaurantService {
     List<RestaurantTimeContainer> populateRestaurantTimeDayNumber();
 
     List<CourseType> getAllCourseTypesOfRestaurant(int restaurantId);
+
+    Restaurant setDayNumbers(Restaurant restaurant);
 }

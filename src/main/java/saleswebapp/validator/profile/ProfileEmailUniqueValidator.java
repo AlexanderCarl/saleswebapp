@@ -26,7 +26,7 @@ public class ProfileEmailUniqueValidator implements ConstraintValidator<ProfileE
 
         SalesPerson salesPerson = dbReaderService.getSalesPersonByEmail(value);
 
-        //The email is not already used and therefore valid as a new email
+        //The email is not used and therefore valid as a new email
         if(salesPerson == null) {
             return true;
         }

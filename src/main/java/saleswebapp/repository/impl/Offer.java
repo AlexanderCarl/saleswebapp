@@ -283,11 +283,11 @@ public class Offer {
             return false;
         }
 
-        /*
-        if(courseType.getId() != other.getCourseType().getId()) {
-            return false;
+        if(courseType != null && other.getCourseType() != null) {
+            if(courseType.getId() != other.getCourseType().getId()) {
+                return false;
+            }
         }
-        */
 
         if(commentOfLastChange != null && other.getCommentOfLastChange() != null) {
             if (!commentOfLastChange.equals(other.getCommentOfLastChange())) {
@@ -377,7 +377,7 @@ public class Offer {
             }
 
             for(OfferPhoto offerPhoto : other.getOfferPhotos()) {
-                if(offerPhoto.getPhotoBase64Encoded() != "empty") {
+                if(offerPhoto.getPhotoBase64Encoded() != null) {
                     otherOfferPhotosIds.add(offerPhoto.getId());
                 }
             }

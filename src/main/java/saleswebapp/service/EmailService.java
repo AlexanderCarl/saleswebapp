@@ -1,5 +1,7 @@
 package saleswebapp.service;
 
+import org.springframework.mail.SimpleMailMessage;
+
 import javax.mail.MessagingException;
 
 /**
@@ -7,6 +9,8 @@ import javax.mail.MessagingException;
  */
 public interface EmailService {
 
-    void generatePasswordRequest(String userEmail);
+    void generatePasswordRequestMail(String userEmail);
+
+    boolean sendMail();
 
 }
