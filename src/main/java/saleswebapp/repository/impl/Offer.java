@@ -4,9 +4,13 @@ import org.springframework.web.multipart.MultipartFile;
 import saleswebapp.components.RestaurantTimeContainer;
 
 import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.util.*;
+import java.util.List;
 
 /**
  * Created by Alexander Carl on 02.08.2017.
@@ -21,7 +25,7 @@ public class Offer {
     @Column(name = "swa_change_request_id")
     private int changeRequestId;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "restaurant_id")
     private Restaurant restaurant;
 
@@ -49,7 +53,7 @@ public class Offer {
     @Column(name = "sold_out")
     private boolean soldOut;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private CourseType courseType;
 
     @Column(name = "[order]")
@@ -58,28 +62,28 @@ public class Offer {
     @Column(name = "swa_comment_of_last_change")
     private String commentOfLastChange;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "swa_last_changed_by")
     private SalesPerson salesPerson;
 
     @Column(name = "swa_change_request")
     private boolean changeRequest;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "offer_has_day_of_week",
             joinColumns = {@JoinColumn(name = "offer_id")},
             inverseJoinColumns = {@JoinColumn(name = "day_of_week_id")}
     )
-    private List<DayOfWeek> dayOfWeeks;
+    private List <DayOfWeek> dayOfWeeks;
 
-    @OneToMany(mappedBy = "offer", fetch = FetchType.EAGER)
-    private List<OfferHasAdditive> offerHasAdditives;
+    @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY)
+    private  List <OfferHasAdditive> offerHasAdditives;
 
-    @OneToMany(mappedBy = "offer", fetch = FetchType.EAGER)
-    private List<OfferHasAllergenic> offerHasAllergenics;
+    @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY)
+    private List <OfferHasAllergenic> offerHasAllergenics;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "offer", cascade = CascadeType.ALL)
-    private Set<OfferPhoto> offerPhotos;
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "offer", cascade = CascadeType.ALL)
+    private List <OfferPhoto> offerPhotos;
 
     @Transient
     private String courseTypeAsString;
@@ -109,6 +113,15 @@ public class Offer {
 
     @Transient
     private MultipartFile thirdOfferImage;
+
+    @Transient
+    private boolean keepFirstImage; //used in the offerChangeRequest
+
+    @Transient
+    private boolean keepSecondImage;
+
+    @Transient
+    private boolean keepThirdImage;
 
     // Regex-Source: http://www.regexpal.com/93999
     // The bean-validation via regex requires a String but it is much better than the standard @Digits validation.
@@ -237,11 +250,11 @@ public class Offer {
                 return false;
         }
 
-        if(id != other.getId()) {
+        if (id != other.getId()) {
             return false;
         }
 
-        if(changeRequestId != other.getChangeRequestId()) {
+        if (changeRequestId != other.getChangeRequestId()) {
             return false;
         }
 
@@ -523,52 +536,20 @@ public class Offer {
         this.salesPerson = salesPerson;
     }
 
+    public boolean isChangeRequest() {
+        return changeRequest;
+    }
+
+    public void setChangeRequest(boolean changeRequest) {
+        this.changeRequest = changeRequest;
+    }
+
     public List<DayOfWeek> getDayOfWeeks() {
         return dayOfWeeks;
     }
 
     public void setDayOfWeeks(List<DayOfWeek> dayOfWeeks) {
         this.dayOfWeeks = dayOfWeeks;
-    }
-
-    public String getCourseTypeAsString() {
-        return courseTypeAsString;
-    }
-
-    public void setCourseTypeAsString(String courseTypeAsString) {
-        this.courseTypeAsString = courseTypeAsString;
-    }
-
-    public String getStartDateAsString() {
-        return startDateAsString;
-    }
-
-    public void setStartDateAsString(String startDateAsString) {
-        this.startDateAsString = startDateAsString;
-    }
-
-    public String getEndDateAsString() {
-        return endDateAsString;
-    }
-
-    public void setEndDateAsString(String endDateAsString) {
-        this.endDateAsString = endDateAsString;
-    }
-
-    public List<String> getAdditivesAsString() {
-        return additivesAsString;
-    }
-
-    public void setAdditivesAsString(List<String> additivesAsString) {
-        this.additivesAsString = additivesAsString;
-    }
-
-    public List<String> getAllergenicsAsString() {
-        return allergenicsAsString;
-    }
-
-    public void setAllergenicsAsString(List<String> allergenicsAsString) {
-        this.allergenicsAsString = allergenicsAsString;
     }
 
     public List<OfferHasAdditive> getOfferHasAdditives() {
@@ -585,6 +566,38 @@ public class Offer {
 
     public void setOfferHasAllergenics(List<OfferHasAllergenic> offerHasAllergenics) {
         this.offerHasAllergenics = offerHasAllergenics;
+    }
+
+    public List<OfferPhoto> getOfferPhotos() {
+        return offerPhotos;
+    }
+
+    public void setOfferPhotos(List<OfferPhoto> offerPhotos) {
+        this.offerPhotos = offerPhotos;
+    }
+
+    public String getCourseTypeAsString() {
+        return courseTypeAsString;
+    }
+
+    public void setCourseTypeAsString(String courseTypeAsString) {
+        this.courseTypeAsString = courseTypeAsString;
+    }
+
+    public List<String> getAdditivesAsString() {
+        return additivesAsString;
+    }
+
+    public void setAdditivesAsString(List<String> additivesAsString) {
+        this.additivesAsString = additivesAsString;
+    }
+
+    public List<String> getAllergenicsAsString() {
+        return allergenicsAsString;
+    }
+
+    public void setAllergenicsAsString(List<String> allergenicsAsString) {
+        this.allergenicsAsString = allergenicsAsString;
     }
 
     public List<RestaurantTimeContainer> getOfferTimes() {
@@ -611,21 +624,6 @@ public class Offer {
         this.newChangeComment = newChangeComment;
     }
 
-    public List<OfferPhoto> getOfferPhotos() {
-        List<OfferPhoto> offerPhotosAsList = new ArrayList<OfferPhoto>();
-        if(offerPhotos != null) {
-            offerPhotosAsList.addAll(offerPhotos);
-        }
-        return offerPhotosAsList;
-    }
-
-    public void setOfferPhotos(List<OfferPhoto> offerPhotos) {
-        if(offerPhotos != null) {
-            Set<OfferPhoto> offerPhotosAsSet = new HashSet<OfferPhoto>(offerPhotos);
-            this.offerPhotos = offerPhotosAsSet;
-        }
-    }
-
     public MultipartFile getFirstOfferImage() {
         return firstOfferImage;
     }
@@ -650,14 +648,6 @@ public class Offer {
         this.thirdOfferImage = thirdOfferImage;
     }
 
-    public int getIdOfRestaurant() {
-        return idOfRestaurant;
-    }
-
-    public void setIdOfRestaurant(int idOfRestaurant) {
-        this.idOfRestaurant = idOfRestaurant;
-    }
-
     public String getPriceAsString() {
         return priceAsString;
     }
@@ -674,20 +664,59 @@ public class Offer {
         this.preparationTimeAsString = preparationTimeAsString;
     }
 
+    public String getStartDateAsString() {
+        return startDateAsString;
+    }
+
+    public void setStartDateAsString(String startDateAsString) {
+        this.startDateAsString = startDateAsString;
+    }
+
+    public String getEndDateAsString() {
+        return endDateAsString;
+    }
+
+    public void setEndDateAsString(String endDateAsString) {
+        this.endDateAsString = endDateAsString;
+    }
+
     public String getNeededPointsAsString() {
         return neededPointsAsString;
-    }
-
-    public boolean isChangeRequest() {
-        return changeRequest;
-    }
-
-    public void setChangeRequest(boolean changeRequest) {
-        this.changeRequest = changeRequest;
     }
 
     public void setNeededPointsAsString(String neededPointsAsString) {
         this.neededPointsAsString = neededPointsAsString;
     }
 
+    public int getIdOfRestaurant() {
+        return idOfRestaurant;
+    }
+
+    public void setIdOfRestaurant(int idOfRestaurant) {
+        this.idOfRestaurant = idOfRestaurant;
+    }
+
+    public boolean isKeepFirstImage() {
+        return keepFirstImage;
+    }
+
+    public void setKeepFirstImage(boolean keepFirstImage) {
+        this.keepFirstImage = keepFirstImage;
+    }
+
+    public boolean isKeepSecondImage() {
+        return keepSecondImage;
+    }
+
+    public void setKeepSecondImage(boolean keepSecondImage) {
+        this.keepSecondImage = keepSecondImage;
+    }
+
+    public boolean isKeepThirdImage() {
+        return keepThirdImage;
+    }
+
+    public void setKeepThirdImage(boolean keepThirdImage) {
+        this.keepThirdImage = keepThirdImage;
+    }
 }

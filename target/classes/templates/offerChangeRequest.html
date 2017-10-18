@@ -273,7 +273,6 @@
                         </span>
                     </p>
                 </div>
-
             </div>
 
             <div class="col-lg-12 col-lg-md-12 co-sm-12">
@@ -440,25 +439,20 @@
                         <h3><th th:text="#{offerChangeRequest.label.changedOfferImages}" /></h3>
                     </div>
 
-                    <!--
-                    <div class="col-lg-offset-1 col-lg-md-offset-1 col-sm-offset-1">
-                    -->
-
                     <div>
                         <!-- first image of the offerChange Request -->
-                        <span class="col-lg-8 col-lg-md-5 col-sm-6">
+                        <span class="col-lg-7 col-lg-md-7 col-sm-7">
                             <img th:src="@{'data:image/jpeg;base64,'+ ${firstPicture}}" style="margin-bottom: 10px; width: 280px; height: 190px" />
                         </span>
-                        <span class="col-lg-4 col-lg-md-4 col-sm-4" style="margin-top: 6%">
+                        <span class="col-lg-5 col-lg-md-5 col-sm-5" style="margin-top: 6%">
+                            <div style="margin-bottom: 15px">
+                                <span style="width: 160px; display: inline-block" th:text="#{offerChangeRequest.label.keepImage}" />
+                                <input type="checkbox" th:checked="${offer.keepFirstImage}" name="keepFirstImage" th:disabled="${!offer.keepFirstImage}"/>
+                            </div>
+
                             <div class="btn btn-primary btn-file" style="width: 150px">
                                 <span th:text="#{offer.label.addImage}" />
                                 <input th:field="${offer.firstOfferImage}" onchange="onFileChange(this)" type="file" />
-                            </div>
-
-                            <div style="margin-top: 10px">
-                                <a th:href="@{/offer/remove(offerPhotoId=${idOfFirstPicture})}" class="btn btn-sm btn-danger" th:disabled="${firstPictureDeleteDisabled}" style="width: 150px">
-                                    <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
-                                </a>
                             </div>
 
                             <p class="text-info" style="overflow: hidden; margin-right: 20px; white-space: nowrap; margin-top: 10px"></p>
@@ -467,19 +461,18 @@
                         <p style="clear: both;" />
 
                         <!-- second image of the offerChange Request -->
-                        <span class="col-lg-8 col-lg-md-5 col-sm-6">
+                        <span class="col-lg-7 col-lg-md-7 col-sm-7">
                             <img th:src="@{'data:image/jpeg;base64,'+ ${secondPicture}}" style="margin-bottom: 10px; width: 280px; height: 190px" />
                         </span>
-                        <span class="col-lg-4 col-lg-md-4 col-sm-4" style="margin-top: 6%">
+                        <span class="col-lg-5 col-lg-md-5 col-sm-5" style="margin-top: 6%">
+                            <div style="margin-bottom: 15px">
+                                <span style="width: 160px; display: inline-block" th:text="#{offerChangeRequest.label.keepImage}" />
+                                <input type="checkbox" th:checked="${offer.keepSecondImage}" name="keepSecondImage" th:disabled="${!offer.keepSecondImage}"/>
+                            </div>
+
                             <div class="btn btn-primary btn-file" style="width: 150px">
                                 <span th:text="#{offer.label.addImage}" />
                                 <input th:field="${offer.secondOfferImage}" onchange="onFileChange(this)" type="file" />
-                            </div>
-
-                            <div style="margin-top: 10px">
-                                <a th:href="@{/offer/remove(offerPhotoId=${idOfSecondPicture})}" class="btn btn-sm btn-danger" th:disabled="${secondPictureDeleteDisabled}" style="width: 150px">
-                                    <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
-                                </a>
                             </div>
 
                             <p class="text-info" style="overflow: hidden; margin-right: 20px; white-space: nowrap; margin-top: 10px"></p>
@@ -488,26 +481,24 @@
                         <p style="clear: both;" />
 
                         <!-- third image of the offerChange Request -->
-                        <span class="col-lg-8 col-lg-md-5 col-sm-6">
+                        <span class="col-lg-7 col-lg-md-7 col-sm-7">
                             <img th:src="@{'data:image/jpeg;base64,'+ ${thirdPicture}}" style="margin-bottom: 10px; width: 280px; height: 190px" />
                         </span>
-                        <span class="col-lg-4 col-lg-md-4 col-sm-4" style="margin-top: 6%">
+                        <span class="col-lg-5 col-lg-md-5 col-sm-5" style="margin-top: 6%">
+                            <div style="margin-bottom: 15px">
+                                <span style="width: 160px; display: inline-block" th:text="#{offerChangeRequest.label.keepImage}" />
+                                <input type="checkbox" th:checked="${offer.keepThirdImage}" name="keepThirdImage" th:disabled="${!offer.keepThirdImage}" />
+                            </div>
+
                             <div class="btn btn-primary btn-file" style="width: 150px">
                                 <span th:text="#{offer.label.addImage}" />
                                 <input th:field="${offer.thirdOfferImage}" onchange="onFileChange(this)" type="file" />
-                            </div>
-
-                            <div style="margin-top: 10px">
-                                <a th:href="@{/offer/remove(offerPhotoId=${idOfThirdPicture})}" class="btn btn-sm btn-danger" th:disabled="${thirdPictureDeleteDisabled}" style="width: 150px;">
-                                    <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
-                                </a>
                             </div>
 
                             <p class="text-info" style="overflow: hidden; margin-right: 20px; white-space: nowrap; margin-top: 10px"></p>
                             <p class="text-danger" style="margin-top: 10px"></p>
                         </span>
                         <p style="clear: both;" />
-
                     </div>
                 </div>
 
@@ -532,7 +523,7 @@
 
                     <div class="col-lg-offset-1 col-lg-md-offset-1 col-sm-offset-1">
                         <span th:classappend="${#fields.hasErrors('*{newChangeComment}')}? has-error">
-                            <textarea class="form-control" rows="5" th:field="${offer.newChangeComment}" th:disabled="${dataInputDisabled}" />
+                            <textarea class="form-control" rows="5" th:field="${offer.newChangeComment}" />
                         </span>
                     </div>
                 </div>

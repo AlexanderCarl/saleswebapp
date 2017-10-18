@@ -69,7 +69,7 @@ public class OfferServiceImpl implements OfferService {
 
     @Override
     public void saveOffer(Offer offer) {
-        dbWriterService.saveOffer(offer);
+        dbWriterService.saveOffer(offer, false);
     }
 
     @Override

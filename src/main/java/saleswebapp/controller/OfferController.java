@@ -1,5 +1,7 @@
 package saleswebapp.controller;
 
+import org.hibernate.Hibernate;
+import org.hibernate.proxy.HibernateProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.repository.query.Param;
@@ -110,8 +112,13 @@ public class OfferController {
     public String deleteOfferImage(@RequestParam("offerPhotoId") int offerPhotoId, HttpServletRequest request) {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        OfferPhoto offerPhoto = offerService.getOfferPhoto(offerPhotoId);
-        int offerId = offerPhoto.getOffer().getId();
+        int offerId;
+        if(request.getSession().getAttribute("offerId") == null) {
+            //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
+            return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
+        }
+
+        offerId = (int) request.getSession().getAttribute("offerId");
         offerService.deleteOfferPhoto(offerPhotoId);
 
         return "redirect:/offer?id=" + offerId;
@@ -124,13 +131,12 @@ public class OfferController {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         int restaurantId;
-        try {
-            restaurantId = (int) request.getSession().getAttribute("restaurantId");
-        } catch (Exception e) {
+        if(request.getSession().getAttribute("restaurantId") == null) {
             //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
             return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
         }
 
+        restaurantId = (int) request.getSession().getAttribute("restaurantId");
         int offerId = (int) request.getSession().getAttribute("offerId");
         boolean newOffer = (boolean) request.getSession().getAttribute("newOffer");
         String commentOfLastChange = (String) request.getSession().getAttribute("commentOfLastChange");
@@ -243,4 +249,5 @@ public class OfferController {
         );
         offerBinder.setValidator(offerValidator);
     }
+
 }

@@ -33,7 +33,7 @@ public class SalesPerson {
 
     private String phone;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "country_code")
     private Country country;
 

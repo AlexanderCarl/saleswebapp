@@ -1,5 +1,11 @@
 package saleswebapp.controller;
 
+import org.hibernate.Hibernate;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import org.hibernate.cfg.Configuration;
+import org.hibernate.proxy.HibernateProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -17,6 +23,8 @@ import saleswebapp.service.OfferService;
 import saleswebapp.service.RestaurantService;
 import saleswebapp.validator.offer.OfferValidator;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -52,31 +60,29 @@ public class OfferChangeRequestController {
         the change request.
          */
         ToDo toDo = offerChangeRequestService.getToDoById(toDoId);
-        int existingOfferId = toDo.getOffer().getId();
-        Offer existingOffer = offerService.getOffer(existingOfferId);
-        int changedOfferId = existingOffer.getChangeRequestId();
-        Offer changedOffer = offerService.getOffer(changedOfferId);
-        Restaurant restaurant = toDo.getRestaurant();
-        int restaurantId = restaurant.getId();
-
-        Offer preparedChangedOffer = offerService.prepareExistingOffer(changedOffer, restaurant);
-        Offer preparedExistingOffer = offerService.prepareExistingOffer(existingOffer, restaurant);
-        offerService.addOfferToTransactionStore(existingOffer);
+        Offer existingOffer = initializeAndUnproxy(toDo.getOffer());
+        Restaurant restaurant = initializeAndUnproxy(toDo.getRestaurant());
+        Offer changedOffer = offerService.getOffer(existingOffer.getChangeRequestId());
 
         request.getSession().setAttribute("commentOfLastChange", existingOffer.getCommentOfLastChange());
-        request.getSession().setAttribute("existingOfferId", existingOfferId); //Id of the offer to which to change request belongs.
-        request.getSession().setAttribute("changedOfferId", changedOfferId); //Id of the change request
-        request.getSession().setAttribute("restaurantId", restaurantId);
+        request.getSession().setAttribute("existingOfferId", existingOffer.getId()); //Id of the offer to which to change request belongs
+        request.getSession().setAttribute("changedOfferId", changedOffer.getId()); //Id of the change request
+        request.getSession().setAttribute("restaurantId", restaurant.getId());
         request.getSession().setAttribute("toDoId", toDoId);
+
+        offerService.addOfferToTransactionStore(initializeAndUnproxy(existingOffer));
+        Offer preparedChangedOffer = offerService.prepareExistingOffer(changedOffer, restaurant);
+        Offer preparedExistingOffer = offerService.prepareExistingOffer(existingOffer, restaurant);
+        preparedChangedOffer = offerChangeRequestService.prepareKeepImagesTags(preparedExistingOffer, preparedChangedOffer);
 
         model.addAttribute("offer", preparedChangedOffer);
         model.addAttribute("existingOffer", preparedExistingOffer);
         model = offerService.prepareOfferPictures(model, changedOffer); //prepares the images for the changedOffer
         model = offerChangeRequestService.prepareOfferPicturesForExistingOffer(model, existingOffer); //prepares the images for the existingOffer
-        model.addAttribute("restaurantName", restaurantService.getRestaurantById(restaurantId).getName());
+        model.addAttribute("restaurantName", restaurantService.getRestaurantById(restaurant.getId()).getName());
         model.addAttribute("allergenicsList", offerService.getAllAllergenic());
         model.addAttribute("additivesList", offerService.getAllAdditives());
-        model.addAttribute("courseTypesList", offerChangeRequestService.getCourseTypes(restaurantId));
+        model.addAttribute("courseTypesList", offerChangeRequestService.getCourseTypes(restaurant.getId()));
         model.addAttribute("toDoId", toDoId);
         model = offerChangeRequestService.addAttribtueChangesToModel(model, false, preparedExistingOffer, preparedChangedOffer);
 
@@ -87,11 +93,18 @@ public class OfferChangeRequestController {
     public String saveOfferChangeRequest(Model model, @Valid Offer changedOffer, BindingResult changedOfferBinder, HttpServletRequest request) {
         //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        int toDoId = (int) request.getSession().getAttribute("toDoId");
+        int toDoId;
+        if(request.getSession().getAttribute("toDoId") == null) {
+            //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
+            return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
+        }
+
+        toDoId = (int) request.getSession().getAttribute("toDoId");
         int existingOfferId = (int) request.getSession().getAttribute("existingOfferId");
         int changedOfferId = (int) request.getSession().getAttribute("changedOfferId");
         int restaurantId = (int) request.getSession().getAttribute("restaurantId");
         String commentOfLastChange = (String) request.getSession().getAttribute("commentOfLastChange");
+        Offer existingOffer = offerService.getOffer(existingOfferId);
 
         //Security check for the bound offer fields
         String[] suppressedFields = changedOfferBinder.getSuppressedFields();
@@ -103,7 +116,6 @@ public class OfferChangeRequestController {
         if (changedOfferBinder.hasErrors()) {
 
             ToDo toDo = offerChangeRequestService.getToDoById(toDoId);
-            Offer existingOffer = offerService.getOffer(existingOfferId);
             Restaurant restaurant = toDo.getRestaurant();
 
             model.addAttribute("offer", changedOffer);
@@ -126,12 +138,12 @@ public class OfferChangeRequestController {
         }
 
         //Checks if the offer of the offerChangeRequest has been altered while the user worked on it.
-        if (offerService.offerHasBeenAlteredMeanwhile(existingOfferId)) {
+        if(offerService.offerHasBeenAlteredMeanwhile(existingOfferId)) {
             return "redirect:/home?offerWasChangedMeanwhile";
         } else {
             changedOffer.setId(existingOfferId);
             changedOffer.setIdOfRestaurant(restaurantId);
-            offerChangeRequestService.saveOfferChangeRequest(changedOfferId, changedOffer, toDoId);
+            offerChangeRequestService.saveOfferChangeRequest(changedOfferId, changedOffer, existingOffer, toDoId);
             return "redirect:/home?offerChangeRequestSuccess";
         }
     }
@@ -171,8 +183,26 @@ public class OfferChangeRequestController {
                 "firstOfferImage",
                 "secondOfferImage",
                 "thirdOfferImage",
-                "newChangeComment"
+                "newChangeComment",
+                "keepFirstImage",
+                "keepSecondImage",
+                "keepThirdImage",
+                "offerPhotos"
         );
         changedOfferBinder.setValidator(offerValidator);
+    }
+
+    private <T> T initializeAndUnproxy(T entity) {
+        if (entity == null) {
+            throw new
+                    NullPointerException("Entity passed for initialization is null");
+        }
+
+        Hibernate.initialize(entity);
+        if (entity instanceof HibernateProxy) {
+            entity = (T) ((HibernateProxy) entity).getHibernateLazyInitializer()
+                    .getImplementation();
+        }
+        return entity;
     }
 }

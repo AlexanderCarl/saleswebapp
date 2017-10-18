@@ -11,6 +11,7 @@ import saleswebapp.service.*;
 
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -51,6 +52,7 @@ public class OfferChangeRequestServiceImpl implements OfferChangeRequestService 
 
         return courseTypes;
     }
+
 
     @Override
     public Model prepareOfferPicturesForExistingOffer(Model model, Offer offer) {
@@ -94,13 +96,35 @@ public class OfferChangeRequestServiceImpl implements OfferChangeRequestService 
     }
 
     @Override
+    public Offer prepareKeepImagesTags(Offer preparedExistingOffer, Offer preparedChangedOffer) {
+        int numberOfExistingImages = preparedExistingOffer.getOfferPhotos().size();
+
+        if(numberOfExistingImages == 1) {
+            preparedChangedOffer.setKeepFirstImage(true);
+        }
+
+        if(numberOfExistingImages == 2) {
+            preparedChangedOffer.setKeepFirstImage(true);
+            preparedChangedOffer.setKeepSecondImage(true);
+        }
+
+        if(numberOfExistingImages >= 3) {
+            preparedChangedOffer.setKeepFirstImage(true);
+            preparedChangedOffer.setKeepSecondImage(true);
+            preparedChangedOffer.setKeepThirdImage(true);
+        }
+
+        return preparedChangedOffer;
+    }
+
+    @Override
     public void deleteOfferChangeRequest(int offerToDeleteId, int offerToUpdateId, int toDoId) {
         dbWriterService.deleteOfferChangeRequest(offerToDeleteId, offerToUpdateId, toDoId);
     }
 
     @Override
-    public void saveOfferChangeRequest(int offerChangeRequestId, Offer changedOffer, int toDoId) {
-        dbWriterService.saveOfferChangeRequest(offerChangeRequestId, changedOffer, toDoId);
+    public void saveOfferChangeRequest(int offerChangeRequestId, Offer changedOffer, Offer existingOffer, int toDoId) {
+        dbWriterService.saveOfferChangeRequest(offerChangeRequestId, changedOffer, existingOffer, toDoId);
     }
 
     @Override
@@ -184,6 +208,7 @@ public class OfferChangeRequestServiceImpl implements OfferChangeRequestService 
                     model.addAttribute("endDateChanged", false);
                 }
             }
+
         }
         return model;
     }

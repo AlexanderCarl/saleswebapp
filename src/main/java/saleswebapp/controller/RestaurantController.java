@@ -80,13 +80,12 @@ public class RestaurantController {
     public String processAddNewCategory(Model model, RestaurantAddCategory restaurantAddCategory, HttpServletRequest request) {
 
         int restaurantId;
-            try {
-                restaurantId = (int) request.getSession().getAttribute("restaurantId");
-            } catch (Exception e) {
-                //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
-                return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
-            }
-        request.getSession().removeAttribute("restaurantId");
+        if(request.getSession().getAttribute("restaurantId") == null) {
+            //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
+            return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
+        }
+        restaurantId = (int) request.getSession().getAttribute("restaurantId");
+
         restaurantAddCategory.setRestaurantId(restaurantId);
 
         if(restaurantAddCategory.getName() == null) {
@@ -101,13 +100,12 @@ public class RestaurantController {
     public String processDeleteExistingCategory(Model model, RestaurantDeleteCategory restaurantDeleteCategory, HttpServletRequest request) {
 
         int restaurantId;
-            try {
-                restaurantId = (int) request.getSession().getAttribute("restaurantId");
-            } catch (Exception e) {
-                //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
-                return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
-            }
-        request.getSession().removeAttribute("restaurantId");
+        if(request.getSession().getAttribute("restaurantId") == null) {
+            //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
+            return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
+        }
+        restaurantId = (int) request.getSession().getAttribute("restaurantId");
+
         restaurantDeleteCategory.setRestaurantId(restaurantId);
 
         if(restaurantDeleteCategory.getName() == null) {

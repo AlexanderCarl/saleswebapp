@@ -25,7 +25,7 @@ public interface DbWriterService {
 
     void deleteOffer(int offerId);
 
-    void saveOffer(Offer offer);
+    void saveOffer(Offer offer, boolean isOfferChangeRequest);
 
     void deleteOfferPhoto(int offerPhotoId);
 
@@ -33,6 +33,6 @@ public interface DbWriterService {
 
     void deleteOfferChangeRequest(int offerToDeleteId, int offerToUpdateId, int ToDoId);
 
-    void saveOfferChangeRequest(int offerChangeRequestId, Offer changedOffer, int toDoId);
+    void saveOfferChangeRequest(int offerChangeRequestId, Offer changedOffer, Offer existingOffer, int toDoId);
 
 }

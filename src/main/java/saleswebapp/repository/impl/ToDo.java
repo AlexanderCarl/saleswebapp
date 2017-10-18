@@ -16,7 +16,7 @@ public class ToDo {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "todo_request_typ_id")
     private ToDoRequestTyp toDoRequestTyp;
 

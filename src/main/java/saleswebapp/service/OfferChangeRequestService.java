@@ -16,12 +16,14 @@ public interface OfferChangeRequestService {
 
     List<CourseType> getCourseTypes(int restaurantId);
 
-    Model prepareOfferPicturesForExistingOffer(Model model, Offer offer);
-
     void deleteOfferChangeRequest(int offerToDeleteId, int offerToUpdateId, int toDoId);
 
-    void saveOfferChangeRequest(int offerChangeRequestId, Offer changedOffer, int toDoId);
+    void saveOfferChangeRequest(int offerChangeRequestId, Offer changedOffer, Offer existingOffer, int toDoId);
 
     Model addAttribtueChangesToModel (Model model, boolean allFalse, Offer preparedExistingOffer, Offer preparedChangedOffer);
+
+    Model prepareOfferPicturesForExistingOffer(Model model, Offer offer);
+
+    Offer prepareKeepImagesTags(Offer preparedExistingOffer, Offer preparedChangedOffer);
 
 }

@@ -39,7 +39,7 @@ public class Restaurant implements Serializable {
     @Size(min=3, max=60, message = "{restaurant.validation.city}")
     private String city;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "country_code")
     private Country country;
 
@@ -60,7 +60,7 @@ public class Restaurant implements Serializable {
     @Size(min=0, max=60, message = "{restaurant.validation.url}")
     private String url;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "restaurant_type_id")
     private RestaurantType restaurantType;
 
@@ -77,21 +77,21 @@ public class Restaurant implements Serializable {
     @Column(name = "swa_blocked")
     private boolean blocked;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "swa_sales_person_id")
     private SalesPerson salesPerson;
 
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "restaurant_has_kitchen_type",
                 joinColumns = {@JoinColumn(name = "restaurant_id") },
                 inverseJoinColumns = {@JoinColumn(name = "kitchen_type_id")}
     )
     private List<KitchenType> kitchenTypes;
 
-    @OneToMany(mappedBy = "restaurant", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<CourseType> courseTypeList;
 
-    @OneToMany(mappedBy = "restaurant", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private List<TimeSchedule> timeScheduleList;
 
     @Transient
