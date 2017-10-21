@@ -20,6 +20,8 @@ public interface ToDoRepository extends JpaRepository<ToDo, Serializable> {
 
     ToDo getById(int toDoId);
 
+    List<ToDo> getByOfferId(int offerId);
+
     @Modifying
     @Query("delete from ToDo where id = ?1")
     void deleteById(int toDoId);

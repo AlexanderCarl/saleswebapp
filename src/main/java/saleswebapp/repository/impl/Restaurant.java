@@ -26,7 +26,7 @@ public class Restaurant implements Serializable {
     @Size(min=4, max=60, message = "{restaurant.validation.name}")
     private String name;
 
-    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜß]{4,60}$", message = "{restaurant.validation.street}")
+    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜß-]{4,60}$", message = "{restaurant.validation.street}")
     private String street;
 
     @Size(min=1, max=11, message = "{restaurant.validation.streetNumber}")
@@ -88,7 +88,7 @@ public class Restaurant implements Serializable {
     )
     private List<KitchenType> kitchenTypes;
 
-    @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restaurant", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<CourseType> courseTypeList;
 
     @OneToMany(mappedBy = "restaurant", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

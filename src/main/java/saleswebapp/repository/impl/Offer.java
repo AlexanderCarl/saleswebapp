@@ -76,11 +76,19 @@ public class Offer {
     )
     private List <DayOfWeek> dayOfWeeks;
 
-    @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY)
-    private  List <OfferHasAdditive> offerHasAdditives;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "offer_has_additives",
+            joinColumns = {@JoinColumn(name = "offer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "additives_id")}
+    )
+    private List <Additive> offerHasAdditives;
 
-    @OneToMany(mappedBy = "offer", fetch = FetchType.LAZY)
-    private List <OfferHasAllergenic> offerHasAllergenics;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "offer_has_allergenic",
+            joinColumns = {@JoinColumn(name = "offer_id")},
+            inverseJoinColumns = {@JoinColumn(name = "allergenic_id")}
+            )
+    private List<Allergenic> offerHasAllergenics;
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "offer", cascade = CascadeType.ALL)
     private List <OfferPhoto> offerPhotos;
@@ -157,8 +165,8 @@ public class Offer {
         allergenicsAsString = new ArrayList<String>();
 
         if(offerHasAllergenics != null) {
-            for(OfferHasAllergenic offerHasAllergenic : offerHasAllergenics) {
-                allergenicsAsString.add(offerHasAllergenic.getAllergenic().getName());
+            for(Allergenic offerHasAllergenic : offerHasAllergenics) {
+                allergenicsAsString.add(offerHasAllergenic.getName());
             }
         }
     }
@@ -167,8 +175,8 @@ public class Offer {
         additivesAsString = new ArrayList<String>();
 
         if(offerHasAdditives != null) {
-            for(OfferHasAdditive offerHasAdditive : offerHasAdditives) {
-                additivesAsString.add(offerHasAdditive.getAdditive().getName());
+            for(Additive offerHasAdditive : offerHasAdditives) {
+                additivesAsString.add(offerHasAdditive.getName());
             }
         }
     }
@@ -341,11 +349,11 @@ public class Offer {
             List<Integer> offerHasAdditivesIds = new ArrayList<Integer>();
             List<Integer> otherOfferHasAdditivesIds = new ArrayList<Integer>();
 
-            for(OfferHasAdditive offerHasAdditive : offerHasAdditives) {
+            for(Additive offerHasAdditive : offerHasAdditives) {
                 offerHasAdditivesIds.add(offerHasAdditive.getId());
             }
 
-            for(OfferHasAdditive offerHasAdditive : other.getOfferHasAdditives()) {
+            for(Additive offerHasAdditive : other.getOfferHasAdditives()) {
                 otherOfferHasAdditivesIds.add(offerHasAdditive.getId());
             }
 
@@ -363,11 +371,11 @@ public class Offer {
             List<Integer> offerHasAllergenicsIds = new ArrayList<Integer>();
             List<Integer> otherOfferHasAllergenicsIds = new ArrayList<Integer>();
 
-            for(OfferHasAllergenic offerHasAllergenic : offerHasAllergenics) {
+            for(Allergenic offerHasAllergenic : offerHasAllergenics) {
                 offerHasAllergenicsIds.add(offerHasAllergenic.getId());
             }
 
-            for(OfferHasAllergenic offerHasAllergenic : other.getOfferHasAllergenics()) {
+            for(Allergenic offerHasAllergenic : other.getOfferHasAllergenics()) {
                 otherOfferHasAllergenicsIds.add(offerHasAllergenic.getId());
             }
 
@@ -552,19 +560,19 @@ public class Offer {
         this.dayOfWeeks = dayOfWeeks;
     }
 
-    public List<OfferHasAdditive> getOfferHasAdditives() {
+    public List<Additive> getOfferHasAdditives() {
         return offerHasAdditives;
     }
 
-    public void setOfferHasAdditives(List<OfferHasAdditive> offerHasAdditives) {
+    public void setOfferHasAdditives(List<Additive> offerHasAdditives) {
         this.offerHasAdditives = offerHasAdditives;
     }
 
-    public List<OfferHasAllergenic> getOfferHasAllergenics() {
+    public List<Allergenic> getOfferHasAllergenics() {
         return offerHasAllergenics;
     }
 
-    public void setOfferHasAllergenics(List<OfferHasAllergenic> offerHasAllergenics) {
+    public void setOfferHasAllergenics(List<Allergenic> offerHasAllergenics) {
         this.offerHasAllergenics = offerHasAllergenics;
     }
 

@@ -20,7 +20,7 @@ public class ProfileForm{
     @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{3,60}$", message = "{profile.validation.secondName}")
     private String secondName;
 
-    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ]{4,60}$", message = "{profile.validation.street}")
+    @Pattern(regexp = "^[a-zA-ZäöüÄÖÜ.]{4,60}$", message = "{profile.validation.street}")
     private String street;
 
     @Pattern(regexp = "^[^0]{1,6}$", message = "{profile.validation.streetNumber}")

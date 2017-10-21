@@ -292,13 +292,13 @@
 
                     <!-- first two buttons -->
                     <span style="float: left; width: 30%; margin-bottom: 0.5em; margin-left: 1.25%">
-                        <div class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
+                        <div class="btn btn-primary btn-file" style="width: 150px" th:disabled="${dataInputDisabled}">
                             <span th:text="#{offer.label.addImage}" />
                             <input th:field="${offer.firstOfferImage}" onchange="onFileChange(this)" type="file" />
                         </div>
 
                         <div style="margin-top: 10px">
-                            <a th:href="@{/offer/remove(offerPhotoId=${idOfFirstPicture})}" class="btn btn-sm btn-danger" th:disabled="${firstPictureDeleteDisabled}">
+                            <a th:href="@{/offer/remove(offerPhotoId=${idOfFirstPicture})}" class="btn btn-sm btn-danger" th:disabled="${firstPictureDeleteDisabled}" style="width: 150px">
                                 <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
                             </a>
                         </div>
@@ -309,13 +309,13 @@
 
                     <!-- second two buttons -->
                     <span style="float: left; width: 30%; margin-bottom: 0.5em; margin-left: 1.25%">
-                        <div class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
+                        <div class="btn btn-primary btn-file" style="width: 150px" th:disabled="${dataInputDisabled}">
                             <span th:text="#{offer.label.addImage}" />
                             <input th:field="${offer.secondOfferImage}" onchange="onFileChange(this)" type="file" />
                         </div>
 
                         <div style="margin-top: 10px">
-                            <a th:href="@{/offer/remove(offerPhotoId=${idOfSecondPicture})}" class="btn btn-sm btn-danger" th:disabled="${secondPictureDeleteDisabled}">
+                            <a th:href="@{/offer/remove(offerPhotoId=${idOfSecondPicture})}" class="btn btn-sm btn-danger" th:disabled="${secondPictureDeleteDisabled}" style="width: 150px">
                                 <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
                             </a>
                         </div>
@@ -326,13 +326,13 @@
 
                     <!-- third two buttons -->
                     <span style="float: left; width: 30%; margin-bottom: 0.5em; margin-left: 1.25%">
-                        <div class="btn btn-primary btn-file" style="width: 45%" th:disabled="${dataInputDisabled}">
+                        <div class="btn btn-primary btn-file" style="width: 150px" th:disabled="${dataInputDisabled}">
                             <span th:text="#{offer.label.addImage}" />
                             <input th:field="${offer.thirdOfferImage}" onchange="onFileChange(this)" type="file" />
                         </div>
 
                         <div style="margin-top: 10px">
-                            <a th:href="@{/offer/remove(offerPhotoId=${idOfThirdPicture})}" class="btn btn-sm btn-danger" th:disabled="${thirdPictureDeleteDisabled}">
+                            <a th:href="@{/offer/remove(offerPhotoId=${idOfThirdPicture})}" class="btn btn-sm btn-danger" th:disabled="${thirdPictureDeleteDisabled}" style="width: 150px">
                                 <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
                             </a>
                         </div>

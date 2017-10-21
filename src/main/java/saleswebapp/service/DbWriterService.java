@@ -6,6 +6,9 @@ import saleswebapp.repository.impl.CourseType;
 import saleswebapp.repository.impl.Offer;
 import saleswebapp.repository.impl.Restaurant;
 
+import java.util.HashSet;
+import java.util.List;
+
 /**
  * Created by Alexander Carl on 18.06.2017.
  */
@@ -17,7 +20,7 @@ public interface DbWriterService {
 
     void saveProfileChange(ProfileForm profileForm);
 
-    void addCategoryToRestaurant(RestaurantAddCategory restaurantAddCategory);
+    void addCategoryToRestaurant(List CourseTypes, int restaurantId);
 
     void deleteCategoryFromRestaurant(CourseType courseType);
 

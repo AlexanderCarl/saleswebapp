@@ -421,13 +421,13 @@
 
                     <div class="col-lg-offset-2 col-lg-md-offset-2 col-sm-offset-2">
                         <div>
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferFirstPicture}}" style="margin-left: 8%; margin-bottom: 20px; width: 280px; height: 190px" />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferFirstPicture}}" style="margin-left: 8%; margin-bottom: 35px; width: 280px; height: 190px" />
                         </div>
                         <div>
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferSecondPicture}}" style="margin-left: 8%; margin-bottom: 20px; width: 280px; height: 190px"  />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferSecondPicture}}" style="margin-left: 8%; margin-bottom: 35px; width: 280px; height: 190px"  />
                         </div>
                         <div>
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferThirdPicture}}" style="margin-left: 8%; margin-bottom: 10px; width: 280px; height: 190px"  />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${existingOfferThirdPicture}}" style="margin-left: 8%; margin-bottom: 20px; width: 280px; height: 190px"  />
                         </div>
                         <p style="clear: both;" />
                     </div>
@@ -442,15 +442,21 @@
                     <div>
                         <!-- first image of the offerChange Request -->
                         <span class="col-lg-7 col-lg-md-7 col-sm-7">
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${firstPicture}}" style="margin-bottom: 10px; width: 280px; height: 190px" />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${firstPicture}}" style="margin-bottom: 25px; width: 280px; height: 190px" />
                         </span>
-                        <span class="col-lg-5 col-lg-md-5 col-sm-5" style="margin-top: 6%">
+                        <span class="col-lg-5 col-lg-md-5 col-sm-5" style="margin-top: 4%">
                             <div style="margin-bottom: 15px">
                                 <span style="width: 160px; display: inline-block" th:text="#{offerChangeRequest.label.keepImage}" />
                                 <input type="checkbox" th:checked="${offer.keepFirstImage}" name="keepFirstImage" th:disabled="${!offer.keepFirstImage}"/>
                             </div>
 
-                            <div class="btn btn-primary btn-file" style="width: 150px">
+                            <div style="margin-top: 10px">
+                                <a th:href="@{/offerChangeRequest/removePhoto(Id=${idOfFirstChangedPicture})}" class="btn btn-sm btn-danger" th:disabled="${firstChangedPictureDeleteDisabled}" style="width: 150px">
+                                    <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
+                                </a>
+                            </div>
+
+                            <div class="btn btn-primary btn-file" style="width: 150px; margin-top: 10px">
                                 <span th:text="#{offer.label.addImage}" />
                                 <input th:field="${offer.firstOfferImage}" onchange="onFileChange(this)" type="file" />
                             </div>
@@ -462,15 +468,21 @@
 
                         <!-- second image of the offerChange Request -->
                         <span class="col-lg-7 col-lg-md-7 col-sm-7">
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${secondPicture}}" style="margin-bottom: 10px; width: 280px; height: 190px" />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${secondPicture}}" style="margin-bottom: 25px; width: 280px; height: 190px" />
                         </span>
-                        <span class="col-lg-5 col-lg-md-5 col-sm-5" style="margin-top: 6%">
+                        <span class="col-lg-5 col-lg-md-5 col-sm-5" style="margin-top: 4%">
                             <div style="margin-bottom: 15px">
                                 <span style="width: 160px; display: inline-block" th:text="#{offerChangeRequest.label.keepImage}" />
                                 <input type="checkbox" th:checked="${offer.keepSecondImage}" name="keepSecondImage" th:disabled="${!offer.keepSecondImage}"/>
                             </div>
 
-                            <div class="btn btn-primary btn-file" style="width: 150px">
+                            <div style="margin-top: 10px">
+                                <a th:href="@{/offerChangeRequest/removePhoto(Id=${idOfSecondChangedPicture})}" class="btn btn-sm btn-danger" th:disabled="${secondChangedPictureDeleteDisabled}" style="width: 150px">
+                                    <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
+                                </a>
+                            </div>
+
+                            <div class="btn btn-primary btn-file" style="width: 150px; margin-top: 10px">
                                 <span th:text="#{offer.label.addImage}" />
                                 <input th:field="${offer.secondOfferImage}" onchange="onFileChange(this)" type="file" />
                             </div>
@@ -482,15 +494,21 @@
 
                         <!-- third image of the offerChange Request -->
                         <span class="col-lg-7 col-lg-md-7 col-sm-7">
-                            <img th:src="@{'data:image/jpeg;base64,'+ ${thirdPicture}}" style="margin-bottom: 10px; width: 280px; height: 190px" />
+                            <img th:src="@{'data:image/jpeg;base64,'+ ${thirdPicture}}" style="margin-bottom: 25px; width: 280px; height: 190px" />
                         </span>
-                        <span class="col-lg-5 col-lg-md-5 col-sm-5" style="margin-top: 6%">
+                        <span class="col-lg-5 col-lg-md-5 col-sm-5" style="margin-top: 4%">
                             <div style="margin-bottom: 15px">
                                 <span style="width: 160px; display: inline-block" th:text="#{offerChangeRequest.label.keepImage}" />
                                 <input type="checkbox" th:checked="${offer.keepThirdImage}" name="keepThirdImage" th:disabled="${!offer.keepThirdImage}" />
                             </div>
 
-                            <div class="btn btn-primary btn-file" style="width: 150px">
+                            <div style="margin-top: 10px">
+                                <a th:href="@{/offerChangeRequest/removePhoto(Id=${idOfThirdChangedPicture})}" class="btn btn-sm btn-danger" th:disabled="${thirdChangedPictureDeleteDisabled}" style="width: 150px">
+                                    <span class="glyphicon glyphicon-remove" /> <span style="font-size: 125%" th:text="#{offer.label.deleteImage}" />
+                                </a>
+                            </div>
+
+                            <div class="btn btn-primary btn-file" style="width: 150px; margin-top: 10px">
                                 <span th:text="#{offer.label.addImage}" />
                                 <input th:field="${offer.thirdOfferImage}" onchange="onFileChange(this)" type="file" />
                             </div>

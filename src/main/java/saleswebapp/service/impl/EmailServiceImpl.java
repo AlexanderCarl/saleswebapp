@@ -78,10 +78,10 @@ public class EmailServiceImpl implements EmailService {
     }
 
     /* Timer explanation:
-    * The Google test mail account does`t answer within 30 seconds if it is used for the first
+    * The Google test mail account does`t answer within 30 seconds if it is used for the first time
     * since several days. Therefore the program receives a time out. If the Google test mail account
     * is called after it has been "waken up" it answers within 3 seconds.
-    * Thus the mailing process is started in its own thread and if it does`t finish within 6 seconds
+    * Thus the mailing process is started in its own thread and if it does`t finish within 10 seconds
     * the thread is stopped and the user receives a message in the login dialog. If the user try`s again a
     * minute later it works fine.
     *
@@ -105,7 +105,7 @@ public class EmailServiceImpl implements EmailService {
         );
 
         mailingThread.start();
-        timer.schedule(new StopClock(), 6 * 1000); // 5 seconds
+        timer.schedule(new StopClock(), 10 * 1000); // ~10 seconds
         try {
             Thread.sleep(6*1100);
         } catch (InterruptedException e) {

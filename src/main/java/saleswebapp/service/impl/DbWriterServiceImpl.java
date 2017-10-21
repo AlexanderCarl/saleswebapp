@@ -30,6 +30,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 /**
@@ -125,12 +126,19 @@ public class DbWriterServiceImpl implements DbWriterService {
 
     @Override
     @Transactional
-    public void addCategoryToRestaurant(RestaurantAddCategory restaurantAddCategory) {
-        Restaurant restaurant = restaurantRepository.getRestaurantById(restaurantAddCategory.getRestaurantId());
-        CourseType courseType = new CourseType();
-        courseType.setName(restaurantAddCategory.getName());
-        courseType.setRestaurant(restaurant);
-        restaurant.getCourseTypeList().add(courseType);
+    public void addCategoryToRestaurant(List courseTypes, int restaurantId) {
+        List<String> courseTypesToAdd = courseTypes;
+        Restaurant restaurant = restaurantRepository.getRestaurantById(restaurantId);
+        List<CourseType> courseTypesOfRestaurant = restaurant.getCourseTypeList();
+
+        for (String courseTypeAsString : courseTypesToAdd) {
+                CourseType courseType = new CourseType();
+                courseType.setName(courseTypeAsString);
+                courseType.setRestaurant(restaurant);
+
+                courseTypesOfRestaurant.add(courseType);
+        }
+        restaurant.setCourseTypeList(courseTypesOfRestaurant);
 
         restaurantRepository.saveAndFlush(restaurant);
     }
@@ -236,7 +244,7 @@ public class DbWriterServiceImpl implements DbWriterService {
 
     //Part of saveRestaurant - Transfers the opening and offer times from the RestaurantTimeContainer`s back to the DB-Schema.
     private List<TimeSchedule> getTimeScheduleList(Restaurant restaurantData, Restaurant restaurantToSave) {
-        SimpleDateFormat sdf = new SimpleDateFormat("hh:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
 
         List<TimeSchedule> timeSchedulesToBeSaved = restaurantToSave.getTimeScheduleList();
         if (timeSchedulesToBeSaved == null) {
@@ -379,7 +387,7 @@ public class DbWriterServiceImpl implements DbWriterService {
         offerToSave.setChangeRequestId(offer.getChangeRequestId());
 
         //Start- + Enddate
-        SimpleDateFormat sdf = new SimpleDateFormat("dd-mm-yyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
         try {
             offerToSave.setStartDate(sdf.parse(offer.getStartDateAsString()));
             offerToSave.setEndDate(sdf.parse(offer.getEndDateAsString()));
@@ -407,17 +415,13 @@ public class DbWriterServiceImpl implements DbWriterService {
 
         //Additives
         List<Additive> allAdditvies = additiveRepository.getAllBy();
-        List<OfferHasAdditive> offerHasAdditives = new ArrayList<OfferHasAdditive>();
+        List<Additive> offerHasAdditives = new ArrayList<Additive>();
         List<String> additivesAsString = offer.getAdditivesAsString();
 
         if(additivesAsString != null) {
-            for (Additive additive : allAdditvies) {
-                if (additivesAsString.contains(additive.getName())) {
-                    OfferHasAdditive offerHasAdditive = new OfferHasAdditive();
-                    offerHasAdditive.setAdditive(additive);
-                    offerHasAdditive.setOffer(offerToSave);
-
-                    offerHasAdditives.add(offerHasAdditive);
+            for(Additive additive : allAdditvies) {
+                if(additivesAsString.contains(additive.getName())) {
+                    offerHasAdditives.add(additive);
                 }
             }
             offerToSave.setOfferHasAdditives(offerHasAdditives);
@@ -425,17 +429,13 @@ public class DbWriterServiceImpl implements DbWriterService {
 
         //Allergenics
         List<Allergenic> allAllergenics = allergenicRepository.getAllBy();
-        List<OfferHasAllergenic> offerHasAllergenics = new ArrayList<OfferHasAllergenic>();
+        List<Allergenic> offerHasAllergenics = new ArrayList<Allergenic>();
         List<String> allergenicsAsString = offer.getAllergenicsAsString();
 
         if(allergenicsAsString != null) {
             for(Allergenic allergenic : allAllergenics) {
                 if(allergenicsAsString.contains(allergenic.getName())) {
-                    OfferHasAllergenic offerHasAllergenic = new OfferHasAllergenic();
-                    offerHasAllergenic.setAllergenic(allergenic);
-                    offerHasAllergenic.setOffer(offerToSave);
-
-                    offerHasAllergenics.add(offerHasAllergenic);
+                    offerHasAllergenics.add(allergenic);
                 }
             }
             offerToSave.setOfferHasAllergenics(offerHasAllergenics);
@@ -533,8 +533,8 @@ public class DbWriterServiceImpl implements DbWriterService {
 
                     offerPhotos.add(offerPhoto);
                 }
-                offerToSave.setOfferPhotos(offerPhotos);
             }
+            offerToSave.setOfferPhotos(offerPhotos);
         }
 
         if(isOfferChangeRequest == true) {
@@ -548,7 +548,6 @@ public class DbWriterServiceImpl implements DbWriterService {
         } else {
             logger.debug("Offer (Offer-ID: " + offerId + ") has been saved.");
         }
-
     }
 
     @Override

@@ -14,6 +14,8 @@ public interface OfferChangeRequestService {
 
     ToDo getToDoById(int id);
 
+    List<ToDo> getAllToDosOfSalesPerson(String email);
+
     List<CourseType> getCourseTypes(int restaurantId);
 
     void deleteOfferChangeRequest(int offerToDeleteId, int offerToUpdateId, int toDoId);
@@ -23,6 +25,8 @@ public interface OfferChangeRequestService {
     Model addAttribtueChangesToModel (Model model, boolean allFalse, Offer preparedExistingOffer, Offer preparedChangedOffer);
 
     Model prepareOfferPicturesForExistingOffer(Model model, Offer offer);
+
+    Model prepareIdsOfOfferChangeRequestImages(Model model, Offer preparedChangedOffer, Offer originalChangedOffer);
 
     Offer prepareKeepImagesTags(Offer preparedExistingOffer, Offer preparedChangedOffer);
 

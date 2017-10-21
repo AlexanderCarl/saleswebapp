@@ -115,7 +115,7 @@ public class OfferOverviewController {
             return "redirect:/offerOverviewByRestaurant?id=" + restaurantId;
         } else {
             String courseTypeAsString = (String) request.getSession().getAttribute("courseType");
-            return "redirect:/offerOverviewByCourseType" + courseTypeAsString;
+            return "redirect:/offerOverviewByCourseType?courseType=" + courseTypeAsString;
         }
     }
 

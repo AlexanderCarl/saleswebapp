@@ -1,5 +1,7 @@
 package saleswebapp.service.impl;
 
+import org.hibernate.Hibernate;
+import org.hibernate.proxy.HibernateProxy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,6 +152,7 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public boolean toDoEntryWithOfferExists(int offerId) {
         Offer offer = dbReaderService.getOffer(offerId);
+        offer = initializeAndUnproxy(offer);
 
         if(offer.getChangeRequestId() == 0) {
             return false;
@@ -258,6 +261,20 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public List<Allergenic> getAllAllergenic() {
         return dbReaderService.getAllAllergenic();
+    }
+
+    private <T> T initializeAndUnproxy(T entity) {
+        if (entity == null) {
+            throw new
+                    NullPointerException("Entity passed for initialization is null");
+        }
+
+        Hibernate.initialize(entity);
+        if (entity instanceof HibernateProxy) {
+            entity = (T) ((HibernateProxy) entity).getHibernateLazyInitializer()
+                    .getImplementation();
+        }
+        return entity;
     }
 
 }

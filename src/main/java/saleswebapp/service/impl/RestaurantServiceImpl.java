@@ -132,16 +132,16 @@ public class RestaurantServiceImpl implements RestaurantService {
         } else {
             //Check if the String contains multiple course types. e.g. Vorspeise, Rotwein, Hauswein
             String fullString = restaurantAddCategory.getName();
-            fullString = fullString.replaceAll("\\s+",""); //deletes whitespaces
+            fullString = fullString.replaceAll("\\s+", ""); //deletes whitespaces
             String[] singleCourseTypesStrings = fullString.split("\\,"); //cuts the String after every ","
+            List<String> courseTypesToAdd = new ArrayList<>();
 
             for (String subString : singleCourseTypesStrings) {
-                RestaurantAddCategory singleRestaurantAddCategory = new RestaurantAddCategory();
-                singleRestaurantAddCategory.setRestaurantId(restaurantAddCategory.getRestaurantId());
-                singleRestaurantAddCategory.setName(subString);
-
-                dbWriterService.addCategoryToRestaurant(singleRestaurantAddCategory);
+                if(!subString.equals(""))
+                courseTypesToAdd.add(subString);
             }
+
+            dbWriterService.addCategoryToRestaurant(courseTypesToAdd, restaurantAddCategory.getRestaurantId());
         }
     }
 

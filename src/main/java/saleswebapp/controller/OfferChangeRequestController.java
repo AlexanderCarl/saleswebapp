@@ -17,16 +17,16 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import saleswebapp.components.HomeToDoForm;
 import saleswebapp.repository.impl.*;
-import saleswebapp.service.OfferChangeRequestService;
-import saleswebapp.service.OfferService;
-import saleswebapp.service.RestaurantService;
+import saleswebapp.service.*;
 import saleswebapp.validator.offer.OfferValidator;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.List;
 
 /**
  * Created by Alexander Carl on 07.09.2017.
@@ -78,6 +78,7 @@ public class OfferChangeRequestController {
         model.addAttribute("offer", preparedChangedOffer);
         model.addAttribute("existingOffer", preparedExistingOffer);
         model = offerService.prepareOfferPictures(model, changedOffer); //prepares the images for the changedOffer
+        model = offerChangeRequestService.prepareIdsOfOfferChangeRequestImages(model, preparedChangedOffer, null);
         model = offerChangeRequestService.prepareOfferPicturesForExistingOffer(model, existingOffer); //prepares the images for the existingOffer
         model.addAttribute("restaurantName", restaurantService.getRestaurantById(restaurant.getId()).getName());
         model.addAttribute("allergenicsList", offerService.getAllAllergenic());
@@ -117,10 +118,12 @@ public class OfferChangeRequestController {
 
             ToDo toDo = offerChangeRequestService.getToDoById(toDoId);
             Restaurant restaurant = toDo.getRestaurant();
+            Offer originalChangedOffer = offerService.getOffer(changedOfferId);
 
             model.addAttribute("offer", changedOffer);
             model.addAttribute("existingOffer", offerService.prepareExistingOffer(existingOffer, restaurant));
             model = offerService.prepareOfferPictures(model, changedOffer);
+            model = offerChangeRequestService.prepareIdsOfOfferChangeRequestImages(model, changedOffer, originalChangedOffer);
             model = offerChangeRequestService.prepareOfferPicturesForExistingOffer(model, existingOffer);
             model.addAttribute("restaurantName", restaurantService.getRestaurantById(restaurantId).getName());
             model.addAttribute("allergenicsList", offerService.getAllAllergenic());
@@ -149,7 +152,7 @@ public class OfferChangeRequestController {
     }
 
     @RequestMapping(value = "/offerChangeRequest/remove")
-    public String deleteOfferChangeRequest(@RequestParam("toDoId") int toDoId, HttpServletRequest request) {
+    public String deleteOfferChangeRequest(@RequestParam("toDoId") int toDoId) {
 
         ToDo toDo = offerChangeRequestService.getToDoById(toDoId);
         int restaurantId = toDo.getRestaurant().getId();
@@ -164,6 +167,34 @@ public class OfferChangeRequestController {
         offerChangeRequestService.deleteOfferChangeRequest(offerToDeleteId, offerToUpdateId, toDoId);
 
         return "redirect:/home?changeRequestDeleted";
+    }
+
+    @RequestMapping(value = "/offerChangeRequest/removePhoto")
+    public String deleteOfferChangeRequestPhoto(@RequestParam("Id") int offerPhotoId) {
+
+        OfferPhoto offerPhoto = initializeAndUnproxy(offerService.getOfferPhoto(offerPhotoId));
+        Offer offer = initializeAndUnproxy(offerPhoto.getOffer());
+        Restaurant restaurant = initializeAndUnproxy(offer.getRestaurant());
+        SalesPerson salesPerson = initializeAndUnproxy(restaurant.getSalesPerson());
+        List<ToDo> allToDosOfSalesPerson = offerChangeRequestService.getAllToDosOfSalesPerson(salesPerson.getEmail());
+
+        int offerId = offer.getId();
+        int toDoId = 0;
+
+        for(ToDo toDo : allToDosOfSalesPerson) {
+            if(toDo.getOffer() != null) {
+                Offer offerOfToDo = initializeAndUnproxy(toDo.getOffer());
+                int changeRequestId = offerOfToDo.getChangeRequestId();
+
+                if(offerId == changeRequestId) {
+                    toDoId = toDo.getId();
+                    break;
+                }
+            }
+        }
+        offerService.deleteOfferPhoto(offerPhotoId);
+
+        return "redirect:/offerChangeRequest?id=" + toDoId;
     }
 
     @InitBinder

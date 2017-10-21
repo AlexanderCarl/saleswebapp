@@ -1,5 +1,7 @@
 package saleswebapp.service.impl;
 
+import org.hibernate.Hibernate;
+import org.hibernate.proxy.HibernateProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
@@ -35,6 +37,11 @@ public class OfferChangeRequestServiceImpl implements OfferChangeRequestService 
     @Override
     public ToDo getToDoById(int id) {
         return dbReaderService.getToDoById(id);
+    }
+
+    @Override
+    public List<ToDo> getAllToDosOfSalesPerson(String email) {
+        return dbReaderService.getAllToDosOfSalesPerson(email);
     }
 
     @Override
@@ -115,6 +122,37 @@ public class OfferChangeRequestServiceImpl implements OfferChangeRequestService 
         }
 
         return preparedChangedOffer;
+    }
+
+    @Override
+    public Model prepareIdsOfOfferChangeRequestImages(Model model, Offer preparedChangedOffer, Offer originalChangedOffer) {
+
+        //The offerPhotos are null if this function is called after a Validation error
+        if(preparedChangedOffer.getOfferPhotos() == null) {
+            preparedChangedOffer.setOfferPhotos(originalChangedOffer.getOfferPhotos());
+        }
+        int numberOfExistingImages = preparedChangedOffer.getOfferPhotos().size();
+
+        model.addAttribute("firstChangedPictureDeleteDisabled", true);
+        model.addAttribute("secondChangedPictureDeleteDisabled", true);
+        model.addAttribute("thirdChangedPictureDeleteDisabled", true);
+
+        if(numberOfExistingImages >= 1) {
+            model.addAttribute("idOfFirstChangedPicture", preparedChangedOffer.getOfferPhotos().get(0).getId());
+            model.addAttribute("firstChangedPictureDeleteDisabled", false);
+        }
+
+        if(numberOfExistingImages >= 2) {
+            model.addAttribute("idOfSecondChangedPicture", preparedChangedOffer.getOfferPhotos().get(1).getId());
+            model.addAttribute("secondChangedPictureDeleteDisabled", false);
+        }
+
+        if(numberOfExistingImages >= 3) {
+            model.addAttribute("idOfThirdChangedPicture", preparedChangedOffer.getOfferPhotos().get(2).getId());
+            model.addAttribute("thirdChangedPictureDeleteDisabled", false);
+        }
+
+        return model;
     }
 
     @Override
@@ -212,4 +250,5 @@ public class OfferChangeRequestServiceImpl implements OfferChangeRequestService 
         }
         return model;
     }
+
 }
