@@ -1,11 +1,5 @@
 package saleswebapp.controller;
 
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.hibernate.cfg.Configuration;
-import org.hibernate.proxy.HibernateProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -47,11 +41,11 @@ public class OfferChangeRequestController {
     @Autowired
     private OfferValidator offerValidator;
 
-    String loggedInUser = "carl@hm.edu"; //DEV-Only
+    @Autowired
+    private HibernateService hibernateService;
 
     @RequestMapping(value = "/offerChangeRequest", method = RequestMethod.GET)
     public String getOfferChangeRequest(Model model, @RequestParam("id") int toDoId, HttpServletRequest request) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         /*
         The ToDo-Object contains the offerId for the offer which has a change Request. Therefore
@@ -59,9 +53,20 @@ public class OfferChangeRequestController {
         id (swa_change_request_id) for the offer-object which holds the information for
         the change request.
          */
+
+        //Checks if the offer exists - (security check, if the call parameter has been altered manually)
         ToDo toDo = offerChangeRequestService.getToDoById(toDoId);
-        Offer existingOffer = initializeAndUnproxy(toDo.getOffer());
-        Restaurant restaurant = initializeAndUnproxy(toDo.getRestaurant());
+        if(toDo == null) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+        Restaurant restaurant = hibernateService.initializeAndUnproxy(toDo.getRestaurant());
+
+        //Checks if the user is allowed to see the requested offer. (security check, if the call parameter has been altered manually)
+        if(!restaurantService.restaurantAssignedToSalesPerson(restaurant.getId())) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+
+        Offer existingOffer = hibernateService.initializeAndUnproxy(toDo.getOffer());
         Offer changedOffer = offerService.getOffer(existingOffer.getChangeRequestId());
 
         request.getSession().setAttribute("commentOfLastChange", existingOffer.getCommentOfLastChange());
@@ -70,7 +75,7 @@ public class OfferChangeRequestController {
         request.getSession().setAttribute("restaurantId", restaurant.getId());
         request.getSession().setAttribute("toDoId", toDoId);
 
-        offerService.addOfferToTransactionStore(initializeAndUnproxy(existingOffer));
+        offerService.addOfferToTransactionStore(hibernateService.initializeAndUnproxy(existingOffer));
         Offer preparedChangedOffer = offerService.prepareExistingOffer(changedOffer, restaurant);
         Offer preparedExistingOffer = offerService.prepareExistingOffer(existingOffer, restaurant);
         preparedChangedOffer = offerChangeRequestService.prepareKeepImagesTags(preparedExistingOffer, preparedChangedOffer);
@@ -92,7 +97,6 @@ public class OfferChangeRequestController {
 
     @RequestMapping(value = "/saveOfferChangeRequest", method = RequestMethod.POST)
     public String saveOfferChangeRequest(Model model, @Valid Offer changedOffer, BindingResult changedOfferBinder, HttpServletRequest request) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         int toDoId;
         if(request.getSession().getAttribute("toDoId") == null) {
@@ -154,15 +158,20 @@ public class OfferChangeRequestController {
     @RequestMapping(value = "/offerChangeRequest/remove")
     public String deleteOfferChangeRequest(@RequestParam("toDoId") int toDoId) {
 
+        //Checks if the todo exists - (security check, if the call parameter has been altered manually)
         ToDo toDo = offerChangeRequestService.getToDoById(toDoId);
-        int restaurantId = toDo.getRestaurant().getId();
-        int offerToUpdateId = toDo.getOffer().getId();
-        int offerToDeleteId = toDo.getOffer().getChangeRequestId();
-
-        //Checks if the user is allowed to see the requested offer which belongs to a restaurant he has access to. (security check, if the call parameter has been altered manually)
-        if(!restaurantService.restaurantAssignedToSalesPerson(restaurantId)) {
+        if(toDo == null) {
             return "redirect:/home?noValidAccessToRestaurant";
         }
+        Restaurant restaurant = hibernateService.initializeAndUnproxy(toDo.getRestaurant());
+
+        //Checks if the user is allowed to delete the offerChangeRequest. (security check, if the call parameter has been altered manually)
+        if(!restaurantService.restaurantAssignedToSalesPerson(restaurant.getId())) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+
+        int offerToUpdateId = toDo.getOffer().getId();
+        int offerToDeleteId = toDo.getOffer().getChangeRequestId();
 
         offerChangeRequestService.deleteOfferChangeRequest(offerToDeleteId, offerToUpdateId, toDoId);
 
@@ -172,18 +181,27 @@ public class OfferChangeRequestController {
     @RequestMapping(value = "/offerChangeRequest/removePhoto")
     public String deleteOfferChangeRequestPhoto(@RequestParam("Id") int offerPhotoId) {
 
-        OfferPhoto offerPhoto = initializeAndUnproxy(offerService.getOfferPhoto(offerPhotoId));
-        Offer offer = initializeAndUnproxy(offerPhoto.getOffer());
-        Restaurant restaurant = initializeAndUnproxy(offer.getRestaurant());
-        SalesPerson salesPerson = initializeAndUnproxy(restaurant.getSalesPerson());
-        List<ToDo> allToDosOfSalesPerson = offerChangeRequestService.getAllToDosOfSalesPerson(salesPerson.getEmail());
+        //Checks if the offerPhoto exists - (security check, if the call parameter has been altered manually)
+        OfferPhoto offerPhoto = offerService.getOfferPhoto(offerPhotoId);
+        if(offerPhoto == null) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
 
+        //Checks if the user is allowed to delete the offerPhoto. (security check, if the call parameter has been altered manually)
+        Offer offer = hibernateService.initializeAndUnproxy(offerPhoto.getOffer());
+        Restaurant restaurant = hibernateService.initializeAndUnproxy(offer.getRestaurant());
+        if(!restaurantService.restaurantAssignedToSalesPerson(restaurant.getId())) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+
+        SalesPerson salesPerson = hibernateService.initializeAndUnproxy(restaurant.getSalesPerson());
+        List<ToDo> allToDosOfSalesPerson = offerChangeRequestService.getAllToDosOfSalesPerson(salesPerson.getEmail());
         int offerId = offer.getId();
         int toDoId = 0;
 
         for(ToDo toDo : allToDosOfSalesPerson) {
             if(toDo.getOffer() != null) {
-                Offer offerOfToDo = initializeAndUnproxy(toDo.getOffer());
+                Offer offerOfToDo = hibernateService.initializeAndUnproxy(toDo.getOffer());
                 int changeRequestId = offerOfToDo.getChangeRequestId();
 
                 if(offerId == changeRequestId) {
@@ -223,17 +241,4 @@ public class OfferChangeRequestController {
         changedOfferBinder.setValidator(offerValidator);
     }
 
-    private <T> T initializeAndUnproxy(T entity) {
-        if (entity == null) {
-            throw new
-                    NullPointerException("Entity passed for initialization is null");
-        }
-
-        Hibernate.initialize(entity);
-        if (entity instanceof HibernateProxy) {
-            entity = (T) ((HibernateProxy) entity).getHibernateLazyInitializer()
-                    .getImplementation();
-        }
-        return entity;
-    }
 }

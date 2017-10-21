@@ -1,10 +1,9 @@
+
 package saleswebapp.controller;
 
-import org.hibernate.Hibernate;
-import org.hibernate.proxy.HibernateProxy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
-import org.springframework.data.repository.query.Param;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -14,11 +13,11 @@ import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.support.ByteArrayMultipartFileEditor;
 import saleswebapp.repository.impl.CourseType;
 import saleswebapp.repository.impl.Offer;
 import saleswebapp.repository.impl.OfferPhoto;
 import saleswebapp.repository.impl.Restaurant;
+import saleswebapp.service.HibernateService;
 import saleswebapp.service.OfferService;
 import saleswebapp.service.RestaurantService;
 import saleswebapp.validator.offer.OfferValidator;
@@ -44,11 +43,12 @@ public class OfferController {
     @Autowired
     private OfferValidator offerValidator;
 
-    String loggedInUser = "carl@hm.edu"; //DEV-Only
+    @Autowired
+    private HibernateService hibernateService;
 
     @RequestMapping(value = "/emptyOffer")
     public String emptyOffer(Model model, HttpServletRequest request) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         request.getSession().setAttribute("newOffer", false);
         request.getSession().setAttribute("offerId", 0);
@@ -66,7 +66,17 @@ public class OfferController {
 
     @RequestMapping(value = "/newOfferForRestaurant", method = RequestMethod.GET)
     public String newOfferForRestaurant(Model model, @RequestParam("id") int restaurantId, HttpServletRequest request) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+
+        //Checks if the restaurant exists - (security check, if the call parameter has been altered manually)
+        Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
+        if(restaurant == null) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+
+        //Checks if the user is allowed to access the restaurant. (security check, if the call parameter has been altered manually)
+        if(!restaurantService.restaurantAssignedToSalesPerson(restaurant.getId())) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
 
         request.getSession().setAttribute("newOffer", true);
         request.getSession().setAttribute("offerId", 0);
@@ -86,10 +96,19 @@ public class OfferController {
 
     @RequestMapping(value = "/offer", method = RequestMethod.GET)
     public String getExistingOffer(Model model, @RequestParam("id") int offerId, HttpServletRequest request) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
+        //Checks if the offer exists - (security check, if the call parameter has been altered manually)
         Offer offer = offerService.getOffer(offerId);
+        if(offer == null) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+
+        //Checks if the user is allowed to access the offer. (security check, if the call parameter has been altered manually)
         Restaurant restaurant = offer.getRestaurant();
+        if(!restaurantService.restaurantAssignedToSalesPerson(restaurant.getId())) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+
         int restaurantId = restaurant.getId();
         int changeRequestId = offer.getChangeRequestId();
 
@@ -111,15 +130,26 @@ public class OfferController {
 
     @RequestMapping(value = "/offer/remove")
     public String deleteOfferImage(@RequestParam("offerPhotoId") int offerPhotoId, HttpServletRequest request) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        int offerId;
+        //Checks if the offerPhoto exists - (security check, if the call parameter has been altered manually)
+        OfferPhoto offerPhoto = offerService.getOfferPhoto(offerPhotoId);
+        if(offerPhoto == null) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+
+        //Checks if the user is allowed to access the offerPhoto. (security check, if the call parameter has been altered manually)
+        Offer offer = hibernateService.initializeAndUnproxy(offerPhoto.getOffer());
+        Restaurant restaurant = hibernateService.initializeAndUnproxy(offer.getRestaurant());
+        if(!restaurantService.restaurantAssignedToSalesPerson(restaurant.getId())) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+
         if(request.getSession().getAttribute("offerId") == null) {
             //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
             return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
         }
 
-        offerId = (int) request.getSession().getAttribute("offerId");
+        int offerId = (int) request.getSession().getAttribute("offerId");
         offerService.deleteOfferPhoto(offerPhotoId);
 
         return "redirect:/offer?id=" + offerId;
@@ -129,15 +159,13 @@ public class OfferController {
     public String saveOffer(Model model, @Valid Offer offer, BindingResult offerBinder, HttpServletRequest request,
                             @RequestParam(required = false, value = "home") String homeFlag,
                             @RequestParam(required = false, value = "offerOverview") String offerOverviewFlag) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
-        int restaurantId;
         if(request.getSession().getAttribute("restaurantId") == null) {
             //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
             return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
         }
 
-        restaurantId = (int) request.getSession().getAttribute("restaurantId");
+        int restaurantId = (int) request.getSession().getAttribute("restaurantId");
         int offerId = (int) request.getSession().getAttribute("offerId");
         boolean newOffer = (boolean) request.getSession().getAttribute("newOffer");
         String commentOfLastChange = (String) request.getSession().getAttribute("commentOfLastChange");
@@ -202,7 +230,7 @@ public class OfferController {
     }
 
     private Model prepareModelForGivenRestaurant(Model model, int restaurantId) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
         model.addAttribute("offerList", offerService.getAllOffersOfRestaurant(restaurantId));

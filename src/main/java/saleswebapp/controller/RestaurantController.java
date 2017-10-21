@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -47,11 +48,8 @@ public class RestaurantController {
     @Autowired
     private RestaurantValidator restaurantValidator;
 
-    String loggedInUser = "carl@hm.edu"; //DEV-Only
-
     @RequestMapping(value = "/newRestaurant", method = RequestMethod.GET)
     public String emptyRestaurant(Model model) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Restaurant restaurant = preparedRestaurantForNewRestaurant();
         model = getRestaurantModel(restaurant, model);
@@ -63,15 +61,22 @@ public class RestaurantController {
     //Loads the requested restaurant into the model, if the user has access.
     @RequestMapping(value = "/restaurant", method = RequestMethod.GET)
     public String getRestaurant(Model model, @RequestParam("id") int restaurantId, HttpServletRequest request) {
+
+        //Checks if the restaurant exists - (security check, if the call parameter has been altered manually)
+        Restaurant restaurant = restaurantService.getRestaurantById(restaurantId);
+        if(restaurant == null) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
+
         //Checks if the user is allowed to see the requested restaurant. (security check, if the call parameter has been altered manually)
         if(!restaurantService.restaurantAssignedToSalesPerson(restaurantId)) {
             return "redirect:/home?noValidAccessToRestaurant";
         }
 
         request.getSession().setAttribute("restaurantId", restaurantId);
-        Restaurant restaurant = preparedRestaurantForExistingRestaurant(restaurantId);
-        model = getRestaurantModel(restaurant, model);
-        restaurantService.addRestaurantToRestaurantTransactionStore(restaurant);
+        Restaurant preparedRestaurant = preparedRestaurantForExistingRestaurant(restaurantId);
+        model = getRestaurantModel(preparedRestaurant, model);
+        restaurantService.addRestaurantToRestaurantTransactionStore(preparedRestaurant);
 
         return "restaurant";
     }
@@ -81,7 +86,7 @@ public class RestaurantController {
 
         int restaurantId;
         if(request.getSession().getAttribute("restaurantId") == null) {
-            //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
+            //The user used the forth and back buttons of the browser to navigate through to the page. Therefore the session attributes are not set correctly.
             return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
         }
         restaurantId = (int) request.getSession().getAttribute("restaurantId");
@@ -99,12 +104,11 @@ public class RestaurantController {
     @RequestMapping(value = "/restaurant/deleteCategory", method = RequestMethod.POST)
     public String processDeleteExistingCategory(Model model, RestaurantDeleteCategory restaurantDeleteCategory, HttpServletRequest request) {
 
-        int restaurantId;
         if(request.getSession().getAttribute("restaurantId") == null) {
             //The user used the forth and back buttons of the browser to navigate through to the page. Therefore no session attributes are set.
             return "redirect:/home?doNotUseForthAndBackOfTheBrowserToNavigate";
         }
-        restaurantId = (int) request.getSession().getAttribute("restaurantId");
+        int restaurantId = (int) request.getSession().getAttribute("restaurantId");
 
         restaurantDeleteCategory.setRestaurantId(restaurantId);
 
@@ -195,6 +199,7 @@ public class RestaurantController {
 
     //Used to prepare an restaurant object of a new restaurant for its injection into the model
     private Restaurant preparedRestaurantForNewRestaurant() {
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         Restaurant restaurant = new Restaurant();
         restaurant.setCustomerId(restaurantService.getUniqueCustomerId());
@@ -212,6 +217,7 @@ public class RestaurantController {
     }
 
     private Model getRestaurantModel(Restaurant restaurant, Model model) {
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         model.addAttribute("restaurant", restaurant);
         model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));

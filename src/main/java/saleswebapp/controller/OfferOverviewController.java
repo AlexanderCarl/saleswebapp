@@ -2,13 +2,14 @@ package saleswebapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import saleswebapp.components.DateReOrder;
-import saleswebapp.repository.impl.CourseType;
-import saleswebapp.repository.impl.Offer;
+import saleswebapp.repository.impl.*;
+import saleswebapp.service.HibernateService;
 import saleswebapp.service.OfferService;
 import saleswebapp.service.RestaurantService;
 
@@ -29,14 +30,15 @@ public class OfferOverviewController {
     @Autowired
     private RestaurantService restaurantService;
 
-    private DateReOrder dateReOrder = new DateReOrder();
+    @Autowired
+    private HibernateService hibernateService;
 
-    String loggedInUser = "carl@hm.edu"; //DEV-Only
+    private DateReOrder dateReOrder = new DateReOrder();
 
     @RequestMapping(value = "/emptyOfferOverview")
     public String emptyOfferOverview(Model model, HttpServletRequest request) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         request.getSession().setAttribute("idForCancelButton", 0);
         model.addAttribute("restaurantList", restaurantService.getAllRestaurantNamesForSalesPerson(loggedInUser));
         model.addAttribute("disableCategoryFilter", true);
@@ -47,11 +49,13 @@ public class OfferOverviewController {
     //Loads the requested offers into the model, if the user has access.
     @RequestMapping(value = "/offerOverviewByRestaurant")
     public String getOffersOfRestaurant(Model model, @RequestParam("id") int restaurantId, HttpServletRequest request) {
+
         //Checks if the user is allowed to see the requested restaurant. (security check, if the call parameter has been altered manually)
         if(!restaurantService.restaurantAssignedToSalesPerson(restaurantId)) {
             return "redirect:/home?noValidAccessToRestaurant";
         }
 
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         request.getSession().setAttribute("idForCancelButton", 0);
         request.getSession().setAttribute("restaurantId", restaurantId);
         request.getSession().setAttribute("pageStatus", "filteredByRestaurantId");
@@ -65,11 +69,7 @@ public class OfferOverviewController {
     @RequestMapping(value = "/offerOverviewByCourseType")
     public String getOffersForCourseType(Model model, @RequestParam("courseType") String courseTypeAsString, HttpServletRequest request) {
         int restaurantId = (int) request.getSession().getAttribute("restaurantId");
-
-        //Checks if the user is allowed to see the requested restaurant. (security check, if the call parameter has been altered manually)
-        if(!restaurantService.restaurantAssignedToSalesPerson(restaurantId)) {
-            return "redirect:/home?noValidAccessToRestaurant";
-        }
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         request.getSession().setAttribute("pageStatus", "filteredByRestaurantIdAndCourseType");
         request.getSession().setAttribute("courseType", courseTypeAsString);
@@ -92,15 +92,19 @@ public class OfferOverviewController {
         }
     }
 
-    //Delete a offer
+    //Delete an offer
     @RequestMapping(value = "/offerOverview/remove")
     public String deleteOffer(@RequestParam("offerId") int offerId, HttpServletRequest request) {
 
-        String pageStatus = (String) request.getSession().getAttribute("pageStatus");
-        int restaurantId = (int) request.getSession().getAttribute("restaurantId");
+        //Checks if the offer exists - (security check, if the call parameter has been altered manually)
+        Offer offer = offerService.getOffer(offerId);
+        if(offer == null) {
+            return "redirect:/home?noValidAccessToRestaurant";
+        }
 
-        //Checks if the user is allowed to see the requested offer which belongs to a restaurant he has access to. (security check, if the call parameter has been altered manually)
-        if(!restaurantService.restaurantAssignedToSalesPerson(restaurantId)) {
+        //Checks if the user is allowed to delete the offer. (security check, if the call parameter has been altered manually)
+        Restaurant restaurant = hibernateService.initializeAndUnproxy(offer.getRestaurant());
+        if(!restaurantService.restaurantAssignedToSalesPerson(restaurant.getId())) {
             return "redirect:/home?noValidAccessToRestaurant";
         }
 
@@ -111,8 +115,9 @@ public class OfferOverviewController {
             return "redirect:/home?toDoListEntryForOfferExists";
         }
 
+        String pageStatus = (String) request.getSession().getAttribute("pageStatus");
         if(pageStatus.equals("filteredByRestaurantId")) {
-            return "redirect:/offerOverviewByRestaurant?id=" + restaurantId;
+            return "redirect:/offerOverviewByRestaurant?id=" + restaurant.getId();
         } else {
             String courseTypeAsString = (String) request.getSession().getAttribute("courseType");
             return "redirect:/offerOverviewByCourseType?courseType=" + courseTypeAsString;

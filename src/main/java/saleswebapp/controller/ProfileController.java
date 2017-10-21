@@ -40,7 +40,6 @@ public class ProfileController {
     @RequestMapping(value = "/profile", method = RequestMethod.GET)
     public String profile(Model model) {
         String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        loggedInUser = "carl@hm.edu"; //Dev-Only
 
         SalesPerson salesPerson = profileService.getSalesByEmail(loggedInUser);
         profileService.addSalesPersonToTransactionStore(salesPerson);

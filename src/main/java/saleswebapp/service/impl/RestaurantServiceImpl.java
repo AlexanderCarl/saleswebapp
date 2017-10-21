@@ -10,6 +10,7 @@ import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import saleswebapp.components.RestaurantAddCategory;
 import saleswebapp.components.RestaurantDeleteCategory;
@@ -31,9 +32,6 @@ import java.util.*;
  */
 @Service
 public class RestaurantServiceImpl implements RestaurantService {
-
-    //DEV-Only
-    String loggedInUser = "carl@hm.edu";
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -75,7 +73,7 @@ public class RestaurantServiceImpl implements RestaurantService {
     //Ensures that a salesPerson can only see his Restaurants. Also if he changes the call parameter manually.
     @Override
     public boolean restaurantAssignedToSalesPerson(int restaurantId) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         String salesPersonOfRestaurant;
 
         try {
@@ -89,6 +87,7 @@ public class RestaurantServiceImpl implements RestaurantService {
         if(loggedInUser.equals(salesPersonOfRestaurant)) {
             return true;
         }
+        logger.debug("Error - User: " + loggedInUser + " - Tryed to access a Restaurant (RestaurantId: " + restaurantId + ") which he is not assigned to.");
         return false;
     }
 
@@ -121,8 +120,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public void addCategoryToRestaurant(RestaurantAddCategory restaurantAddCategory) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        loggedInUser = "carl@hm.edu"; //Dev-Only
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         //Security check to ensure that a salesPerson can only add categories to restaurants he is assigned to.
         Restaurant restaurant = dbReaderService.getRestaurantById(restaurantAddCategory.getRestaurantId());
@@ -147,8 +145,7 @@ public class RestaurantServiceImpl implements RestaurantService {
 
     @Override
     public void deleteCategoryFromRestaurant(RestaurantDeleteCategory restaurantDeleteCategory) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
-        loggedInUser = "carl@hm.edu"; //Dev-Only
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
 
         //Security check to ensure that a salesPerson can only add categories to restaurants he is assigned to.
         Restaurant restaurant = dbReaderService.getRestaurantById(restaurantDeleteCategory.getRestaurantId());

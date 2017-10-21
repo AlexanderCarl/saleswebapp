@@ -838,5 +838,6 @@ public class DbWriterServiceImpl implements DbWriterService {
 
         return  thumbnailAsByte;
     }
+
 }
 

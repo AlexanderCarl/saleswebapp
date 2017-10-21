@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import saleswebapp.repository.impl.*;
 import saleswebapp.service.DbReaderService;
 import saleswebapp.service.DbWriterService;
+import saleswebapp.service.HibernateService;
 import saleswebapp.service.OfferService;
 
 import javax.imageio.ImageIO;
@@ -38,6 +39,9 @@ public class OfferServiceImpl implements OfferService {
 
     @Autowired
     private DbWriterService dbWriterService;
+
+    @Autowired
+    private HibernateService hibernateService;
 
     /* The offer id is used as the map key.
     * This Map is used to compare offers and offerChangeRequests. An offer is put into the
@@ -152,7 +156,7 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public boolean toDoEntryWithOfferExists(int offerId) {
         Offer offer = dbReaderService.getOffer(offerId);
-        offer = initializeAndUnproxy(offer);
+        offer = hibernateService.initializeAndUnproxy(offer);
 
         if(offer.getChangeRequestId() == 0) {
             return false;
@@ -261,20 +265,6 @@ public class OfferServiceImpl implements OfferService {
     @Override
     public List<Allergenic> getAllAllergenic() {
         return dbReaderService.getAllAllergenic();
-    }
-
-    private <T> T initializeAndUnproxy(T entity) {
-        if (entity == null) {
-            throw new
-                    NullPointerException("Entity passed for initialization is null");
-        }
-
-        Hibernate.initialize(entity);
-        if (entity instanceof HibernateProxy) {
-            entity = (T) ((HibernateProxy) entity).getHibernateLazyInitializer()
-                    .getImplementation();
-        }
-        return entity;
     }
 
 }

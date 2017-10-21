@@ -15,4 +15,9 @@ public class LoginController {
     public String login() {
         return "login";
     }
+
+    @RequestMapping(value = "")
+    public String startPage() {
+        return "login";
+    }
 }

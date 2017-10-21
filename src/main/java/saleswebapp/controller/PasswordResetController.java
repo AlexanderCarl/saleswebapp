@@ -49,4 +49,5 @@ public class PasswordResetController {
     public void initialiseBinder(WebDataBinder binder) {
         binder.setValidator(passwordResetValidator);
     }
+
 }

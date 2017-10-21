@@ -3,6 +3,7 @@ package saleswebapp.service.impl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import saleswebapp.components.HomeRestaurantForm;
 import saleswebapp.components.HomeToDoForm;
@@ -23,9 +24,6 @@ import static jdk.nashorn.internal.objects.NativeMath.round;
  */
 @Service
 public class HomeServiceImpl implements HomeService {
-
-    //DEV-Only
-    String loggedInUser = "carl@hm.edu";
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -61,7 +59,7 @@ public class HomeServiceImpl implements HomeService {
 
     @Override
     public boolean toDoAssignedToSalePerson(int toDoId) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         String salesPersonOfToDo;
 
         try {
@@ -75,6 +73,8 @@ public class HomeServiceImpl implements HomeService {
         if(loggedInUser.equals(salesPersonOfToDo)) {
             return true;
         }
+
+        logger.debug("Error - User: " + loggedInUser + " - Tryed to access a toDo (ToDoId: " + toDoId + ") which he is not assigned to.");
         return false;
     }
 
@@ -142,4 +142,5 @@ public class HomeServiceImpl implements HomeService {
 
         return "€ " + currentPaymentOfSalesPerson;
     }
+
 }

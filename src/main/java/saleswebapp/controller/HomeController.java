@@ -21,12 +21,9 @@ public class HomeController {
     @Autowired
     private HomeService homeService;
 
-    //Dev-Only
-    String loggedInUser = "carl@hm.edu";
-
     @RequestMapping(value = "/home")
     public String home(Model model) {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         model.addAttribute("restaurants", homeService.createHomeRestaurantFormListForSalesPerson(loggedInUser));
         model.addAttribute("toDos", homeService.getAllToDosForSalesPerson(loggedInUser));
         model.addAttribute("currentPayment", homeService.getCurrentPaymentOfSalesPerson(loggedInUser));
@@ -36,7 +33,7 @@ public class HomeController {
 
     @RequestMapping(value = "/home/logout")
     public String logout() {
-        //String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
+        String loggedInUser = SecurityContextHolder.getContext().getAuthentication().getName();
         logger.debug("Logout - User: " + loggedInUser + " logged out.");
         SecurityContextHolder.getContext().setAuthentication(null);
 
@@ -45,7 +42,8 @@ public class HomeController {
 
     @RequestMapping(value = "home/remove")
     public String removeToDo(@RequestParam("toDo") int toDoId) {
-        //Checks if the user is allowed to alter the requested offer. (security check, if the call parameter has been altered manually)
+
+        //Checks if the todo exist`s and the user has access to it. (security check, if the call parameter has been altered manually)
         if(!homeService.toDoAssignedToSalePerson(toDoId)) {
             return "redirect:/home?noValidAccessToToDo";
         }

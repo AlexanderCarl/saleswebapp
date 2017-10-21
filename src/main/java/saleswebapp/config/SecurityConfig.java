@@ -38,12 +38,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         httpSecurity.formLogin().defaultSuccessUrl("/home")
                 .failureUrl("/login?error");
-        //Logout is handled manually by the controllers HomeController and ProfileController
+        //Logout is handled manually by the HomeController
 
         httpSecurity.authorizeRequests()
-                .antMatchers("/**").permitAll(); //For Testing and Developing only
-                //.antMatchers("/login").permitAll()
-                //.antMatchers("/home/**").access("hasRole('USER')");
+                .antMatchers("/login").permitAll()
+                .antMatchers("/home/**").access("hasRole('USER')")
+                .antMatchers("/profile/**").access("hasRole('USER')")
+                .antMatchers("/saveProfile/**").access("hasRole('USER')")
+                .antMatchers("/offer/**").access("hasRole('USER')")
+                .antMatchers("/emptyOffer/**").access("hasRole('USER')")
+                .antMatchers("/newOfferForRestaurant/**").access("hasRole('USER')")
+                .antMatchers("/saveOffer/**").access("hasRole('USER')")
+                .antMatchers("/restaurant/**").access("hasRole('USER')")
+                .antMatchers("/newRestaurant/**").access("hasRole('USER')")
+                .antMatchers("/saveRestaurant/**").access("hasRole('USER')")
+                .antMatchers("/emptyOfferOverview/**").access("hasRole('USER')")
+                .antMatchers("/offerOverviewByRestaurant/**").access("hasRole('USER')")
+                .antMatchers("/offerOverviewByCourseType/**").access("hasRole('USER')")
+                .antMatchers("/cancelOfferOverview/**").access("hasRole('USER')")
+                .antMatchers("/offerOverview/**").access("hasRole('USER')")
+                .antMatchers("/offerChangeRequest/**").access("hasRole('USER')")
+                .antMatchers("/saveOfferChangeRequest/**").access("hasRole('USER')");
 
         httpSecurity.csrf().disable();
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED); //equals default
