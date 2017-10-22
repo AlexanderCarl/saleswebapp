@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS `country` (
   PRIMARY KEY (`country_code`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- ——————————————————————————
+-- -----------------------------------------------------
 -- Table `findlunchandswa`.`day_of_week`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `day_of_week` (
@@ -65,8 +65,8 @@ CREATE TABLE IF NOT EXISTS `restaurant` (
   `zip` varchar(5) NOT NULL,
   `city` varchar(60) NOT NULL,
   `country_code` varchar(2) NOT NULL,
-  `location_latitude` float DEFAULT NULL,
-  `location_longitude` float DEFAULT NULL,
+  `location_latitude` float DEFAULT 0,
+  `location_longitude` float DEFAULT 0,
   `email` varchar(60) NOT NULL,
   `phone` varchar(60) NOT NULL,
   `url` varchar(60) DEFAULT NULL,
@@ -259,8 +259,8 @@ CREATE TABLE IF NOT EXISTS `time_schedule` (
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `opening_time` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `opening_time` datetime NOT NULL,
-  `closing_time` datetime NOT NULL,
+  `opening_time` datetime DEFAULT NULL,
+  `closing_time` datetime DEFAULT NULL,
   `time_schedule_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_opening_time_time_schedule1_idx` (`time_schedule_id`),
@@ -375,6 +375,16 @@ CREATE TABLE IF NOT EXISTS `bill` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- -----------------------------------------------------
+-- Table `findlunchandswa`.`bill_counter`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `bill_counter` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `counter` int(11) NOT NULL,
+  `date` date NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- -----------------------------------------------------
 -- Table `findlunchandswa`.`reservation`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `reservation` (
@@ -404,24 +414,6 @@ CREATE TABLE IF NOT EXISTS `reservation` (
   CONSTRAINT `fk_reservation_euro_per_point1` FOREIGN KEY (`euro_per_point_id`) REFERENCES `euro_per_point` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_reservation_restaurant1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_reservation_user1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Exportiere Struktur von Tabelle findlunchandswa.booking
-CREATE TABLE IF NOT EXISTS `booking` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `book_id` int(11) NOT NULL,
-  `booking_time` datetime NOT NULL,
-  `amount` decimal(6,2) NOT NULL,
-  `booking_reason_id` int(11) NOT NULL,
-  `account_id` int(11) NOT NULL,
-  `bill_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_booking_booking_reason1_idx` (`booking_reason_id`),
-  KEY `fk_booking_account1_idx` (`account_id`),
-  KEY `fk_booking_bill1_idx` (`bill_id`),
-  CONSTRAINT `fk_booking_account1` FOREIGN KEY (`account_id`) REFERENCES `account` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_booking_bill1` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_booking_booking_reason1` FOREIGN KEY (`booking_reason_id`) REFERENCES `booking_reason` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- -----------------------------------------------------
@@ -471,16 +463,6 @@ CREATE TABLE IF NOT EXISTS `donation_per_month` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- -----------------------------------------------------
--- Table `findlunchandswa`.`bill_counter`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `bill_counter` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `counter` int(11) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- -----------------------------------------------------
 -- Table `findlunchandswa`.`allergenic`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `allergenic` (
@@ -495,10 +477,9 @@ CREATE TABLE IF NOT EXISTS `allergenic` (
 -- Table `findlunchandswa`.`offer_has_allergenic`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `offer_has_allergenic` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
   `offer_id` int(11) NOT NULL,
   `allergenic_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`offer_id`,`allergenic_id`),
   KEY `fk_offer_has_allergenic_offer1_idx` (`offer_id`),
   KEY `fk_offer_has_allergenic_allergenic1_idx` (`allergenic_id`),
   CONSTRAINT `fk_offer_has_allergenic_allergenic1` FOREIGN KEY (`allergenic_id`) REFERENCES `allergenic` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -520,10 +501,9 @@ CREATE TABLE IF NOT EXISTS `additives` (
 -- Table `findlunchandswa`.`offer_has_additives`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `offer_has_additives` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
   `additives_id` int(11) NOT NULL,
   `offer_id` int(11) NOT NULL,
-  PRIMARY KEY (`id`),
+  PRIMARY KEY (`offer_id`,`additives_id`),
   KEY `fk_offer_has_additives_additives1_idx` (`additives_id`),
   KEY `fk_offer_has_additives_offer1_idx` (`offer_id`),
   CONSTRAINT `fk_offer_has_additives_additives1` FOREIGN KEY (`additives_id`) REFERENCES `additives` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
@@ -584,28 +564,4 @@ CREATE TABLE IF NOT EXISTS `swa_todo_list` (
   CONSTRAINT `fk_swa_todo_list_swa_todo_request_typ1` FOREIGN KEY (`todo_request_typ_id`) REFERENCES `swa_todo_request_typ` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Exportiere Struktur von Tabelle findlunchandswa.bill
-CREATE TABLE IF NOT EXISTS `bill` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `bill_number` varchar(12) NOT NULL,
-  `start_date` date NOT NULL,
-  `end_date` date NOT NULL,
-  `paid` tinyint(1) NOT NULL,
-  `minimum_profit_id` int(11) NOT NULL,
-  `restaurant_id` int(11) NOT NULL,
-  `bill_pdf` mediumblob NOT NULL,
-  `total_price` decimal(6,2) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_bill_minimum_profit1_idx` (`minimum_profit_id`),
-  KEY `fk_bill_restaurant1_idx` (`restaurant_id`),
-  CONSTRAINT `fk_bill_minimum_profit1` FOREIGN KEY (`minimum_profit_id`) REFERENCES `minimum_profit` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_bill_restaurant1` FOREIGN KEY (`restaurant_id`) REFERENCES `restaurant` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Exportiere Struktur von Tabelle findlunchandswa.bill_counter
-CREATE TABLE IF NOT EXISTS `bill_counter` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `counter` int(11) NOT NULL,
-  `date` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+SHOW WARNINGS;
