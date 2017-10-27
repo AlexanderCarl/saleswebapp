@@ -17,7 +17,7 @@ public interface ProfileService {
 
     SalesPerson getSalesByEmail(String email);
 
-    boolean emailOfSalesPersonHasBeenAltered(int salesPersonId);
+    boolean emailOfSalesPersonHasBeenAltered(ProfileForm profileForm);
 
     void setNewPassword(ProfileForm profileForm);
 }

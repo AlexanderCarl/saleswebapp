@@ -6,7 +6,7 @@
 
     <groupId>FindLunch</groupId>
     <artifactId>SalesWebApp</artifactId>
-    <version>0.1</version>
+    <version>1.0</version>
 
     <name>SalesWebApp</name>
     <description>SalesWebApp Component of the FindLunch Application</description>

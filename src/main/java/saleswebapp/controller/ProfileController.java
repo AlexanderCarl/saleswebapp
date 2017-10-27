@@ -52,6 +52,7 @@ public class ProfileController {
 
     @RequestMapping(value = "/saveProfile", method = RequestMethod.POST)
     public String saveProfile(Model model, @Valid ProfileForm profileForm, BindingResult bindingResult) {
+
         if (bindingResult.hasErrors()) {
             //The attributes must be added again to the profile. This can also be done using the @ModelAttribute Annotation
             model.addAttribute("profileForm", profileForm);
@@ -64,7 +65,7 @@ public class ProfileController {
         if (profileService.salesPersonHasBeenAlteredMeanwhile(profileForm.getId())) {
             return "redirect:/home?profileWasChangedMeanwhile";
         } else {
-            if (profileService.emailOfSalesPersonHasBeenAltered(profileForm.getId())) {
+            if (profileService.emailOfSalesPersonHasBeenAltered(profileForm)) {
                 profileService.saveSalesPerson(profileForm);
                 profileService.setNewPassword(profileForm);
                 logger.debug("User (User-ID: " + profileForm.getId() + ") logged out successfully.");

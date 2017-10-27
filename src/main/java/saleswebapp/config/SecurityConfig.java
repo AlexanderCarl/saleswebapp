@@ -63,12 +63,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable();
         httpSecurity.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED); //equals default
         httpSecurity.sessionManagement().maximumSessions(1); //Allows only one login per user. If a user logs in again the first login will be invalid.
-        httpSecurity.sessionManagement().invalidSessionUrl("/login"); //The user is send to this page after he closed the browser and opens the SalesWebApp again. Counts also for expired sessions.
+        httpSecurity.sessionManagement().invalidSessionUrl("/login"); //The user is send to this page after he closed the browser and opens the SalesWebApp again. Does count also for expired sessions.
     }
 
     @Bean
     public HttpSessionEventPublisher httpSessionEventPublisher() {
-        return new HttpSessionEventPublisher(); //Ensure that the Spring Security session registry is notified when the session is destroyed.
+        return new HttpSessionEventPublisher(); //Ensures that the Spring Security session registry is notified when the session is destroyed.
     }
 
 }

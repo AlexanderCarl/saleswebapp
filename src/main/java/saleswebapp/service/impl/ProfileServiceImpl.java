@@ -66,11 +66,11 @@ public class ProfileServiceImpl implements ProfileService {
     }
 
     @Override
-    public boolean emailOfSalesPersonHasBeenAltered(int salesPersonId) {
-        SalesPerson salesPersonTransactionEnd = dbReaderService.getSalesPersonById(salesPersonId);
-        SalesPerson salesPersonTransactionStart = salesPersonsTransactionStore.get(salesPersonId);
+    public boolean emailOfSalesPersonHasBeenAltered(ProfileForm profileForm) {
+        String emailOfSalesPersonInDb = dbReaderService.getSalesPersonById(profileForm.getId()).getEmail();
+        String emailOfSalesInSubmit = profileForm.getEmail();
 
-        if(!salesPersonTransactionEnd.getEmail().equals(salesPersonTransactionStart.getEmail())) {
+        if(!emailOfSalesPersonInDb.equals(emailOfSalesInSubmit)) {
             return true;
         }
 
